@@ -108,6 +108,25 @@ export default function Mantra({
         Dieu est ma source · Sa provision est illimitée · à Dieu rien
         n&apos;est impossible — tout est possible avec Lui.
       </p>
+
+      {/* L'exécution — le marteau qui referme la loi */}
+      <div
+        className="mt-3 rounded-2xl px-5 py-4 text-center"
+        style={{ background: "var(--black)" }}
+      >
+        <p className="font-display text-[15px] font-bold uppercase leading-snug tracking-wide text-white">
+          Je suis celui qui fait tout ça.
+        </p>
+        <p className="mt-1.5 text-[11px] font-semibold uppercase tracking-[0.15em] text-white/55">
+          Pas dans 5 minutes · pas plus tard · pas lundi prochain
+        </p>
+        <p
+          className="mt-2 font-display text-[26px] font-bold uppercase leading-none tracking-[0.2em]"
+          style={{ color: "var(--gold-border)" }}
+        >
+          Maintenant
+        </p>
+      </div>
     </aside>
   );
 }
