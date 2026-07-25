@@ -1,0 +1,142 @@
+import w1 from "@/content/quotes/wave1.json";
+import w2 from "@/content/quotes/wave2.json";
+import w3 from "@/content/quotes/wave3.json";
+import w4 from "@/content/quotes/wave4.json";
+import w5 from "@/content/quotes/wave5.json";
+import w6 from "@/content/quotes/wave6.json";
+import w7 from "@/content/quotes/wave7.json";
+import w8 from "@/content/quotes/wave8.json";
+import w9 from "@/content/quotes/wave9.json";
+import w10 from "@/content/quotes/wave10.json";
+import w11 from "@/content/quotes/wave11.json";
+import w12 from "@/content/quotes/wave12.json";
+import w13 from "@/content/quotes/wave13.json";
+import w14 from "@/content/quotes/wave14.json";
+import w15 from "@/content/quotes/wave15.json";
+import w16 from "@/content/quotes/wave16.json";
+import w17 from "@/content/quotes/wave17.json";
+import w18 from "@/content/quotes/wave18.json";
+import w19 from "@/content/quotes/wave19.json";
+import w20 from "@/content/quotes/wave20.json";
+import w21 from "@/content/quotes/wave21.json";
+import w22 from "@/content/quotes/wave22.json";
+import w23 from "@/content/quotes/wave23.json";
+import w24 from "@/content/quotes/wave24.json";
+import w25 from "@/content/quotes/wave25.json";
+import w26 from "@/content/quotes/wave26.json";
+import w27 from "@/content/quotes/wave27.json";
+import w28 from "@/content/quotes/wave28.json";
+import w29 from "@/content/quotes/wave29.json";
+import w30 from "@/content/quotes/wave30.json";
+import { RETENTION_AFFIRMATIONS } from "./affirmations";
+
+export type CategoryId =
+  | "mantra"
+  | "retention"
+  | "reverie"
+  | "presque"
+  | "action"
+  | "vaisseau"
+  | "foi"
+  | "grace"
+  | "dominion"
+  | "temps"
+  | "ego"
+  | "loi"
+  | "quantum"
+  | "nation"
+  | "corps"
+  | "liturgie"
+  | "reveil"
+  | "vengeance";
+
+export interface Quote {
+  t: string; // le texte de la citation
+  c: CategoryId; // catégorie
+  s?: string; // source (ex. "ch. 24")
+}
+
+export interface CategoryMeta {
+  id: CategoryId;
+  label: string;
+  color: string;
+}
+
+// Ordre = ordre d'affichage des filtres. Les plus critiques d'abord.
+export const CATEGORIES: CategoryMeta[] = [
+  { id: "mantra", label: "Le mantra", color: "#0F172A" },
+  { id: "retention", label: "Rétention", color: "#DC2626" },
+  { id: "reverie", label: "Rêverie", color: "#7C3AED" },
+  { id: "presque", label: "Le presque", color: "#B45309" },
+  { id: "action", label: "Agir", color: "#EA580C" },
+  { id: "vaisseau", label: "Le vaisseau", color: "#0F766E" },
+  { id: "foi", label: "Foi & décret", color: "#1E3A5F" },
+  { id: "grace", label: "Grâce", color: "#2563EB" },
+  { id: "dominion", label: "Dominion", color: "#111827" },
+  { id: "temps", label: "Le temps", color: "#0891B2" },
+  { id: "ego", label: "L'ego", color: "#6D28D9" },
+  { id: "loi", label: "La loi", color: "#4B5563" },
+  { id: "quantum", label: "Les carrefours", color: "#0D9488" },
+  { id: "nation", label: "La nation", color: "#15803D" },
+  { id: "corps", label: "Le corps", color: "#BE123C" },
+  { id: "liturgie", label: "Liturgie", color: "#334155" },
+  { id: "reveil", label: "Réveil brutal", color: "#DC2626" },
+];
+
+const CAT_MAP = new Map(CATEGORIES.map((c) => [c.id, c]));
+
+export function categoryMeta(id: CategoryId): CategoryMeta {
+  return CAT_MAP.get(id) ?? CATEGORIES[0];
+}
+
+// Le mantra (5 lignes, gravé à chaque coin de l'app).
+const MANTRA: Quote[] = [
+  {
+    t: "Dieu ne t'a pas créé pour te répandre et te vider — mais pour te contenir, bâtir, et régner.",
+    c: "mantra",
+  },
+  {
+    t: "Une main qui se masturbe ne pourra pas bâtir ces choses, ni les contenir.",
+    c: "mantra",
+  },
+  { t: "Si tu veux vraiment les bâtir, respecte ta main.", c: "mantra" },
+  {
+    t: "Des yeux qui regardent du porno ne verront jamais un tel accomplissement.",
+    c: "mantra",
+  },
+  { t: "Si tu veux vraiment les voir, respecte tes yeux.", c: "mantra" },
+];
+
+// Les affirmations de rétention existantes (page Vaisseau / Urgence).
+const AFFIRMATIONS: Quote[] = RETENTION_AFFIRMATIONS.map((t) => ({
+  t,
+  c: "retention" as const,
+}));
+
+const WAVES = [
+  w1, w2, w3, w4, w5, w6, w7, w8, w9, w10, w11, w12,
+  w13, w14, w15, w16, w17, w18, w19, w20,
+  w21, w22, w23, w24, w25, w26, w27, w28, w29, w30,
+] as unknown as Quote[][];
+
+// Concatène tout et dédoublonne par texte.
+export const QUOTES: Quote[] = (() => {
+  const all = [...MANTRA, ...AFFIRMATIONS, ...WAVES.flat()];
+  const seen = new Set<string>();
+  const out: Quote[] = [];
+  for (const q of all) {
+    const key = q.t.trim();
+    if (seen.has(key)) continue;
+    seen.add(key);
+    out.push(q);
+  }
+  return out;
+})();
+
+export const QUOTE_COUNT = QUOTES.length;
+
+// Citation déterministe par jour (seed = AAAAMMJJ).
+export function quoteOfDay(seed: number): Quote {
+  if (QUOTES.length === 0) return { t: "", c: "mantra" };
+  return QUOTES[Math.abs(seed) % QUOTES.length];
+}

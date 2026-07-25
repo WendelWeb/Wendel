@@ -1,0 +1,71 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --background: #fafafa;
+  --surface: #ffffff;
+  --surface-raised: #f4f4f5;
+  --border: #e4e4e7;
+  --navy: #0f172a;
+  --navy-light: #1e293b;
+  --red: #dc2626;
+  --red-soft: #fef2f2;
+  --orange: #ea580c;
+  --green: #16a34a;
+  --green-soft: #f0fdf4;
+  --gold: #b45309;
+  --gold-soft: #fef3c7;
+  --gold-border: #f59e0b;
+  --text-primary: #09090b;
+  --text-secondary: #71717a;
+  --text-muted: #a1a1aa;
+  --white: #ffffff;
+  --black: #000000;
+}
+
+html {
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  background: var(--background);
+  color: var(--text-primary);
+  font-family: var(--font-inter), system-ui, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+/* Prevent iOS tap highlight for the app-like feel */
+* {
+  -webkit-tap-highlight-color: transparent;
+}
+
+/* Hide number input spinners (muscu steppers use custom buttons) */
+input[type="number"]::-webkit-outer-spin-button,
+input[type="number"]::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+input[type="number"] {
+  -moz-appearance: textfield;
+  appearance: textfield;
+}
+
+/* Utility: tabular numerals for scores/streaks so digits don't jitter */
+.tnum {
+  font-variant-numeric: tabular-nums;
+}
+
+/* Today objectives grid: 1 column on mobile, then as many columns as fit
+   with each card at least 340px wide (so long labels don't wrap awkwardly). */
+.grid-objectives {
+  display: grid;
+  gap: 0.5rem;
+  grid-template-columns: 1fr;
+}
+@media (min-width: 768px) {
+  .grid-objectives {
+    grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+  }
+}

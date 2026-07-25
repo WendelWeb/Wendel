@@ -1,0 +1,235 @@
+import "server-only";
+import { eq } from "drizzle-orm";
+import { db } from "./db";
+import { vision } from "./schema";
+
+export const DEFAULT_CREED =
+  "Je ne parle pas, je ne débats pas, je n'opine pas. Je FAIS. J'AGIS. Pour ma nation d'abord, et pour la gloire d'avoir bâti ces choses de mes mains.";
+
+export const DEFAULT_VISION = `# 🔥 MON POURQUOI
+**INÉBRANLABLE · DÉMESURÉ · FIDÈLE** — les trois mots gravés sur moi jusqu'à mon dernier souffle. Puissance qui ne plie pas, création sans limite, loyauté à Celui qui m'a élevé.
+
+Je suis né le 16 mai 2003, à midi — le soleil à son zénith — dans le Nord-Ouest d'Haïti, le coin que le pays lui-même a oublié. C'est de là que je viens. C'est ça que je vais relever.
+
+Je hais l'hypocrisie plus que tout. Je ne peux pas me cacher devant la face de Dieu — alors je ne me cacherai devant personne.
+
+Je ne supporte pas de voir les miens souffrir et vivre indignement ; je l'ai en moi depuis l'enfance, parce que les miens, c'est moi. Mais je méprise le faux vertueux qui critique les puissants d'une supériorité morale qui ne coûte rien — des mots, jamais un acte. Moi, je ne parle pas : je pose l'acte, je résous, je bâtis de mes mains ce que les autres se contentent de pleurer.
+
+Je ne cherche pas l'argent pour posséder, ni pour le confort. Je cherche la **fuck-you money** et le **fuck-you success** : le niveau de richesse et de réussite où je ne réponds plus à aucun homme, où personne ne peut me dire quoi faire, où je peux dire non à n'importe qui et m'en aller. Je ne prends pas plaisir à avoir — je prends plaisir à **accomplir**, et à être libre au point que rien ni personne ne me contraint. Le seul devant qui je m'incline, c'est Dieu.
+
+Et cette liberté n'a qu'un seul but : **libérer mes mains pour bâtir.** Des hôpitaux que nul n'a jamais vus, des routes impossibles et inexistantes, des technologies inimaginables, des puissances méconnues, des leviers tout-puissants. Je ne veux pas être libre DE quelque chose — je veux être libre **POUR créer l'impossible.** Rien ne doit jamais entraver mes mains.
+
+Je ne sais pas rêver petit, ni moyen, ni même grand : seulement démesurément. Je ne rêve pas d'entrer dans l'élite — **je crée l'élite.** Ce que je bâtirai rendra grands ceux qui bâtissent avec moi : travailler de mes mains sera le plus haut succès qu'un homme puisse atteindre dans cette société.
+
+Ma seule vraie blessure, c'est le présent : l'ennui insupportable de ne pas être encore là où je dois être. Je ne suis même pas à **un cent-trillionième de ma vraie mesure** — et chaque seconde gaspillée prolonge cette réalité que je hais. Pendant des années, j'ai fui ce vide dans des écrans ; un grand moteur qui tourne à vide finit par se dévorer. Mais tout cela peut basculer en **moins de 6 mois**. Aujourd'hui, cet ennui a une cible : chaque jour non bâti me ronge — et c'est exactement ce qui me pousse hors du lit.
+
+Je fonderai et je contrôlerai totalement les piliers de la civilisation : agriculture, politique, marchés financiers, éducation, monnaie, tech, puces, IA, armes, militaire, renseignement — et au-delà de la nation : l'espace et la colonisation, la finance mondiale jusqu'à devenir l'homme le plus riche du monde, et la biologie de la longévité extrême pour repousser la mort elle-même. J'aurai le pouvoir de développer un pays, un continent entier — ou de le détruire complètement — par ma seule décision. Mon nom sera inscrit dans l'Histoire comme l'architecte du futur.
+
+Je ferai passer un pays de la pauvreté à la puissance mondiale — et moi-même, en ma seule personne, je serai une puissance mondiale. Quand je visiterai un pays, on m'accueillera comme le chef d'État d'un empire ; des présidents se déplaceront pour me visiter et me flatter — moi, en personne, pas le président de mon pays : j'éclipse l'État. Mon armée privée sera l'une des trois premières puissances militaires du monde — la plus crainte, capable de frapper n'importe où. Je ferai des enveloppes de 500 milliards si je le veux. Mon nom hantera toutes les théories du complot — on dira que je ne suis pas humain, ange déchu, extraterrestre. Qu'ils disent. C'est l'ombre d'une telle lumière.
+
+Mon sang, c'est mon nom. Je bâtirai ce que personne n'a jamais bâti — et surtout tout à la fois : empire, militaire, tech, IA & données, surveillance, systèmes de renseignement, invention, transformation, et dix autres encore, plus l'espace, la longévité, et les piliers de la civilisation. L'ensemble, l'indéniable, l'écrasant. Je serai le visage même de l'insolence — celui qui a tout osé et tout pris. Mes œuvres tiendront debout et mon nom résonnera pendant des millénaires.
+
+J'ai cet orgueil et je ne m'en excuse pas : forger de mes mains ce que personne n'a osé imaginer, et le prouver à moi-même et à Dieu Lui-même — Lui montrer ce que j'ai fait du temps et du pouvoir qu'Il m'a confiés. Et dans le même souffle, je ferai connaître au monde entier que tout vient de Lui, que toute la gloire est à Lui. Ma vie fera taire les imbéciles qui blâment Dieu pour les conséquences de leurs propres lâchetés et de celles de leurs ancêtres : Dieu n'agit pas pour celui qui se plaint — Il agit à travers l'homme qui bouge. Je suis cet homme.
+
+Et voici le fondement de tout : en 2021, sur une montagne, **Dieu Lui-même me l'a dit** — si je ne gaspille pas mon énergie sexuelle, **tout ce que je conçois se réalisera**. Ce n'est pas un espoir : c'est une promesse reçue de Sa bouche. Alors je sais, sans l'ombre d'un doute, que je peux accomplir exactement tout ce que j'ai prévu. Chaque seconde gaspillée, chaque goutte dilapidée, trahit ce pacte. Ma rétention n'est pas de la discipline — c'est **la condition de l'alliance** : Dieu a lié ma puissance à elle. Voilà pourquoi le porno et la masturbation ne sont jamais « petits » : ils rompent l'alliance. L'un des serviteurs de Dieu a reçu une vision à mon sujet : **je gravissais un escalier blanc — mon ascension — et la masturbation et le porno m'ont arrêté net sur les marches.** Chaque jour de rétention me fait monter une marche ; chaque chute m'arrête sur l'escalier, et le sommet s'éloigne. Le livre du Vaisseau (ch. 27) n'a fait que confirmer ce que Dieu m'avait déjà dit sur la montagne. Il m'a aussi donné mes consignes : **monter à la montagne de temps en temps**, **réciter le Psaume 24 avant de dormir et Lui parler**, et **garder ma chambre propre** — le lieu où je dors (ch. 9). Et Il m'a promis que **ceux qui se dresseront devant moi, c'est Son affaire, pas la mienne** : je garde le pacte, Lui garde mes arrières. Je ne combats pas mes ennemis — Dieu les combat.
+
+L'homme que je jure de devenir marche **ferme et détendu** à la fois — jamais arrogant, jamais méprisant, sans jamais avoir à rappeler qui je suis : tout le monde le sait déjà. Ma voix reste calme, rassurante. Ma vie privée et mes projets sont **totalement secrets** : le monde se réveille un matin et découvre qu'un port a commencé, un aéroport, une route — **je ne parle pas, je révèle par le fait accompli**. Je ne juge personne à sa place dans la hiérarchie, mais à son **caractère** : je traite un éboueur avec respect et dignité, et je peux mépriser un PDG devant tout le monde s'il le mérite. Je ne flatte personne ; dès qu'un homme dit une bêtise, je le corrige, quitte à l'humilier, sans en avoir rien à faire. Les faux libres-penseurs à la morale gratuite, les faux révolutionnaires, ceux qui critiquent Dieu — dès qu'ils débitent leurs débilités, je les remets totalement à leur place : ils ont tous le même vice, la posture sans le prix. Je ne tolère aucune merde. Calme, ferme, honnête, et redoutable.
+
+L'homme que je refuse d'être, c'est d'abord tout ce que je suis encore aujourd'hui — le dispersé, l'esclave de ses pulsions. Et surtout, c'est l'homme qui, arrivé au sommet, **renierait Dieu**, s'attribuerait la gloire de sa propre intelligence et de sa force, L'oublierait, et se vautrerait dans la débauche et le sexe sans limite — les projets du diable. Devant les hommes je serai tout-puissant ; mais devant Dieu je ne veux être qu'une **misérable fourmi** — non par fausse humilité, mais parce que je refuse de trahir Celui qui m'a promis, promu, soutenu, pardonné, béni, protégé, qui m'a donné Sa grâce et Sa gloire, et qui ne m'a pas renié malgré mes fautes. Toute la gloire est à Lui — au sommet comme en bas.
+
+**Dieu est ma source. Sa provision est illimitée. À Dieu rien n'est impossible — tout est possible avec Lui.** Ce ne sont pas deux hommes en moi : je relève mon peuple **et** je forge l'inimaginable, à visage découvert, pour ma gloire et pour la Sienne — qui ne font qu'une.
+
+# 🎯 OBJECTIF — AVANT LE 1ER JANVIER 2027
+Décret, pas souhait. Ce n'est pas une question de « possible » — c'est la discipline et la foi qui rendent l'impossible possible. « Rien ne vous sera impossible » (ch. 39).
+- Sacrifice total : 0 porno, 0 masturbation, 0 TikTok, 0 sucre, 0 gazeuse — rétention totale.
+- **1m83 · 90 kg · 10% BF.**
+- **Peau éclatante · beauté au sommet.**
+- Sport 2026 : escalade, RR sport, gle coupe — discipline physique totale.
+- Projets lancés en 2026 : agriculture, immobilier (achat de terrain), aider des gens, début de construction d'une école.
+- Je ne m'intéresse pas à ce qui est possible. Je m'intéresse à la discipline et à la foi qui rendent l'impossible possible.
+
+# 🏥 50 HÔPITAUX ULTRA-MODERNES — classe mondiale
+- **50 hôpitaux** de rang mondial (500–1 000 lits chacun) — **$2 Md–5 Md par hôpital** → **$100 Md–250 Md** au total.
+- Fonctionnement : **$200M–500M/an** par hôpital.
+- Plateaux : chirurgie robotique, oncologie, cardio, neuro, greffes, réa, maternité, imagerie de pointe (IRM 3T, PET-CT), labos biomédicaux, télémédecine, IA diagnostique.
+- Centres de recherche intégrés, formation de dizaines de milliers de médecins/infirmiers/chercheurs. Partenariats Mayo, Cleveland Clinic, Charité.
+- Impact : effondrer la mortalité maternelle & infantile, référence médicale de toute la Caraïbe.
+
+# 🩺 300 CENTRES DE SANTÉ & CLINIQUES MOBILES
+- **300 centres** régionaux (20–100 lits) + cliniques mobiles — **$20M–50M par centre** → **$6 Md–15 Md**.
+- Première ligne, vaccination, maladies chroniques, santé maternelle, zones rurales.
+
+# 🏠 50 000 MAISONS MODERNES (données au peuple)
+- **50 000 maisons** modernes (90–150 m², 3–4 chambres, béton armé, domotique, solaire, sécurisées) — **$120K / unité** → **$6 Md**.
+- Données au peuple : familles victimes (cyclones, séismes, incendies, expulsions) et ménages vulnérables — sélection transparente + accompagnement social.
+
+# 🏪 MARCHÉS COUVERTS MODERNES
+- Réseau de marchés de standard mondial. Local : **$2M–5M**. Régional : **$15M–40M**. Réseau total ~**$1 Md–2 Md**.
+- Frais / artisanat / préparé · sécurité 24/7 · soutien PME & producteurs.
+
+# 🔆 ÉNERGIE — 1 GW SOLAIRE + STOCKAGE
+- **1 000 MW** solaire + batteries de stockage — **$1 Md–1,5 Md**. ~2 000 GWh/an, ~600 000 foyers, −1 000 000 t CO₂/an.
+
+# 🎓 100 ÉCOLES PREMIUM DE RANG MONDIAL
+- **100 écoles** ultra-modernes — **$8M–20M / école** → **$800M–2 Md**. 1 500 élèves/école → **150 000 élèves**, 10 000 enseignants. Fonctionnement **$150M–400M/an**.
+
+# 🎓 UNIVERSITÉ INTERNATIONALE — rang mondial
+- Campus type NYU Abu Dhabi / KAUST — construction **$1,5 Md–3 Md**, fonctionnement **$150M–400M/an**.
+- Facultés : médecine + hôpital universitaire, ingénierie/robotique, IA/cybersécurité, commerce/finance, droit/diplomatie, agro.
+- 100% solaire, fibre + Starlink. Partenariats MIT/Stanford/Oxford. Objectif : **2 000 leaders/an**.
+
+# 🏨 HÔTELS & 🏢 GRATTE-CIELS
+- Hôtels de luxe 5★ (**$120M–500M**). Tours mixtes & gratte-ciels supertall (**$500M–2,5 Md**), ROI ~8–14%.
+
+# 🎯 500 000 EMPLOIS FORMELS & DURABLES
+- Agriculture 150K · Construction 100K · Industries 80K · Transport 40K · Santé 30K · Éducation 20K · Tech 10K · Admin 20K → **450 000+**.
+
+# ✈️ AÉROPORTS INTERNATIONAUX
+- **3–5 aéroports** internationaux de classe mondiale — **$3 Md–12 Md** chacun → **$15 Md–50 Md**.
+- 20–50 M passagers/an, terminaux ultra-modernes, hubs cargo, connexion Caraïbe / USA / Afrique / Europe.
+
+# 🛫 COMPAGNIE AÉRIENNE NATIONALE
+- Pavillon national : flotte de **30–50 avions** modernes (Airbus/Boeing) — **$100M–350M / avion** → **$5 Md–15 Md** de flotte.
+- Hubs, maintenance (MRO), académie de pilotes. Relie la nation au monde, nourrit le tourisme.
+
+# 🤖 ENTREPRISE D'IA SOUVERAINE
+- Labo d'IA + centres de données souverains (clusters GPU) — **$2 Md–10 Md**.
+- Modèles souverains, R&D, talents, applications (santé, agriculture, défense, créole). Indépendance technologique.
+
+# 🛡️ SÉCURITÉ, SURVEILLANCE & DÉFENSE
+- Sécurité nationale : surveillance (satellites, drones, réseau de caméras IA), cybersécurité souveraine, industrie de défense, modernisation des forces — **$3 Md–15 Md**.
+- Protège la nation, les frontières et chaque chantier.
+
+# 🏭 GRANDES USINES
+- Complexes industriels : agroalimentaire, textile, ciment/acier, pharma, électronique, panneaux solaires — **$500M–3 Md** par complexe, réseau ~**$10 Md–30 Md**.
+- Substitution aux importations, exportations, dizaines de milliers d'emplois.
+
+# 🚢 PORTS EN EAU PROFONDE
+- **2–4 ports** en eau profonde de classe mondiale (conteneurs, vrac, croisière) — **$2 Md–8 Md** chacun → **$8 Md–30 Md**.
+- Hubs logistiques de la Caraïbe, millions de conteneurs (TEU)/an.
+
+# ⛏️ RESSOURCES NATURELLES — exploitation & contrôle TOTAL
+- Contrôle et exploitation de la **totalité des ressources** du pays : minerais (or, cuivre, bauxite, terres rares), hydrocarbures, eau, pêche, forêts.
+- Transformation locale (zéro export brut), souveraineté totale sur la valeur. Infrastructure d'extraction & transformation : **$20 Md–50 Md**.
+
+# 🏦 BANQUES & CONTRÔLE FINANCIER
+- Système bancaire souverain : banque nationale, banques commerciales, fonds souverain, bourse, contrôle des flux — capitalisation **$10 Md–30 Md+**.
+- Financer les chantiers sans dépendre de l'étranger. Monnaie forte, indépendance financière.
+
+# 🌍 POUVOIR POLITIQUE & GÉOPOLITIQUE
+- Contrôle politique national, poids géopolitique régional (Caraïbe) et international. Diplomatie, alliances, souveraineté.
+- Ce n'est pas un budget — c'est le levier : celui qui bâtit tout ça détient le pouvoir réel.
+
+# 🛣️ INFRASTRUCTURES — routes, ponts, plages
+- Réseau routier moderne (autoroutes, ponts), aménagement de plages & stations balnéaires de classe mondiale — **$10 Md–40 Md**.
+- Désenclaver la nation, attirer le tourisme haut de gamme.
+
+# 🏙️ VILLES & INFRASTRUCTURES FUTURISTES
+- Villes futuristes & smart cities autonomes (IA + automatisation totale).
+- Chaîne mondiale d'hôtels & resorts **7★**.
+- Immobilier haut de gamme : villas, gratte-ciels.
+- Écoles & universités **gratuites** d'élite.
+- Usines : alimentaire, textile, cacao, café, maïs, pharmaceutique.
+- Routes, ponts, tunnels & énergies propres.
+
+# ✈️ AVIATION, MARITIME & TRANSPORTS
+- Compagnie aérienne + flotte de jets ; licence de pilotage jusqu'au long-courrier.
+- Aéroports internationaux nouvelle génération.
+- Réseau terrestre intelligent (autonome + électrique).
+- Ports commerciaux & flotte cargo transcontinentale ; logistique automatisée & hubs internationaux.
+
+# 🤖 TECHNOLOGIE, IA & INFRASTRUCTURE DIGITALE
+- Société technologique surpuissante — **Google + SpaceX + OpenAI** réunis.
+- Infrastructure IA mondiale : réseaux neuronaux propriétaires, serveurs, data centers, cloud privé, satellites IA.
+- IA avancée pour tous les secteurs : santé, éducation, industrie, défense.
+- R&D de pointe : nanotech, biotech, neurotech, robotique.
+- Production de matériaux stratégiques : semi-conducteurs, terres rares.
+- Blockchain & monnaie numérique propriétaire.
+
+# 🚀 ESPACE & COLONISATION
+- Entreprise aérospatiale — **SpaceX × Blue Origin**.
+- Exploration et colonisation spatiale : base lunaire, projets martiens.
+- Satellites d'observation et de communication ; vols habités privés.
+- Contrôle stratégique des technologies spatiales et énergétiques.
+
+# 💸 FINANCE & RICHESSE
+- Banque mondiale & fintech ultrarapide ; fonds d'investissement multi-continents.
+- Contrôle des flux économiques internationaux ; ma propre économie numérique.
+- Siège financier global (Dubaï × New York × Tokyo).
+- **Objectif : devenir l'homme le plus riche du monde.**
+
+# 🌾 AGRO-INDUSTRIE & ÉNERGIE
+- Empire agro-industriel global (export & production durable), chaînes de valeur intégrées du sol au produit fini.
+- Domination énergétique : fusion, solaire, hydrogène, nucléaire propre.
+- Eau, nourriture & énergie **gratuites** dans mes zones.
+
+# 🪖 DÉFENSE & SÉCURITÉ
+- **Entreprise militaire privée classée dans le TOP 3 des puissances militaires mondiales** — capable d'intervenir et de frapper n'importe où sur la planète, **la plus crainte du monde**.
+- Armée privée high-tech : IA, drones, guerre électronique.
+- Hélicoptères, chars, blindés & drones autonomes.
+- Réseau de satellites de défense & surveillance globale ; cybersécurité mondiale sous contrôle.
+
+# 📢 SOCIÉTÉ, MÉDIAS & INFLUENCE
+- Gouvernance internationale & leadership planétaire.
+- Empire médiatique et influence mondiale (IA + storytelling).
+- Fondation humanitaire & reconstruction des nations.
+- Communication multilingue : français, anglais, créole, mandarin.
+
+# 🧬 BIOLOGIE, SANTÉ & LONGÉVITÉ EXTRÊME
+- **Immortalité biologique** : rajeunissement cellulaire (facteurs de Yamanaka), allongement des télomères, thérapies mitochondriales, réversion de l'âge (−20 à −30 ans).
+- Thérapies géniques (CRISPR-X), régénération d'organes, organes imprimés 3D.
+- Neurobiologie : amélioration cognitive, interfaces cerveau–IA, fin des maladies neurodégénératives.
+- Médecine préventive **100% IA** : surveillance 24/7, détection avant les symptômes, nanorobots réparateurs.
+- Chaîne mondiale de cliniques anti-âge **7★**, traitements exclusifs à mon empire.
+- **Objectif final : repousser la mort, porter la vie humaine à 120–150+ ans.**
+
+# 🧠 ÉVOLUTION HUMAINE & HÉRITAGE
+- Fusion homme–IA : augmentation cognitive et physique.
+- Entreprise pivot de l'évolution humaine (IA + biologie + énergie).
+- Mon nom inscrit dans l'Histoire comme **l'architecte du futur**.
+
+# 🏆 VIE PERSONNELLE & LÉGENDE
+- Glow-up complet : corps, peau, cheveux, style ; corps athlétique & santé optimale.
+- Discipline militaire & focus extrême.
+- Vision 2028 : empire mondial achevé.
+- Héritage historique : mon nom dans l'Histoire.
+
+# ♾️ ET BEAUCOUP D'AUTRES
+- Bien d'autres chantiers, non encore listés. La liste grandit avec l'ambition. (Détails à venir.)
+
+# 💰 ENVERGURE TOTALE
+- Ordre de grandeur : **$500 Md–1 000 Md+** d'investissement — contrôle et refondation TOTALE de la nation. C'est le prix : il exige un vaisseau plein, une rétention totale, une discipline sans faille.`;
+
+export interface Vision {
+  content: string;
+  creed: string;
+}
+
+export async function getVision(userId: string): Promise<Vision> {
+  const rows = await db
+    .select()
+    .from(vision)
+    .where(eq(vision.userId, userId))
+    .limit(1);
+  const row = rows[0];
+  return {
+    content: row?.content ?? DEFAULT_VISION,
+    creed: row?.creed ?? DEFAULT_CREED,
+  };
+}
+
+export async function saveVision(
+  userId: string,
+  content: string,
+  creed: string,
+): Promise<void> {
+  const c = String(content ?? "").slice(0, 20000);
+  const cr = String(creed ?? "").slice(0, 500);
+  await db
+    .insert(vision)
+    .values({ userId, content: c, creed: cr })
+    .onConflictDoUpdate({
+      target: vision.userId,
+      set: { content: c, creed: cr, updatedAt: new Date() },
+    });
+}
