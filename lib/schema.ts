@@ -111,6 +111,18 @@ export const retention = pgTable("retention", {
   updatedAt: timestamp("updated_at").defaultNow(),
 });
 
+// "Monter à la montagne de temps en temps" — a direct instruction from the
+// 2021 covenant. Tracks the last ascent so it can't silently lapse.
+export const mountain = pgTable("mountain", {
+  id: uuid("id").defaultRandom().primaryKey(),
+  userId: uuid("user_id")
+    .references(() => users.id)
+    .notNull()
+    .unique(),
+  lastVisit: date("last_visit"),
+  updatedAt: timestamp("updated_at").defaultNow(),
+});
+
 export const vision = pgTable("vision", {
   id: uuid("id").defaultRandom().primaryKey(),
   userId: uuid("user_id")

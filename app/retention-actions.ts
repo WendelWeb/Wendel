@@ -3,6 +3,15 @@
 import { revalidatePath } from "next/cache";
 import { requireUserId } from "@/lib/auth";
 import { resetRetention, setRetentionStart } from "@/lib/retention";
+import { markMountainVisit } from "@/lib/mountain";
+
+/** Record that he went up the mountain (covenant instruction). */
+export async function markMountainAction() {
+  const userId = await requireUserId();
+  await markMountainVisit(userId);
+  revalidatePath("/vaisseau");
+  revalidatePath("/today");
+}
 
 export async function resetRetentionAction() {
   const userId = await requireUserId();

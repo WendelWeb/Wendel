@@ -5,8 +5,16 @@ import { isRestDay } from "@/lib/program";
 import { coreStatus } from "@/lib/core";
 import { todayHaiti, addDays, lastNDates, formatShort, weekday } from "@/lib/dates";
 import { computeScore } from "@/lib/scoring";
+import { ITEM_LABEL } from "@/lib/verdict";
+import { isCore } from "@/lib/core";
 import ProgressChart, { type DayPoint } from "@/components/ProgressChart";
 import GlobalStatsPanel from "@/components/GlobalStatsPanel";
+import AnalyticsPanel, {
+  type FailureStat,
+  type WeekdayStat,
+} from "@/components/AnalyticsPanel";
+
+const DAY_SHORT = ["dim", "lun", "mar", "mer", "jeu", "ven", "sam"];
 
 export const dynamic = "force-dynamic";
 
@@ -28,6 +36,39 @@ export default async function ProgressionPage() {
     (l) =>
       coreStatus(l.completedItems, isRestDay(program, weekday(l.date))).complete,
   ).length;
+
+  // Which objectives fail most often.
+  const failCounts = new Map<string, number>();
+  for (const l of logs)
+    for (const [id, v] of Object.entries(l.failedItems ?? {}))
+      if (v) failCounts.set(id, (failCounts.get(id) ?? 0) + 1);
+  const failures: FailureStat[] = [...failCounts.entries()]
+    .sort((a, b) => b[1] - a[1])
+    .slice(0, 6)
+    .map(([id, count]) => ({
+      label: ITEM_LABEL[id] ?? id,
+      count,
+      core: isCore(id),
+    }));
+
+  // Which weekday he cracks on.
+  const buckets = DAY_SHORT.map(() => ({ logged: 0, coreHeld: 0, sum: 0 }));
+  for (const l of logs) {
+    const b = buckets[weekday(l.date)];
+    b.logged++;
+    b.sum += l.score ?? 0;
+    if (coreStatus(l.completedItems, isRestDay(program, weekday(l.date))).complete)
+      b.coreHeld++;
+  }
+  // Display Monday-first, Sunday last.
+  const weekdays: WeekdayStat[] = [1, 2, 3, 4, 5, 6, 0].map((i) => ({
+    day: DAY_SHORT[i],
+    logged: buckets[i].logged,
+    coreHeld: buckets[i].coreHeld,
+    avgScore: buckets[i].logged
+      ? Math.round(buckets[i].sum / buckets[i].logged)
+      : 0,
+  }));
 
   const days: DayPoint[] = lastNDates(today, 30).map((date) => {
     const log = byDate.get(date);
@@ -69,6 +110,12 @@ export default async function ProgressionPage() {
         stats={global}
         currentStreak={streak.currentStreak ?? 0}
         longestStreak={streak.longestStreak ?? 0}
+      />
+
+      <AnalyticsPanel
+        failures={failures}
+        weekdays={weekdays}
+        totalLogged={logs.length}
       />
     </main>
   );

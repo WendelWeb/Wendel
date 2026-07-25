@@ -5,17 +5,20 @@ import { requireUserId } from "@/lib/auth";
 import { getOrCreateTodayLog } from "@/lib/daily";
 import { lectureProgress } from "@/lib/lecture";
 import { getRetention } from "@/lib/retention";
+import { getMountain } from "@/lib/mountain";
 import { todayHaiti } from "@/lib/dates";
 import LectureDuJour from "@/components/LectureDuJour";
 import RetentionPanel from "@/components/RetentionPanel";
+import MountainPanel from "@/components/MountainPanel";
 
 export const dynamic = "force-dynamic";
 
 export default async function VaisseauPage() {
   const userId = await requireUserId();
-  const [log, ret] = await Promise.all([
+  const [log, ret, mtn] = await Promise.all([
     getOrCreateTodayLog(userId),
     getRetention(userId),
+    getMountain(userId),
   ]);
   const lectureRead = log.lectureRead ?? {};
   const { chapters, readCount } = lectureProgress(lectureRead, todayHaiti());
@@ -76,6 +79,12 @@ export default async function VaisseauPage() {
         </p>
 
         <RetentionPanel days={ret.days} startDate={ret.startDate} />
+
+        <MountainPanel
+          daysSince={mtn.daysSince}
+          lastVisit={mtn.lastVisit}
+          due={mtn.due}
+        />
 
         <LectureDuJour
           chapters={chapters}

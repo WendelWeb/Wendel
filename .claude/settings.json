@@ -1,7 +1,16 @@
 {
   "permissions": {
     "allow": [
-      "Bash(node -e ' *)"
+      "Bash(node -e ' *)",
+      "Bash(curl -s http://localhost:3000/manifest.webmanifest)",
+      "Bash(curl -s -o /dev/null -w \"status=%{http_code} type=%{content_type} size=%{size_download}\\\\n\" http://localhost:3000/icon)",
+      "Bash(curl -s -o /dev/null -w \"status=%{http_code} type=%{content_type} size=%{size_download}\\\\n\" http://localhost:3000/apple-icon)",
+      "Bash(curl -s -o /dev/null -w \"%{http_code}\\\\n\" http://localhost:3000/auth/login)",
+      "Bash(curl -s http://localhost:3000/auth/login)",
+      "Bash(curl -s -o /dev/null -w \"status=%{http_code} type=%{content_type} bytes=%{size_download}\\\\n\" \"http://localhost:3000/icon?4fd686b969a553a8\")",
+      "Bash(curl -s -o /dev/null -w \"status=%{http_code} type=%{content_type} bytes=%{size_download}\\\\n\" \"http://localhost:3000/apple-icon?0fc1bdb097b01e89\")",
+      "Bash(curl -sv \"http://localhost:3000/icon?4fd686b969a553a8\")",
+      "Bash(node scripts/make-icons.mjs)"
     ]
   }
 }

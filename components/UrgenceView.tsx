@@ -6,10 +6,15 @@ import { Siren, Flame, ChevronRight, RefreshCw } from "lucide-react";
 import { STATES, stateChapterTitle } from "@/lib/states";
 import { RETENTION_AFFIRMATIONS } from "@/lib/affirmations";
 import { ALL_STOPP_PHRASES } from "@/lib/stopp";
+import WhiteStaircase from "./WhiteStaircase";
 
 const LINES = [...ALL_STOPP_PHRASES, ...RETENTION_AFFIRMATIONS];
 
-export default function UrgenceView() {
+export default function UrgenceView({
+  retentionDays,
+}: {
+  retentionDays: number;
+}) {
   const [i, setI] = useState(0);
 
   return (
@@ -25,6 +30,8 @@ export default function UrgenceView() {
         qui t&apos;a coûté 10 ans. Pas cette fois. Choisis la vérité, pas le
         mensonge de «&nbsp;juste une fois&nbsp;».
       </p>
+
+      <WhiteStaircase days={retentionDays} />
 
       {/* Affirmation / phrase choc */}
       <button

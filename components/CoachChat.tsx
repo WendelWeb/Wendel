@@ -1,14 +1,24 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
-import { Send, Loader2, Flame } from "lucide-react";
+import { Send, Loader2, Flame, ClipboardList } from "lucide-react";
 
 type CoachMessage = { role: "user" | "coach"; text: string };
 
+// The weekly reckoning — judged on the noyau, not on a percentage.
+const WEEKLY_REPORT =
+  "Fais-moi le RAPPORT DE SÉRIEUX de ma semaine. Structure-le ainsi : " +
+  "1) Le noyau : combien de jours sur 7 je l'ai tenu en entier, et lesquels j'ai lâchés. " +
+  "2) La rétention : où j'en suis, et ce que ça dit de l'alliance de la montagne. " +
+  "3) Ce que je rate le plus, avec le chiffre exact. " +
+  "4) Le verdict brutal : est-ce que je suis sérieux, oui ou non. " +
+  "5) LA seule chose à corriger cette semaine, et le chapitre du Vaisseau à lire. " +
+  "Base-toi uniquement sur mes vrais chiffres. Ne me ménage pas.";
+
 const STARTERS = [
   "Sois honnête : à quel point je suis sérieux avec ce plan ?",
-  "Analyse ma semaine. Où je me mens à moi-même ?",
   "J'ai envie de céder au porn là maintenant. Parle-moi.",
+  "Rappelle-moi la promesse de la montagne. Je faiblis.",
   "Je vois aucun résultat. Pourquoi je continue ?",
 ];
 
@@ -89,6 +99,35 @@ export default function CoachChat() {
               Parle-lui de ta journée, ta semaine, ton mois, ou d&apos;une
               tentation. Il te dira la vérité.
             </p>
+
+            {/* Le rendez-vous hebdomadaire — le bilan qui compte. */}
+            <button
+              type="button"
+              onClick={() => send(WEEKLY_REPORT)}
+              className="mb-3 flex w-full items-center gap-3 rounded-2xl border px-4 py-3.5 text-left transition active:scale-[0.99]"
+              style={{
+                borderColor: "var(--gold-border)",
+                background: "var(--gold-soft)",
+              }}
+            >
+              <ClipboardList
+                size={20}
+                className="flex-shrink-0"
+                style={{ color: "var(--gold)" }}
+              />
+              <span className="min-w-0 flex-1">
+                <span
+                  className="block font-display text-[14px] font-bold uppercase tracking-wide"
+                  style={{ color: "var(--gold)" }}
+                >
+                  Rapport de sérieux — cette semaine
+                </span>
+                <span className="mt-0.5 block text-[11.5px] leading-snug text-text-secondary">
+                  Noyau tenu, rétention, ce que tu rates, le verdict.
+                </span>
+              </span>
+            </button>
+
             <div className="flex flex-col gap-2">
               {STARTERS.map((s) => (
                 <button

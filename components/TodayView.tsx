@@ -36,6 +36,7 @@ import StoppOverlay from "./StoppOverlay";
 import StoppList from "./StoppList";
 import Verdict from "./Verdict";
 import ValidateDayModal from "./ValidateDayModal";
+import NowNext from "./NowNext";
 
 type StateMap = Record<string, ItemState>;
 type BoolMap = Record<string, boolean>;
@@ -269,6 +270,14 @@ export default function TodayView({
         </div>
       </header>
 
+      {/* Le sceau — les trois mots gravés jusqu'au dernier souffle. */}
+      <p
+        className="px-4 pt-1 text-center text-[10px] font-bold uppercase tracking-[0.25em]"
+        style={{ color: "var(--gold)" }}
+      >
+        Inébranlable · Démesuré · Fidèle
+      </p>
+
       <div className="flex flex-col gap-6 px-4 pt-2">
         {verdict && <Verdict verdict={verdict} chapterRead={chapterRead} />}
 
@@ -313,6 +322,8 @@ export default function TodayView({
             </p>
           )}
         </div>
+
+        <NowNext items={items} states={states} gymLabel={gymLabel} />
 
         {/* One chronological flow — du début de la journée à sa fin, sans
             libellés matin/après-midi/soir. Ordre par heure. */}
