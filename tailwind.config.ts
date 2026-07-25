@@ -44,11 +44,16 @@ const config: Config = {
           "0%": { opacity: "0", transform: "translateY(6px)" },
           "100%": { opacity: "1", transform: "translateY(0)" },
         },
+        "sheet-up": {
+          "0%": { transform: "translateY(100%)" },
+          "100%": { transform: "translateY(0)" },
+        },
       },
       animation: {
         "overlay-in": "overlay-in 300ms ease-out",
         "phrase-in": "phrase-in 400ms cubic-bezier(0.16, 1, 0.3, 1)",
         "toast-in": "toast-in 200ms ease-out",
+        "sheet-up": "sheet-up 260ms cubic-bezier(0.16, 1, 0.3, 1)",
       },
     },
   },
