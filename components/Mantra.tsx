@@ -154,6 +154,36 @@ export default function Mantra({
         </div>
       </div>
 
+      {/* LA LOI DU PACTE — tout acte est une signature. Le bloc se termine par
+          une ligne de signature vide : à toi de savoir ce que tu y inscris. */}
+      <div
+        className="mt-3 overflow-hidden rounded-2xl px-5 py-4 text-center"
+        style={{ background: "#4C1D95" }}
+      >
+        <p className="mb-2 text-[10px] font-semibold uppercase tracking-[0.28em] text-white/45">
+          La loi du pacte
+        </p>
+        <p className="font-display text-[15px] font-bold uppercase leading-snug text-white">
+          Chaque action est un pacte.
+        </p>
+        <p className="mt-1.5 text-[12px] font-semibold italic leading-snug text-white/70">
+          Every second on TikTok is an agreement to hand over your energy.
+        </p>
+
+        <div className="mt-3 flex items-end justify-center gap-2">
+          <span className="font-display text-[13px] font-bold text-white/50">
+            ✕
+          </span>
+          <span
+            className="h-px w-40 max-w-full"
+            style={{ background: "rgba(255,255,255,0.35)" }}
+          />
+        </div>
+        <p className="mt-1.5 text-[10px] font-bold uppercase tracking-[0.18em] text-white/55">
+          Avec qui tu viens de signer ?
+        </p>
+      </div>
+
       {/* Décret de provision — Dieu est la source */}
       <p
         className="mt-3 rounded-xl px-4 py-2.5 text-center font-display text-[13px] font-bold uppercase leading-snug tracking-wide"
