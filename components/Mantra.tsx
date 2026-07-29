@@ -226,6 +226,9 @@ export default function Mantra({
               "la vie d'un CONQUÉRANT ?",
               "un homme qui triomphe d'abord de lui-même ?",
               "un homme qui contrôle les conséquences de chaque action ?",
+              "l'homme qui avait dit qu'il couperait TikTok, Instagram — et qui donne 100% de son temps à ses objectifs ?",
+              "un homme qui résiste et qui SUPPRIME l'envie, au lieu de la servir ?",
+              "un homme qui marche dans l'ennui et dans la difficulté sans se plaindre ?",
               "un homme dont la parole tenue à lui-même n'a jamais plié ?",
               "un homme au vaisseau plein, qui monte l'escalier marche après marche ?",
               "un homme qui ne parle pas et qui livre — qu'on découvre au fait accompli ?",
@@ -264,6 +267,25 @@ export default function Mantra({
         >
           Ou tu vas passer ta vie à rêver ?
         </p>
+
+        {/* La réponse — l'interrogatoire ne se termine pas sur un doute. */}
+        <div
+          className="mt-3.5 rounded-xl px-4 py-3 text-center"
+          style={{ background: "rgba(255,255,255,0.06)" }}
+        >
+          <p className="text-[9px] font-bold uppercase tracking-[0.22em] text-white/40">
+            Ma réponse
+          </p>
+          <p className="mt-1.5 font-display text-[14px] font-bold uppercase leading-snug text-white">
+            Je ne vais pas sur TikTok.
+          </p>
+          <p
+            className="mt-1 font-display text-[14px] font-bold uppercase leading-snug"
+            style={{ color: "var(--gold-border)" }}
+          >
+            Je suis le sujet dont on parle — et qui ne fane jamais.
+          </p>
+        </div>
       </div>
 
       {/* L'exécution — le marteau qui referme la loi */}
