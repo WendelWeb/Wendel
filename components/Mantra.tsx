@@ -193,6 +193,79 @@ export default function Mantra({
         n&apos;est impossible — tout est possible avec Lui.
       </p>
 
+      {/* L'INTERROGATOIRE — le miroir tendu au moment de l'acte. Chaque ligne
+          confronte le geste présent à l'homme qu'il prétend être. */}
+      <div
+        className="mt-3 overflow-hidden rounded-2xl px-5 py-4"
+        style={{ background: "#1C1917", border: "1.5px solid #44403C" }}
+      >
+        <p className="mb-2 text-center text-[10px] font-semibold uppercase tracking-[0.28em] text-white/45">
+          L&apos;interrogatoire · à chaque action
+        </p>
+        <p className="mb-3 text-center font-display text-[14px] font-bold uppercase leading-snug text-white">
+          Ce que tu fais là, maintenant — est-ce que ça reflète…
+        </p>
+
+        {/* Trois étages : ce qu'il bâtit dehors, ce qu'il est dedans, à qui il
+            répond. L'ordre va du visible vers la racine. */}
+        {[
+          {
+            step: "L'empire",
+            lines: [
+              "un homme qui bâtit des hôpitaux à 1 Md, des ports à 10 Mds, des aéroports à 15 Mds ?",
+              "celui qui déplace les frontières de l'Afrique, bâtit un empire neuf et domine mondialement ?",
+              "celui qui contrôle la finance, la bourse, la politique, les ressources naturelles ?",
+              "un maître en géopolitique — ferme et sans pitié ?",
+              "un homme plus important qu'un président ou un roi — considéré comme tout-puissant, admiration totale et intimidation ?",
+              "celui qui peut développer un continent entier rien qu'en le décidant ?",
+            ],
+          },
+          {
+            step: "L'homme",
+            lines: [
+              "la vie d'un CONQUÉRANT ?",
+              "un homme qui triomphe d'abord de lui-même ?",
+              "un homme qui contrôle les conséquences de chaque action ?",
+              "un homme dont la parole tenue à lui-même n'a jamais plié ?",
+              "un homme au vaisseau plein, qui monte l'escalier marche après marche ?",
+              "un homme qui ne parle pas et qui livre — qu'on découvre au fait accompli ?",
+            ],
+          },
+          {
+            step: "Dieu",
+            lines: [
+              "un homme FIDÈLE À DIEU, qui garde intacte l'alliance de la montagne ?",
+            ],
+          },
+        ].map((group) => (
+          <div key={group.step} className="mb-2.5 last:mb-0">
+            <p className="mb-1 text-[9px] font-bold uppercase tracking-[0.22em] text-white/35">
+              {group.step}
+            </p>
+            <ul className="flex flex-col gap-1.5">
+              {group.lines.map((q) => (
+                <li key={q} className="flex gap-2.5">
+                  <span
+                    className="mt-[7px] h-1 w-1 flex-shrink-0 rounded-full"
+                    style={{ background: "var(--orange)" }}
+                  />
+                  <span className="text-[12.5px] font-medium leading-snug text-white/80">
+                    {q}
+                  </span>
+                </li>
+              ))}
+            </ul>
+          </div>
+        ))}
+
+        <p
+          className="mt-3.5 text-center font-display text-[15px] font-bold uppercase leading-snug tracking-wide"
+          style={{ color: "var(--orange)" }}
+        >
+          Ou tu vas passer ta vie à rêver ?
+        </p>
+      </div>
+
       {/* L'exécution — le marteau qui referme la loi */}
       <div
         className="mt-3 rounded-2xl px-5 py-4 text-center"
