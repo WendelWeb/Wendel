@@ -100,6 +100,60 @@ export default function Mantra({
         </section>
       </div>
 
+      {/* LA LOI DE CAUSE À EFFET — répétée trois fois, en écho qui grossit :
+          la conséquence ne s'efface pas, elle s'amplifie. */}
+      <div
+        className="mt-3 overflow-hidden rounded-2xl px-5 py-4 text-center"
+        style={{ background: "var(--navy)" }}
+      >
+        <p className="mb-2 text-[10px] font-semibold uppercase tracking-[0.28em] text-white/40">
+          La loi — aucune exception
+        </p>
+        <p className="font-display text-[12px] font-bold uppercase tracking-[0.18em] text-white/40">
+          Every action has consequences
+        </p>
+        <p className="mt-1 font-display text-[16px] font-bold uppercase tracking-[0.12em] text-white/70">
+          Every action has consequences
+        </p>
+        <p
+          className="mt-1 font-display text-[21px] font-bold uppercase leading-none tracking-[0.06em]"
+          style={{ color: "var(--orange)" }}
+        >
+          Every action has consequences
+        </p>
+      </div>
+
+      {/* LA LOI DE L'ÉCHANGE — le grand livre : rien n'est gratuit, tout se
+          troque. Le bloc se scinde en deux colonnes : ce qu'on prend, ce qu'on
+          donne. */}
+      <div
+        className="mt-3 overflow-hidden rounded-2xl px-5 py-4 text-center"
+        style={{ background: "#0F766E" }}
+      >
+        <p className="mb-2 text-[10px] font-semibold uppercase tracking-[0.28em] text-white/45">
+          La loi de l&apos;échange
+        </p>
+        <p className="font-display text-[15px] font-bold uppercase leading-snug text-white">
+          Chaque action, aussi petite soit-elle, est un échange.
+        </p>
+        <p className="mt-1.5 text-[12px] font-semibold leading-snug text-white/70">
+          Calcule bien ce que tu prends et ce que tu donnes.
+        </p>
+
+        <div className="mt-3 grid grid-cols-2 gap-px overflow-hidden rounded-xl bg-white/20">
+          <div className="bg-[#0F766E] px-2 py-2">
+            <p className="text-[9px] font-bold uppercase tracking-[0.18em] text-white/50">
+              Ce que tu prends
+            </p>
+          </div>
+          <div className="bg-[#0F766E] px-2 py-2">
+            <p className="text-[9px] font-bold uppercase tracking-[0.18em] text-white/50">
+              Ce que tu donnes
+            </p>
+          </div>
+        </div>
+      </div>
+
       {/* Décret de provision — Dieu est la source */}
       <p
         className="mt-3 rounded-xl px-4 py-2.5 text-center font-display text-[13px] font-bold uppercase leading-snug tracking-wide"
