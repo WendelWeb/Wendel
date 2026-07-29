@@ -37,6 +37,7 @@ import StoppList from "./StoppList";
 import Verdict from "./Verdict";
 import ValidateDayModal from "./ValidateDayModal";
 import NowNext from "./NowNext";
+import RefreshButton from "./RefreshButton";
 
 type StateMap = Record<string, ItemState>;
 type BoolMap = Record<string, boolean>;
@@ -213,6 +214,7 @@ export default function TodayView({
           </h1>
           <div className="flex items-center gap-2">
             <StreakBadge streak={streak} />
+            <RefreshButton />
             <button
               type="button"
               aria-label="Se déconnecter"

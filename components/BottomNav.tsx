@@ -18,6 +18,7 @@ import {
   X,
   type LucideIcon,
 } from "lucide-react";
+import RefreshButton from "./RefreshButton";
 
 // Four everyday destinations. Urgence is NOT here — it gets the raised center
 // button, because reaching it in one thumb-tap is the whole point of this app.
@@ -190,6 +191,8 @@ export default function BottomNav() {
             </div>
 
             <div className="max-h-[65dvh] overflow-y-auto px-3 pb-4">
+              <RefreshButton variant="row" />
+
               {MORE_GROUPS.map((g) => (
                 <section key={g.group} className="mt-3">
                   <p className="px-2 pb-1.5 text-[10px] font-bold uppercase tracking-[0.2em] text-text-muted">
