@@ -306,6 +306,27 @@ export default function Mantra({
           Maintenant
         </p>
       </div>
+
+      {/* Le fil continu — la prière ne s'interrompt pas entre les blocs.
+          Volontairement silencieuse : après neuf blocs qui crient, celui-ci
+          scelle sans élever la voix. */}
+      <p
+        className="mt-4 flex items-center justify-center gap-2.5 text-center font-display text-[12px] font-bold uppercase tracking-[0.22em]"
+        style={{ color: "var(--gold)" }}
+      >
+        <span
+          className="h-px w-7"
+          style={{ background: "var(--gold-border)" }}
+        />
+        Prier sans cesse
+        <span
+          className="h-px w-7"
+          style={{ background: "var(--gold-border)" }}
+        />
+      </p>
+      <p className="mt-1 text-center text-[11.5px] italic leading-snug text-text-secondary">
+        Cette victoire entrera par la main de Dieu.
+      </p>
     </aside>
   );
 }
