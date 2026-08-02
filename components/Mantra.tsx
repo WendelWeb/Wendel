@@ -56,6 +56,43 @@ export default function Mantra({
         </p>
       </div>
 
+      {/* CE DONT JE SUIS FAIT — Gn 2:7. Le reste de la création est né d'une
+          parole ; l'homme, de Ses mains et de Son souffle. La typographie monte
+          du murmure au décret pour dire cette différence. */}
+      <div
+        className="mb-3 overflow-hidden rounded-2xl px-5 py-5 text-center"
+        style={{ background: "#0C0A09" }}
+      >
+        <p className="mb-2 text-[10px] font-semibold uppercase tracking-[0.28em] text-white/40">
+          Ce dont je suis fait
+        </p>
+        <p className="text-[12px] font-medium leading-snug text-white/50">
+          Pour tout le reste de la création, Il a parlé — et ce fut.
+        </p>
+        <p
+          className="mt-1.5 font-display text-[19px] font-bold uppercase leading-tight"
+          style={{ color: "var(--gold-border)" }}
+        >
+          Mon corps, Il l&apos;a formé de Ses mains.
+        </p>
+        <p className="mt-2 text-[12.5px] font-semibold leading-snug text-white/80">
+          Il a collé Sa bouche contre moi et y a insufflé Son propre souffle.
+        </p>
+
+        <div className="mt-3.5 border-t border-white/15 pt-3">
+          <p className="text-[12.5px] font-semibold leading-snug text-white">
+            J&apos;ai droit à cet orgueil. À cette arrogance divine.
+          </p>
+          <p
+            className="mt-1.5 font-display text-[13.5px] font-bold uppercase leading-snug"
+            style={{ color: "var(--gold-border)" }}
+          >
+            Je refuse d&apos;être un lâche. Je refuse d&apos;être un
+            masturbateur. Je refuse d&apos;être soumis.
+          </p>
+        </div>
+      </div>
+
       <div className="grid gap-3 sm:grid-cols-2">
         {/* LA MAIN */}
         <section
@@ -219,6 +256,44 @@ export default function Mantra({
             </p>
           </div>
         ))}
+
+        {/* Le miroir sale — ce qu'il DEVIENT à l'instant où il cède. Ses mots,
+            gardés crus, et poussés d'un cran. */}
+        <div
+          className="mt-3.5 rounded-xl px-4 py-3.5"
+          style={{ background: "rgba(0,0,0,0.45)" }}
+        >
+          <p className="mb-2 text-center text-[10px] font-bold uppercase tracking-[0.22em] text-white/50">
+            Et si tu cèdes — voilà ce que tu es, à cet instant
+          </p>
+          <ul className="flex flex-col gap-1.5">
+            {[
+              "Un compulsif masturbateur. Un homme sans contrôle. Un chien en laisse mené par la luxure.",
+              "Un lâche. Un putain de rien. Un mec lambda, banal, remplaçable, oubliable.",
+              "Un rêveur qui se branle sur son propre avenir au lieu de le bâtir.",
+              "Un empereur en pensée, un esclave en pratique.",
+              "Tu prétends déplacer les frontières de l'Afrique — et tu ne contrôles même pas ta main.",
+              "Tu veux dominer les marchés et les nations — et une notification te domine.",
+              "Le sujet dont on parle ? Personne ne parle de toi. Personne ne sait que tu existes.",
+              "Dieu t'a parlé sur une montagne — et tu Lui réponds dans un mouchoir.",
+              "Tu gaspilles ce qu'Il t'a confié, et tu oses en réclamer plus.",
+              "Dix ans. Rien. Zéro. Et tu te crois pressé aujourd'hui ?",
+            ].map((line) => (
+              <li key={line} className="flex gap-2">
+                <span
+                  className="mt-[7px] h-1 w-1 flex-shrink-0 rounded-full"
+                  style={{ background: "var(--red)" }}
+                />
+                <span className="text-[12px] font-medium leading-snug text-white/85">
+                  {line}
+                </span>
+              </li>
+            ))}
+          </ul>
+          <p className="mt-3 text-center font-display text-[13.5px] font-bold uppercase leading-snug text-white">
+            Tu n&apos;es pas un roi. Tu es un chien qui rêve d&apos;être roi.
+          </p>
+        </div>
 
         <div className="mt-3.5 border-t border-white/20 pt-3 text-center">
           <p
