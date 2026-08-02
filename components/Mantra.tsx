@@ -184,6 +184,55 @@ export default function Mantra({
         </p>
       </div>
 
+      {/* LE JUGEMENT CHOISI — s'il faut être jugé, que ce soit pour l'excès de
+          puissance, jamais pour l'avoir enterrée. (Parabole des talents.) */}
+      <div
+        className="mt-3 overflow-hidden rounded-2xl px-5 py-4"
+        style={{ background: "#7F1D1D" }}
+      >
+        <p className="mb-2.5 text-center text-[10px] font-semibold uppercase tracking-[0.26em] text-white/45">
+          Le jugement que je choisis
+        </p>
+
+        {[
+          {
+            keep: "Qu'Il me juge pour l'ARROGANCE du pouvoir qu'Il m'a donné, et pour la manière dont je l'exerce",
+            reject: "jamais pour l'avoir enterré",
+          },
+          {
+            keep: "Qu'Il me juge pour la DOMINATION, l'excès, la démesure",
+            reject:
+              "jamais comme un masturbateur sans contrôle, un chien en laisse mené par la luxure, un homme qui gaspille tout ce qu'Il lui confie",
+          },
+          {
+            keep: "Qu'Il me juge CONQUÉRANT",
+            reject: "jamais lâche",
+          },
+        ].map((p) => (
+          <div key={p.keep} className="mb-2 last:mb-0">
+            <p className="text-[12.5px] font-semibold leading-snug text-white">
+              {p.keep}
+            </p>
+            <p className="mt-0.5 flex gap-1.5 text-[12px] leading-snug text-white/55">
+              <span aria-hidden>—</span>
+              <span>{p.reject}.</span>
+            </p>
+          </div>
+        ))}
+
+        <div className="mt-3.5 border-t border-white/20 pt-3 text-center">
+          <p
+            className="font-display text-[16px] font-bold uppercase leading-snug tracking-wide"
+            style={{ color: "var(--gold-border)" }}
+          >
+            Je suis héritier de Dieu.
+          </p>
+          <p className="mt-1 font-display text-[13px] font-bold uppercase leading-snug text-white">
+            Je refuse d&apos;être un putain de rien.
+          </p>
+        </div>
+      </div>
+
       {/* Décret de provision — Dieu est la source */}
       <p
         className="mt-3 rounded-xl px-4 py-2.5 text-center font-display text-[13px] font-bold uppercase leading-snug tracking-wide"
