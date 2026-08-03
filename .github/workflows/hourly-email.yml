@@ -1,0 +1,27 @@
+name: Rappel horaire FORGED
+
+# Toutes les heures. L'endpoint décide lui-même s'il envoie : il n'envoie que
+# pendant les heures de réveil (5h–21h à Port-au-Prince), donc taper 24h/24 est
+# sans risque. Cela évite d'avoir à gérer l'heure d'été côté cron.
+on:
+  schedule:
+    - cron: "0 * * * *"
+  workflow_dispatch: # déclenchement manuel depuis l'onglet Actions
+
+jobs:
+  envoyer:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Appeler l'endpoint
+        run: |
+          if [ -z "${{ secrets.APP_URL }}" ] || [ -z "${{ secrets.CRON_SECRET }}" ]; then
+            echo "APP_URL ou CRON_SECRET manquant dans les secrets du dépôt."
+            exit 1
+          fi
+          code=$(curl -sS -o response.json -w "%{http_code}" \
+            -H "Authorization: Bearer ${{ secrets.CRON_SECRET }}" \
+            "${{ secrets.APP_URL }}/api/cron/morning")
+          echo "HTTP $code"
+          cat response.json
+          echo
+          if [ "$code" != "200" ]; then exit 1; fi
