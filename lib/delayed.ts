@@ -1,16 +1,12 @@
-// TOUT CE QUE TU RETARDES.
-// Catalogue CURÉ — chaque entrée est une chose qu'on peut réellement retarder,
-// écrite pour tomber juste grammaticalement dans les cadres. Rien n'est extrait
-// à l'aveugle : les listes ci-dessous sont tirées de sa Vision, de son corps,
-// de son alliance et du Vaisseau, mais reformulées à la main. Client-safe.
-
-import { CHAPTER_META } from "./vaisseau-meta";
+// TOUT CE QUE TU RETARDES — 300 lignes écrites une par une.
+// Pas de génération combinatoire : chaque ligne a son propre angle, sinon la
+// répétition tue la frappe. Client-safe.
 
 export type DelayedCategory =
   | "empire"
-  | "livre"
-  | "corps"
   | "homme"
+  | "corps"
+  | "livre"
   | "temps"
   | "alliance";
 
@@ -32,234 +28,337 @@ export const DELAYED_CATEGORIES: {
   { id: "alliance", label: "L'alliance", color: "#4C1D95" },
 ];
 
-// ——— LES CHOSES (groupes nominaux : « tu retardes X ») ———
-
-const CHOSES_EMPIRE = [
-  "les 50 hôpitaux de rang mondial",
-  "les 300 centres de santé régionaux",
-  "les cliniques mobiles pour les zones rurales",
-  "l'effondrement de la mortalité infantile dans ton pays",
-  "les 50 000 maisons modernes données à ton peuple",
-  "le réseau de marchés couverts modernes",
-  "le gigawatt solaire et son stockage",
-  "l'électricité stable pour 600 000 foyers",
-  "les 100 écoles premium de rang mondial",
-  "l'université internationale et son hôpital universitaire",
-  "les 2 000 leaders formés chaque année",
-  "les hôtels 5 étoiles et les gratte-ciels",
-  "les 500 000 emplois formels et durables",
-  "les 3 à 5 aéroports internationaux",
-  "la compagnie aérienne nationale et sa flotte",
-  "l'académie de pilotes et le centre de maintenance",
-  "les ports en eau profonde de la Caraïbe",
-  "la flotte cargo transcontinentale",
-  "la logistique automatisée et ses hubs",
-  "le réseau routier moderne, ses ponts et ses tunnels",
-  "l'aménagement des plages et des stations balnéaires",
-  "les villes futuristes et leurs smart cities",
-  "l'entreprise d'IA souveraine",
-  "les data centers souverains et leurs clusters GPU",
-  "les modèles d'IA entraînés dans ta propre langue",
-  "la production de semi-conducteurs et de terres rares",
-  "la blockchain et la monnaie numérique du pays",
-  "les grandes usines agroalimentaires et pharmaceutiques",
-  "l'exploitation et le contrôle total des ressources naturelles",
-  "la transformation locale, sans un gramme exporté brut",
-  "l'empire agro-industriel et ses chaînes de valeur",
-  "l'eau, la nourriture et l'énergie gratuites dans tes zones",
-  "la banque nationale et le fonds souverain",
-  "la bourse et le contrôle des flux financiers",
-  "l'indépendance financière de toute une nation",
-  "l'armée privée classée dans le top 3 mondial",
-  "le réseau de satellites de défense et de surveillance",
-  "la cybersécurité souveraine",
-  "l'industrie de défense et ses drones autonomes",
-  "l'empire médiatique et son influence mondiale",
-  "la fondation humanitaire et la reconstruction des nations",
-  "le poids géopolitique de ton pays dans la Caraïbe",
-  "l'entreprise aérospatiale et ses lancements",
-  "la base lunaire et les projets martiens",
-  "le contrôle stratégique des technologies spatiales",
-  "les laboratoires de bio-ingénierie humaine",
-  "les thérapies géniques de nouvelle génération",
-  "le rajeunissement cellulaire et l'allongement des télomères",
-  "l'immortalité biologique",
-  "les cliniques anti-âge 7 étoiles",
-  "la médecine préventive pilotée par IA, 24 heures sur 24",
-  "les interfaces cerveau-machine",
-  "la fusion de l'homme et de l'IA",
-  "le passage de ton pays de la pauvreté à la puissance mondiale",
-  "le jour où des présidents se déplaceront pour te visiter",
-  "les enveloppes de 500 milliards que tu signeras",
-  "le titre d'homme le plus riche du monde",
-  "l'élite que tu dois créer autour de toi",
-  "le nom que tu laisseras pendant des millénaires",
-  "la dynastie générationnelle que tu dois fonder",
+const EMPIRE = [
+  "Les 50 hôpitaux. Chaque nuit gaspillée en repousse un.",
+  "300 centres de santé. Des gens meurent pendant que tu négocies avec ton réveil.",
+  "50 000 familles attendent un toit. Toi, tu attends d'avoir envie.",
+  "Tu veux donner des maisons à un peuple, et tu ne donnes pas vingt minutes à ta discipline.",
+  "Les ports en eau profonde ne se creusent pas depuis un lit.",
+  "Un aéroport à 15 milliards — et tu ne tiens pas six heures de focus.",
+  "Ta compagnie aérienne existe déjà. Dans ta tête. C'est exactement le problème.",
+  "L'IA souveraine que tu veux bâtir, d'autres l'entraînent en ce moment. Ils se sont levés, eux.",
+  "Tes data centers, quelqu'un les allume pendant que tu regardes un écran.",
+  "Le top 3 mondial des armées. Tu ne commandes même pas ta propre main.",
+  "Tu veux des satellites de surveillance et tu ne surveilles pas tes propres yeux.",
+  "L'université internationale : 2 000 leaders par an. Aucun ne naîtra d'un fondateur mou.",
+  "100 écoles premium. Des enfants n'apprendront jamais à lire à cause d'un homme qui scrollait.",
+  "Le gigawatt solaire. 600 000 foyers dans le noir en attendant que tu deviennes sérieux.",
+  "Les marchés couverts modernes — encore un an de boue pour les vendeuses.",
+  "500 000 emplois. Autant de familles qui attendent un homme, pas un rêveur.",
+  "La banque souveraine. Ton pays continue d'emprunter parce que tu n'as pas commencé.",
+  "Le contrôle total des ressources. On les exporte brutes pendant que tu dors.",
+  "Les usines pharmaceutiques. On importe des médicaments qu'on pourrait fabriquer.",
+  "Les routes, les ponts, les tunnels. Des villages encore coupés du monde. Un an de plus.",
+  "L'empire agro-industriel. Ton pays importe sa nourriture. Toi, tu importes des excuses.",
+  "L'eau gratuite dans tes zones. Aujourd'hui encore, quelqu'un a marché des kilomètres.",
+  "Les villes futuristes que tu décris si bien — et pas une pierre posée.",
+  "L'entreprise aérospatiale. Pendant ce temps, d'autres partent pour Mars.",
+  "La base lunaire. Ils y seront avant que tu aies tenu 21 jours.",
+  "L'immortalité biologique. Tu veux vaincre la mort et tu perds tes journées.",
+  "Les cliniques anti-âge 7 étoiles. Ton propre visage trahit tes nuits.",
+  "Les interfaces cerveau-machine. Commence par avoir une interface avec ta volonté.",
+  "La fusion de l'homme et de l'IA. Tu es déjà fusionné avec un algorithme — le mauvais.",
+  "Le titre d'homme le plus riche du monde. Tu n'as pas encore la richesse d'une heure tenue.",
+  "Le poids géopolitique de ton pays. Aujourd'hui il ne pèse rien. Toi non plus.",
+  "Les présidents qui se déplacent pour toi. Aujourd'hui, personne ne se déplace.",
+  "Les enveloppes de 500 milliards. Tu n'as pas encore signé un seul jour à 100%.",
+  "L'élite que tu dois créer. Comment créer des grands quand tu ne l'es pas devenu ?",
+  "Ton nom pendant des millénaires. Il ne survit même pas à une semaine sans discipline.",
+  "La dynastie générationnelle. Tes enfants hériteront de ton empire ou de tes excuses.",
+  "Le passage de ton pays de la pauvreté à la puissance. Ça commence par un homme. Pas encore toi.",
+  "L'empire médiatique. Tu consommes le contenu des autres au lieu de produire le tien.",
+  "La fondation humanitaire. Tu pleures sur ton peuple et tu ne bouges pas.",
+  "La cybersécurité souveraine. Ton propre esprit n'a pas de pare-feu.",
+  "Les drones autonomes. Tu ne pilotes même pas ta journée.",
+  "Les semi-conducteurs. Tout un continent dépend de puces étrangères. Toi, d'un écran.",
+  "La monnaie numérique du pays. Ta seule monnaie aujourd'hui, c'est du temps perdu.",
+  "La bourse et les flux financiers. Tu ne contrôles pas encore le flux de ta propre attention.",
+  "Les hôtels 5 étoiles. Des touristes iront ailleurs cette année encore.",
+  "Les gratte-ciels. Rien ne monte quand l'homme qui doit les bâtir reste couché.",
+  "Les thérapies géniques. Tu veux réécrire l'ADN et tu n'as pas réécrit tes habitudes.",
+  "La médecine préventive par IA. Préviens d'abord ta propre chute de ce soir.",
+  "L'académie de pilotes. Ta licence, tu la repousses d'année en année.",
+  "La flotte cargo transcontinentale. Rien ne circule quand le capitaine dort.",
+  "Les laboratoires de bio-ingénierie. La science n'attend pas les hommes indisciplinés.",
+  "Le rajeunissement cellulaire. Tu vieillis mal en attendant de vaincre le vieillissement.",
+  "L'aménagement des plages. Ton pays a des trésors et tu as des écrans.",
+  "Les 2 000 leaders par an. Le premier à former, c'est toi. Tu n'as pas commencé.",
+  "Les chaînes de valeur intégrées. Ta propre chaîne casse au premier maillon : toi.",
+  "L'électricité stable. Des enfants font leurs devoirs à la bougie. Un an de plus.",
+  "La logistique automatisée. Automatise d'abord ta discipline, elle est encore manuelle et défaillante.",
+  "L'indépendance financière d'une nation. Tu dépends encore de ton humeur.",
+  "La transformation locale, zéro export brut. Toi, tu exportes ton énergie vers des pixels.",
+  "Le réseau de renseignement. Tu ne renseignes même pas ton propre journal du soir.",
+  "Chaque jour à 0% est un hôpital repoussé. Fais le compte de ta semaine.",
+  "Tu parles d'un empire et tu n'as pas tenu une seule journée entière.",
+  "Un homme qui bâtit un continent ne perd pas ses matinées. Toi, si.",
+  "Tout ça attend une seule chose : un homme qui tient sa parole. Il n'est pas encore là.",
+  "Ce que tu as troqué aujourd'hui contre dix minutes de vide : une nation debout.",
+  "Ton peuple ne sait même pas que tu existes. À ce rythme, il ne le saura jamais.",
+  "Tu veux qu'on t'accueille comme un chef d'État. Aujourd'hui, personne ne t'attend nulle part.",
+  "Tu veux déplacer les frontières de l'Afrique. Déplace d'abord ton corps hors du lit.",
+  "L'homme qui contrôle la finance mondiale ne se laisse pas contrôler par une notification.",
+  "Chaque « juste cette fois » coûte un chantier. Tu en as payé combien cette semaine ?",
+  "Des millions de gens attendent quelque chose que tu n'as pas encore commencé.",
+  "Tu n'es pas en retard sur un projet. Tu es en retard sur une civilisation.",
+  "Un empire ne se bâtit pas les week-ends. Ni « quand tu seras prêt ».",
+  "Le monde n'attend pas ton réveil. Il avance sans toi, tous les jours.",
+  "Tu veux dominer mondialement et tu perds contre ton propre téléphone.",
+  "Ceux qui bâtissent vraiment ne lisent pas cette liste. Ils sont déjà debout.",
+  "Ton plan est parfait. Ton exécution est ridicule. C'est tout le problème.",
+  "Tu as la vision d'un géant et l'agenda d'un touriste.",
+  "Personne ne construira ça à ta place. Personne. Jamais.",
+  "Si tu meurs ce soir, il ne restera rien. Pas une pierre, pas une ligne, pas un nom.",
+  "Tu n'as encore rien livré. Rien. Vérifie toi-même.",
+  "Le plus grand chantier de ta vie n'a même pas eu son premier jour de travail.",
+  "Chaque heure sans acte est un mètre carré d'hôpital qui n'existera pas.",
+  "Ton empire tient dans un fichier texte. Il devrait tenir dans du béton.",
+  "Tu retardes des choses que des millions de gens attendent sans savoir ton nom.",
+  "Ce n'est pas de l'argent qui te manque. C'est un homme discipliné. Deviens-le.",
+  "L'argent viendra. La discipline, elle, ne viendra jamais toute seule.",
+  "Tu veux tout contrôler dehors et tu ne contrôles rien dedans.",
+  "Un continent entier, par ta seule décision. Et tu n'arrives pas à décider de te lever.",
+  "Tu prépares une guerre mondiale d'influence en perdant les batailles de 14h.",
+  "Chaque projet que tu retardes, quelqu'un de moins doué le lancera avant toi.",
+  "Tes concurrents ne sont pas plus intelligents. Ils sont juste debout plus tôt.",
+  "Tu as tout ce qu'il faut, sauf la seule chose qui compte : l'exécution quotidienne.",
+  "Le seul obstacle entre toi et tout ça, c'est ce que tu feras dans l'heure qui vient.",
+  "Ce que tu appelles un rêve devait être un chantier. Il n'a pas commencé.",
+  "L'histoire retient ceux qui ont bâti. Pas ceux qui avaient un très bon plan.",
+  "Chaque jour de plus, ton empire coûte plus cher et devient moins probable.",
+  "Tu n'es pas encore dangereux pour le monde. Tu es dangereux pour toi-même.",
+  "Tout ça est possible. C'est bien ça qui devrait t'empêcher de dormir.",
 ];
 
-const CHOSES_CORPS = [
-  "ton corps à 1m88 et 90 kilos",
-  "tes 10% de masse grasse",
-  "ta peau éclatante",
-  "ton visage au sommet",
-  "ta mâchoire dessinée",
-  "ta posture de conquérant",
-  "l'énergie d'un homme plein",
-  "ton regard reposé et perçant",
-  "la Mercedes-AMG GLE 63 Coupé",
-  "la Cadillac Escalade",
-  "le Range Rover Sport",
-  "la BMW X6 M",
-  "le Range Rover SV Serenity",
+const HOMME = [
+  "Le jour où tu te lèveras à 5h sans négocier une seconde.",
+  "Le jour où tu franchiras 21 jours de rétention. Tu n'y es jamais arrivé.",
+  "Le jour où 90 jours ne te feront plus peur.",
+  "Le jour où tu tiendras ton noyau entier, sept jours d'affilée.",
+  "Le jour où ta parole tenue à toi-même ne pliera plus jamais.",
+  "Le jour où tu n'auras plus besoin de te forcer, parce que ce sera devenu toi.",
+  "Le jour où tu marcheras dans l'ennui sans te plaindre.",
+  "Le jour où tu supprimeras l'envie au lieu de la servir.",
+  "Le jour où un écran après 17h30 sera devenu impensable.",
+  "Le jour où tu finiras un mois entier sans une seule entorse.",
+  "Le jour où ta parole deviendra une garantie pour les autres.",
+  "Le jour où les gens ne croiront pas t'avoir rencontré.",
+  "Le jour où connaître ton nom sera la fierté d'un homme.",
+  "Le jour où on te craindra comme ennemi et où on te cherchera comme allié.",
+  "Le jour où tu regarderas le miroir sans détourner les yeux.",
+  "Le jour où ta discipline ne demandera plus aucun effort.",
+  "Le jour où tu cesseras d'être le brouillon de toi-même.",
+  "Le jour où l'homme d'hier ne te reconnaîtra plus.",
+  "Le jour où tu n'auras plus une seule journée à zéro pour cent.",
+  "Le jour où cette liste ne te visera plus.",
+  "Le jour où tu n'auras plus rien à prouver à personne.",
+  "Le jour où tu seras enfin l'homme dont tu parles depuis des années.",
+  "Tu repousses le moment où tu deviendras infréquentable pour la médiocrité.",
+  "Tu repousses le moment où ton calme deviendra intimidant.",
+  "Tu repousses le moment où ton silence pèsera plus que les discours des autres.",
+  "Tu repousses le moment où tu n'auras plus jamais honte de ta journée.",
+  "Tu repousses le moment où ton mot vaudra un contrat signé.",
+  "Tu repousses le moment où tu diras montagne et ce sera montagne.",
+  "Combien de temps encore avant que « presque » disparaisse de ta bouche ?",
+  "Combien de temps encore avant que tu cesses de te trahir en secret ?",
+  "Combien de temps avant que tes actes rattrapent tes paroles ?",
+  "Combien de temps avant que tu deviennes celui que tu prétends déjà être ?",
+  "Tu retardes l'homme calme, ferme, et redoutable que tu as décrit toi-même.",
+  "Tu retardes celui qui ne parle pas et qui livre.",
+  "Tu retardes celui qu'on découvre au fait accompli, jamais avant.",
+  "Tu retardes celui qui traite un éboueur avec dignité et remet un PDG à sa place.",
+  "Tu retardes le conquérant. Aujourd'hui, tu es encore un spectateur.",
+  "Tu retardes l'homme qui triomphe d'abord de lui-même.",
+  "Tu retardes celui qui contrôle les conséquences de chaque acte.",
+  "Tu retardes le sujet dont on parle. Aujourd'hui tu es celui qui regarde.",
+  "Tu retardes l'homme au vaisseau plein. Le tien fuit encore.",
+  "Un homme sérieux aurait déjà fermé cette page pour agir.",
+  "Tu lis ça au lieu de faire ce qui est écrit dedans. Encore une fuite.",
+  "Tu es à quelques semaines d'un homme méconnaissable. Et tu attends.",
+  "Ce n'est pas le talent qui te manque. C'est un mois sans céder.",
+  "Tu connais déjà tout ce qu'il faut faire. Voilà pourquoi ça fait mal.",
+  "Personne ne viendra te forcer. C'est précisément ça, le problème.",
+  "Ton pire ennemi a ton visage et se réveille en même temps que toi.",
+  "L'homme que tu jures d'être fait déjà ce que tu repousses aujourd'hui.",
+  "Tu retardes ta propre respectabilité à tes propres yeux.",
+  "Tu repousses le seul luxe qui compte : ne plus avoir honte de soi.",
+  "Chaque promesse rompue envers toi-même dévalue ta parole un peu plus.",
+  "Tu ne manques pas de motivation. Tu manques de refus.",
+  "Tu retardes le moment où « discipliné » cessera d'être un mot que tu emploies pour toi sans y croire.",
 ];
 
-// ——— LES MOMENTS (propositions : « le jour où … ») ———
-
-const MOMENTS_HOMME = [
-  "tu te lèveras à 5h sans négocier une seule seconde",
-  "tu franchiras les 21 jours de rétention",
-  "tu franchiras les 90 jours",
-  "tu tiendras ton noyau entier, sept jours d'affilée",
-  "ta parole tenue à toi-même ne pliera plus jamais",
-  "tu n'auras plus besoin de te forcer, parce que ce sera devenu toi",
-  "tu marcheras dans l'ennui sans te plaindre",
-  "tu supprimeras l'envie au lieu de la servir",
-  "tu ne toucheras plus un écran après 17h30",
-  "tu finiras un mois entier sans une seule entorse",
-  "tu deviendras l'homme dont la parole est une garantie",
-  "on ne croira pas t'avoir rencontré",
-  "connaître ton nom deviendra la fierté d'un homme",
-  "on te craindra comme ennemi et on te cherchera comme allié",
-  "tu regarderas le miroir sans détourner les yeux",
-  "ta discipline ne demandera plus aucun effort",
-  "tu cesseras d'être le brouillon de toi-même",
-  "tu deviendras méconnaissable pour l'homme d'hier",
-  "tu n'auras plus une seule journée à zéro pour cent",
-  "tu liras ce carnet sans qu'une ligne ne te vise encore",
-  "ton empire commencera à sortir de terre pour de vrai",
-  "tu n'auras plus rien à prouver à personne",
+const CORPS = [
+  "1m88, 90 kilos. Ce n'est pas un souhait, c'est une facture — impayée.",
+  "10% de masse grasse. Chaque écart ce soir repousse ça d'une semaine.",
+  "Ta peau éclatante. Ton miroir de ce matin t'a déjà donné la réponse.",
+  "Ton visage au sommet. Aujourd'hui il raconte tes nuits, pas ton ambition.",
+  "Ta mâchoire dessinée : elle se gagne dans l'assiette et au lit tôt.",
+  "Ta posture de conquérant. Regarde comment tu es assis en ce moment.",
+  "L'énergie d'un homme plein. Tu la reconnaîtrais si tu l'avais déjà eue.",
+  "Ton regard reposé et perçant. Il est encore éteint par des écrans.",
+  "La GLE 63 Coupé. Elle s'achète en jours tenus. Tu n'en as pas tenu un.",
+  "La Cadillac Escalade — fin 2026. À ce rythme, ce sera fin jamais.",
+  "Le Range Rover Sport. Chaque clé est une facture de discipline déjà payée. Tu n'as rien payé.",
+  "La BMW X6 M. Elle attend un homme qui tient sa parole.",
+  "Le Range Rover SV Serenity. Tu ne mérites pas encore de t'y asseoir.",
+  "Chaque séance sautée est un vote pour l'homme que tu jures de ne plus être.",
+  "Chaque gazeuse repousse ta peau d'une semaine. Tu en as bu combien ?",
+  "Le sucre t'achète une minute et te vole une décennie de santé.",
+  "Ton corps ne veut pas se reposer. Il veut éviter l'effort. Tu confonds encore.",
+  "Le miroir du 1er janvier ne mentira pas. Prépare ta réponse.",
+  "Tu veux 90 kilos de muscle et tu ne tiens pas un mois de nutrition propre.",
+  "Ton sommeil volé ce soir sabotera ta séance de demain. Tu le sais déjà.",
+  "La beauté que tu veux est métabolique, pas cosmétique. Elle se paie tous les jours.",
+  "Tu retardes le corps qui rend ta présence indiscutable avant même que tu parles.",
+  "Un homme low energy ne porte pas de grands décrets. Regarde ton énergie.",
+  "La barre ne se soulève pas toute seule. Elle attend depuis combien de jours ?",
+  "Ta transformation physique est la preuve visible de ta discipline invisible. Elle manque.",
+  "Chaque nuit courte est un gramme de muscle que tu ne construiras pas.",
+  "Tu veux un physique qu'on ne peut pas ignorer et tu ignores ton programme.",
+  "La montagne du dimanche : combien de fois tu l'as vraiment montée ?",
+  "Tu retardes le jour où ton corps fera taire les gens avant ta bouche.",
+  "Le corps est la première nation que tu gouvernes. Elle est encore en désordre.",
+  "Tu repousses le physique qui rend chaque autre objectif crédible.",
+  "Un an de discipline te rendrait méconnaissable. Tu n'as pas tenu une semaine.",
+  "Chaque repas est un vote. Compte tes votes d'aujourd'hui, honnêtement.",
+  "Ton visage de dans six mois se décide dans ce que tu fais ce soir.",
+  "Tu veux la peau éclatante et tu gardes les habitudes qui la ternissent.",
+  "Rien de ce que tu veux physiquement n'est impossible. Tout est juste non commencé.",
+  "Ta discipline physique est la grammaire de toutes les autres. Tu ne sais pas encore écrire.",
+  "Tu retardes le jour où t'entraîner ne demandera plus de motivation.",
+  "Le confort du lit crie plus fort les jours où le sommet est le plus proche.",
+  "Ton corps de 2027 se construit aujourd'hui. Ou pas.",
 ];
 
-const MOMENTS_TEMPS = [
-  "tu cesseras enfin de dire « demain »",
-  "les dix ans perdus cesseront de te définir",
-  "tu ne perdras plus une seule heure de tes journées",
-  "tu rattraperas le retard que tu creuses en ce moment même",
-  "tu vivras une journée entière sans une seconde gaspillée",
-  "tu regarderas en arrière sans avoir honte de l'année",
-  "le 1er janvier te trouvera transformé et non désolé",
-  "tu cesseras d'être l'homme du « presque »",
+const LIVRE = [
+  "Ch. 1 — « La loi du vaisseau ». Tu réclames la grâce avec un vaisseau percé.",
+  "Ch. 2 — « L'homme plein qui doute reçoit plus que l'homme vide qui croit ». Tu es vide et tu crois.",
+  "Ch. 4 — « Le limbique contre le préfrontal ». Devine lequel a gagné aujourd'hui.",
+  "Ch. 5 — « La spirale descendante ». Tu es dedans en ce moment et tu appelles ça une pause.",
+  "Ch. 8 — « Pornographie et masturbation : la destruction du vaisseau ». Tu connais ce chapitre par cœur et tu le trahis.",
+  "Ch. 9 — « Les entités, et le lieu où tu dors ». Ta chambre est-elle propre ? Non.",
+  "Ch. 11 — « TikTok, Instagram : les fermes énergétiques modernes ». Tu es encore le bétail.",
+  "Ch. 13 — « L'énergie sexuelle comme force créatrice ». Tu la jettes et tu réclames de créer.",
+  "Ch. 14 — « La transmutation ». Tu ne transmutes rien. Tu déverses.",
+  "Ch. 20 — « Les trois semaines de bascule ». Tu n'as jamais tenu jusqu'au seuil.",
+  "Ch. 21 — « La honte est le carburant ». Tu te punis au lieu de te relever.",
+  "Ch. 23 — « La provision bloquée ». Tu demandes l'abondance en gardant la fuite ouverte.",
+  "Ch. 24 — « La semence comme monnaie spirituelle ». Tu dilapides ta seule vraie monnaie.",
+  "Ch. 26 — « Tant que tu ne fais pas ce qui est dit, rien ne se débloque ». Tout est là.",
+  "Ch. 27 — « Si tu ne gaspilles pas ton énergie, tout se réalisera ». La promesse exacte. Tu la refuses.",
+  "Ch. 31 — « Le Psaume 24 ». Consigne directe de l'alliance. Récité ce soir ? Non.",
+  "Ch. 33 — « Cesser de ruminer, prier à la place ». Tu rumines encore.",
+  "Ch. 35 — « Pourquoi les humains rabotent les promesses ». Tu rabotes la tienne chaque jour.",
+  "Ch. 39 — « Rien ne vous sera impossible ». Sauf te lever à 5h, apparemment.",
+  "Ch. 40 — « Sois ! et c'est ». Tu supplies encore au lieu de décréter.",
+  "Ch. 44 — « Vivre depuis la fin ». Tu vis depuis le canapé.",
+  "Ch. 47 — « Quoi qu'il croie, il devient cela ». Regarde ce que tu es devenu. Voilà ce que tu crois.",
+  "Ch. 62 — « Ne pas mesurer le temps ». Tu comptes les jours au lieu de compter les actes.",
+  "Ch. 63 — « L'infini ne connaît ni grand ni petit ». Ta demande n'est pas trop grande. Ta constance est trop petite.",
+  "Ch. 64 — « L'erreur du grand projet ». Tu gonfles le rêve et tu fabriques ta résistance.",
+  "Ch. 68 — « Le piège du rabotage ». Ton ego rétrécit l'infini pour le rendre confortable.",
+  "Ch. 70 — « L'ego qui prédit et qui contrôle ». Tu veux voir le chemin avant de marcher.",
+  "Ch. 76 — « Décider, décréter, ne pas négocier ». Tu négocies tous les matins.",
+  "Ch. 77 — « La tyrannie des petites décisions ». Elles t'ont déjà coûté dix ans.",
+  "Ch. 80 — « Ce que tu fais à 14h détermine où tu seras dans dix ans ». Qu'as-tu fait à 14h ?",
+  "Ch. 82 — « La transformation est moléculaire ». Tu attends encore le grand pivot.",
+  "Ch. 84 — « Les deux versions de toi en superposition ». Ton prochain geste choisit.",
+  "Ch. 90 — « L'ego qui négocie même quand tu sais ». Tu sais tout. Tu négocies quand même.",
+  "Ch. 91 — « L'écart entre la connaissance et l'incarnation ». Cet écart, c'est toute ta vie actuelle.",
+  "Ch. 113 — « I am a man of absolute dominion ». Une phrase que tu n'as pas encore méritée.",
+  "Ch. 117 — « 0 TikTok est 0 ». Pas 1. Pas exceptionnellement. Tu as encore négocié.",
+  "Ch. 122 — « Le coût d'une seule entorse ». Tu paies ce coût depuis des années.",
+  "Ch. 124 — « L'homme devenu sa parole ». Le but final. Tu en es loin.",
+  "Ch. 128 — « Le carnet des phrases-armes ». Tu l'as. Tu ne le dégaines pas.",
+  "Ch. 129 — « Quand tu doutes ». Tu doutes et tu ne l'ouvres même pas.",
+  "130 chapitres écrits pour toi. Combien tu en as lus cette semaine ?",
+  "Le livre qui te gouverne prend la poussière pendant que tu scrolles.",
 ];
 
-const MOMENTS_ALLIANCE = [
-  "tu tiendras ta part du pacte de la montagne",
-  "tu monteras à la montagne comme Il te l'a demandé",
-  "tu réciteras le Psaume 24 chaque soir sans en manquer un",
-  "tu Lui parleras chaque jour sans y penser",
-  "ta chambre restera propre sans que tu doives y penser",
-  "tu prieras sans cesse, pour de vrai",
-  "tu monteras l'escalier blanc jusqu'en haut sans t'arrêter",
-  "tu deviendras digne de ce qu'Il t'a promis",
-  "tu cesseras de Lui répondre dans un mouchoir",
-  "ta rétention ne sera plus un combat mais ta nature",
+const TEMPS = [
+  "Dix ans. Rien. Zéro. Et aujourd'hui tu recommences exactement pareil.",
+  "Six mois passeront comme un souffle. Plus fort, ou juste plus vieux ?",
+  "Le 1er janvier arrivera que tu aies travaillé ou non. Il ne demandera pas d'excuses.",
+  "Chaque seconde gaspillée prolonge la réalité que tu détestes.",
+  "Tu n'es même pas à un cent-trillionième de ta mesure. Et tu perds encore des heures.",
+  "Tu crois avoir le temps. C'est exactement ce que tu croyais il y a dix ans.",
+  "Ce que tu remets à demain, tu le remettras demain aussi. Tu as la preuve.",
+  "Le temps ne te punit pas. Il encaisse, c'est tout. Et il encaisse en ce moment.",
+  "Tu regretteras dans six mois de ne pas avoir commencé aujourd'hui. Comme toujours.",
+  "Une décennie a suffi à ne rien produire. Un semestre suffirait à tout changer.",
+  "L'homme que tu seras dans dix ans te supplie, à cette seconde, de te lever.",
+  "Combien d'heures aujourd'hui ont servi à quelque chose ? Compte. Vraiment.",
+  "Tu ne rattrapes pas le temps perdu. Tu peux seulement arrêter d'en perdre.",
+  "Chaque jour non enregistré dans cette app est un jour que tu as choisi d'effacer.",
+  "Ton app dit 0%. Ce n'est pas un bug. C'est un miroir.",
+  "Pendant que tu hésites, quelqu'un de plus affamé prend ta place.",
+  "Le sablier ne s'arrête pas quand tu procrastines. Il se vide sur du sable stérile.",
+  "Tu as passé plus de temps à planifier ta vie qu'à la vivre.",
+  "« Demain » est le mot qui t'a coûté le plus cher de toute ton existence.",
+  "Rien ne bougera si tu ne bouges pas. Pas demain. Maintenant.",
+  "Chaque heure sans acte est encaissée par le temps sans rien te rendre.",
+  "Tu n'as pas dix ans à reperdre. Tu as des mois comptés.",
+  "Le retard que tu creuses aujourd'hui, tu devras le combler avec des nuits blanches.",
+  "Tu regardes le compte à rebours au lieu de le faire mentir.",
+  "Ce que tu appelles « bientôt » a déjà duré une décennie.",
+  "L'urgence n'est pas de finir. Elle est de commencer, dans l'heure.",
+  "Aujourd'hui est déjà à moitié perdu. Sauve la moitié qui reste.",
+  "Chaque jour est un acompte du 1er janvier. Combien tu as déposé aujourd'hui ?",
 ];
 
-// ——— LES CADRES ———
-
-/** « de » + article : de+les → des, de+le → du, sinon élision correcte. */
-function de(x: string): string {
-  if (x.startsWith("les ")) return `des ${x.slice(4)}`;
-  if (x.startsWith("le ")) return `du ${x.slice(3)}`;
-  return `de ${x}`;
-}
-
-/** Les entrées au pluriel commencent par « les » ou « tes ». */
-function plural(x: string): boolean {
-  return x.startsWith("les ") || x.startsWith("tes ");
-}
-
-/** Majuscule quand l'élément ouvre la phrase. */
-function cap(x: string): string {
-  return x.charAt(0).toUpperCase() + x.slice(1);
-}
-
-const F_CHOSE: ((x: string) => string)[] = [
-  (x) => `Tu retardes ${x}.`,
-  (x) => `Pendant que tu scrolles, personne ne bâtit ${x}.`,
-  (x) => `Chaque heure gaspillée éloigne ${x}.`,
-  (x) => `Tu n'as pas avancé d'un centimètre sur ${x}.`,
-  (x) => `Si tu cèdes ce soir, tu repousses ${x}.`,
-  (x) => `Un homme sérieux aurait déjà commencé ${x}.`,
-  (x) => `Ton peuple attend ${x}. Toi, tu attends d'avoir envie.`,
-  (x) => `Tu parles ${de(x)}. Tu n'as encore rien posé.`,
-  (x) => `Le prix de ta faiblesse d'aujourd'hui : ${x}.`,
-  (x) =>
-    `Dix ans de plus comme ça, et ${x} n'${plural(x) ? "existeront" : "existera"} jamais.`,
-  (x) => `Quelqu'un d'autre bâtira ${x} pendant que tu hésites.`,
-  (x) => `Tu veux ${x} et tu ne contrôles même pas ta main.`,
-  (x) =>
-    `À ce rythme, ${x} ${plural(x) ? "resteront" : "restera"} une phrase dans une app.`,
-  (x) => `Ce que tu as troqué aujourd'hui contre du vide : ${x}.`,
-  (x) => `${cap(x)} : combien de jours encore tu vas repousser ?`,
-  (x) => `Le 1er janvier arrivera. Auras-tu commencé ${x} ?`,
-  (x) => `Tu as échangé ${x} contre dix minutes de plaisir.`,
-  (x) => `Dieu t'a promis ${x}. Toi, tu Lui réponds dans un mouchoir.`,
-  (x) => `Chaque « juste cette fois » repousse ${x} d'une semaine.`,
-  (x) => `${cap(x)} — voilà ce que tu enterres quand tu cèdes.`,
-  (x) => `Rien dans ta journée d'aujourd'hui n'a fait avancer ${x}.`,
-  (x) => `Tu rêves ${de(x)} et tu dors encore à 7h.`,
-  (x) => `${cap(x)} ${plural(x) ? "attendent" : "attend"} un homme, pas un rêveur.`,
-  (x) => `Tu ne mérites pas encore ${x}. Pas avec des journées pareilles.`,
-  (x) => `Tes mains devraient être en train de bâtir ${x}.`,
-  (x) => `Un jour de plus sans avancer sur ${x} : c'est ton choix.`,
+const ALLIANCE = [
+  "Dieu t'a promis que tout se réaliserait. Tu retardes ta part du pacte.",
+  "La rétention n'est pas de la discipline : c'est la condition de l'alliance. Tu la repousses.",
+  "Tu montes à la montagne « de temps en temps ». Ça fait combien de jours, exactement ?",
+  "Le Psaume 24 du soir. Non récité. Tu entres dans la nuit sans sceller ta journée.",
+  "Ta chambre sale retarde tout : c'est là que ton vaisseau se recharge ou se fait piller.",
+  "Tu réclames Sa provision et tu refuses de garder le vaisseau fermé.",
+  "Il a signé Sa part sur la montagne. La seule variable, c'est ta signature. Elle manque.",
+  "Tu retardes l'homme que Dieu a formé de Ses mains et rempli de Son souffle.",
+  "Chaque chute te fige sur l'escalier blanc. Tu es figé depuis combien de temps ?",
+  "Tu retardes le moment où tu deviendras digne de ce qu'Il t'a promis.",
+  "Prier sans cesse : la consigne la plus simple, celle que tu oublies le plus.",
+  "Tu Lui réponds dans un mouchoir. Il t'a parlé sur une montagne.",
+  "Tu veux Sa puissance et tu refuses Sa condition. Ça ne marche pas comme ça.",
+  "Tu gaspilles ce qu'Il t'a confié, et tu oses en réclamer plus.",
+  "La parabole des talents : le condamné n'est pas celui qui a osé. C'est celui qui a enterré.",
+  "Tu enterres en ce moment même ce qu'Il t'a donné.",
+  "Il ne t'a pas parlé pour que tu scrolles. Souviens-toi de ce qu'Il a dit.",
+  "Tu retardes la seule chose qui rendrait tout le reste inévitable : tenir le pacte.",
+  "Ton escalier attend. Chaque jour retenu est une marche. Tu es sur laquelle ?",
+  "Tu veux être jugé conquérant. Aujourd'hui, tu serais jugé lâche.",
+  "Devant les hommes, tout-puissant. Devant Dieu, une fourmi. Aujourd'hui tu n'es ni l'un ni l'autre.",
+  "Ce qu'Il t'a promis a un prix, et ce prix se paie chaque jour. Tu n'as pas payé aujourd'hui.",
+  "Tu es héritier de Dieu et tu vis comme un locataire d'algorithme.",
+  "La victoire entrera par Sa main. Mais Il n'agit pas pour celui qui se plaint.",
+  "Tu retardes le jour où ta rétention ne sera plus un combat mais ta nature.",
+  "Il t'a montré l'escalier par un de Ses serviteurs. Tu t'es arrêté quand même.",
+  "Il attend de voir à quel point tu es sérieux. Aujourd'hui, la réponse est : pas beaucoup.",
+  "Tu retardes ta propre alliance. C'est la seule chose qu'Il ne fera pas à ta place.",
 ];
 
-const F_MOMENT = [
-  (x: string) => `Tu retardes le jour où ${x}.`,
-  (x: string) => `Combien de temps encore avant que ${x} ?`,
-  (x: string) => `Tu repousses toi-même le moment où ${x}.`,
-  (x: string) => `Chaque journée molle éloigne le jour où ${x}.`,
-  (x: string) => `Tu veux que ${x}. Alors commence maintenant.`,
-  (x: string) => `Le jour où ${x} ne viendra pas tout seul.`,
-  (x: string) => `Tu pourrais être à quelques semaines du jour où ${x}.`,
-  (x: string) => `Dix ans que tu attends le jour où ${x}. Il n'est jamais venu.`,
-];
-
-const F_LIVRE = [
-  (n: number, t: string) => `Chapitre ${n} — « ${t} » : toujours pas ouvert.`,
-  (n: number, t: string) =>
-    `Tu veux l'empire, et le chapitre ${n} (« ${t} ») dort encore.`,
-  (n: number, t: string) =>
-    `« ${t} » — chapitre ${n}. Le prix d'une vidéo scrollée. Tu as choisi le scroll.`,
-  (n: number, t: string) =>
-    `Par manque de connaissance l'homme est détruit. Chapitre ${n} : « ${t} ».`,
-  (n: number, t: string) =>
-    `Le chapitre ${n} (« ${t} ») répond à ce que tu n'arrives pas à résoudre seul.`,
-];
-
-// ——— Génération ———
-
-function build(): DelayedItem[] {
-  const out: DelayedItem[] = [];
+export const DELAYED: DelayedItem[] = (() => {
+  const groups: [string[], DelayedCategory][] = [
+    [EMPIRE, "empire"],
+    [HOMME, "homme"],
+    [CORPS, "corps"],
+    [LIVRE, "livre"],
+    [TEMPS, "temps"],
+    [ALLIANCE, "alliance"],
+  ];
   const seen = new Set<string>();
-  const push = (t: string, c: DelayedCategory) => {
-    const k = t.trim();
-    if (k.length < 24 || seen.has(k)) return;
-    seen.add(k);
-    out.push({ t: k, c });
-  };
-
-  for (const x of CHOSES_EMPIRE) for (const f of F_CHOSE) push(f(x), "empire");
-  for (const x of CHOSES_CORPS) for (const f of F_CHOSE) push(f(x), "corps");
-  for (const x of MOMENTS_HOMME) for (const f of F_MOMENT) push(f(x), "homme");
-  for (const x of MOMENTS_TEMPS) for (const f of F_MOMENT) push(f(x), "temps");
-  for (const x of MOMENTS_ALLIANCE) for (const f of F_MOMENT) push(f(x), "alliance");
-  for (const c of CHAPTER_META) for (const f of F_LIVRE) push(f(c.n, c.title), "livre");
-
+  const out: DelayedItem[] = [];
+  for (const [arr, c] of groups) {
+    for (const t of arr) {
+      const k = t.trim();
+      if (seen.has(k)) continue;
+      seen.add(k);
+      out.push({ t: k, c });
+    }
+  }
   return out;
-}
+})();
 
-export const DELAYED: DelayedItem[] = build();
 export const DELAYED_COUNT = DELAYED.length;
 
 export function delayedCategoryMeta(id: DelayedCategory) {
