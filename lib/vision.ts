@@ -44,7 +44,7 @@ Décret, pas souhait. Ce n'est pas une question de « possible » — c'est la d
 - Sacrifice total : 0 porno, 0 masturbation, 0 TikTok, 0 sucre, 0 gazeuse — rétention totale.
 - **1m83 · 90 kg · 10% BF.**
 - **Peau éclatante · beauté au sommet.**
-- Sport 2026 : escalade, RR sport, gle coupe — discipline physique totale.
+- Voitures fin 2026 : **GLE 63 Coupé · Escalade · Range Rover Sport**.
 - Projets lancés en 2026 : agriculture, immobilier (achat de terrain), aider des gens, début de construction d'une école.
 - Je ne m'intéresse pas à ce qui est possible. Je m'intéresse à la discipline et à la foi qui rendent l'impossible possible.
 
@@ -187,6 +187,16 @@ Décret, pas souhait. Ce n'est pas une question de « possible » — c'est la d
 - Fusion homme–IA : augmentation cognitive et physique.
 - Entreprise pivot de l'évolution humaine (IA + biologie + énergie).
 - Mon nom inscrit dans l'Histoire comme **l'architecte du futur**.
+
+# 🚗 VOITURES — 3 fin 2026, 2 en 2027
+## Fin 2026 — les trois premières
+- **Mercedes-AMG GLE 63 Coupé**
+- **Cadillac Escalade**
+- **Range Rover Sport**
+## 2027 — les deux suivantes
+- **BMW X6 M**
+- **Range Rover SV Serenity**
+- Elles ne s'achètent pas avec de l'argent : elles s'achètent avec des jours tenus. Chaque clé est une facture de discipline déjà payée.
 
 # 🏆 VIE PERSONNELLE & LÉGENDE
 - Glow-up complet : corps, peau, cheveux, style ; corps athlétique & santé optimale.

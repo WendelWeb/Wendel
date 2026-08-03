@@ -15,6 +15,7 @@ import {
   BedDouble,
   Building2,
   Briefcase,
+  Car,
   Sparkles,
   Landmark,
   HeartPulse,
@@ -44,6 +45,7 @@ function iconFor(title: string): LucideIcon {
   if (t.includes("hôtel")) return BedDouble;
   if (t.includes("gratte") || t.includes("immeuble")) return Building2;
   if (t.includes("emploi")) return Briefcase;
+  if (t.includes("voiture")) return Car;
   if (t.includes("venir")) return Sparkles;
   return Landmark;
 }
