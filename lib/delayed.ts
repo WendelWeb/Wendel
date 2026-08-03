@@ -1,19 +1,16 @@
 // TOUT CE QUE TU RETARDES.
-// Chaque ligne est générée à partir du contenu RÉEL de l'app — les chantiers de
-// sa Vision, les 130 chapitres du Vaisseau, les objectifs de son noyau, son
-// corps, ses voitures, l'alliance — croisés avec des cadres qui piquent.
-// Rien d'inventé : tout nomme une chose concrète qu'il repousse. Client-safe.
+// Catalogue CURÉ — chaque entrée est une chose qu'on peut réellement retarder,
+// écrite pour tomber juste grammaticalement dans les cadres. Rien n'est extrait
+// à l'aveugle : les listes ci-dessous sont tirées de sa Vision, de son corps,
+// de son alliance et du Vaisseau, mais reformulées à la main. Client-safe.
 
-import { DEFAULT_VISION } from "./vision-content";
 import { CHAPTER_META } from "./vaisseau-meta";
-import { CHECKLIST } from "./checklist";
-import { ABSOLUTE_RULES } from "./rules";
 
 export type DelayedCategory =
   | "empire"
   | "livre"
   | "corps"
-  | "discipline"
+  | "homme"
   | "temps"
   | "alliance";
 
@@ -28,135 +25,87 @@ export const DELAYED_CATEGORIES: {
   color: string;
 }[] = [
   { id: "empire", label: "L'empire", color: "#15803D" },
-  { id: "livre", label: "Le Vaisseau", color: "#0F766E" },
+  { id: "homme", label: "L'homme", color: "#B45309" },
   { id: "corps", label: "Le corps", color: "#BE123C" },
-  { id: "discipline", label: "La discipline", color: "#B45309" },
+  { id: "livre", label: "Le Vaisseau", color: "#0F766E" },
   { id: "temps", label: "Le temps", color: "#DC2626" },
   { id: "alliance", label: "L'alliance", color: "#4C1D95" },
 ];
 
-// ——— Extraction du contenu réel ———
+// ——— LES CHOSES (groupes nominaux : « tu retardes X ») ———
 
-function clean(s: string): string {
-  return s
-    .replace(/\*\*/g, "")
-    .replace(/^[-•]\s*/, "")
-    .trim();
-}
-
-/** Forme courte d'un chantier : on coupe avant les chiffres de coût. */
-function shortForm(line: string): string {
-  const c = clean(line);
-  const cut = c.split(/\s+[—–]\s+|\s+:\s+/)[0].trim();
-  return (cut.length >= 18 ? cut : c).replace(/\.$/, "");
-}
-
-/** Les chantiers de l'empire, tirés des sections de la Vision. */
-const CHANTIERS: string[] = (() => {
-  const out: string[] = [];
-  let title = "";
-  for (const raw of DEFAULT_VISION.split("\n")) {
-    const l = raw.trim();
-    if (l.startsWith("# ")) {
-      title = l.slice(2).replace(/^[^\p{L}]*/u, "");
-      continue;
-    }
-    if (/pourquoi/i.test(title)) continue;
-    if (!l.startsWith("- ")) continue;
-    const s = shortForm(l);
-    if (s.length > 14 && s.length < 130) out.push(s);
-  }
-  return [...new Set(out)];
-})();
-
-/** Les objectifs quotidiens et les règles absolues. */
-const OBJECTIFS: string[] = [
-  ...CHECKLIST.flatMap((s) => s.items.map((i) => i.label)),
-  ...ABSOLUTE_RULES.map((r) => r.label),
-].map((l) => l.replace(/\s*\([^)]*\)\s*$/, "").trim());
-
-// ——— Les cadres qui piquent ———
-
-const F_EMPIRE = [
-  (x: string) => `Tu retardes : ${x}.`,
-  (x: string) => `Pendant que tu scrolles, ${x} attend toujours.`,
-  (x: string) => `${x} — repoussé d'un jour de plus. Par toi.`,
-  (x: string) => `Chaque heure gaspillée éloigne ${x}.`,
-  (x: string) => `Tu n'as pas avancé d'un centimètre sur ${x}.`,
-  (x: string) => `Si tu cèdes ce soir, tu repousses ${x}.`,
-  (x: string) => `Un homme sérieux aurait déjà commencé ${x}.`,
-  (x: string) => `${x}. Et toi, tu regardes un écran.`,
-  (x: string) => `Ton peuple attend ${x}. Toi, tu attends d'avoir envie.`,
-  (x: string) => `Tu parles de ${x}. Tu n'as encore rien posé.`,
-  (x: string) => `${x} ne se bâtira pas pendant que tu dors à 7h.`,
-  (x: string) => `Le prix de ta faiblesse d'aujourd'hui : ${x}.`,
-  (x: string) => `Dix ans de plus comme ça, et ${x} n'existera jamais.`,
-  (x: string) => `Quelqu'un d'autre construira ${x} pendant que tu hésites.`,
-  (x: string) => `${x} — tu appelles ça un rêve. C'était censé être un décret.`,
-  (x: string) => `Tu veux ${x} et tu ne contrôles même pas ta main.`,
-  (x: string) => `À ce rythme, ${x} restera une phrase dans une app.`,
-  (x: string) => `Ce que tu as sacrifié aujourd'hui pour du vide : ${x}.`,
-  (x: string) => `${x} : combien de jours encore tu vas le repousser ?`,
-  (x: string) => `Le 1er janvier arrivera. ${x} sera-t-il commencé ?`,
-  (x: string) => `Tu as échangé ${x} contre dix minutes de plaisir.`,
-  (x: string) => `${x} attend un homme. Pas un rêveur.`,
-  (x: string) => `Dieu t'a promis ${x}. Toi, tu Lui réponds dans un mouchoir.`,
-  (x: string) => `Chaque « juste cette fois » repousse ${x} d'une semaine.`,
-  (x: string) => `${x} — c'est ça que tu enterres quand tu cèdes.`,
+const CHOSES_EMPIRE = [
+  "les 50 hôpitaux de rang mondial",
+  "les 300 centres de santé régionaux",
+  "les cliniques mobiles pour les zones rurales",
+  "l'effondrement de la mortalité infantile dans ton pays",
+  "les 50 000 maisons modernes données à ton peuple",
+  "le réseau de marchés couverts modernes",
+  "le gigawatt solaire et son stockage",
+  "l'électricité stable pour 600 000 foyers",
+  "les 100 écoles premium de rang mondial",
+  "l'université internationale et son hôpital universitaire",
+  "les 2 000 leaders formés chaque année",
+  "les hôtels 5 étoiles et les gratte-ciels",
+  "les 500 000 emplois formels et durables",
+  "les 3 à 5 aéroports internationaux",
+  "la compagnie aérienne nationale et sa flotte",
+  "l'académie de pilotes et le centre de maintenance",
+  "les ports en eau profonde de la Caraïbe",
+  "la flotte cargo transcontinentale",
+  "la logistique automatisée et ses hubs",
+  "le réseau routier moderne, ses ponts et ses tunnels",
+  "l'aménagement des plages et des stations balnéaires",
+  "les villes futuristes et leurs smart cities",
+  "l'entreprise d'IA souveraine",
+  "les data centers souverains et leurs clusters GPU",
+  "les modèles d'IA entraînés dans ta propre langue",
+  "la production de semi-conducteurs et de terres rares",
+  "la blockchain et la monnaie numérique du pays",
+  "les grandes usines agroalimentaires et pharmaceutiques",
+  "l'exploitation et le contrôle total des ressources naturelles",
+  "la transformation locale, sans un gramme exporté brut",
+  "l'empire agro-industriel et ses chaînes de valeur",
+  "l'eau, la nourriture et l'énergie gratuites dans tes zones",
+  "la banque nationale et le fonds souverain",
+  "la bourse et le contrôle des flux financiers",
+  "l'indépendance financière de toute une nation",
+  "l'armée privée classée dans le top 3 mondial",
+  "le réseau de satellites de défense et de surveillance",
+  "la cybersécurité souveraine",
+  "l'industrie de défense et ses drones autonomes",
+  "l'empire médiatique et son influence mondiale",
+  "la fondation humanitaire et la reconstruction des nations",
+  "le poids géopolitique de ton pays dans la Caraïbe",
+  "l'entreprise aérospatiale et ses lancements",
+  "la base lunaire et les projets martiens",
+  "le contrôle stratégique des technologies spatiales",
+  "les laboratoires de bio-ingénierie humaine",
+  "les thérapies géniques de nouvelle génération",
+  "le rajeunissement cellulaire et l'allongement des télomères",
+  "l'immortalité biologique",
+  "les cliniques anti-âge 7 étoiles",
+  "la médecine préventive pilotée par IA, 24 heures sur 24",
+  "les interfaces cerveau-machine",
+  "la fusion de l'homme et de l'IA",
+  "le passage de ton pays de la pauvreté à la puissance mondiale",
+  "le jour où des présidents se déplaceront pour te visiter",
+  "les enveloppes de 500 milliards que tu signeras",
+  "le titre d'homme le plus riche du monde",
+  "l'élite que tu dois créer autour de toi",
+  "le nom que tu laisseras pendant des millénaires",
+  "la dynastie générationnelle que tu dois fonder",
 ];
 
-const F_LIVRE = [
-  (n: number, t: string) => `Chapitre ${n} — « ${t} » : toujours pas ouvert.`,
-  (n: number, t: string) =>
-    `Tu veux l'empire, et le chapitre ${n} (« ${t} ») dort encore.`,
-  (n: number, t: string) =>
-    `« ${t} » — ch. ${n}. Le prix d'une vidéo scrollée. Tu as choisi le scroll.`,
-  (n: number, t: string) =>
-    `Par manque de connaissance l'homme est détruit. Chapitre ${n} : « ${t} ».`,
-  (n: number, t: string) =>
-    `Tu retardes ta propre compréhension : chapitre ${n}, « ${t} ».`,
-  (n: number, t: string) =>
-    `Le chapitre ${n} (« ${t} ») répond à ce que tu n'arrives pas à résoudre seul.`,
-];
-
-const F_OBJECTIF = [
-  (x: string) => `${x} : pas fait. Encore.`,
-  (x: string) => `Tu repousses « ${x} » comme tu repousses ta vie.`,
-  (x: string) => `« ${x} » — un objectif de vingt minutes que tu fuis depuis des mois.`,
-  (x: string) => `Tu veux régner sur des nations, et « ${x} » te résiste.`,
-  (x: string) => `Chaque jour sans « ${x} » est un vote contre l'homme du 1er janvier.`,
-  (x: string) => `« ${x} » : ce n'est pas dur. C'est juste que tu ne le fais pas.`,
-  (x: string) => `Un homme de parole aurait déjà coché « ${x} ».`,
-  (x: string) => `« ${x} » — la preuve quotidienne que tu es sérieux, ou pas.`,
-];
-
-const CORPS = [
-  "1m88",
-  "90 kg de muscle utile",
-  "10% de masse grasse",
-  "une peau éclatante",
-  "un visage au sommet",
-  "une mâchoire dessinée",
-  "une posture de conquérant",
-  "un corps sec et dense",
+const CHOSES_CORPS = [
+  "ton corps à 1m88 et 90 kilos",
+  "tes 10% de masse grasse",
+  "ta peau éclatante",
+  "ton visage au sommet",
+  "ta mâchoire dessinée",
+  "ta posture de conquérant",
   "l'énergie d'un homme plein",
-  "un regard reposé et perçant",
-  "la force qui porte l'esprit ferme",
-  "un physique que personne ne peut ignorer",
-];
-
-const F_CORPS = [
-  (x: string) => `${x} : repoussé encore d'un jour.`,
-  (x: string) => `Tu retardes ${x} à chaque séance sautée.`,
-  (x: string) => `${x} ne viendra pas d'un homme qui se couche à 1h.`,
-  (x: string) => `Chaque gazeuse repousse ${x} d'une semaine.`,
-  (x: string) => `Le miroir du 1er janvier te demandera : où est ${x} ?`,
-  (x: string) => `${x} se gagne dans l'assiette et sous la barre. Pas dans ta tête.`,
-  (x: string) => `Tu veux ${x} et tu négocies avec ton réveil.`,
-  (x: string) => `${x} — décrété en juillet, toujours pas payé.`,
-];
-
-const VOITURES = [
+  "ton regard reposé et perçant",
   "la Mercedes-AMG GLE 63 Coupé",
   "la Cadillac Escalade",
   "le Range Rover Sport",
@@ -164,41 +113,128 @@ const VOITURES = [
   "le Range Rover SV Serenity",
 ];
 
-const F_VOITURE = [
-  (x: string) => `${x} : elle s'achète en jours tenus. Tu n'en as pas tenu un.`,
-  (x: string) => `Tu retardes ${x} à chaque heure gaspillée.`,
-  (x: string) => `${x} fin 2026 — à ce rythme, ce sera fin jamais.`,
-  (x: string) => `Chaque clé est une facture de discipline. Tu n'as pas payé ${x}.`,
+// ——— LES MOMENTS (propositions : « le jour où … ») ———
+
+const MOMENTS_HOMME = [
+  "tu te lèveras à 5h sans négocier une seule seconde",
+  "tu franchiras les 21 jours de rétention",
+  "tu franchiras les 90 jours",
+  "tu tiendras ton noyau entier, sept jours d'affilée",
+  "ta parole tenue à toi-même ne pliera plus jamais",
+  "tu n'auras plus besoin de te forcer, parce que ce sera devenu toi",
+  "tu marcheras dans l'ennui sans te plaindre",
+  "tu supprimeras l'envie au lieu de la servir",
+  "tu ne toucheras plus un écran après 17h30",
+  "tu finiras un mois entier sans une seule entorse",
+  "tu deviendras l'homme dont la parole est une garantie",
+  "on ne croira pas t'avoir rencontré",
+  "connaître ton nom deviendra la fierté d'un homme",
+  "on te craindra comme ennemi et on te cherchera comme allié",
+  "tu regarderas le miroir sans détourner les yeux",
+  "ta discipline ne demandera plus aucun effort",
+  "tu cesseras d'être le brouillon de toi-même",
+  "tu deviendras méconnaissable pour l'homme d'hier",
+  "tu n'auras plus une seule journée à zéro pour cent",
+  "tu liras ce carnet sans qu'une ligne ne te vise encore",
+  "ton empire commencera à sortir de terre pour de vrai",
+  "tu n'auras plus rien à prouver à personne",
 ];
 
-const TEMPS = [
-  "Chaque seconde gaspillée prolonge la réalité que tu hais : tu n'es même pas à un cent-trillionième de ta mesure.",
-  "Tu as déjà donné dix ans au « presque ». Combien tu en donnes encore aujourd'hui ?",
-  "Six mois passeront comme un souffle. La seule question : plus fort, ou juste plus vieux ?",
-  "Le temps ne t'attend pas. Il compte, c'est tout — et il compte contre toi en ce moment.",
-  "Ce que tu remets à demain, tu le remettras demain aussi. Tu le sais depuis dix ans.",
-  "Chaque heure sans acte est une heure encaissée par le temps sans rien te rendre.",
-  "Le 1er janvier arrivera que tu aies travaillé ou non. Prépare ta réponse.",
-  "Tu ne manques pas de temps. Tu manques de refus.",
-  "L'homme que tu seras dans dix ans te supplie, à cette seconde, de te lever.",
-  "Ton escalier ne descend pas quand tu cèdes : il s'arrête. Et le sommet s'éloigne.",
-  "Pendant que tu hésites, quelqu'un de plus affamé prend ta place.",
-  "Chaque jour non enregistré dans cette app est un jour que tu as choisi d'effacer.",
+const MOMENTS_TEMPS = [
+  "tu cesseras enfin de dire « demain »",
+  "les dix ans perdus cesseront de te définir",
+  "tu ne perdras plus une seule heure de tes journées",
+  "tu rattraperas le retard que tu creuses en ce moment même",
+  "tu vivras une journée entière sans une seconde gaspillée",
+  "tu regarderas en arrière sans avoir honte de l'année",
+  "le 1er janvier te trouvera transformé et non désolé",
+  "tu cesseras d'être l'homme du « presque »",
 ];
 
-const ALLIANCE = [
-  "Dieu t'a promis sur une montagne que tout se réaliserait. Tu retardes ta part du pacte.",
-  "La rétention n'est pas de la discipline : c'est la condition de l'alliance. Tu la repousses.",
-  "Tu retardes ta montée à la montagne — une consigne directe, pas une suggestion.",
-  "Le Psaume 24 du soir : non récité. Tu entres dans la nuit sans sceller ta journée.",
-  "Ta chambre sale retarde tout : le lieu où tu dors est le lieu où ton vaisseau se recharge.",
-  "Tu réclames Sa provision et tu refuses de garder le vaisseau fermé.",
-  "Il a signé Sa part. La seule variable de l'équation, c'est ta signature — et tu la retardes.",
-  "Tu retardes l'homme que Dieu a formé de Ses mains et rempli de Son souffle.",
-  "Chaque chute repousse l'escalier blanc d'une marche que tu devras remonter.",
-  "Tu retardes le moment où tu deviens digne de ce qu'Il t'a promis.",
-  "Prier sans cesse : la consigne la plus simple, et celle que tu oublies le plus.",
-  "Tu retardes la seule chose qui te rendrait tout le reste inévitable : tenir le pacte.",
+const MOMENTS_ALLIANCE = [
+  "tu tiendras ta part du pacte de la montagne",
+  "tu monteras à la montagne comme Il te l'a demandé",
+  "tu réciteras le Psaume 24 chaque soir sans en manquer un",
+  "tu Lui parleras chaque jour sans y penser",
+  "ta chambre restera propre sans que tu doives y penser",
+  "tu prieras sans cesse, pour de vrai",
+  "tu monteras l'escalier blanc jusqu'en haut sans t'arrêter",
+  "tu deviendras digne de ce qu'Il t'a promis",
+  "tu cesseras de Lui répondre dans un mouchoir",
+  "ta rétention ne sera plus un combat mais ta nature",
+];
+
+// ——— LES CADRES ———
+
+/** « de » + article : de+les → des, de+le → du, sinon élision correcte. */
+function de(x: string): string {
+  if (x.startsWith("les ")) return `des ${x.slice(4)}`;
+  if (x.startsWith("le ")) return `du ${x.slice(3)}`;
+  return `de ${x}`;
+}
+
+/** Les entrées au pluriel commencent par « les » ou « tes ». */
+function plural(x: string): boolean {
+  return x.startsWith("les ") || x.startsWith("tes ");
+}
+
+/** Majuscule quand l'élément ouvre la phrase. */
+function cap(x: string): string {
+  return x.charAt(0).toUpperCase() + x.slice(1);
+}
+
+const F_CHOSE: ((x: string) => string)[] = [
+  (x) => `Tu retardes ${x}.`,
+  (x) => `Pendant que tu scrolles, personne ne bâtit ${x}.`,
+  (x) => `Chaque heure gaspillée éloigne ${x}.`,
+  (x) => `Tu n'as pas avancé d'un centimètre sur ${x}.`,
+  (x) => `Si tu cèdes ce soir, tu repousses ${x}.`,
+  (x) => `Un homme sérieux aurait déjà commencé ${x}.`,
+  (x) => `Ton peuple attend ${x}. Toi, tu attends d'avoir envie.`,
+  (x) => `Tu parles ${de(x)}. Tu n'as encore rien posé.`,
+  (x) => `Le prix de ta faiblesse d'aujourd'hui : ${x}.`,
+  (x) =>
+    `Dix ans de plus comme ça, et ${x} n'${plural(x) ? "existeront" : "existera"} jamais.`,
+  (x) => `Quelqu'un d'autre bâtira ${x} pendant que tu hésites.`,
+  (x) => `Tu veux ${x} et tu ne contrôles même pas ta main.`,
+  (x) =>
+    `À ce rythme, ${x} ${plural(x) ? "resteront" : "restera"} une phrase dans une app.`,
+  (x) => `Ce que tu as troqué aujourd'hui contre du vide : ${x}.`,
+  (x) => `${cap(x)} : combien de jours encore tu vas repousser ?`,
+  (x) => `Le 1er janvier arrivera. Auras-tu commencé ${x} ?`,
+  (x) => `Tu as échangé ${x} contre dix minutes de plaisir.`,
+  (x) => `Dieu t'a promis ${x}. Toi, tu Lui réponds dans un mouchoir.`,
+  (x) => `Chaque « juste cette fois » repousse ${x} d'une semaine.`,
+  (x) => `${cap(x)} — voilà ce que tu enterres quand tu cèdes.`,
+  (x) => `Rien dans ta journée d'aujourd'hui n'a fait avancer ${x}.`,
+  (x) => `Tu rêves ${de(x)} et tu dors encore à 7h.`,
+  (x) => `${cap(x)} ${plural(x) ? "attendent" : "attend"} un homme, pas un rêveur.`,
+  (x) => `Tu ne mérites pas encore ${x}. Pas avec des journées pareilles.`,
+  (x) => `Tes mains devraient être en train de bâtir ${x}.`,
+  (x) => `Un jour de plus sans avancer sur ${x} : c'est ton choix.`,
+];
+
+const F_MOMENT = [
+  (x: string) => `Tu retardes le jour où ${x}.`,
+  (x: string) => `Combien de temps encore avant que ${x} ?`,
+  (x: string) => `Tu repousses toi-même le moment où ${x}.`,
+  (x: string) => `Chaque journée molle éloigne le jour où ${x}.`,
+  (x: string) => `Tu veux que ${x}. Alors commence maintenant.`,
+  (x: string) => `Le jour où ${x} ne viendra pas tout seul.`,
+  (x: string) => `Tu pourrais être à quelques semaines du jour où ${x}.`,
+  (x: string) => `Dix ans que tu attends le jour où ${x}. Il n'est jamais venu.`,
+];
+
+const F_LIVRE = [
+  (n: number, t: string) => `Chapitre ${n} — « ${t} » : toujours pas ouvert.`,
+  (n: number, t: string) =>
+    `Tu veux l'empire, et le chapitre ${n} (« ${t} ») dort encore.`,
+  (n: number, t: string) =>
+    `« ${t} » — chapitre ${n}. Le prix d'une vidéo scrollée. Tu as choisi le scroll.`,
+  (n: number, t: string) =>
+    `Par manque de connaissance l'homme est détruit. Chapitre ${n} : « ${t} ».`,
+  (n: number, t: string) =>
+    `Le chapitre ${n} (« ${t} ») répond à ce que tu n'arrives pas à résoudre seul.`,
 ];
 
 // ——— Génération ———
@@ -208,34 +244,17 @@ function build(): DelayedItem[] {
   const seen = new Set<string>();
   const push = (t: string, c: DelayedCategory) => {
     const k = t.trim();
-    if (k.length < 20 || seen.has(k)) return;
+    if (k.length < 24 || seen.has(k)) return;
     seen.add(k);
     out.push({ t: k, c });
   };
 
-  // L'empire — chaque chantier croisé avec chaque cadre.
-  for (const ch of CHANTIERS) {
-    const lower = ch.charAt(0).toLowerCase() + ch.slice(1);
-    for (const f of F_EMPIRE) push(f(lower), "empire");
-  }
-
-  // Le livre — les 130 chapitres.
-  for (const c of CHAPTER_META) {
-    for (const f of F_LIVRE) push(f(c.n, c.title), "livre");
-  }
-
-  // La discipline — objectifs et règles.
-  for (const o of OBJECTIFS) {
-    for (const f of F_OBJECTIF) push(f(o), "discipline");
-  }
-
-  // Le corps.
-  for (const x of CORPS) for (const f of F_CORPS) push(f(x), "corps");
-  for (const x of VOITURES) for (const f of F_VOITURE) push(f(x), "corps");
-
-  // Le temps et l'alliance — écrits à la main, répétés tels quels.
-  for (const t of TEMPS) push(t, "temps");
-  for (const t of ALLIANCE) push(t, "alliance");
+  for (const x of CHOSES_EMPIRE) for (const f of F_CHOSE) push(f(x), "empire");
+  for (const x of CHOSES_CORPS) for (const f of F_CHOSE) push(f(x), "corps");
+  for (const x of MOMENTS_HOMME) for (const f of F_MOMENT) push(f(x), "homme");
+  for (const x of MOMENTS_TEMPS) for (const f of F_MOMENT) push(f(x), "temps");
+  for (const x of MOMENTS_ALLIANCE) for (const f of F_MOMENT) push(f(x), "alliance");
+  for (const c of CHAPTER_META) for (const f of F_LIVRE) push(f(c.n, c.title), "livre");
 
   return out;
 }
