@@ -6,7 +6,7 @@ import { getOrCreateTodayLog } from "@/lib/daily";
 import { lectureProgress } from "@/lib/lecture";
 import { getRetention } from "@/lib/retention";
 import { getMountain } from "@/lib/mountain";
-import { todayHaiti } from "@/lib/dates";
+import { todayHaiti, daysBetween } from "@/lib/dates";
 import LectureDuJour from "@/components/LectureDuJour";
 import RetentionPanel from "@/components/RetentionPanel";
 import MountainPanel from "@/components/MountainPanel";
@@ -78,7 +78,11 @@ export default async function VaisseauPage() {
           Livre de l&apos;énergie, de la grâce, et du décret
         </p>
 
-        <RetentionPanel days={ret.days} startDate={ret.startDate} />
+        <RetentionPanel
+          days={ret.days}
+          startDate={ret.startDate}
+          daysUntilStart={Math.max(1, daysBetween(todayHaiti(), ret.startDate))}
+        />
 
         <MountainPanel
           daysSince={mtn.daysSince}

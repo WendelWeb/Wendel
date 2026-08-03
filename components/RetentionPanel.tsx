@@ -14,9 +14,12 @@ import { resetRetentionAction } from "@/app/retention-actions";
 export default function RetentionPanel({
   days,
   startDate,
+  daysUntilStart = 1,
 }: {
   days: number;
   startDate: string;
+  /** Jours restants avant le Jour 1, quand le départ est dans le futur. */
+  daysUntilStart?: number;
 }) {
   const [affIdx, setAffIdx] = useState(0);
   const [confirming, setConfirming] = useState(false);
@@ -51,7 +54,7 @@ export default function RetentionPanel({
         {days === 0 ? (
           <div className="mt-1">
             <span className="font-display text-3xl font-bold uppercase leading-none text-white">
-              Démarre demain
+              {daysUntilStart <= 1 ? "Démarre demain" : `Démarre dans ${daysUntilStart} jours`}
             </span>
             <p className="mt-1 text-[12px] text-white/50">
               Jour 1 le {startDate}. Tiens.

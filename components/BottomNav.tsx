@@ -14,6 +14,7 @@ import {
   Siren,
   Quote,
   ScrollText,
+  Hourglass,
   MoreHorizontal,
   X,
   type LucideIcon,
@@ -73,6 +74,13 @@ const MORE_GROUPS: { group: string; items: MoreItem[] }[] = [
         desc: "Mon pourquoi et l'empire",
         Icon: Landmark,
         color: "#B45309",
+      },
+      {
+        href: "/retards",
+        label: "Ce que tu retardes",
+        desc: "Tout ce que tu repousses, en ce moment",
+        Icon: Hourglass,
+        color: "#DC2626",
       },
       {
         href: "/carnet",

@@ -1,4 +1,5 @@
 import { Hand, Eye } from "lucide-react";
+import { INTERROGATION, SI_TU_CEDES } from "@/lib/sting";
 
 // The mantra. Shown at the TOP and BOTTOM of EVERY page (rendered in the app
 // layout): a spiritual crown, two verses (main / yeux — each a warning + a
@@ -267,18 +268,7 @@ export default function Mantra({
             Et si tu cèdes — voilà ce que tu es, à cet instant
           </p>
           <ul className="flex flex-col gap-1.5">
-            {[
-              "Un compulsif masturbateur. Un homme sans contrôle. Un chien en laisse mené par la luxure.",
-              "Un lâche. Un putain de rien. Un mec lambda, banal, remplaçable, oubliable.",
-              "Un rêveur qui se branle sur son propre avenir au lieu de le bâtir.",
-              "Un empereur en pensée, un esclave en pratique.",
-              "Tu prétends déplacer les frontières de l'Afrique — et tu ne contrôles même pas ta main.",
-              "Tu veux dominer les marchés et les nations — et une notification te domine.",
-              "Le sujet dont on parle ? Personne ne parle de toi. Personne ne sait que tu existes.",
-              "Dieu t'a parlé sur une montagne — et tu Lui réponds dans un mouchoir.",
-              "Tu gaspilles ce qu'Il t'a confié, et tu oses en réclamer plus.",
-              "Dix ans. Rien. Zéro. Et tu te crois pressé aujourd'hui ?",
-            ].map((line) => (
+            {SI_TU_CEDES.slice(0, -1).map((line) => (
               <li key={line} className="flex gap-2">
                 <span
                   className="mt-[7px] h-1 w-1 flex-shrink-0 rounded-full"
@@ -332,39 +322,7 @@ export default function Mantra({
 
         {/* Trois étages : ce qu'il bâtit dehors, ce qu'il est dedans, à qui il
             répond. L'ordre va du visible vers la racine. */}
-        {[
-          {
-            step: "L'empire",
-            lines: [
-              "un homme qui bâtit des hôpitaux à 1 Md, des ports à 10 Mds, des aéroports à 15 Mds ?",
-              "celui qui déplace les frontières de l'Afrique, bâtit un empire neuf et domine mondialement ?",
-              "celui qui contrôle la finance, la bourse, la politique, les ressources naturelles ?",
-              "un maître en géopolitique — ferme et sans pitié ?",
-              "un homme plus important qu'un président ou un roi — considéré comme tout-puissant, admiration totale et intimidation ?",
-              "celui qui peut développer un continent entier rien qu'en le décidant ?",
-            ],
-          },
-          {
-            step: "L'homme",
-            lines: [
-              "la vie d'un CONQUÉRANT ?",
-              "un homme qui triomphe d'abord de lui-même ?",
-              "un homme qui contrôle les conséquences de chaque action ?",
-              "l'homme qui avait dit qu'il couperait TikTok, Instagram — et qui donne 100% de son temps à ses objectifs ?",
-              "un homme qui résiste et qui SUPPRIME l'envie, au lieu de la servir ?",
-              "un homme qui marche dans l'ennui et dans la difficulté sans se plaindre ?",
-              "un homme dont la parole tenue à lui-même n'a jamais plié ?",
-              "un homme au vaisseau plein, qui monte l'escalier marche après marche ?",
-              "un homme qui ne parle pas et qui livre — qu'on découvre au fait accompli ?",
-            ],
-          },
-          {
-            step: "Dieu",
-            lines: [
-              "un homme FIDÈLE À DIEU, qui garde intacte l'alliance de la montagne ?",
-            ],
-          },
-        ].map((group) => (
+        {INTERROGATION.map((group) => (
           <div key={group.step} className="mb-2.5 last:mb-0">
             <p className="mb-1 text-[9px] font-bold uppercase tracking-[0.22em] text-white/35">
               {group.step}

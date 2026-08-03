@@ -53,6 +53,11 @@ export const CHECKLIST: ChecklistSectionData[] = [
     items: [
       { id: "wake", label: "Réveil 5h00 — eau, 0 téléphone", time: "5h00" },
       {
+        id: "serment",
+        label: "Serment du jour — lire les lois à voix haute",
+        time: "5h02",
+      },
+      {
         id: "bible",
         label: "PS 24 × 3 + 1 chapitre biblique + 5 min cacao",
         time: "5h05",

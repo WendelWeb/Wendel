@@ -100,7 +100,7 @@ export async function assembleContext(userId: string): Promise<string> {
       ? `⚠️ LE SUIVI DANS L'APP A COMMENCÉ LE ${firstDate}. Il n'y a que ${daysTracked} jour(s) de suivi possibles. AVANT le ${firstDate}, l'app N'EXISTAIT PAS : ces jours ne sont NI des trous NI des échecs — ne les mentionne pas, ne l'accuse pas d'avoir "sauté" des jours qui n'existaient pas. Juge uniquement à partir du ${firstDate}, et tiens compte que l'échantillon est minuscule (${daysTracked} jours) : dis la vérité sur ce début, sans inventer un passé.`
       : `⚠️ Aucune donnée : il n'a encore rien enregistré. Ne l'accuse pas d'un passé qui n'existe pas dans l'app.`,
     ``,
-    `🎯 COMPTE À REBOURS : J-${daysToJan} avant le 1er janvier 2027 — deadline de sa transformation (objectif : 1m83, 90 kg, 10% BF, peau éclatante, + lancer agriculture, achat de terrain, début d'une école, aider des gens). Relie chaque journée à ce compte à rebours.`,
+    `🎯 COMPTE À REBOURS : J-${daysToJan} avant le 1er janvier 2027 — deadline de sa transformation (objectif : 1m88, 90 kg, 10% BF, peau éclatante, + lancer agriculture, achat de terrain, début d'une école, aider des gens). Relie chaque journée à ce compte à rebours.`,
     ``,
     ret.days > 0
       ? `RÉTENTION SÉMINALE : JOUR ${ret.days} (démarré le ${ret.startDate}). Seuil de bascule à 21 jours (ch. 20). C'est le compteur le plus important — protège-le comme sa vie.`

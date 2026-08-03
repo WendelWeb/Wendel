@@ -231,6 +231,16 @@ export const VERDICTS: Record<string, ItemVerdict> = {
       "Ce n'était pas « juste 5 minutes ». C'était la brèche par où toute la spirale rentre.",
     ],
   },
+  serment: {
+    chapter: 128,
+    gravity: 7,
+    domino: [
+      "Serment du jour non déclaré. Tu as commencé la journée sans réarmer ta loi.",
+      "C'est par la répétition que ça s'ancre (ch. 128) — sauter un jour, c'est laisser l'ancien homme reprendre le micro.",
+      "Un manifeste dit une fois est un souhait ; répété chaque jour, il devient une identité.",
+      "Tu n'as pas manqué une lecture : tu as manqué le moment où tu redeviens toi.",
+    ],
+  },
   room_clean: {
     chapter: 9,
     gravity: 6,

@@ -38,6 +38,8 @@ import Verdict from "./Verdict";
 import ValidateDayModal from "./ValidateDayModal";
 import NowNext from "./NowNext";
 import RefreshButton from "./RefreshButton";
+import DailyOath from "./DailyOath";
+import { OATH_ITEM_ID } from "@/lib/oath";
 
 type StateMap = Record<string, ItemState>;
 type BoolMap = Record<string, boolean>;
@@ -207,6 +209,12 @@ export default function TodayView({
 
   return (
     <>
+      {/* Le serment s'impose à l'ouverture tant qu'il n'a pas été déclaré. */}
+      <DailyOath
+        done={states[OATH_ITEM_ID] === "done"}
+        onDone={() => setStates((s) => ({ ...s, [OATH_ITEM_ID]: "done" }))}
+      />
+
       <header className="sticky top-0 z-30 bg-background/95 px-4 pb-2.5 pt-3 backdrop-blur">
         <div className="flex items-center justify-between">
           <h1 className="font-display text-2xl font-bold leading-none tracking-tight text-navy">

@@ -14,6 +14,7 @@ import {
   Siren,
   Quote,
   ScrollText,
+  Hourglass,
   LogOut,
 } from "lucide-react";
 import { signOutAction } from "@/app/actions";
@@ -27,6 +28,7 @@ const TABS = [
   { href: "/carnet", label: "Le Carnet", Icon: ScrollText },
   { href: "/quotes", label: "Citations", Icon: Quote },
   { href: "/vision", label: "Ma Vision", Icon: Landmark },
+  { href: "/retards", label: "Ce que tu retardes", Icon: Hourglass },
   { href: "/urgence", label: "Urgence", Icon: Siren },
   { href: "/coach", label: "Forge Coach", Icon: Flame },
 ];

@@ -65,6 +65,18 @@ export function weekday(dateStr: string): number {
 }
 
 /** Current Haiti-local day of week (0=Sunday … 6=Saturday). */
+/** L'heure locale à Port-au-Prince (0–23), indépendante du fuseau du serveur. */
+export function haitiHour(now: Date = new Date()): number {
+  return parseInt(
+    new Intl.DateTimeFormat("en-GB", {
+      timeZone: "America/Port-au-Prince",
+      hour: "2-digit",
+      hour12: false,
+    }).format(now),
+    10,
+  );
+}
+
 export function weekdayHaiti(now: Date = new Date()): number {
   return weekday(todayHaiti(now));
 }
