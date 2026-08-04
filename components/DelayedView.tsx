@@ -8,10 +8,17 @@ import {
   delayedCategoryMeta,
   type DelayedCategory,
 } from "@/lib/delayed";
+import DecisionButton, { type EtatReel } from "./DecisionButton";
 
 const PAGE = 120;
 
-export default function DelayedView({ daysToJan }: { daysToJan: number }) {
+export default function DelayedView({
+  daysToJan,
+  etat,
+}: {
+  daysToJan: number;
+  etat: EtatReel;
+}) {
   const [search, setSearch] = useState("");
   const [cat, setCat] = useState<DelayedCategory | "all">("all");
   const [shuffle, setShuffle] = useState(0);
@@ -55,6 +62,8 @@ export default function DelayedView({ daysToJan }: { daysToJan: number }) {
         choses que tu repousses en ce moment même. Chacune est tirée de ton
         propre plan — pas d&apos;une liste générique.
       </p>
+
+      <DecisionButton etat={etat} />
 
       {/* Le compte à rebours, en tête : c'est lui qui rend la liste urgente. */}
       <div
