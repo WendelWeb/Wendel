@@ -171,7 +171,7 @@ export const PROMESSES: string[] = [
   "Tu as juré : « Je ne parle pas, je ne débats pas, je n'opine pas. Je FAIS. J'AGIS. »",
   "Tu as juré de couper TikTok et Instagram et de donner 100% de ton temps à tes objectifs.",
   "Tu as juré : « Zéro est zéro. Pas 1, pas 2, pas exceptionnellement. »",
-  "Tu as juré d'être un homme de dominion absolue. Ta parole tenue à toi-même est le fondement.",
+  "Tu as juré : « Mes envies ne me contrôlent pas. Je suis souverain sur mon limbique. »",
   "Tu as juré : « Quand je dis montagne, c'est montagne. »",
   "Tu as juré que tes envies ne te contrôleraient pas.",
   "Tu as juré : « Je suis celui qui fait tout ça. Pas dans 5 minutes. MAINTENANT. »",

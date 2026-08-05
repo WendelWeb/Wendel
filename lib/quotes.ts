@@ -31,6 +31,7 @@ import w30 from "@/content/quotes/wave30.json";
 import w31 from "@/content/quotes/wave31.json";
 import w32 from "@/content/quotes/wave32.json";
 import w33 from "@/content/quotes/wave33.json";
+import w34 from "@/content/quotes/wave34.json";
 import { RETENTION_AFFIRMATIONS } from "./affirmations";
 
 export type CategoryId =
@@ -124,7 +125,7 @@ const AFFIRMATIONS: Quote[] = RETENTION_AFFIRMATIONS.map((t) => ({
 const WAVES = [
   w1, w2, w3, w4, w5, w6, w7, w8, w9, w10, w11, w12,
   w13, w14, w15, w16, w17, w18, w19, w20,
-  w21, w22, w23, w24, w25, w26, w27, w28, w29, w30, w31, w32, w33,
+  w21, w22, w23, w24, w25, w26, w27, w28, w29, w30, w31, w32, w33, w34,
 ] as unknown as Quote[][];
 
 // Concatène tout et dédoublonne par texte.

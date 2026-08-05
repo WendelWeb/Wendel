@@ -145,6 +145,38 @@ export default function DecisionButton({ etat }: { etat: EtatReel }) {
               {d.ordre}
             </p>
 
+            {/* Le serment fondateur — jamais tiré au sort, toujours affiché.
+                C'est lui qui rend toutes les autres couches obligatoires. */}
+            <div
+              className="mb-5 rounded-2xl px-5 py-4"
+              style={{
+                background: "rgba(0,0,0,0.45)",
+                border: "1.5px solid var(--gold-border)",
+              }}
+            >
+              <p
+                className="mb-2 text-[9px] font-bold uppercase tracking-[0.24em]"
+                style={{ color: "var(--gold-border)" }}
+              >
+                Ton serment fondateur
+              </p>
+              <p
+                className="font-display text-[19px] font-bold uppercase leading-tight"
+                style={{ color: "var(--gold-border)" }}
+              >
+                Tu t&apos;es juré d&apos;être un homme de dominion absolue.
+              </p>
+              <p className="mt-2.5 text-[13px] leading-snug text-white/80">
+                La parole tenue à toi-même est le fondement de toute autre
+                parole (ch. 113). Tout le reste — l&apos;empire, le corps,
+                l&apos;alliance — repose sur elle seule.
+              </p>
+              <p className="mt-2 text-[13px] font-bold leading-snug text-white">
+                Ce que tu fais dans les dix prochaines secondes dit si
+                c&apos;était vrai.
+              </p>
+            </div>
+
             {/* Ton état réel — les chiffres, sans commentaire */}
             <div className="mb-5 rounded-2xl bg-black/25 p-4">
               <p className="mb-3 text-[9px] font-bold uppercase tracking-[0.24em] text-white/45">

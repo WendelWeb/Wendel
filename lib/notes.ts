@@ -16,7 +16,8 @@ export type NoteTheme =
   | "retention"
   | "creation"
   | "systeme"
-  | "urgence";
+  | "urgence"
+  | "nietzsche";
 
 export const NOTE_THEMES: { id: NoteTheme; label: string; color: string }[] = [
   { id: "reveil", label: "Réveil brutal", color: "#DC2626" },
@@ -24,6 +25,7 @@ export const NOTE_THEMES: { id: NoteTheme; label: string; color: string }[] = [
   { id: "creation", label: "Créer, pas consommer", color: "#0F766E" },
   { id: "systeme", label: "Systèmes & 1%", color: "#1E3A5F" },
   { id: "urgence", label: "Plan d'attaque", color: "#B45309" },
+  { id: "nietzsche", label: "Nietzsche", color: "#4C1D95" },
 ];
 
 export const NOTES: NoteSection[] = [
@@ -127,6 +129,44 @@ export const NOTES: NoteSection[] = [
       "## Répète chaque jour, en te regardant en face",
       "> Je suis un bâtisseur d'empire. Je fais ce que les autres ne veulent pas faire. Je plante des graines tous les jours. Car je sais que l'effet cumulé va me couronner.",
       "Tu n'as pas besoin d'attendre la motivation. Tu as besoin de publier une vidéo. Puis une autre. De coder 1h. Puis encore 1h. Et un matin de 2026, tu verras les millions tomber.",
+    ],
+  },
+  {
+    id: "nietzsche-approuve",
+    title: "Ce que Nietzsche approuverait chez toi",
+    emoji: "⚡",
+    theme: "nietzsche",
+    lines: [
+      "Tu as reconstruit seul plusieurs de ses thèses centrales, sans l'avoir lu. Ce n'est pas un hasard : tu as regardé la réalité en face, et il y a une seule réalité.",
+      "## Ton mépris du faux vertueux",
+      "Tu écris que tu méprises « celui qui critique les riches d'une supériorité morale qui ne coûte rien ». C'est mot pour mot la Généalogie de la morale : le faible ne peut pas agir, alors il fait de son impuissance une vertu et appelle sa lâcheté « bonté ».",
+      "> Nietzsche appelle ça le RESSENTIMENT. Tu l'as diagnostiqué toi-même, sans le nom.",
+      "## Ta volonté de puissance assumée",
+      "Tu dis vouloir être redoutablement puissant et refuser de le cacher. Pour Nietzsche, ce n'est pas de l'orgueil : c'est de l'honnêteté élémentaire.",
+      "> La vie EST volonté de puissance. Celui qui prétend le contraire ment — d'abord à lui-même.",
+      "## « Un homme qui triomphe d'abord de lui-même »",
+      "Tu as écrit cette ligne toi-même, dans ton interrogatoire. C'est le cœur exact du Zarathoustra.",
+      "> L'homme est quelque chose qui doit être surmonté.",
+      "Le Selbstüberwindung — l'auto-dépassement — est la seule vraie conquête. Tout le reste (l'empire, la richesse, le pouvoir) n'en est que la conséquence visible.",
+    ],
+  },
+  {
+    id: "dernier-homme",
+    title: "Le Dernier Homme — ce que tu refuses d'être",
+    emoji: "😴",
+    theme: "nietzsche",
+    lines: [
+      "> « Nous avons inventé le bonheur », disent les derniers hommes, et ils clignent de l'œil.",
+      "Le Dernier Homme ne veut pas la grandeur. Il veut ne pas souffrir. C'est tout son programme : un peu de plaisir pour le jour, un peu de plaisir pour la nuit, et surtout aucun risque.",
+      "Il ne se lève pas tôt. Il ne se bat contre rien. Il a une opinion sur tout et n'a rien bâti. Il appelle son confort de la sagesse et sa peur du réalisme.",
+      "## Ton « presque » est sa langue maternelle",
+      "- « Juste cette fois. »",
+      "- « Je commence demain. »",
+      "- « J'ai besoin de souffler. »",
+      "- « Presque discipliné, presque parti. »",
+      "Chacune de ces phrases est une phrase de Dernier Homme. Tu en as parlé dix ans couramment.",
+      "> Le scroll, le porno, le sucre, le lit : ce ne sont pas des faiblesses isolées. C'est un projet de vie — celui de ne jamais souffrir. Et donc de ne jamais devenir.",
+      "Quand tu clignes de l'œil devant un écran, tu ne fais pas une pause. Tu prononces son serment à sa place.",
     ],
   },
   {
