@@ -14,6 +14,7 @@ export default async function VisionPage() {
       initialContent={v.content}
       initialCreed={v.creed}
       daysToJan={daysToJan}
+      daysTo30={daysBetween(todayHaiti(), "2033-05-16")}
     />
   );
 }

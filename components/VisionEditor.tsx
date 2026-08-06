@@ -16,6 +16,7 @@ import {
   Building2,
   Briefcase,
   Car,
+  Trophy,
   Sparkles,
   Landmark,
   HeartPulse,
@@ -46,6 +47,7 @@ function iconFor(title: string): LucideIcon {
   if (t.includes("gratte") || t.includes("immeuble")) return Building2;
   if (t.includes("emploi")) return Briefcase;
   if (t.includes("voiture")) return Car;
+  if (t.includes("défi")) return Trophy;
   if (t.includes("venir")) return Sparkles;
   return Landmark;
 }
@@ -140,10 +142,12 @@ export default function VisionEditor({
   initialContent,
   initialCreed,
   daysToJan,
+  daysTo30,
 }: {
   initialContent: string;
   initialCreed: string;
   daysToJan: number;
+  daysTo30: number;
 }) {
   const [content, setContent] = useState(initialContent);
   const [creed, setCreed] = useState(initialCreed);
@@ -219,29 +223,50 @@ export default function VisionEditor({
         )}
       </div>
 
-      {/* Countdown to 1 Jan 2027 */}
+      {/* Les deux échéances : la transformation, puis le défi ultime. */}
       {!editing && (
-        <div
-          className="mb-5 flex items-center justify-between rounded-2xl px-5 py-4"
-          style={{
-            background: "linear-gradient(135deg, var(--red) 0%, var(--orange) 100%)",
-          }}
-        >
-          <div>
-            <p className="text-[10px] font-semibold uppercase tracking-[0.2em] text-white/70">
-              Avant le 1er janvier 2027
-            </p>
-            <p className="font-display text-xl font-bold uppercase leading-tight text-white">
-              La transformation
-            </p>
+        <div className="mb-5 grid gap-2.5 sm:grid-cols-2">
+          <div
+            className="flex items-center justify-between rounded-2xl px-5 py-4"
+            style={{
+              background:
+                "linear-gradient(135deg, var(--red) 0%, var(--orange) 100%)",
+            }}
+          >
+            <div>
+              <p className="text-[10px] font-semibold uppercase tracking-[0.2em] text-white/70">
+                1er janvier 2027
+              </p>
+              <p className="font-display text-lg font-bold uppercase leading-tight text-white">
+                La transformation
+              </p>
+            </div>
+            <div className="text-right">
+              <span className="tnum font-display text-3xl font-bold leading-none text-white">
+                J−{daysToJan}
+              </span>
+            </div>
           </div>
-          <div className="text-right">
-            <span className="tnum font-display text-4xl font-bold leading-none text-white">
-              J−{daysToJan}
-            </span>
-            <p className="text-[10px] uppercase tracking-wide text-white/70">
-              jours restants
-            </p>
+
+          <div
+            className="flex items-center justify-between rounded-2xl px-5 py-4"
+            style={{
+              background: "linear-gradient(135deg, #0F172A 0%, #B45309 100%)",
+            }}
+          >
+            <div>
+              <p className="text-[10px] font-semibold uppercase tracking-[0.2em] text-white/70">
+                16 mai 2033 · mes 30 ans
+              </p>
+              <p className="font-display text-lg font-bold uppercase leading-tight text-white">
+                Le défi ultime
+              </p>
+            </div>
+            <div className="text-right">
+              <span className="tnum font-display text-3xl font-bold leading-none text-white">
+                J−{daysTo30}
+              </span>
+            </div>
           </div>
         </div>
       )}

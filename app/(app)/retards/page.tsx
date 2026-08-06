@@ -26,6 +26,7 @@ export default async function RetardsPage() {
   return (
     <DelayedView
       daysToJan={daysBetween(todayHaiti(), "2027-01-01")}
+      daysTo30={daysBetween(todayHaiti(), "2033-05-16")}
       etat={{
         retentionDays: ret.days,
         coreDone: core.done,

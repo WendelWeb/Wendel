@@ -3,6 +3,7 @@
 // répétition tue la frappe. Client-safe.
 
 export type DelayedCategory =
+  | "defi"
   | "empire"
   | "homme"
   | "corps"
@@ -20,12 +21,46 @@ export const DELAYED_CATEGORIES: {
   label: string;
   color: string;
 }[] = [
+  { id: "defi", label: "Le défi ultime", color: "#B45309" },
   { id: "empire", label: "L'empire", color: "#15803D" },
   { id: "homme", label: "L'homme", color: "#B45309" },
   { id: "corps", label: "Le corps", color: "#BE123C" },
   { id: "livre", label: "Le Vaisseau", color: "#0F766E" },
   { id: "temps", label: "Le temps", color: "#DC2626" },
   { id: "alliance", label: "L'alliance", color: "#4C1D95" },
+];
+
+const DEFI = [
+  "Multi-trillionnaire avant 30 ans. Et tu viens de perdre une heure.",
+  "Personne dans l'Histoire n'a atteint le trillion. Tu veux être le premier — et tu n'as pas tenu ta matinée.",
+  "Le 16 mai 2033 arrive. Il ne demandera pas tes excuses, il regardera tes chiffres.",
+  "Trente ans. C'est la seule échéance qui ne se négocie pas. Elle avance pendant que tu hésites.",
+  "Tu as décrété que TOUT serait déjà accompli à 30 ans. Aujourd'hui, combien de lignes sont accomplies ?",
+  "Un hôpital prend 5 ans à construire. Si tu ne commences pas cette année, il ne sortira pas de terre à temps.",
+  "Un port prend 8 ans. Compte à rebours : chaque mois perdu maintenant se paie en 2033.",
+  "Une ville prend 10 ans. Elle devrait déjà être en chantier. Elle n'est même pas dessinée.",
+  "À 30 ans tu devais voir des grues levées. Aujourd'hui tu vois un écran.",
+  "Le défi ultime n'est pas de battre quelqu'un. C'est d'aller là où personne n'est allé. Et tu dors.",
+  "Tu veux le chiffre le plus élevé de l'histoire humaine, avec les journées les plus ordinaires du monde.",
+  "Multi-trillionnaire exige une décennie de jours parfaits. Tu n'en as pas encore aligné sept.",
+  "Chaque jour à 0% rend le 16 mai 2033 un peu plus improbable. Fais le calcul.",
+  "Il te reste moins de 2 500 jours. Tu en as brûlé combien cette semaine ?",
+  "Sept ans pour faire ce que personne n'a fait en un siècle. Tu ne peux pas te permettre cette heure-ci.",
+  "Le monde compte 3 000 milliardaires et zéro trillionnaire. Tu prétends franchir ça en dormant tard ?",
+  "Ton défi exige que tu sois déjà en avance. Tu es en retard sur ta propre matinée.",
+  "À 30 ans, être « en route vers » sera un échec. Le décret dit : arrivé.",
+  "Les chantiers longs devaient commencer hier. Ils n'ont même pas de terrain.",
+  "Tu as fixé l'échéance toi-même. Personne ne te l'a imposée. Alors pourquoi tu la trahis ?",
+  "Sept ans passeront comme les dix précédents si tu ne changes rien aujourd'hui.",
+  "Tu as gaspillé dix ans. Il t'en reste sept pour faire l'impossible. Le compte est serré.",
+  "Le premier trillionnaire de l'Histoire ne scrolle pas. Vérifie ce que tu faisais il y a dix minutes.",
+  "Ton caractère devait être déjà forgé à 30 ans. Aujourd'hui il plie encore devant une envie.",
+  "Ton état d'être devait être accompli. Aujourd'hui tu es encore l'homme d'avant.",
+  "Chaque objectif de cette app devait être coché avant 2033. Combien le sont ce soir ?",
+  "Sept ans, c'est 2 500 décisions du matin. Tu en as raté une aujourd'hui.",
+  "Ce défi est démesuré. C'est précisément pour ça qu'il ne tolère aucune journée molle.",
+  "Tu ne rateras pas ce défi par manque de vision. Tu le rateras par manque d'heures tenues.",
+  "Le 16 mai 2033, tu te regarderas. Prépare ce que tu verras — ça se décide maintenant.",
 ];
 
 const EMPIRE = [
@@ -339,6 +374,7 @@ const ALLIANCE = [
 
 export const DELAYED: DelayedItem[] = (() => {
   const groups: [string[], DelayedCategory][] = [
+    [DEFI, "defi"],
     [EMPIRE, "empire"],
     [HOMME, "homme"],
     [CORPS, "corps"],

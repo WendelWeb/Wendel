@@ -4,7 +4,15 @@
 export const DEFAULT_CREED =
   "Je ne parle pas, je ne débats pas, je n'opine pas. Je FAIS. J'AGIS. Pour ma nation d'abord, et pour la gloire d'avoir bâti ces choses de mes mains.";
 
-export const DEFAULT_VISION = `# 🔥 MON POURQUOI
+export const DEFAULT_VISION = `# 🏆 LE DÉFI ULTIME — AVANT MES 30 ANS
+Né le 16 mai 2003. Trente ans le **16 mai 2033**. Ce n'est pas une ambition, c'est un décret sans clause de sortie.
+- **Multi-trillionnaire.** Aucun homme dans l'Histoire n'a jamais atteint ce chiffre — le record de tous les temps se compte en centaines de milliards. C'est exactement pour cette raison que c'est LE défi ultime : il ne s'agit pas de battre quelqu'un, il s'agit d'aller là où personne n'est allé.
+- **Tout ce qui est écrit dans cette app sera DÉJÀ accompli** : chaque objectif, chaque projet, le caractère, l'état d'être, le corps, la parole tenue. Pas « en cours ». Accompli.
+- **Les chantiers longs seront déjà en construction.** Un hôpital de rang mondial prend 5 ans, un port 8, une ville 10. À 30 ans, on ne les inaugure pas tous — on les voit **sortir de terre**, grues levées, béton coulé, chantiers en marche.
+- À 30 ans, je ne serai pas « en route vers ». Je serai **arrivé**, et le monde entier le saura.
+- Je ne m'intéresse pas à ce qui est possible. Je m'intéresse à la discipline et à la foi qui rendent l'impossible possible. « Rien ne vous sera impossible » (ch. 39).
+
+# 🔥 MON POURQUOI
 **INÉBRANLABLE · DÉMESURÉ · FIDÈLE** — les trois mots gravés sur moi jusqu'à mon dernier souffle. Puissance qui ne plie pas, création sans limite, loyauté à Celui qui m'a élevé.
 
 Je suis né le 16 mai 2003, à midi — le soleil à son zénith — dans le Nord-Ouest d'Haïti, le coin que le pays lui-même a oublié. C'est de là que je viens. C'est ça que je vais relever.

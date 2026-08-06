@@ -14,9 +14,11 @@ const PAGE = 120;
 
 export default function DelayedView({
   daysToJan,
+  daysTo30,
   etat,
 }: {
   daysToJan: number;
+  daysTo30: number;
   etat: EtatReel;
 }) {
   const [search, setSearch] = useState("");
@@ -66,23 +68,46 @@ export default function DelayedView({
       <DecisionButton etat={etat} />
 
       {/* Le compte à rebours, en tête : c'est lui qui rend la liste urgente. */}
-      <div
-        className="mb-5 flex items-center justify-between rounded-2xl px-5 py-4"
-        style={{
-          background: "linear-gradient(135deg, var(--red) 0%, var(--orange) 100%)",
-        }}
-      >
-        <div>
-          <p className="text-[10px] font-semibold uppercase tracking-[0.2em] text-white/70">
-            Avant le 1er janvier 2027
-          </p>
-          <p className="font-display text-lg font-bold uppercase leading-tight text-white">
-            Le temps qui reste pour rattraper
-          </p>
+      <div className="mb-5 grid gap-2.5 sm:grid-cols-2">
+        <div
+          className="flex items-center justify-between rounded-2xl px-5 py-4"
+          style={{
+            background:
+              "linear-gradient(135deg, var(--red) 0%, var(--orange) 100%)",
+          }}
+        >
+          <div>
+            <p className="text-[10px] font-semibold uppercase tracking-[0.2em] text-white/70">
+              1er janvier 2027
+            </p>
+            <p className="font-display text-[15px] font-bold uppercase leading-tight text-white">
+              La transformation
+            </p>
+          </div>
+          <span className="tnum font-display text-3xl font-bold leading-none text-white">
+            J−{daysToJan}
+          </span>
         </div>
-        <span className="tnum font-display text-4xl font-bold leading-none text-white">
-          J−{daysToJan}
-        </span>
+
+        {/* L'échéance qui ne se négocie pas. */}
+        <div
+          className="flex items-center justify-between rounded-2xl px-5 py-4"
+          style={{
+            background: "linear-gradient(135deg, #0F172A 0%, #B45309 100%)",
+          }}
+        >
+          <div>
+            <p className="text-[10px] font-semibold uppercase tracking-[0.2em] text-white/70">
+              16 mai 2033 · 30 ans
+            </p>
+            <p className="font-display text-[15px] font-bold uppercase leading-tight text-white">
+              Le défi ultime
+            </p>
+          </div>
+          <span className="tnum font-display text-3xl font-bold leading-none text-white">
+            J−{daysTo30}
+          </span>
+        </div>
       </div>
 
       <div className="mb-3 flex items-center gap-2">
