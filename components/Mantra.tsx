@@ -1,5 +1,6 @@
 import { Hand, Eye } from "lucide-react";
 import { INTERROGATION, SI_TU_CEDES } from "@/lib/sting";
+import { BINARY_CORE, BINARY_FRAME_EN } from "@/lib/binary";
 
 // The mantra. Shown at the TOP and BOTTOM of EVERY page (rendered in the app
 // layout): a spiritual crown, two verses (main / yeux — each a warning + a
@@ -307,6 +308,51 @@ export default function Mantra({
         n&apos;est impossible — tout est possible avec Lui.
       </p>
 
+      {/* LA LOI DU COÛT — un oui dépense mille non. Le bloc met les deux
+          nombres face à face : c'est le rapport qui fait mal, pas la phrase. */}
+      <div
+        className="mt-3 overflow-hidden rounded-2xl px-5 py-4 text-center"
+        style={{ background: "#9D174D" }}
+      >
+        <p className="mb-2 text-[10px] font-semibold uppercase tracking-[0.28em] text-white/45">
+          La loi du coût
+        </p>
+        <p className="font-display text-[17px] font-bold uppercase leading-snug text-white">
+          Every yes is a thousand no.
+        </p>
+        <p className="mt-1.5 text-[12.5px] font-semibold leading-snug text-white/75">
+          Chaque oui est mille non.
+        </p>
+
+        <div className="mt-3.5 flex items-center justify-center gap-4">
+          <div>
+            <p className="font-display text-[30px] font-bold leading-none text-white">
+              1
+            </p>
+            <p className="mt-1 text-[9px] font-bold uppercase tracking-[0.18em] text-white/55">
+              oui
+            </p>
+          </div>
+          <span className="text-[18px] text-white/40">→</span>
+          <div>
+            <p
+              className="font-display text-[30px] font-bold leading-none"
+              style={{ color: "var(--gold-border)" }}
+            >
+              1000
+            </p>
+            <p className="mt-1 text-[9px] font-bold uppercase tracking-[0.18em] text-white/55">
+              non
+            </p>
+          </div>
+        </div>
+
+        <p className="mt-3 text-[12px] leading-snug text-white/70">
+          Ce que tu acceptes maintenant refuse en silence tout le reste. Regarde
+          bien ce que tu viens de refuser.
+        </p>
+      </div>
+
       {/* L'INTERROGATOIRE — le miroir tendu au moment de l'acte. Chaque ligne
           confronte le geste présent à l'homme qu'il prétend être. */}
       <div
@@ -368,6 +414,40 @@ export default function Mantra({
             Je suis le sujet dont on parle — et qui ne fane jamais.
           </p>
         </div>
+      </div>
+
+      {/* LE BINAIRE — « peux-tu » est déjà réglé. Reste « veux-tu ». Aucune
+          troisième porte : les questions se lisent en oui / non, rien d'autre. */}
+      <div
+        className="mt-3 overflow-hidden rounded-2xl px-5 py-4"
+        style={{ background: "#0A0A0A", border: "1.5px solid #3F3F46" }}
+      >
+        <p className="text-center text-[11.5px] font-semibold italic leading-snug text-white/55">
+          {BINARY_FRAME_EN}
+        </p>
+        <p
+          className="mt-2 text-center font-display text-[13px] font-bold uppercase tracking-wide"
+          style={{ color: "var(--gold-border)" }}
+        >
+          La seule question qui reste
+        </p>
+
+        <ul className="mt-3 flex flex-col gap-2">
+          {BINARY_CORE.map((q) => (
+            <li key={q.en} className="border-l-2 border-white/20 pl-3">
+              <p className="text-[13px] font-bold leading-snug text-white">
+                {q.en}
+              </p>
+              <p className="mt-0.5 text-[12px] leading-snug text-white/55">
+                {q.fr}
+              </p>
+            </li>
+          ))}
+        </ul>
+
+        <p className="mt-3.5 text-center font-display text-[14px] font-bold uppercase leading-snug tracking-wide text-white">
+          Il n&apos;y a pas de troisième porte.
+        </p>
       </div>
 
       {/* L'exécution — le marteau qui referme la loi */}
