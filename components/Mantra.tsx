@@ -416,6 +416,59 @@ export default function Mantra({
         </div>
       </div>
 
+      {/* LA RESPONSABILITÉ TOTALE — deux êtres seulement peuvent l'arrêter.
+          Dieu s'est retiré de la liste en promettant d'être avec lui. Il ne
+          reste qu'un nom. Le bloc procède par élimination, littéralement. */}
+      <div
+        className="mt-3 overflow-hidden rounded-2xl px-5 py-4"
+        style={{ background: "#78350F" }}
+      >
+        <p className="mb-2 text-center text-[10px] font-semibold uppercase tracking-[0.26em] text-white/45">
+          Qui peut t&apos;arrêter
+        </p>
+        <p className="text-center font-display text-[15px] font-bold uppercase leading-snug text-white">
+          Only God and you can stop you.
+        </p>
+        <p className="mt-1.5 text-center text-[12.5px] leading-snug text-white/70">
+          Et Dieu a dit qu&apos;Il serait avec toi.
+        </p>
+
+        {/* L'élimination */}
+        <div className="mt-3.5 flex flex-col gap-1.5">
+          <div className="flex items-center gap-2.5 rounded-lg bg-black/25 px-3 py-2">
+            <span className="text-[13px] font-bold text-white/40 line-through">
+              Dieu
+            </span>
+            <span className="text-[11px] text-white/50">
+              — Il a promis d&apos;être avec toi. Rayé de la liste.
+            </span>
+          </div>
+          <div
+            className="flex items-center gap-2.5 rounded-lg px-3 py-2"
+            style={{ background: "var(--gold-border)" }}
+          >
+            <span className="font-display text-[15px] font-bold uppercase text-black">
+              Toi
+            </span>
+            <span className="text-[11.5px] font-semibold text-black/70">
+              — il ne reste que ce nom.
+            </span>
+          </div>
+        </div>
+
+        <p className="mt-3 text-[11px] font-bold uppercase tracking-[0.16em] text-white/45">
+          Tu ne peux plus accuser
+        </p>
+        <p className="mt-1 text-[13px] leading-snug text-white/60 line-through">
+          les démons · le diable · la politique · le système · ton pays · ta
+          famille · l&apos;économie · le manque d&apos;argent · les autres
+        </p>
+
+        <p className="mt-3 text-center font-display text-[14px] font-bold uppercase leading-snug tracking-wide text-white">
+          Aucun alibi ne te reste. Seulement toi.
+        </p>
+      </div>
+
       {/* LE BINAIRE — « peux-tu » est déjà réglé. Reste « veux-tu ». Aucune
           troisième porte : les questions se lisent en oui / non, rien d'autre. */}
       <div
@@ -448,6 +501,32 @@ export default function Mantra({
         <p className="mt-3.5 text-center font-display text-[14px] font-bold uppercase leading-snug tracking-wide text-white">
           Il n&apos;y a pas de troisième porte.
         </p>
+      </div>
+
+      {/* FIRE — volontairement nu. Après des blocs denses, cinq lignes seules
+          sur du noir frappent plus fort que n'importe quelle mise en page. */}
+      <div
+        className="mt-3 rounded-2xl px-5 py-6"
+        style={{ background: "#000000" }}
+      >
+        {[
+          "God kept His word. Now keep yours.",
+          "A dog with a dream is still a dog.",
+          "Ten years. Zero receipts.",
+          "You'll either be the story or the audience.",
+          "Nobody is coming. That's the whole point.",
+        ].map((l, i) => (
+          <p
+            key={l}
+            className="text-center font-display text-[16px] font-bold uppercase leading-tight tracking-wide"
+            style={{
+              color: i === 0 ? "var(--gold-border)" : "#fff",
+              marginTop: i === 0 ? 0 : "0.85rem",
+            }}
+          >
+            {l}
+          </p>
+        ))}
       </div>
 
       {/* L'exécution — le marteau qui referme la loi */}
