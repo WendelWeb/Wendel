@@ -169,11 +169,24 @@ Décret, pas souhait. Ce n'est pas une question de « possible » — c'est la d
 - Domination énergétique : fusion, solaire, hydrogène, nucléaire propre.
 - Eau, nourriture & énergie **gratuites** dans mes zones.
 
-# 🪖 DÉFENSE & SÉCURITÉ
-- **Entreprise militaire privée classée dans le TOP 3 des puissances militaires mondiales** — capable d'intervenir et de frapper n'importe où sur la planète, **la plus crainte du monde**.
-- Armée privée high-tech : IA, drones, guerre électronique.
-- Hélicoptères, chars, blindés & drones autonomes.
-- Réseau de satellites de défense & surveillance globale ; cybersécurité mondiale sous contrôle.
+# 🪖 LA SOCIÉTÉ MILITAIRE PRIVÉE — LA PLUS CRAINTE DU MONDE
+Avant mes 30 ans (16 mai 2033) : une entreprise militaire privée **classée dans le TOP 5 des puissances militaires mondiales — top 3 visé — alors même qu'elle est privée**.
+## Domination des trois milieux
+- **Mer** : flotte de surface — frégates, corvettes, navires d'assaut, porte-drones.
+- **Sous la mer** : **sous-marins** — attaque, renseignement, projection silencieuse.
+- **Air** : **avions de chasse**, hélicoptères d'attaque, drones autonomes, supériorité aérienne.
+- **Terre** : chars, blindés, véhicules d'intervention rapide, unités d'élite.
+## Ce qui la rend crainte
+- **Capacité d'intervenir et de frapper n'importe où sur la planète** — mer, air, terre, sous l'eau — en quelques heures.
+- Une unité si **tactique et technologique** que sa seule existence dissuade : IA de combat, guerre électronique, brouillage, systèmes autonomes.
+- **Cyber-offensive et piratage** : capacité d'aveugler, de paralyser et de pénétrer n'importe quel système adverse.
+- **Espionnage et renseignement** : réseau humain et satellitaire, écoute globale, anticipation avant que l'adversaire ne décide.
+- Réseau de **satellites** de défense, d'observation et de communication souveraine.
+- Formation, doctrine et chaîne logistique intégrées — rien qui dépende d'un fournisseur étranger.
+## Pourquoi
+- Protéger la nation, les frontières, les ressources et chaque chantier de l'empire.
+- Ne dépendre de la protection de personne. La souveraineté n'existe pas sans la force qui la garantit.
+- On ne discute pas avec celui qu'on redoute : la crainte est une forme de paix.
 
 # 📢 SOCIÉTÉ, MÉDIAS & INFLUENCE
 - Gouvernance internationale & leadership planétaire.

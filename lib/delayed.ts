@@ -4,6 +4,7 @@
 
 export type DelayedCategory =
   | "defi"
+  | "armee"
   | "empire"
   | "homme"
   | "corps"
@@ -22,6 +23,7 @@ export const DELAYED_CATEGORIES: {
   color: string;
 }[] = [
   { id: "defi", label: "Le défi ultime", color: "#B45309" },
+  { id: "armee", label: "La force", color: "#334155" },
   { id: "empire", label: "L'empire", color: "#15803D" },
   { id: "homme", label: "L'homme", color: "#B45309" },
   { id: "corps", label: "Le corps", color: "#BE123C" },
@@ -61,6 +63,39 @@ const DEFI = [
   "Ce défi est démesuré. C'est précisément pour ça qu'il ne tolère aucune journée molle.",
   "Tu ne rateras pas ce défi par manque de vision. Tu le rateras par manque d'heures tenues.",
   "Le 16 mai 2033, tu te regarderas. Prépare ce que tu verras — ça se décide maintenant.",
+];
+
+const ARMEE = [
+  "La société militaire privée la plus crainte du monde. Aujourd'hui tu ne commandes même pas ta main.",
+  "Top 5 des puissances militaires mondiales. Et tu perds contre une notification.",
+  "Tes sous-marins n'existent pas encore. Ils devraient déjà être en cale sèche.",
+  "Une flotte de surface, et toi tu n'arrives pas à sortir du lit.",
+  "Tes avions de chasse attendent un homme qui tient parole. Il n'est pas encore là.",
+  "Des chars, des blindés, des unités d'élite — commandés par un homme qui négocie avec son réveil ?",
+  "Intervenir n'importe où sur la planète en quelques heures. Tu n'interviens même pas sur ta journée.",
+  "Une unité si tactique que sa seule existence dissuade. Toi, tu ne dissuades même pas ton pouce.",
+  "La cyber-offensive qui aveugle n'importe quel adversaire — et un algorithme t'aveugle toi.",
+  "Tu veux pirater les systèmes des autres. Le tien est déjà compromis.",
+  "Un réseau d'espionnage mondial. Tu ne surveilles même pas tes propres yeux.",
+  "Anticiper l'adversaire avant qu'il décide — et tu ne décides rien avant 9h.",
+  "Des satellites de défense en orbite. Rien n'est encore lancé, pas même ta journée.",
+  "L'IA de combat, la guerre électronique, le brouillage : zéro ligne écrite à ce jour.",
+  "La doctrine, la formation, la logistique intégrée — tout ça commence par un homme discipliné.",
+  "Personne ne craint un homme qui cède à minuit. Personne ne craindra ton armée non plus.",
+  "La crainte est une forme de paix. Tu n'inspires encore aucune des deux.",
+  "Ne dépendre de la protection de personne : commence par ne plus dépendre de ton humeur.",
+  "La souveraineté n'existe pas sans la force qui la garantit. Ta force du jour : zéro.",
+  "Protéger chaque chantier de l'empire — alors qu'aucun chantier n'a commencé.",
+  "Une armée privée dans le top 5 mondial ne se bâtit pas en sept ans de journées molles.",
+  "Les pays du top 5 y ont mis un siècle. Tu as sept ans. Et tu dors.",
+  "On ne discute pas avec celui qu'on redoute. Aujourd'hui, on ne te connaît même pas.",
+  "Chaque nuit gaspillée retarde le jour où tes frontières seront intouchables.",
+  "Tu veux commander des hommes armés et tu n'obéis pas à ta propre parole.",
+  "Le commandant qui ne se commande pas lui-même n'aura jamais d'armée.",
+  "Sous-marins, chasseurs, blindés : chacun coûte des milliards. Ces milliards commencent par un jour tenu.",
+  "La projection de puissance mondiale exige un homme qui ne plie jamais. Tu as plié hier.",
+  "Tes unités d'élite s'entraîneront pendant que tu dormais. Sauf qu'elles n'existent pas.",
+  "L'homme le plus craint du monde ne se cache pas d'un écran à minuit.",
 ];
 
 const EMPIRE = [
@@ -375,6 +410,7 @@ const ALLIANCE = [
 export const DELAYED: DelayedItem[] = (() => {
   const groups: [string[], DelayedCategory][] = [
     [DEFI, "defi"],
+    [ARMEE, "armee"],
     [EMPIRE, "empire"],
     [HOMME, "homme"],
     [CORPS, "corps"],
