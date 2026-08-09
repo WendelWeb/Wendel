@@ -40,6 +40,9 @@ import w39 from "@/content/quotes/wave39.json";
 import w40 from "@/content/quotes/wave40.json";
 import w41 from "@/content/quotes/wave41.json";
 import w42 from "@/content/quotes/wave42.json";
+import w43 from "@/content/quotes/wave43.json";
+import w44 from "@/content/quotes/wave44.json";
+import w45 from "@/content/quotes/wave45.json";
 import { RETENTION_AFFIRMATIONS } from "./affirmations";
 
 export type CategoryId =
@@ -67,7 +70,10 @@ export type CategoryId =
   | "responsabilite"
   | "fire"
   | "hypocrisie"
-  | "puissance";
+  | "puissance"
+  | "nietzsche"
+  | "pouvoirnu"
+  | "machiavel";
 
 export interface Quote {
   t: string; // le texte de la citation
@@ -108,6 +114,9 @@ export const CATEGORIES: CategoryMeta[] = [
   { id: "fire", label: "Fire (EN)", color: "#C2410C" },
   { id: "hypocrisie", label: "Le test de la foi", color: "#450A0A" },
   { id: "puissance", label: "Power (EN)", color: "#1F2937" },
+  { id: "pouvoirnu", label: "Le pouvoir nu", color: "#0C0A09" },
+  { id: "nietzsche", label: "Nietzsche", color: "#581C87" },
+  { id: "machiavel", label: "Machiavel", color: "#7F1D1D" },
 ];
 
 const CAT_MAP = new Map(CATEGORIES.map((c) => [c.id, c]));
@@ -144,6 +153,7 @@ const WAVES = [
   w1, w2, w3, w4, w5, w6, w7, w8, w9, w10, w11, w12,
   w13, w14, w15, w16, w17, w18, w19, w20,
   w21, w22, w23, w24, w25, w26, w27, w28, w29, w30, w31, w32, w33, w34, w35, w36, w37, w38, w39, w40, w41, w42,
+  w43, w44, w45,
 ] as unknown as Quote[][];
 
 // Concatène tout et dédoublonne par texte.
