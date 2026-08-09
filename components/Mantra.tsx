@@ -41,6 +41,50 @@ export default function Mantra({
         </p>
       </div>
 
+      {/* LE TEST DE LA FOI — la promesse ci-dessus n'a de valeur que si elle
+          est suivie d'actes. Ce bloc retourne contre lui son propre étalon :
+          il dit haïr l'hypocrisie plus que tout. */}
+      <div
+        className="mb-3 overflow-hidden rounded-2xl px-5 py-4"
+        style={{ background: "#450A0A", border: "1.5px solid #7F1D1D" }}
+      >
+        <p className="mb-2.5 text-center text-[10px] font-semibold uppercase tracking-[0.26em] text-white/45">
+          Le test de la foi
+        </p>
+        <p className="font-display text-[15px] font-bold uppercase leading-snug text-white">
+          If you really believed in God, you would do exactly what He told you
+          to do.
+        </p>
+        <p className="mt-2 text-[12.5px] leading-snug text-white/70">
+          Tu croirais Sa promesse et tu agirais dessus. Tu obéirais. Sans
+          négocier, sans reporter, sans clause.
+        </p>
+
+        <div className="mt-3 border-t border-white/15 pt-3">
+          <p className="text-[13px] font-semibold leading-snug text-white">
+            Mais tu dis une chose et tu prouves le contraire par tes actes.
+          </p>
+          <p
+            className="mt-1.5 font-display text-[15px] font-bold uppercase leading-snug"
+            style={{ color: "var(--gold-border)" }}
+          >
+            C&apos;est exactement ce que Jésus appelait un hypocrite.
+          </p>
+          <p className="mt-2 text-[12px] italic leading-snug text-white/60">
+            « Ce peuple m&apos;honore des lèvres, mais son cœur est loin de
+            moi. » · « La foi sans les œuvres est morte » (Jacques 2:17).
+          </p>
+        </div>
+
+        <p className="mt-3 text-center text-[12.5px] font-bold leading-snug text-white">
+          Tu dis haïr l&apos;hypocrisie plus que tout.
+          <br />
+          <span style={{ color: "var(--gold-border)" }}>
+            Voilà la tienne. Elle est dans ta main.
+          </span>
+        </p>
+      </div>
+
       {/* THE CROWN — why you exist */}
       <div
         className="mb-3 overflow-hidden rounded-2xl px-5 py-5 text-center"

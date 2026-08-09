@@ -36,6 +36,7 @@ import w35 from "@/content/quotes/wave35.json";
 import w36 from "@/content/quotes/wave36.json";
 import w37 from "@/content/quotes/wave37.json";
 import w38 from "@/content/quotes/wave38.json";
+import w39 from "@/content/quotes/wave39.json";
 import { RETENTION_AFFIRMATIONS } from "./affirmations";
 
 export type CategoryId =
@@ -61,7 +62,8 @@ export type CategoryId =
   | "pacte"
   | "cout"
   | "responsabilite"
-  | "fire";
+  | "fire"
+  | "hypocrisie";
 
 export interface Quote {
   t: string; // le texte de la citation
@@ -100,6 +102,7 @@ export const CATEGORIES: CategoryMeta[] = [
   { id: "cout", label: "Le coût", color: "#9D174D" },
   { id: "responsabilite", label: "Aucun alibi", color: "#78350F" },
   { id: "fire", label: "Fire (EN)", color: "#C2410C" },
+  { id: "hypocrisie", label: "Le test de la foi", color: "#450A0A" },
 ];
 
 const CAT_MAP = new Map(CATEGORIES.map((c) => [c.id, c]));
@@ -135,7 +138,7 @@ const AFFIRMATIONS: Quote[] = RETENTION_AFFIRMATIONS.map((t) => ({
 const WAVES = [
   w1, w2, w3, w4, w5, w6, w7, w8, w9, w10, w11, w12,
   w13, w14, w15, w16, w17, w18, w19, w20,
-  w21, w22, w23, w24, w25, w26, w27, w28, w29, w30, w31, w32, w33, w34, w35, w36, w37, w38,
+  w21, w22, w23, w24, w25, w26, w27, w28, w29, w30, w31, w32, w33, w34, w35, w36, w37, w38, w39,
 ] as unknown as Quote[][];
 
 // Concatène tout et dédoublonne par texte.
