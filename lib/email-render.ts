@@ -46,11 +46,11 @@ function tally(times: number): string {
 // Les mouvements, un par un
 // ——————————————————————————————————————————————————————————————
 
-function movementHtml(m: Movement, base: string | null): string {
-  const lien =
-    base && m.href
-      ? `<a href="${esc(base)}${esc(m.href)}" style="display:inline-block;color:${GOLD};text-decoration:none;font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.8px;margin-top:12px">Ouvrir dans l'app →</a>`
-      : "";
+function movementHtml(m: Movement): string {
+  // Plus aucun « ouvrir dans l'app » : l'email doit se suffire. Le chapitre y
+  // est en entier, les blocs aussi. Un lien reviendrait à dire que ce qu'il
+  // tient dans les mains est un extrait — c'est exactement ce qu'on a supprimé.
+  const lien = "";
   const consigne = m.note
     ? `<div style="color:#71717a;font-size:11px;font-style:italic;margin-bottom:10px;line-height:1.45">${esc(m.note)}</div>`
     : "";
@@ -286,7 +286,11 @@ export interface Rendered {
 export function renderLiturgy(
   lit: Liturgy,
   c: LiturgyContext,
-  base: string | null,
+  /** L'adresse publique de l'app. Volontairement inutilisée : l'email ne
+   *  renvoie plus nulle part, il se suffit. Gardée en paramètre parce que la
+   *  validation du jour, elle, ne peut se faire que dans l'app — si un lien
+   *  doit revenir un jour, c'est celui-là et rien d'autre. */
+  _base: string | null,
 ): Rendered {
   const h = String(lit.hour).padStart(2, "0");
   const complet = c.coreDone === c.coreTotal;
@@ -329,15 +333,10 @@ export function renderLiturgy(
     </tr></table>
   </td></tr>
 
-  ${lit.movements.map((m) => movementHtml(m, base)).join("\n")}
+  ${lit.movements.map((m) => movementHtml(m)).join("\n")}
 
   <tr><td style="padding:6px 22px 24px">
-    ${
-      base
-        ? `<a href="${esc(base)}/today" style="display:block;background:${GOLD};color:#111;text-decoration:none;font-size:15px;font-weight:800;text-transform:uppercase;letter-spacing:.6px;padding:16px;border-radius:12px;text-align:center">Ouvre FORGED et coche</a>`
-        : ""
-    }
-    <div style="color:#52525b;font-size:10.5px;text-align:center;margin-top:16px;line-height:1.6">
+    <div style="color:#52525b;font-size:10.5px;text-align:center;line-height:1.6">
       Prier sans cesse — cette victoire entrera par la main de Dieu.
     </div>
   </td></tr>
@@ -363,7 +362,6 @@ export function renderLiturgy(
     lignes.push(...movementText(m));
   }
   lignes.push(barre);
-  if (base) lignes.push(`Ouvre FORGED : ${base}/today`);
   lignes.push(`Prier sans cesse — cette victoire entrera par la main de Dieu.`);
 
   return { subject: lit.subject, html, text: lignes.join("\n") };

@@ -12,7 +12,10 @@
       "Bash(curl -sv \"http://localhost:3000/icon?4fd686b969a553a8\")",
       "Bash(node scripts/make-icons.mjs)",
       "PowerShell(git rm --cached dev.log -q; if \\(-not \\(Select-String -Path .gitignore -Pattern \"^dev\\\\.log$\" -Quiet -ErrorAction SilentlyContinue\\)\\) { Add-Content .gitignore \"`ndev.log\" -Encoding utf8 }; git add -A; git commit -q -m \"Ne pas versionner dev.log\"; if \\($?\\) { git push -q; if \\($?\\) { \"PUSH OK\" } })",
-      "PowerShell(node \"C:/Users/stanl/AppData/Local/Temp/claude/c--Users-stanl-Desktop-Personal-Projects-forged/8739f4a4-d01b-4e7d-b855-7be3d16611a0/scratchpad/envoi-test.js\")"
+      "PowerShell(node \"C:/Users/stanl/AppData/Local/Temp/claude/c--Users-stanl-Desktop-Personal-Projects-forged/8739f4a4-d01b-4e7d-b855-7be3d16611a0/scratchpad/envoi-test.js\")",
+      "PowerShell(npx tsc --noEmit 2>&1)",
+      "PowerShell(if \\($LASTEXITCODE -eq 0 -or $?\\) { \"TSC OK\" })",
+      "PowerShell(Select-String -Path lib/liturgy.ts -Pattern \"blocMovement\\\\\\(\" -AllMatches | ForEach-Object { \"$\\($_.LineNumber\\): $\\($_.Line.Trim\\(\\)\\)\" })"
     ]
   }
 }

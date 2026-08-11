@@ -476,7 +476,14 @@ function appel(c: LiturgyContext, messe: boolean): Movement {
   return { kind: "appel", label: "L'appel", times: 1, items: lignes };
 }
 
-function fragment(c: LiturgyContext, n: number, combien: number): Movement {
+/**
+ * Le chapitre entier — réservé aux trois messes.
+ *
+ * Aucune coupe, aucun « la suite dans l'app » : là où le chapitre est envoyé,
+ * il l'est en entier. C'est le cœur des messes, et c'est ce qui manquait
+ * complètement à l'ancien moteur, qui n'envoyait que le titre.
+ */
+function chapitre(n: number, label = "Le chapitre du jour — en entier"): Movement {
   const ch = getChapter(n);
   if (!ch) {
     return {
@@ -486,20 +493,37 @@ function fragment(c: LiturgyContext, n: number, combien: number): Movement {
       items: ["(chapitre introuvable)"],
     };
   }
-  const utiles = ch.paragraphs.filter((p) => words(p) >= 25);
-  const source = utiles.length ? utiles : ch.paragraphs;
-  const items =
-    combien >= source.length
-      ? source
-      : pick(source, `${c.date}:${c.hour}:frag`, combien);
   return {
     kind: "fragment",
-    label: combien > 3 ? "Le chapitre du jour — en entier" : "Le Vaisseau — ton propre texte",
+    label,
     title: `Chapitre ${ch.n} — ${ch.title}`,
     source: ch.book,
     times: 1,
-    items,
-    href: `/vaisseau/${ch.n}`,
+    items: ch.paragraphs,
+  };
+}
+
+/**
+ * Un passage — pour les heures, qui doivent rester courtes.
+ *
+ * Ce n'est pas un chapitre tronqué : c'est un passage qui tient debout tout
+ * seul, choisi parmi les paragraphes assez longs pour dire quelque chose. Le
+ * chapitre entier, lui, arrive aux messes.
+ */
+function passage(c: LiturgyContext, n: number, combien: number): Movement {
+  const ch = getChapter(n);
+  if (!ch) {
+    return { kind: "fragment", label: "Le Vaisseau", times: 1, items: ["(chapitre introuvable)"] };
+  }
+  const utiles = ch.paragraphs.filter((p) => words(p) >= 25);
+  const source = utiles.length ? utiles : ch.paragraphs;
+  return {
+    kind: "fragment",
+    label: combien > 1 ? "Deux passages du Vaisseau" : "Un passage du Vaisseau",
+    title: `Chapitre ${ch.n} — ${ch.title}`,
+    source: ch.book,
+    times: 1,
+    items: pick(source, `${c.date}:${c.hour}:pass`, combien),
   };
 }
 
@@ -521,15 +545,19 @@ function repetition(
   };
 }
 
-function blocMovement(b: Bloc, label: string, href: string, max: number): Movement {
+/**
+ * Un bloc entier — Carnet ou Vision. Comme le chapitre : rien n'est coupé.
+ * Une section tronquée dirait « la suite ailleurs », et il n'y a plus
+ * d'ailleurs : l'email est le lieu.
+ */
+function blocMovement(b: Bloc, label: string): Movement {
   return {
     kind: "bloc",
     label,
     title: b.title,
     source: b.source,
     times: 1,
-    items: b.lines.slice(0, max),
-    href,
+    items: b.lines,
   };
 }
 
@@ -647,7 +675,7 @@ function accentMovement(a: Accent, c: LiturgyContext, seed: string): Movement | 
   switch (a) {
     case "vision": {
       const b = pick(CHANTIERS, `${seed}:chantier`)[0];
-      return b ? { ...blocMovement(b, "Un chantier de ton empire", "/vision", 5), accent: true } : null;
+      return b ? { ...blocMovement(b, "Un chantier de ton empire"), accent: true } : null;
     }
     case "livrable":
       return {
@@ -838,8 +866,9 @@ function buildHeure(c: LiturgyContext): Liturgy {
   const mvts: Movement[] = [];
   mvts.push(mantra("tete"));
   mvts.push(appel(c, false));
-  // À 8h le chapitre est la ration double : deux paragraphes au lieu d'un.
-  mvts.push(fragment(c, n, role.accent === "chapitre" ? 2 : 1));
+  // Les heures restent courtes : un passage, pas le chapitre. À 8h, la ration
+  // double en donne deux — c'est l'heure où il est au fond de son bloc.
+  mvts.push(passage(c, n, role.accent === "chapitre" ? 2 : 1));
 
   const acc = accentMovement(role.accent, c, seed);
   if (acc) mvts.push(acc);
@@ -877,12 +906,7 @@ function buildHeure(c: LiturgyContext): Liturgy {
     : pick(VISION_BLOCS, `${seed}:vision`)[0];
   if (bloc) {
     mvts.push(
-      blocMovement(
-        bloc,
-        pair ? "Ton Carnet — ce que tu t'es écrit" : "Ta Vision",
-        pair ? "/carnet" : "/vision",
-        4,
-      ),
+      blocMovement(bloc, pair ? "Ton Carnet — ce que tu t'es écrit" : "Ta Vision"),
     );
   }
 
@@ -923,7 +947,7 @@ function buildMesse(c: LiturgyContext): Liturgy {
   mvts.push(mantra("tete"));
   mvts.push(appel(c, true));
   mvts.push(inspection());
-  mvts.push(fragment(c, n, 999)); // le chapitre entier
+  mvts.push(chapitre(n));
 
   mvts.push(citationsMovement("Trois citations", pick(QUOTES, `${seed}:q3`, 3), 7));
   mvts.push(
@@ -934,7 +958,7 @@ function buildMesse(c: LiturgyContext): Liturgy {
   mvts.push(repetition("Avant mes 30 ans — 16 mai 2033", pick(OBJECTIFS_2033, `${seed}:o33`, 3), 7));
 
   const carnet = pick(CARNET_BLOCS, `${seed}:carnet`)[0];
-  if (carnet) mvts.push(blocMovement(carnet, "Ton Carnet — lu une fois", "/carnet", 8));
+  if (carnet) mvts.push(blocMovement(carnet, "Ton Carnet — lu une fois"));
 
   mvts.push({
     kind: "lecture",
@@ -946,7 +970,7 @@ function buildMesse(c: LiturgyContext): Liturgy {
   });
 
   const vision = pick(VISION_BLOCS, `${seed}:vision`)[0];
-  if (vision) mvts.push(blocMovement(vision, "Ta Vision", "/vision", 6));
+  if (vision) mvts.push(blocMovement(vision, "Ta Vision"));
 
   mvts.push({
     kind: "retards",
