@@ -7,14 +7,22 @@ import { STATES, stateChapterTitle } from "@/lib/states";
 import { RETENTION_AFFIRMATIONS } from "@/lib/affirmations";
 import { ALL_STOPP_PHRASES } from "@/lib/stopp";
 import WhiteStaircase from "./WhiteStaircase";
+import { shuffled, branch } from "@/lib/rotate";
 
 const LINES = [...ALL_STOPP_PHRASES, ...RETENTION_AFFIRMATIONS];
 
 export default function UrgenceView({
   retentionDays,
+  seed,
 }: {
   retentionDays: number;
+  seed: number;
 }) {
+  // La graine vient du serveur et change à chaque visite : la première phrase
+  // n'est jamais la même. Sur cette page en particulier, tomber toujours sur la
+  // même ligne serait le pire des défauts — c'est l'écran qu'il ouvre au moment
+  // exact où il est sur le point de céder.
+  const lignes = shuffled(LINES, branch(seed, "urgence"));
   const [i, setI] = useState(0);
 
   return (
@@ -36,13 +44,13 @@ export default function UrgenceView({
       {/* Affirmation / phrase choc */}
       <button
         type="button"
-        onClick={() => setI((x) => (x + 1) % LINES.length)}
+        onClick={() => setI((x) => (x + 1) % lignes.length)}
         className="mb-5 flex w-full items-center gap-3 rounded-2xl p-5 text-left transition active:scale-[0.99]"
         style={{ background: "var(--black)" }}
       >
         <Flame size={20} className="flex-shrink-0 text-red" fill="var(--red)" />
         <span className="flex-1 font-display text-lg font-bold uppercase leading-tight tracking-tight text-white">
-          {LINES[i]}
+          {lignes[i]}
         </span>
         <RefreshCw size={16} className="flex-shrink-0 text-white/40" />
       </button>

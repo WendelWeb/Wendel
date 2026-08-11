@@ -15,7 +15,10 @@
       "PowerShell(node \"C:/Users/stanl/AppData/Local/Temp/claude/c--Users-stanl-Desktop-Personal-Projects-forged/8739f4a4-d01b-4e7d-b855-7be3d16611a0/scratchpad/envoi-test.js\")",
       "PowerShell(npx tsc --noEmit 2>&1)",
       "PowerShell(if \\($LASTEXITCODE -eq 0 -or $?\\) { \"TSC OK\" })",
-      "PowerShell(Select-String -Path lib/liturgy.ts -Pattern \"blocMovement\\\\\\(\" -AllMatches | ForEach-Object { \"$\\($_.LineNumber\\): $\\($_.Line.Trim\\(\\)\\)\" })"
+      "PowerShell(Select-String -Path lib/liturgy.ts -Pattern \"blocMovement\\\\\\(\" -AllMatches | ForEach-Object { \"$\\($_.LineNumber\\): $\\($_.Line.Trim\\(\\)\\)\" })",
+      "PowerShell(foreach \\($f in @\\(\"components/QuotesView.tsx\",\"components/DelayedView.tsx\"\\)\\) { \"=== $f ===\"; Get-Content $f -TotalCount 60; \"\" })",
+      "PowerShell(foreach \\($f in @\\(\"components/RetentionPanel.tsx\",\"components/StoppList.tsx\"\\)\\) { \"=== $f ===\"; Select-String -Path $f -Pattern \"useState|RETENTION_AFFIRMATIONS|ALL_STOPP_PHRASES|slice|map\\\\\\(\" | ForEach-Object { \"  $\\($_.LineNumber\\): $\\(\\($_.Line -replace '\\\\s+',' '\\).Trim\\(\\)\\)\" }; \"\" }; \"=== UrgenceView.tsx \\(extraits\\) ===\"; Select-String -Path \"components/UrgenceView.tsx\" -Pattern \"useState|RETENTION_AFFIRMATIONS|ALL_STOPP_PHRASES|const L|slice|map\\\\\\(\" | ForEach-Object { \"  $\\($_.LineNumber\\): $\\(\\($_.Line -replace '\\\\s+',' '\\).Trim\\(\\)\\)\" })",
+      "PowerShell(Select-String -Path \"components/UrgenceView.tsx\" -Pattern \"LINES\" | ForEach-Object { \"$\\($_.LineNumber\\): $\\(\\($_.Line -replace '\\\\s+',' '\\).Trim\\(\\)\\)\" })"
     ]
   }
 }

@@ -1,10 +1,15 @@
 "use client";
 
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { X } from "lucide-react";
 import { ALL_STOPP_PHRASES } from "@/lib/stopp";
+import { shuffled, visitSeed } from "@/lib/rotate";
 
 export default function StoppList({ onClose }: { onClose: () => void }) {
+  // Cette liste n'apparaît qu'après un clic, jamais au rendu serveur : tirer au
+  // sort dans l'initialiseur ne risque donc aucun décalage d'hydratation.
+  const [phrases] = useState(() => shuffled(ALL_STOPP_PHRASES, visitSeed()));
+
   useEffect(() => {
     const onKey = (e: KeyboardEvent) => {
       if (e.key === "Escape") onClose();
@@ -45,7 +50,7 @@ export default function StoppList({ onClose }: { onClose: () => void }) {
         </div>
 
         <ol className="flex flex-col gap-2 overflow-y-auto p-4">
-          {ALL_STOPP_PHRASES.map((phrase, i) => (
+          {phrases.map((phrase, i) => (
             <li
               key={i}
               className="flex items-start gap-3 rounded-xl border border-border bg-background p-3"

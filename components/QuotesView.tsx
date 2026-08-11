@@ -6,10 +6,10 @@ import {
   QUOTES,
   CATEGORIES,
   categoryMeta,
-  quoteOfDay,
   type CategoryId,
   type Quote,
 } from "@/lib/quotes";
+import { shuffled, picked, branch } from "@/lib/rotate";
 
 function CatChip({ id }: { id: CategoryId }) {
   const m = categoryMeta(id);
@@ -48,7 +48,9 @@ export default function QuotesView({ seed }: { seed: number }) {
   const [cat, setCat] = useState<CategoryId | "all">("all");
   const [shuffle, setShuffle] = useState(0);
 
-  const qod = useMemo(() => quoteOfDay(seed), [seed]);
+  // `seed` vient du serveur et change à chaque visite : la citation mise en
+  // avant et l'ordre de la liste ne sont jamais deux fois les mêmes.
+  const qod = useMemo(() => picked(QUOTES, branch(seed, "vedette")), [seed]);
 
   // Combien de citations par catégorie (pour n'afficher que les filtres utiles).
   const counts = useMemo(() => {
@@ -59,20 +61,15 @@ export default function QuotesView({ seed }: { seed: number }) {
 
   const filtered = useMemo(() => {
     const term = search.trim().toLowerCase();
-    let list = QUOTES.filter((q) => {
+    const list = QUOTES.filter((q) => {
       if (cat !== "all" && q.c !== cat) return false;
       if (term && !q.t.toLowerCase().includes(term)) return false;
       return true;
     });
-    if (shuffle > 0) {
-      list = [...list];
-      for (let i = list.length - 1; i > 0; i--) {
-        const j = Math.floor(Math.random() * (i + 1));
-        [list[i], list[j]] = [list[j], list[i]];
-      }
-    }
-    return list;
-  }, [search, cat, shuffle]);
+    // Mélangé d'office, avec la graine de la visite : l'ordre est déjà neuf en
+    // arrivant. Le bouton ne fait que redonner un tour de plus.
+    return shuffled(list, branch(seed, `liste:${shuffle}`));
+  }, [search, cat, shuffle, seed]);
 
   return (
     <main className="px-4 pb-12 pt-6">
@@ -97,7 +94,7 @@ export default function QuotesView({ seed }: { seed: number }) {
         }}
       >
         <p className="mb-3 text-[10px] font-semibold uppercase tracking-[0.28em] text-white/50">
-          Citation du jour
+          La citation de cette visite
         </p>
         <blockquote className="font-display text-[22px] font-bold leading-tight text-white">
           « {qod.t} »

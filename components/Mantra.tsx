@@ -1,17 +1,62 @@
 import { Hand, Eye } from "lucide-react";
-import { INTERROGATION, SI_TU_CEDES } from "@/lib/sting";
-import { BINARY_CORE, BINARY_FRAME_EN } from "@/lib/binary";
+import { INTERROGATION, SI_TU_CEDES, DECLARATIONS } from "@/lib/sting";
+import { BINARY, BINARY_FRAME_EN } from "@/lib/binary";
+import { QUOTES, categoryMeta } from "@/lib/quotes";
+import { DELAYED } from "@/lib/delayed";
+import { MANTRA_LINES } from "@/lib/mantra-lines";
+import { sampled, picked, branch, visitSeed } from "@/lib/rotate";
 
 // The mantra. Shown at the TOP and BOTTOM of EVERY page (rendered in the app
 // layout): a spiritual crown, two verses (main / yeux — each a warning + a
 // decree), and the provision decree (Dieu est ma source). `placement` only
 // tunes the vertical spacing.
+//
+// La charpente ne bouge jamais — c'est le mur porteur, il doit être reconnu
+// d'un coup d'œil. Mais TOUT ce qui est une liste à l'intérieur est retiré au
+// sort à chaque visite : les questions de l'interrogatoire, ce qu'il devient
+// s'il cède, les questions binaires, les lignes anglaises, et un bloc entier
+// qui ne vient que de la rotation. Un texte relu à l'identique dix fois par
+// jour n'est plus lu au bout d'une semaine : l'œil le reconnaît et saute.
+//
+// Composant serveur : le tirage a lieu ici, à chaque requête. Les deux mantras
+// d'une même page reçoivent des graines différentes, donc le haut et le bas ne
+// disent jamais la même chose.
 export default function Mantra({
   placement = "bottom",
+  seed,
 }: {
   placement?: "top" | "bottom";
+  seed?: number;
 }) {
   const spacing = placement === "top" ? "mb-6 mt-3" : "mt-10 pb-2";
+  const s = seed ?? visitSeed();
+
+  const cedes = sampled(SI_TU_CEDES, branch(s, "cedes"), 6);
+  const marteau = picked(
+    [
+      "Tu n'es pas un roi. Tu es un chien qui rêve d'être roi.",
+      "Un empereur en pensée, un esclave en pratique.",
+      "A dog with a dream is still a dog.",
+    ],
+    branch(s, "marteau"),
+  );
+  const binaire = sampled(BINARY, branch(s, "binaire"), 4);
+  const feu = sampled(
+    [
+      "God kept His word. Now keep yours.",
+      "A dog with a dream is still a dog.",
+      "Ten years. Zero receipts.",
+      "You'll either be the story or the audience.",
+      "Nobody is coming. That's the whole point.",
+      ...QUOTES.filter((q) => q.c === "fire" || q.c === "puissance").map((q) => q.t),
+    ],
+    branch(s, "feu"),
+    5,
+  );
+  const citation = picked(QUOTES, branch(s, "cit"));
+  const retard = picked(DELAYED, branch(s, "retard"));
+  const phrase = picked(MANTRA_LINES, branch(s, "phrase"));
+  const declaration = picked(DECLARATIONS, branch(s, "decl"));
   return (
     <aside className={`mx-auto max-w-3xl px-4 ${spacing}`}>
       <p className="mb-2.5 text-center text-[10px] font-semibold uppercase tracking-[0.3em] text-text-muted">
@@ -38,6 +83,54 @@ export default function Mantra({
         >
           Dieu me l&apos;a dit : si je ne gaspille pas mon énergie, tout ce que
           je conçois se réalisera.
+        </p>
+      </div>
+
+      {/* LA ROTATION — le seul bloc qui n'est jamais deux fois le même. Il
+          puise dans les 2 086 citations, les 351 retards, les phrases du
+          mantra et les déclarations. C'est lui qui empêche l'œil de s'habituer
+          au reste : tant qu'il y a du neuf quelque part, la page reste lue. */}
+      <div
+        className="mb-3 overflow-hidden rounded-2xl px-5 py-4"
+        style={{ background: "#1C1917", border: "1.5px solid #44403C" }}
+      >
+        <p className="mb-3 text-center text-[10px] font-semibold uppercase tracking-[0.26em] text-white/40">
+          À chaque visite · jamais deux fois pareil
+        </p>
+
+        <blockquote
+          className="border-l-[3px] pl-3 font-display text-[14px] font-semibold leading-snug text-white"
+          style={{ borderColor: categoryMeta(citation.c).color }}
+        >
+          « {citation.t} »
+        </blockquote>
+        {citation.s && (
+          <p className="mt-1 pl-3 text-[10.5px] text-white/40">{citation.s}</p>
+        )}
+
+        <div className="mt-3.5 border-t border-white/12 pt-3">
+          <p className="text-[9px] font-bold uppercase tracking-[0.22em] text-white/35">
+            Ce que tu retardes
+          </p>
+          <p className="mt-1 text-[12.5px] font-medium leading-snug text-white/85">
+            {retard.t}
+          </p>
+        </div>
+
+        <div className="mt-3 border-t border-white/12 pt-3">
+          <p className="text-[9px] font-bold uppercase tracking-[0.22em] text-white/35">
+            Ta loi
+          </p>
+          <p className="mt-1 text-[12.5px] font-medium leading-snug text-white/85">
+            {phrase}
+          </p>
+        </div>
+
+        <p
+          className="mt-3.5 border-t border-white/12 pt-3 text-center font-display text-[13.5px] font-bold uppercase leading-snug"
+          style={{ color: "var(--gold-border)" }}
+        >
+          {declaration}
         </p>
       </div>
 
@@ -313,7 +406,7 @@ export default function Mantra({
             Et si tu cèdes — voilà ce que tu es, à cet instant
           </p>
           <ul className="flex flex-col gap-1.5">
-            {SI_TU_CEDES.slice(0, -1).map((line) => (
+            {cedes.map((line) => (
               <li key={line} className="flex gap-2">
                 <span
                   className="mt-[7px] h-1 w-1 flex-shrink-0 rounded-full"
@@ -326,7 +419,7 @@ export default function Mantra({
             ))}
           </ul>
           <p className="mt-3 text-center font-display text-[13.5px] font-bold uppercase leading-snug text-white">
-            Tu n&apos;es pas un roi. Tu es un chien qui rêve d&apos;être roi.
+            {marteau}
           </p>
         </div>
 
@@ -418,7 +511,7 @@ export default function Mantra({
               {group.step}
             </p>
             <ul className="flex flex-col gap-1.5">
-              {group.lines.map((q) => (
+              {sampled(group.lines, branch(s, `int:${group.step}`), 3).map((q) => (
                 <li key={q} className="flex gap-2.5">
                   <span
                     className="mt-[7px] h-1 w-1 flex-shrink-0 rounded-full"
@@ -530,7 +623,7 @@ export default function Mantra({
         </p>
 
         <ul className="mt-3 flex flex-col gap-2">
-          {BINARY_CORE.map((q) => (
+          {binaire.map((q) => (
             <li key={q.en} className="border-l-2 border-white/20 pl-3">
               <p className="text-[13px] font-bold leading-snug text-white">
                 {q.en}
@@ -553,13 +646,7 @@ export default function Mantra({
         className="mt-3 rounded-2xl px-5 py-6"
         style={{ background: "#000000" }}
       >
-        {[
-          "God kept His word. Now keep yours.",
-          "A dog with a dream is still a dog.",
-          "Ten years. Zero receipts.",
-          "You'll either be the story or the audience.",
-          "Nobody is coming. That's the whole point.",
-        ].map((l, i) => (
+        {feu.map((l, i) => (
           <p
             key={l}
             className="text-center font-display text-[16px] font-bold uppercase leading-tight tracking-wide"

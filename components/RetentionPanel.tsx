@@ -15,13 +15,19 @@ export default function RetentionPanel({
   days,
   startDate,
   daysUntilStart = 1,
+  seed = 0,
 }: {
   days: number;
   startDate: string;
   /** Jours restants avant le Jour 1, quand le départ est dans le futur. */
   daysUntilStart?: number;
+  /** Graine de la visite, tirée côté serveur : l'affirmation affichée en
+   *  arrivant change à chaque fois au lieu d'être toujours la première. */
+  seed?: number;
 }) {
-  const [affIdx, setAffIdx] = useState(0);
+  const [affIdx, setAffIdx] = useState(
+    Math.abs(seed) % RETENTION_AFFIRMATIONS.length,
+  );
   const [confirming, setConfirming] = useState(false);
   const [pending, start] = useTransition();
 

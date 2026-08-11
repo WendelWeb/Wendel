@@ -6,6 +6,7 @@ import { isRestDay } from "@/lib/program";
 import { coreStatus } from "@/lib/core";
 import { todayHaiti, daysBetween, weekdayHaiti } from "@/lib/dates";
 import DelayedView from "@/components/DelayedView";
+import { visitSeed } from "@/lib/rotate";
 
 export const dynamic = "force-dynamic";
 
@@ -25,6 +26,7 @@ export default async function RetardsPage() {
 
   return (
     <DelayedView
+      seed={visitSeed()}
       daysToJan={daysBetween(todayHaiti(), "2027-01-01")}
       daysTo30={daysBetween(todayHaiti(), "2033-05-16")}
       etat={{

@@ -9,14 +9,17 @@ import {
   type DelayedCategory,
 } from "@/lib/delayed";
 import DecisionButton, { type EtatReel } from "./DecisionButton";
+import { shuffled, branch } from "@/lib/rotate";
 
 const PAGE = 120;
 
 export default function DelayedView({
+  seed,
   daysToJan,
   daysTo30,
   etat,
 }: {
+  seed: number;
   daysToJan: number;
   daysTo30: number;
   etat: EtatReel;
@@ -34,20 +37,15 @@ export default function DelayedView({
 
   const filtered = useMemo(() => {
     const term = search.trim().toLowerCase();
-    let list = DELAYED.filter(
+    const list = DELAYED.filter(
       (d) =>
         (cat === "all" || d.c === cat) &&
         (!term || d.t.toLowerCase().includes(term)),
     );
-    if (shuffle > 0) {
-      list = [...list];
-      for (let i = list.length - 1; i > 0; i--) {
-        const j = Math.floor(Math.random() * (i + 1));
-        [list[i], list[j]] = [list[j], list[i]];
-      }
-    }
-    return list;
-  }, [search, cat, shuffle]);
+    // Mélangé dès l'arrivée avec la graine de la visite : sur 351 lignes, il ne
+    // tombera jamais deux fois sur les mêmes en haut de page.
+    return shuffled(list, branch(seed, `liste:${shuffle}`));
+  }, [search, cat, shuffle, seed]);
 
   const shown = filtered.slice(0, limit);
 

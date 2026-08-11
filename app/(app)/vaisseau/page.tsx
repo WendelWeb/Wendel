@@ -10,6 +10,7 @@ import { todayHaiti, daysBetween } from "@/lib/dates";
 import LectureDuJour from "@/components/LectureDuJour";
 import RetentionPanel from "@/components/RetentionPanel";
 import MountainPanel from "@/components/MountainPanel";
+import { visitSeed } from "@/lib/rotate";
 
 export const dynamic = "force-dynamic";
 
@@ -82,6 +83,7 @@ export default async function VaisseauPage() {
           days={ret.days}
           startDate={ret.startDate}
           daysUntilStart={Math.max(1, daysBetween(todayHaiti(), ret.startDate))}
+          seed={visitSeed()}
         />
 
         <MountainPanel
