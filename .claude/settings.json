@@ -10,7 +10,8 @@
       "Bash(curl -s -o /dev/null -w \"status=%{http_code} type=%{content_type} bytes=%{size_download}\\\\n\" \"http://localhost:3000/icon?4fd686b969a553a8\")",
       "Bash(curl -s -o /dev/null -w \"status=%{http_code} type=%{content_type} bytes=%{size_download}\\\\n\" \"http://localhost:3000/apple-icon?0fc1bdb097b01e89\")",
       "Bash(curl -sv \"http://localhost:3000/icon?4fd686b969a553a8\")",
-      "Bash(node scripts/make-icons.mjs)"
+      "Bash(node scripts/make-icons.mjs)",
+      "PowerShell(git rm --cached dev.log -q; if \\(-not \\(Select-String -Path .gitignore -Pattern \"^dev\\\\.log$\" -Quiet -ErrorAction SilentlyContinue\\)\\) { Add-Content .gitignore \"`ndev.log\" -Encoding utf8 }; git add -A; git commit -q -m \"Ne pas versionner dev.log\"; if \\($?\\) { git push -q; if \\($?\\) { \"PUSH OK\" } })"
     ]
   }
 }
