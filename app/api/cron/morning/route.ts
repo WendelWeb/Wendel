@@ -6,7 +6,7 @@ import {
   buildHourlyBrief,
   liturgyContext,
 } from "@/lib/email";
-import { buildPunch, whatsappConfigured } from "@/lib/whatsapp";
+import { buildOffice, whatsappConfigured } from "@/lib/whatsapp";
 import { db } from "@/lib/db";
 import { users } from "@/lib/schema";
 import { haitiHour } from "@/lib/dates";
@@ -58,13 +58,17 @@ async function handle(req: Request) {
     const h = hour ?? haitiHour();
     const brief = await buildHourlyBrief(userId, h);
 
-    // `&channel=whatsapp` montre le coup court tel qu'il partira sur Twilio,
-    // avec sa longueur — WhatsApp coupe à 1 600 caractères.
+    // `&channel=whatsapp` montre les DEUX messages tels qu'ils partiront,
+    // avec leur longueur — WhatsApp coupe à 1 600 caractères.
     if (url.searchParams.get("channel") === "whatsapp") {
       const ctx = await liturgyContext(userId, h);
-      const punch = buildPunch(brief.liturgy, ctx);
+      const max = Number(url.searchParams.get("max") ?? 2);
+      const parts = buildOffice(brief.liturgy, ctx, Number.isFinite(max) ? max : 2);
       return new Response(
-        `${punch}\n\n———\n${punch.length} caractères sur 1500 · Twilio ${whatsappConfigured() ? "configuré" : "PAS ENCORE CONFIGURÉ"}`,
+        parts
+          .map((p, i) => `${p}\n\n${"=".repeat(46)}  ${i + 1}/${parts.length} — ${p.length} car.\n`)
+          .join("\n") +
+          `\nTwilio ${whatsappConfigured() ? "configure" : "PAS CONFIGURE"}`,
         { status: 200, headers: { "content-type": "text/plain; charset=utf-8" } },
       );
     }
@@ -88,10 +92,7 @@ async function handle(req: Request) {
   const channel =
     c === "email" || c === "whatsapp" || c === "both" ? c : undefined;
 
-  // `?full=1` envoie l'office entier sur WhatsApp au lieu du coup court.
-  const whatsappFull = url.searchParams.get("full") === "1";
-
-  const result = await sendHourlyBrief({ force, hour, channel, whatsappFull });
+  const result = await sendHourlyBrief({ force, hour, channel });
   return NextResponse.json(result, { status: result.ok ? 200 : 500 });
 }
 

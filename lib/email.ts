@@ -19,7 +19,7 @@ import {
   type LiturgyContext,
 } from "./liturgy";
 import { renderLiturgy, type Rendered } from "./email-render";
-import { sendWhatsApp, sendWhatsAppLong, buildPunch } from "./whatsapp";
+import { sendWhatsAppTwo } from "./whatsapp";
 
 export function recipients(): string[] {
   return (process.env.MORNING_EMAIL_TO ?? "")
@@ -140,12 +140,6 @@ export async function sendHourlyBrief(opts?: {
   hour?: number;
   /** Par défaut les deux : l'office par email, le coup court sur WhatsApp. */
   channel?: "email" | "whatsapp" | "both";
-  /**
-   * Envoyer l'office ENTIER sur WhatsApp, découpé en messages numérotés, au
-   * lieu du coup court. Une messe part alors en quatorze messages — utile pour
-   * lire hors de sa boîte mail, lourd en notifications.
-   */
-  whatsappFull?: boolean;
 }): Promise<SendResult> {
   const hour = opts?.hour ?? haitiHour();
   const to = recipients();
@@ -181,14 +175,11 @@ export async function sendHourlyBrief(opts?: {
 
   // Le coup court part d'abord : il ne coûte presque rien, et si l'email
   // échoue on veut quand même que le rappel soit arrivé quelque part.
+  // Deux messages, jamais plus : quatorze notifications d'affilée, on les
+  // subit, on ne les lit pas. L'office entier reste dans l'email.
   let wa: SendResult["whatsapp"];
   if (canal !== "email") {
-    const r = opts?.whatsappFull
-      ? await sendWhatsAppLong(
-          brief.text,
-          `FORGED · ${String(hour).padStart(2, "0")}h — ${brief.liturgy.name}`,
-        )
-      : await sendWhatsApp(buildPunch(brief.liturgy, ctx));
+    const r = await sendWhatsAppTwo(brief.liturgy, ctx);
     wa = { sent: r.sent, to: r.to, skipped: r.skipped, error: r.error };
   }
 
