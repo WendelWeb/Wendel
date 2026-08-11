@@ -6,8 +6,9 @@ import { users } from "./schema";
 import { getLogByDate, getStreak } from "./daily";
 import { getRetention } from "./retention";
 import { getProgram } from "./programs";
+import { getPlan } from "./plans";
 import { isRestDay, gymSessionLabel } from "./program";
-import { activeCoreIds, coreStatus } from "./core";
+import { planCoreStatus, planLabels } from "./plan";
 import { ITEM_LABEL } from "./verdict";
 import { todayHaiti, weekday, haitiHour } from "./dates";
 import {
@@ -68,20 +69,26 @@ export async function liturgyContext(
   hour: number,
 ): Promise<LiturgyContext> {
   const today = todayHaiti();
-  const [log, streak, ret, program] = await Promise.all([
+  const [log, streak, ret, program, plan] = await Promise.all([
     getLogByDate(userId, today),
     getStreak(userId),
     getRetention(userId),
     getProgram(userId),
+    getPlan(userId),
   ]);
 
   const jour = weekday(today);
   const rest = isRestDay(program, jour);
-  const core = coreStatus(log?.completedItems, rest);
+  // Le noyau vient de SON plan : s'il l'a modifié dans les réglages, l'email
+  // lui parle de la journée qu'il s'est réellement fixée, pas d'une autre.
+  const core = planCoreStatus(plan, log?.completedItems, rest);
+  const libelles = planLabels(plan);
   const { toJan, to30 } = deadlines(today);
 
   const label = (id: string) =>
-    id === "gym" ? gymSessionLabel(program, jour) : (ITEM_LABEL[id] ?? id);
+    id === "gym"
+      ? gymSessionLabel(program, jour)
+      : (libelles[id] ?? ITEM_LABEL[id] ?? id);
 
   return {
     date: today,

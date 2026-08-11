@@ -7,19 +7,34 @@ import { summarizeStreak, type DayStatus } from "./streak";
 import { todayHaiti, weekdayHaiti, weekday } from "./dates";
 import { lectureProgress, LECTURE_ITEM_ID } from "./lecture";
 import { videoTarget } from "./video-counters";
-import { CHECKLIST_IDS, activeChecklistIds } from "./checklist";
+import { CHECKLIST_IDS } from "./checklist";
 import { RULE_IDS } from "./rules";
 import { getProgram } from "./programs";
+import { getPlan } from "./plans";
 import { isRestDay } from "./program";
-import { coreStatus } from "./core";
+import { orderedObjectives, planRules, planCoreStatus } from "./plan";
 
 const ALL_ITEM_IDS = [...CHECKLIST_IDS, ...RULE_IDS];
 
-/** The checklist ids that count today, given the user's program — a total-rest
- *  day drops course + muscu so the day can still reach 100%. */
+/**
+ * Les objectifs qui comptent aujourd'hui, d'après SON plan — un jour de repos
+ * total retire course et muscu pour que la journée puisse encore atteindre
+ * 100%. Le plan étant éditable dans les réglages, tout ce qui dépend du score
+ * ou de la série doit passer par ici, jamais par la liste écrite en dur.
+ */
 async function activeChecklistIdsToday(userId: string): Promise<string[]> {
-  const program = await getProgram(userId);
-  return activeChecklistIds(isRestDay(program, weekdayHaiti()));
+  const [program, plan] = await Promise.all([
+    getProgram(userId),
+    getPlan(userId),
+  ]);
+  const rest = isRestDay(program, weekdayHaiti());
+  return orderedObjectives(plan, rest).map((i) => i.id);
+}
+
+/** Les règles de son plan — le second terme du dénominateur du score. */
+async function ruleIdsToday(userId: string): Promise<string[]> {
+  const plan = await getPlan(userId);
+  return planRules(plan).map((r) => r.id);
 }
 
 /** Fetch a single day's log (or null). */
@@ -99,7 +114,7 @@ export async function getLogsInRange(
  * from the required core.
  */
 async function getDayStatuses(userId: string): Promise<DayStatus[]> {
-  const [rows, program] = await Promise.all([
+  const [rows, program, plan] = await Promise.all([
     db
       .select({
         date: dailyLogs.date,
@@ -108,11 +123,15 @@ async function getDayStatuses(userId: string): Promise<DayStatus[]> {
       .from(dailyLogs)
       .where(eq(dailyLogs.userId, userId)),
     getProgram(userId),
+    getPlan(userId),
   ]);
   return rows.map((r) => ({
     date: r.date,
-    passed: coreStatus(r.completedItems, isRestDay(program, weekday(r.date)))
-      .complete,
+    passed: planCoreStatus(
+      plan,
+      r.completedItems,
+      isRestDay(program, weekday(r.date)),
+    ).complete,
   }));
 }
 
@@ -221,7 +240,7 @@ export async function setItemState(
   if (state === "done") completed[itemId] = true;
   else if (state === "failed") failed[itemId] = true;
 
-  const score = computeScore(completed, await activeChecklistIdsToday(userId));
+  const score = computeScore(completed, await activeChecklistIdsToday(userId), await ruleIdsToday(userId));
 
   await db
     .update(dailyLogs)
@@ -274,7 +293,7 @@ export async function markChapterRead(
   const justCompleted = done && !completed[LECTURE_ITEM_ID];
   if (justCompleted) {
     completed[LECTURE_ITEM_ID] = true;
-    const s = computeScore(completed, await activeChecklistIdsToday(userId));
+    const s = computeScore(completed, await activeChecklistIdsToday(userId), await ruleIdsToday(userId));
     score = s.percent;
     totalItems = s.total;
   }
@@ -313,7 +332,7 @@ export async function validateDay(
     }
   }
 
-  const score = computeScore(completed, active);
+  const score = computeScore(completed, active, await ruleIdsToday(userId));
   await db
     .update(dailyLogs)
     .set({
@@ -354,7 +373,7 @@ export async function setCounter(
     delete completed[itemId];
   }
 
-  const score = computeScore(completed, await activeChecklistIdsToday(userId));
+  const score = computeScore(completed, await activeChecklistIdsToday(userId), await ruleIdsToday(userId));
   await db
     .update(dailyLogs)
     .set({

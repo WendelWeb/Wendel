@@ -4,12 +4,13 @@ import { useMemo, useState, useTransition } from "react";
 import Link from "next/link";
 import { LogOut, ChevronDown, List, Check, ClipboardCheck } from "lucide-react";
 import {
-  CHECKLIST_ORDERED,
-  activeChecklistIds,
-  TRAINING_ONLY_IDS,
-} from "@/lib/checklist";
-import { coreStatus, isCore } from "@/lib/core";
-import { ABSOLUTE_RULES, RULE_IDS } from "@/lib/rules";
+  orderedObjectives,
+  planRules,
+  planCoreIds,
+  planCoreStatus,
+  planLabels,
+  type Plan,
+} from "@/lib/plan";
 import { computeScore, scoreColorVar, type ItemState } from "@/lib/scoring";
 import { randomStoppPhrase } from "@/lib/stopp";
 import { buildVerdict, ITEM_LABEL } from "@/lib/verdict";
@@ -64,6 +65,7 @@ export default function TodayView({
   restDay,
   gymLabel,
   daysToJan,
+  plan,
 }: {
   initialCompleted: BoolMap;
   initialFailed: BoolMap;
@@ -77,12 +79,18 @@ export default function TodayView({
   restDay: boolean;
   gymLabel: string;
   daysToJan: number;
+  plan: Plan;
 }) {
-  const activeChecklist = activeChecklistIds(restDay);
-  const activeAllIds = [...activeChecklist, ...RULE_IDS];
-  const items = restDay
-    ? CHECKLIST_ORDERED.filter((i) => !TRAINING_ONLY_IDS.includes(i.id))
-    : CHECKLIST_ORDERED;
+  // Tout vient du plan : les objectifs affichés, les règles, le noyau, le
+  // dénominateur du score. Modifier le plan dans les réglages change la
+  // journée dès le rechargement.
+  const items = orderedObjectives(plan, restDay);
+  const regles = planRules(plan);
+  const activeChecklist = items.map((i) => i.id);
+  const ruleIds = regles.map((r) => r.id);
+  const activeAllIds = [...activeChecklist, ...ruleIds];
+  const coreSet = new Set(planCoreIds(plan, restDay));
+  const planLabel = planLabels(plan);
   const [states, setStates] = useState<StateMap>(() =>
     initStates(initialCompleted, initialFailed),
   );
@@ -97,26 +105,29 @@ export default function TodayView({
   const [, startTransition] = useTransition();
 
   const { score, failedIds } = useMemo(() => {
-    const activeIds = activeChecklistIds(restDay);
-    const activeSet = new Set([...activeIds, ...RULE_IDS]);
+    const activeSet = new Set(activeAllIds);
     const completedMap: BoolMap = {};
     const failed: string[] = [];
     for (const [id, st] of Object.entries(states)) {
       if (st === "done") completedMap[id] = true;
       else if (st === "failed" && activeSet.has(id)) failed.push(id);
     }
-    return { score: computeScore(completedMap, activeIds), failedIds: failed };
-  }, [states, restDay]);
+    return {
+      score: computeScore(completedMap, activeChecklist, ruleIds),
+      failedIds: failed,
+    };
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [states, restDay, activeAllIds.join(",")]);
 
   const core = useMemo(() => {
     const completedMap: BoolMap = {};
     for (const [id, st] of Object.entries(states))
       if (st === "done") completedMap[id] = true;
-    return coreStatus(completedMap, restDay);
-  }, [states, restDay]);
+    return planCoreStatus(plan, completedMap, restDay);
+  }, [states, restDay, plan]);
 
   const labelFor = (id: string) =>
-    id === "gym" ? gymLabel : (ITEM_LABEL[id] ?? id);
+    id === "gym" ? gymLabel : (planLabel[id] ?? ITEM_LABEL[id] ?? id);
 
   const lectureProg = useMemo(
     () => lectureProgress(lectureRead, todayDate),
@@ -345,7 +356,7 @@ export default function TodayView({
                 readCount={lectureProg.readCount}
                 target={LECTURE_TARGET}
                 state={states[item.id] ?? "neutral"}
-                core={isCore(item.id)}
+                core={coreSet.has(item.id)}
                 onSetState={(s) => setItem(item.id, s)}
               />
             ) : isVideoCounter(item.id) ? (
@@ -371,7 +382,7 @@ export default function TodayView({
                 label={item.id === "gym" ? gymLabel : item.label}
                 time={item.time}
                 state={states[item.id] ?? "neutral"}
-                core={isCore(item.id)}
+                core={coreSet.has(item.id)}
                 onSetState={(s) => setItem(item.id, s)}
               />
             ),
@@ -403,17 +414,17 @@ export default function TodayView({
           {rulesOpen && (
             <div className="flex flex-col gap-2">
               <p className="px-1 text-[11px] text-red">
-                {score.rulesCompleted} / {ABSOLUTE_RULES.length} règles
+                {score.rulesCompleted} / {regles.length} règles
                 confirmées. Le ✕ = j&apos;assume avoir brisé cette règle.
               </p>
               <div className="grid-objectives">
-                {ABSOLUTE_RULES.map((rule) => (
+                {regles.map((rule) => (
                   <ChecklistItem
                     key={rule.id}
                     label={rule.label}
                     state={states[rule.id] ?? "neutral"}
                     variant="rule"
-                    core={isCore(rule.id)}
+                    core={coreSet.has(rule.id)}
                     onSetState={(s) => setItem(rule.id, s)}
                   />
                 ))}

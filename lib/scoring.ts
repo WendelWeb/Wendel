@@ -39,11 +39,15 @@ function countTrue(
 export function computeScore(
   completedItems: Record<string, boolean> | null | undefined,
   checklistIds: string[] = CHECKLIST_IDS,
+  // Les règles viennent du plan quand il en a personnalisé un ; sinon ce sont
+  // celles écrites dans le code. Le dénominateur suit toujours le plan réel,
+  // sans quoi une journée ne pourrait jamais atteindre 100%.
+  ruleIds: string[] = RULE_IDS,
 ): ScoreResult {
   const checklistCompleted = countTrue(checklistIds, completedItems);
-  const rulesCompleted = countTrue(RULE_IDS, completedItems);
+  const rulesCompleted = countTrue(ruleIds, completedItems);
   const completed = checklistCompleted + rulesCompleted;
-  const total = checklistIds.length + RULE_IDS.length;
+  const total = checklistIds.length + ruleIds.length;
   const percent = total > 0 ? Math.round((completed / total) * 100) : 0;
   return {
     checklistCompleted,

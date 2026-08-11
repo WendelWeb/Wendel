@@ -1,6 +1,7 @@
 import { requireUserId } from "@/lib/auth";
 import { getOrCreateTodayLog, getStreak } from "@/lib/daily";
 import { getProgram } from "@/lib/programs";
+import { getPlan } from "@/lib/plans";
 import { isRestDay, gymSessionLabel } from "@/lib/program";
 import { todayHaiti, daysBetween, weekdayHaiti } from "@/lib/dates";
 import TodayView from "@/components/TodayView";
@@ -9,10 +10,11 @@ export const dynamic = "force-dynamic";
 
 export default async function TodayPage() {
   const userId = await requireUserId();
-  const [log, streak, program] = await Promise.all([
+  const [log, streak, program, plan] = await Promise.all([
     getOrCreateTodayLog(userId),
     getStreak(userId),
     getProgram(userId),
+    getPlan(userId),
   ]);
 
   const wd = weekdayHaiti();
@@ -32,6 +34,7 @@ export default async function TodayPage() {
       restDay={rest}
       gymLabel={gymSessionLabel(program, wd)}
       daysToJan={daysBetween(todayHaiti(), "2027-01-01")}
+      plan={plan}
     />
   );
 }

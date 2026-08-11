@@ -10,6 +10,7 @@ import {
   unique,
 } from "drizzle-orm/pg-core";
 import type { Program } from "./program";
+import type { Plan } from "./plan";
 
 export const users = pgTable("users", {
   id: uuid("id").defaultRandom().primaryKey(),
@@ -98,6 +99,18 @@ export const programs = pgTable("programs", {
     .notNull()
     .unique(),
   data: jsonb("data").$type<Program>(),
+  updatedAt: timestamp("updated_at").defaultNow(),
+});
+
+// Le plan journalier édité depuis les réglages : objectifs, heures, règles et
+// noyau. Absent = il utilise le plan par défaut, celui écrit dans le code.
+export const plans = pgTable("plans", {
+  id: uuid("id").defaultRandom().primaryKey(),
+  userId: uuid("user_id")
+    .references(() => users.id)
+    .notNull()
+    .unique(),
+  data: jsonb("data").$type<Plan>(),
   updatedAt: timestamp("updated_at").defaultNow(),
 });
 

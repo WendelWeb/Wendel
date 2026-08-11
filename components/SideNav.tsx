@@ -10,6 +10,7 @@ import {
   BookOpen,
   Ship,
   Flame,
+  SlidersHorizontal,
   Landmark,
   Siren,
   Quote,
@@ -31,6 +32,7 @@ const TABS = [
   { href: "/retards", label: "Ce que tu retardes", Icon: Hourglass },
   { href: "/urgence", label: "Urgence", Icon: Siren },
   { href: "/coach", label: "Forge Coach", Icon: Flame },
+  { href: "/reglages", label: "Réglages", Icon: SlidersHorizontal },
 ];
 
 export default function SideNav() {
