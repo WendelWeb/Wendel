@@ -1,0 +1,17 @@
+
+> forged@0.1.0 dev
+> next dev
+
+  ▲ Next.js 14.2.15
+  - Local:        http://localhost:3000
+  - Environments: .env.local
+
+ ✓ Starting...
+ ✓ Ready in 10.5s
+ ○ Compiling /_not-found ...
+ ✓ Compiled /_not-found in 24.3s (475 modules)
+ GET /api/ai/generate/active 404 in 25302ms
+ ✓ Compiled in 162ms (239 modules)
+ GET /api/ai/generate/active 404 in 59ms
+ ○ Compiling /api/cron/morning ...
+ ✓ Compiled /api/cron/morning in 3.1s (451 modules)

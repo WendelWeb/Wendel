@@ -148,7 +148,9 @@ export const CHECKLIST: ChecklistSectionData[] = [
       },
       {
         id: "no_screen",
-        label: "0 écran après 17h30 — coucher 21h00, tel mode avion",
+        // FORGED est la seule exception : la messe du soir se lit sur écran à
+        // 21h. Sans cette clause, lire l'office casserait le noyau chaque soir.
+        label: "0 écran après 17h30 (sauf FORGED) — coucher 21h00, tel mode avion",
         time: "17h30",
       },
     ],
