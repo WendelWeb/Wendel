@@ -19,6 +19,7 @@ import {
   type LiturgyContext,
 } from "./liturgy";
 import { renderLiturgy, type Rendered } from "./email-render";
+import { sendWhatsApp, buildPunch } from "./whatsapp";
 
 export function recipients(): string[] {
   return (process.env.MORNING_EMAIL_TO ?? "")
@@ -126,6 +127,8 @@ export interface SendResult {
   minutes?: number;
   skipped?: string;
   error?: string;
+  /** Le coup court parti sur WhatsApp, quand Twilio est configuré. */
+  whatsapp?: { sent: number; to: string[]; skipped?: string; error?: string };
 }
 
 /**
@@ -135,9 +138,12 @@ export interface SendResult {
 export async function sendHourlyBrief(opts?: {
   force?: boolean;
   hour?: number;
+  /** Par défaut les deux : l'office par email, le coup court sur WhatsApp. */
+  channel?: "email" | "whatsapp" | "both";
 }): Promise<SendResult> {
   const hour = opts?.hour ?? haitiHour();
   const to = recipients();
+  const canal = opts?.channel ?? "both";
 
   if (!opts?.force && !isLiturgyHour(hour)) {
     return { ok: true, sent: 0, to: [], hour, skipped: "hors heures de réveil" };
@@ -149,9 +155,10 @@ export async function sendHourlyBrief(opts?: {
     process.env.RESEND_FROM ??
     "FORGED <onboarding@resend.dev>";
 
-  if (!key)
+  const veutEmail = canal !== "whatsapp";
+  if (veutEmail && !key)
     return { ok: false, sent: 0, to, hour, error: "RESEND_API_KEY manquante" };
-  if (to.length === 0)
+  if (veutEmail && to.length === 0)
     return { ok: false, sent: 0, to, hour, error: "MORNING_EMAIL_TO manquante" };
 
   const rows = await db
@@ -164,7 +171,31 @@ export async function sendHourlyBrief(opts?: {
     return { ok: false, sent: 0, to, hour, error: "utilisateur introuvable" };
 
   const brief = await buildHourlyBrief(userId, hour);
-  const resend = new Resend(key);
+  const ctx = await liturgyContext(userId, hour);
+
+  // Le coup court part d'abord : il ne coûte presque rien, et si l'email
+  // échoue on veut quand même que le rappel soit arrivé quelque part.
+  let wa: SendResult["whatsapp"];
+  if (canal !== "email") {
+    const r = await sendWhatsApp(buildPunch(brief.liturgy, ctx));
+    wa = { sent: r.sent, to: r.to, skipped: r.skipped, error: r.error };
+  }
+
+  if (!veutEmail) {
+    return {
+      ok: true,
+      sent: 0,
+      to: [],
+      hour,
+      kind: brief.liturgy.kind,
+      name: brief.liturgy.name,
+      minutes: brief.liturgy.minutes,
+      skipped: "email non demandé",
+      whatsapp: wa,
+    };
+  }
+
+  const resend = new Resend(key!);
   const { error } = await resend.emails.send({
     from,
     to,
@@ -180,6 +211,7 @@ export async function sendHourlyBrief(opts?: {
       to,
       hour,
       error: String(error.message ?? error),
+      whatsapp: wa,
     };
   return {
     ok: true,
@@ -189,5 +221,6 @@ export async function sendHourlyBrief(opts?: {
     kind: brief.liturgy.kind,
     name: brief.liturgy.name,
     minutes: brief.liturgy.minutes,
+    whatsapp: wa,
   };
 }

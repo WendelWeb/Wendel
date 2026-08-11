@@ -1,6 +1,12 @@
 import { NextResponse } from "next/server";
 import { eq } from "drizzle-orm";
-import { sendHourlyBrief, recipients, buildHourlyBrief } from "@/lib/email";
+import {
+  sendHourlyBrief,
+  recipients,
+  buildHourlyBrief,
+  liturgyContext,
+} from "@/lib/email";
+import { buildPunch, whatsappConfigured } from "@/lib/whatsapp";
 import { db } from "@/lib/db";
 import { users } from "@/lib/schema";
 import { haitiHour } from "@/lib/dates";
@@ -49,7 +55,20 @@ async function handle(req: Request) {
     if (!userId)
       return NextResponse.json({ error: "utilisateur introuvable" }, { status: 500 });
 
-    const brief = await buildHourlyBrief(userId, hour ?? haitiHour());
+    const h = hour ?? haitiHour();
+    const brief = await buildHourlyBrief(userId, h);
+
+    // `&channel=whatsapp` montre le coup court tel qu'il partira sur Twilio,
+    // avec sa longueur — WhatsApp coupe à 1 600 caractères.
+    if (url.searchParams.get("channel") === "whatsapp") {
+      const ctx = await liturgyContext(userId, h);
+      const punch = buildPunch(brief.liturgy, ctx);
+      return new Response(
+        `${punch}\n\n———\n${punch.length} caractères sur 1500 · Twilio ${whatsappConfigured() ? "configuré" : "PAS ENCORE CONFIGURÉ"}`,
+        { status: 200, headers: { "content-type": "text/plain; charset=utf-8" } },
+      );
+    }
+
     const html = url.searchParams.get("html") === "1";
     return new Response(html ? brief.html : brief.text, {
       status: 200,
@@ -64,7 +83,12 @@ async function handle(req: Request) {
     });
   }
 
-  const result = await sendHourlyBrief({ force, hour });
+  // `?channel=whatsapp` pour ne tester que le coup court, `=email` que l'office.
+  const c = url.searchParams.get("channel");
+  const channel =
+    c === "email" || c === "whatsapp" || c === "both" ? c : undefined;
+
+  const result = await sendHourlyBrief({ force, hour, channel });
   return NextResponse.json(result, { status: result.ok ? 200 : 500 });
 }
 
