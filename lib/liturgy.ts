@@ -427,12 +427,17 @@ function mantraWords(): number {
 }
 
 /**
- * L'inspection — posée dans chaque email, avant tout le reste du contenu.
+ * L'inspection — dans les trois messes seulement.
  *
  * Ce n'est pas du ménage : garder sa chambre propre fait partie des consignes
  * reçues sur la montagne, au même titre que le Psaume 24 du soir. Un homme qui
  * ne tient pas les deux mètres carrés autour de lui ne tiendra pas un port.
  * Elle ne se répond pas en pensée : soit c'est rangé, soit il se lève.
+ *
+ * Trois fois par jour suffit, et c'est même mieux : posée toutes les heures,
+ * elle deviendrait une formule qu'on lit sans se lever. Aux messes, elle tombe
+ * aux trois moments où il n'est dans aucun bloc — donc où il peut réellement
+ * se lever et ranger.
  */
 function inspection(): Movement {
   return {
@@ -833,7 +838,6 @@ function buildHeure(c: LiturgyContext): Liturgy {
   const mvts: Movement[] = [];
   mvts.push(mantra("tete"));
   mvts.push(appel(c, false));
-  mvts.push(inspection());
   // À 8h le chapitre est la ration double : deux paragraphes au lieu d'un.
   mvts.push(fragment(c, n, role.accent === "chapitre" ? 2 : 1));
 
