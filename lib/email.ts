@@ -18,6 +18,32 @@ const GOLD = "#f59e0b";
 const RED = "#dc2626";
 const GREEN = "#16a34a";
 
+/**
+ * L'adresse publique de l'app, pour les liens des emails.
+ *
+ * APP_URL d'abord, mais en local il vaut souvent `localhost` ou une IP de LAN
+ * (192.168.x.x) : depuis une boîte mail ces liens ne mènent nulle part. Dans ce
+ * cas on retombe sur le domaine que Vercel fournit tout seul, pour que les
+ * boutons marchent même si la variable a été oubliée ou mal réglée.
+ */
+export function appUrl(): string | null {
+  const prive = /^https?:\/\/(localhost|127\.|0\.0\.0\.0|10\.|192\.168\.|172\.(1[6-9]|2\d|3[01])\.)/i;
+  for (const brut of [process.env.APP_URL, process.env.NEXTAUTH_URL]) {
+    const v = brut?.trim().replace(/\/+$/, "");
+    if (v && /^https?:\/\//i.test(v) && !prive.test(v)) return v;
+  }
+  // Fournis automatiquement par Vercel. Le premier est le domaine stable de
+  // production ; le second change à chaque déploiement mais dépanne toujours.
+  for (const hote of [
+    process.env.VERCEL_PROJECT_PRODUCTION_URL,
+    process.env.VERCEL_URL,
+  ]) {
+    const v = hote?.trim().replace(/\/+$/, "");
+    if (v) return v.startsWith("http") ? v : `https://${v}`;
+  }
+  return null;
+}
+
 export function recipients(): string[] {
   return (process.env.MORNING_EMAIL_TO ?? "")
     .split(",")
@@ -189,8 +215,8 @@ export async function buildHourlyBrief(
      <div style="color:#d4d4d8;font-size:13.5px;line-height:1.55">${esc(p.deep.body)}</div>
      ${p.deep.meta ? `<div style="color:#71717a;font-size:11.5px;margin-top:8px;line-height:1.45">${esc(p.deep.meta)}</div>` : ""}
      ${
-       process.env.APP_URL && p.deep.href
-         ? `<a href="${esc(process.env.APP_URL)}${esc(p.deep.href)}" style="display:inline-block;color:${GOLD};text-decoration:none;font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:.8px;margin-top:11px">Ouvrir dans l'app →</a>`
+       appUrl() && p.deep.href
+         ? `<a href="${esc(appUrl()!)}${esc(p.deep.href)}" style="display:inline-block;color:${GOLD};text-decoration:none;font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:.8px;margin-top:11px">Ouvrir dans l'app →</a>`
          : ""
      }`,
     "#1a1a1d",
@@ -217,12 +243,12 @@ export async function buildHourlyBrief(
   <!-- CTA -->
   <tr><td style="padding:6px 24px 24px">
     ${
-      process.env.APP_URL
-        ? `<a href="${esc(process.env.APP_URL)}/today" style="display:block;background:${GOLD};color:#111;text-decoration:none;font-size:15px;font-weight:800;text-transform:uppercase;letter-spacing:.6px;padding:16px;border-radius:12px;text-align:center">Ouvre FORGED et lis</a>
+      appUrl()
+        ? `<a href="${esc(appUrl()!)}/today" style="display:block;background:${GOLD};color:#111;text-decoration:none;font-size:15px;font-weight:800;text-transform:uppercase;letter-spacing:.6px;padding:16px;border-radius:12px;text-align:center">Ouvre FORGED et lis</a>
            <div style="color:#71717a;font-size:11.5px;text-align:center;margin-top:10px;line-height:1.5">
-             Relis ta <a href="${esc(process.env.APP_URL)}/vision" style="color:${GOLD};text-decoration:none">Vision</a> et ton POURQUOI ·
-             ton <a href="${esc(process.env.APP_URL)}/carnet" style="color:${GOLD};text-decoration:none">Carnet</a> ·
-             tes <a href="${esc(process.env.APP_URL)}/quotes" style="color:${GOLD};text-decoration:none">Citations</a>
+             Relis ta <a href="${esc(appUrl()!)}/vision" style="color:${GOLD};text-decoration:none">Vision</a> et ton POURQUOI ·
+             ton <a href="${esc(appUrl()!)}/carnet" style="color:${GOLD};text-decoration:none">Carnet</a> ·
+             tes <a href="${esc(appUrl()!)}/quotes" style="color:${GOLD};text-decoration:none">Citations</a>
            </div>`
         : ""
     }
@@ -263,7 +289,7 @@ export async function buildHourlyBrief(
     ``,
     `À DÉCLARER : ${p.declaration}`,
     ``,
-    process.env.APP_URL ? `Ouvre FORGED : ${process.env.APP_URL}/today` : ``,
+    appUrl() ? `Ouvre FORGED : ${appUrl()}/today` : ``,
     `Prier sans cesse — cette victoire entrera par la main de Dieu.`,
   ]
     .filter((l) => l !== undefined)
