@@ -88,7 +88,10 @@ async function handle(req: Request) {
   const channel =
     c === "email" || c === "whatsapp" || c === "both" ? c : undefined;
 
-  const result = await sendHourlyBrief({ force, hour, channel });
+  // `?full=1` envoie l'office entier sur WhatsApp au lieu du coup court.
+  const whatsappFull = url.searchParams.get("full") === "1";
+
+  const result = await sendHourlyBrief({ force, hour, channel, whatsappFull });
   return NextResponse.json(result, { status: result.ok ? 200 : 500 });
 }
 

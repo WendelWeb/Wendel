@@ -28,7 +28,10 @@
       "PowerShell($p=\"lib/daily.ts\"; $t=[IO.File]::ReadAllText\\($p\\); $t=$t -replace 'computeScore\\\\\\(completed, await activeChecklistIdsToday\\\\\\(userId\\\\\\)\\\\\\)','computeScore\\(completed, await activeChecklistIdsToday\\(userId\\), await ruleIdsToday\\(userId\\)\\)' -replace 'computeScore\\\\\\(completed, active\\\\\\)','computeScore\\(completed, active, await ruleIdsToday\\(userId\\)\\)'; [IO.File]::WriteAllText\\($p,$t\\); npx tsc --noEmit 2>&1 | Select-Object -First 20)",
       "PowerShell(\"=== BottomNav \\(feuille Plus\\) ===\"; Select-String -Path \"components/BottomNav.tsx\" -Pattern \"href:|label:\" | ForEach-Object { \"  $\\($_.LineNumber\\): $\\(\\($_.Line -replace '\\\\s+',' '\\).Trim\\(\\)\\)\" }; \"\"; \"=== SideNav ===\"; Select-String -Path \"components/SideNav.tsx\" -Pattern \"href:|label:\" | ForEach-Object { \"  $\\($_.LineNumber\\): $\\(\\($_.Line -replace '\\\\s+',' '\\).Trim\\(\\)\\)\" })",
       "PowerShell(Select-String -Path \"components/SideNav.tsx\" -Pattern \"SlidersHorizontal|reglages\" | ForEach-Object { \"$\\($_.LineNumber\\): $\\(\\($_.Line -replace '\\\\s+',' '\\).Trim\\(\\)\\)\" }; \"\"; npm test --silent 2>&1 | Select-Object -Last 20)",
-      "PowerShell(node \"C:/Users/stanl/AppData/Local/Temp/claude/c--Users-stanl-Desktop-Personal-Projects-forged/8739f4a4-d01b-4e7d-b855-7be3d16611a0/scratchpad/test-plan-e2e.js\")"
+      "PowerShell(node \"C:/Users/stanl/AppData/Local/Temp/claude/c--Users-stanl-Desktop-Personal-Projects-forged/8739f4a4-d01b-4e7d-b855-7be3d16611a0/scratchpad/test-plan-e2e.js\")",
+      "PowerShell(node \"C:/Users/stanl/AppData/Local/Temp/claude/c--Users-stanl-Desktop-Personal-Projects-forged/8739f4a4-d01b-4e7d-b855-7be3d16611a0/scratchpad/twilio-setup.js\")",
+      "PowerShell(node \"C:/Users/stanl/AppData/Local/Temp/claude/c--Users-stanl-Desktop-Personal-Projects-forged/8739f4a4-d01b-4e7d-b855-7be3d16611a0/scratchpad/twilio-envoi.js\")",
+      "PowerShell(node \"C:/Users/stanl/AppData/Local/Temp/claude/c--Users-stanl-Desktop-Personal-Projects-forged/8739f4a4-d01b-4e7d-b855-7be3d16611a0/scratchpad/wa-office.js\")"
     ]
   }
 }
