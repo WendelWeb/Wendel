@@ -11,17 +11,42 @@ on:
 jobs:
   envoyer:
     runs-on: ubuntu-latest
+    env:
+      APP_URL: ${{ secrets.APP_URL }}
+      CRON_SECRET: ${{ secrets.CRON_SECRET }}
     steps:
-      - name: Appeler l'endpoint
+      # Tant que l'app n'est pas déployée, on sort proprement au lieu d'échouer :
+      # sinon GitHub envoie un mail d'échec toutes les heures.
+      - name: Vérifier la configuration
+        id: config
         run: |
-          if [ -z "${{ secrets.APP_URL }}" ] || [ -z "${{ secrets.CRON_SECRET }}" ]; then
-            echo "APP_URL ou CRON_SECRET manquant dans les secrets du dépôt."
+          if [ -z "$APP_URL" ] || [ -z "$CRON_SECRET" ]; then
+            echo "::warning::APP_URL ou CRON_SECRET absent des secrets du dépôt — rien à appeler, job ignoré."
+            echo "pret=non" >> "$GITHUB_OUTPUT"
+          else
+            echo "pret=oui" >> "$GITHUB_OUTPUT"
+          fi
+
+      - name: Appeler l'endpoint
+        if: steps.config.outputs.pret == 'oui'
+        run: |
+          # --max-time couvre le démarrage à froid d'une fonction serverless.
+          # Une seule relance : si l'app est vraiment tombée, on veut le savoir.
+          appel() {
+            curl -sS -o reponse.txt -w "%{http_code}" --max-time 60 \
+              -H "Authorization: Bearer $CRON_SECRET" \
+              "${APP_URL%/}/api/cron/morning" || echo "000"
+          }
+          code=$(appel)
+          if [ "$code" != "200" ]; then
+            echo "Première tentative : HTTP $code — nouvelle tentative dans 20 s."
+            sleep 20
+            code=$(appel)
+          fi
+          echo "HTTP $code"
+          cat reponse.txt || true
+          echo
+          if [ "$code" != "200" ]; then
+            echo "::error::L'endpoint n'a pas répondu 200 (code $code)."
             exit 1
           fi
-          code=$(curl -sS -o response.json -w "%{http_code}" \
-            -H "Authorization: Bearer ${{ secrets.CRON_SECRET }}" \
-            "${{ secrets.APP_URL }}/api/cron/morning")
-          echo "HTTP $code"
-          cat response.json
-          echo
-          if [ "$code" != "200" ]; then exit 1; fi
