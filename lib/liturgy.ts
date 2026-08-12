@@ -46,6 +46,9 @@ import {
   MIROIR_THESE,
   MIROIR_SORTIE,
 } from "./miroir";
+import { MIROIR_RETOURNE } from "./miroir-plus";
+import { MIROIR_EN, MIROIR_EN_THESE, MIROIR_EN_SORTIE } from "./miroir-en";
+import { MIROIR_HT, MIROIR_HT_THESE, MIROIR_HT_SORTIE } from "./miroir-ht";
 import {
   ACCOMPLISSEMENTS,
   PROMESSES,
@@ -1075,21 +1078,95 @@ function subject(c: LiturgyContext, name: string, messe: boolean): string {
  * Le code des offices précédents n'est pas supprimé : il suffit de rappeler
  * buildMesse / buildHeure pour le retrouver intact.
  */
-function buildMiroirOffice(c: LiturgyContext): Liturgy {
+export type Langue = "en" | "fr" | "ht";
+
+/** L'ordre de son manifeste quotidien : anglais, français, créole. */
+export const LANGUES: Langue[] = ["en", "fr", "ht"];
+
+const TEXTES: Record<
+  Langue,
+  {
+    nom: string;
+    blocs: typeof MIROIR;
+    these: string;
+    sortie: string;
+    titre: string;
+    intent: string;
+    sujet: (h: string, d: number, f: number, t: number) => string;
+    sortieLabel: string;
+    sortieNote: string;
+    lire: string;
+  }
+> = {
+  en: {
+    nom: "English",
+    blocs: MIROIR_EN,
+    these: MIROIR_EN_THESE,
+    sortie: MIROIR_EN_SORTIE,
+    titre: "The mirror — what I am right now",
+    intent: "What you are, right now. Nothing else.",
+    sujet: (h, d, f, t) => `${h} · The mirror — core ${f}/${t} · D−${d}`,
+    sortieLabel: "The way out",
+    sortieNote: "The only door this leaves open.",
+    lire: "Read it all out loud. If people are around, step aside.",
+  },
+  fr: {
+    nom: "Français",
+    blocs: [...MIROIR, ...MIROIR_RETOURNE],
+    these: MIROIR_THESE,
+    sortie: MIROIR_SORTIE,
+    titre: "Le miroir — ce que je suis maintenant",
+    intent: "Ce que tu es, maintenant. Rien d'autre.",
+    sujet: (h, d, f, t) => `${h} · Le miroir — noyau ${f}/${t} · J−${d}`,
+    sortieLabel: "La sortie",
+    sortieNote: "La seule porte que ce constat laisse ouverte.",
+    lire: "Lis tout à voix haute. Si tu es entouré, mets-toi à part.",
+  },
+  ht: {
+    nom: "Kreyòl",
+    blocs: MIROIR_HT,
+    these: MIROIR_HT_THESE,
+    sortie: MIROIR_HT_SORTIE,
+    titre: "Miwa a — sa mwen ye kounye a",
+    intent: "Sa ou ye, kounye a. Anyen lòt.",
+    sujet: (h, d, f, t) => `${h} · Miwa a — nwayo ${f}/${t} · J−${d}`,
+    sortieLabel: "Pòt sòti a",
+    sortieNote: "Sèl pòt konsta sa a kite louvri.",
+    lire: "Li tout bagay awotvwa. Si gen moun bò kote w, met ou apa.",
+  },
+};
+
+/**
+ * L'office du miroir — le seul contenu, désormais, et dans les trois langues.
+ *
+ * Tout ce que portaient les anciens emails (le chapitre, les répétitions, le
+ * carnet, la vision, les citations) a été mis de côté à sa demande : il ne les
+ * lisait pas, et c'était même une ligne de son propre constat. Reste ce qu'il a
+ * écrit sur lui-même, en entier — sans tirage au sort, sans extrait.
+ *
+ * Trois envois par créneau, dans l'ordre de son manifeste quotidien : anglais,
+ * français, créole. La même chose trois fois, dans trois langues : c'est déjà
+ * son rituel du matin et du soir, appliqué au constat.
+ *
+ * Le code des offices précédents reste intact — buildLiturgyComplete().
+ */
+function buildMiroirOffice(c: LiturgyContext, langue: Langue = "fr"): Liturgy {
   const messe = isMesse(c.hour);
   const role = messe ? MESSES[c.hour] : (ROLES[c.hour] ?? { name: "L'heure", intent: "", accent: "verdict" as Accent });
+  const T = TEXTES[langue];
+  const h = `${String(c.hour).padStart(2, "0")}h`;
 
   const mvts: Movement[] = [
     appel(c, messe),
     {
       kind: "miroir",
-      label: "Le miroir — l'état réel",
-      note: MIROIR_THESE,
+      label: T.titre,
+      note: T.these,
       times: 1,
       items: [],
     },
-    // Un mouvement par bloc : dix-sept, dans l'ordre où il les a dictés.
-    ...MIROIR.map(
+    // Un mouvement par bloc, dans l'ordre où il les a dictés.
+    ...T.blocs.map(
       (b): Movement => ({
         kind: "miroir",
         label: b.titre,
@@ -1099,10 +1176,10 @@ function buildMiroirOffice(c: LiturgyContext): Liturgy {
     ),
     {
       kind: "declaration",
-      label: "La sortie",
-      note: "La seule porte que ce constat laisse ouverte.",
+      label: T.sortieLabel,
+      note: T.sortieNote,
       times: 1,
-      items: [MIROIR_SORTIE],
+      items: [T.sortie],
     },
   ];
 
@@ -1110,9 +1187,9 @@ function buildMiroirOffice(c: LiturgyContext): Liturgy {
   return {
     kind: messe ? "messe" : "heure",
     hour: c.hour,
-    name: role.name,
-    intent: "Ce que tu es, maintenant. Rien d'autre.",
-    subject: `${String(c.hour).padStart(2, "0")}h · Le miroir — noyau ${c.coreDone}/${c.coreTotal} · J−${c.daysToJan}`,
+    name: `${role.name} · ${T.nom}`,
+    intent: T.intent,
+    subject: T.sujet(h, c.daysToJan, c.coreDone, c.coreTotal),
     movements: mvts,
     words: w,
     minutes: Math.round((w / MPM) * 10) / 10,
@@ -1120,9 +1197,9 @@ function buildMiroirOffice(c: LiturgyContext): Liturgy {
   };
 }
 
-/** L'office de cette heure-là. */
-export function buildLiturgy(c: LiturgyContext): Liturgy {
-  return buildMiroirOffice(c);
+/** L'office de cette heure-là, dans la langue demandée. */
+export function buildLiturgy(c: LiturgyContext, langue: Langue = "fr"): Liturgy {
+  return buildMiroirOffice(c, langue);
 }
 
 /** Les anciens offices, gardés intacts si un jour il les redemande. */

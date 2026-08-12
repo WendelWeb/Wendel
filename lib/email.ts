@@ -17,6 +17,8 @@ import {
   isLiturgyHour,
   type Liturgy,
   type LiturgyContext,
+  LANGUES,
+  type Langue,
 } from "./liturgy";
 import { renderLiturgy, type Rendered } from "./email-render";
 import { sendWhatsAppTwo } from "./whatsapp";
@@ -106,13 +108,14 @@ export async function liturgyContext(
   };
 }
 
-/** L'office de cette heure-là, prêt à partir. */
+/** L'office de cette heure-là, dans une langue, prêt à partir. */
 export async function buildHourlyBrief(
   userId: string,
   hour: number,
+  langue: Langue = "fr",
 ): Promise<Brief & { liturgy: Liturgy }> {
   const ctx = await liturgyContext(userId, hour);
-  const lit = buildLiturgy(ctx);
+  const lit = buildLiturgy(ctx, langue);
   const rendu: Rendered = renderLiturgy(lit, ctx, appUrl());
   return { ...rendu, liturgy: lit };
 }
@@ -140,6 +143,8 @@ export async function sendHourlyBrief(opts?: {
   hour?: number;
   /** Par défaut les deux : l'office par email, le coup court sur WhatsApp. */
   channel?: "email" | "whatsapp" | "both";
+  /** Les langues a envoyer. Par defaut les trois. */
+  langues?: Langue[];
 }): Promise<SendResult> {
   const hour = opts?.hour ?? haitiHour();
   const to = recipients();
@@ -170,59 +175,76 @@ export async function sendHourlyBrief(opts?: {
   if (!userId)
     return { ok: false, sent: 0, to, hour, error: "utilisateur introuvable" };
 
-  const brief = await buildHourlyBrief(userId, hour);
   const ctx = await liturgyContext(userId, hour);
 
-  // Le coup court part d'abord : il ne coûte presque rien, et si l'email
-  // échoue on veut quand même que le rappel soit arrivé quelque part.
-  // Deux messages, jamais plus : quatorze notifications d'affilée, on les
-  // subit, on ne les lit pas. L'office entier reste dans l'email.
+  // Trois offices par créneau, dans l'ordre de son manifeste quotidien :
+  // anglais, français, créole. La même chose trois fois, dans trois langues.
+  const langues = opts?.langues ?? LANGUES;
+  const briefs = await Promise.all(
+    langues.map((l) => buildHourlyBrief(userId, hour, l)),
+  );
+
+  // Le français part sur WhatsApp — deux messages, jamais plus. Trois langues
+  // en messages téléphone feraient six notifications par créneau.
   let wa: SendResult["whatsapp"];
   if (canal !== "email") {
-    const r = await sendWhatsAppTwo(brief.liturgy, ctx);
+    const fr = briefs.find((b) => /Français/.test(b.liturgy.name)) ?? briefs[0];
+    const r = await sendWhatsAppTwo(fr.liturgy, ctx);
     wa = { sent: r.sent, to: r.to, skipped: r.skipped, error: r.error };
   }
 
+  const premier = briefs[0];
   if (!veutEmail) {
     return {
       ok: true,
       sent: 0,
       to: [],
       hour,
-      kind: brief.liturgy.kind,
-      name: brief.liturgy.name,
-      minutes: brief.liturgy.minutes,
+      kind: premier.liturgy.kind,
+      name: premier.liturgy.name,
+      minutes: premier.liturgy.minutes,
       skipped: "email non demandé",
       whatsapp: wa,
     };
   }
 
   const resend = new Resend(key!);
-  const { error } = await resend.emails.send({
-    from,
-    to,
-    subject: brief.subject,
-    html: brief.html,
-    text: brief.text,
-  });
+  const erreurs: string[] = [];
+  let envoyes = 0;
 
-  if (error)
+  for (const brief of briefs) {
+    const { error } = await resend.emails.send({
+      from,
+      to,
+      subject: brief.subject,
+      html: brief.html,
+      text: brief.text,
+    });
+    if (error) erreurs.push(String(error.message ?? error));
+    else envoyes++;
+    // Resend limite le débit : on espace un peu les trois envois.
+    if (brief !== briefs[briefs.length - 1])
+      await new Promise((r) => setTimeout(r, 700));
+  }
+
+  if (erreurs.length && envoyes === 0)
     return {
       ok: false,
       sent: 0,
       to,
       hour,
-      error: String(error.message ?? error),
+      error: erreurs.join(" ; "),
       whatsapp: wa,
     };
   return {
     ok: true,
-    sent: to.length,
+    sent: envoyes,
     to,
     hour,
-    kind: brief.liturgy.kind,
-    name: brief.liturgy.name,
-    minutes: brief.liturgy.minutes,
+    kind: premier.liturgy.kind,
+    name: `${envoyes} langues`,
+    minutes: premier.liturgy.minutes,
+    error: erreurs.length ? erreurs.join(" ; ") : undefined,
     whatsapp: wa,
   };
 }

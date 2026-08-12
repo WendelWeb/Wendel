@@ -10,7 +10,7 @@ import { buildOffice, whatsappConfigured } from "@/lib/whatsapp";
 import { db } from "@/lib/db";
 import { users } from "@/lib/schema";
 import { haitiHour } from "@/lib/dates";
-import { isLiturgyHour } from "@/lib/liturgy";
+import { isLiturgyHour, type Langue } from "@/lib/liturgy";
 
 export const runtime = "nodejs";
 export const dynamic = "force-dynamic";
@@ -56,7 +56,9 @@ async function handle(req: Request) {
       return NextResponse.json({ error: "utilisateur introuvable" }, { status: 500 });
 
     const h = hour ?? haitiHour();
-    const brief = await buildHourlyBrief(userId, h);
+    const lg = url.searchParams.get("lang");
+    const langue: Langue = lg === "en" || lg === "ht" ? lg : "fr";
+    const brief = await buildHourlyBrief(userId, h, langue);
 
     // `&channel=whatsapp` montre les DEUX messages tels qu'ils partiront,
     // avec leur longueur — WhatsApp coupe à 1 600 caractères.
