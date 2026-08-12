@@ -164,6 +164,26 @@ export const MIROIR: MiroirBloc[] = [
     ],
   },
   {
+    // L'inversion la plus violente du miroir, et c'est la sienne : ce qu'il
+    // déclare vouloir (accéder aux femmes en tant qu'homme) et ce que l'acte
+    // prouve qu'il veut (regarder un autre homme prendre sa place) sont
+    // exactement contraires. Puis vient le titre — homme de dominion, fils de
+    // Dieu — prononcé dans la même heure, par la même main.
+    id: "porno",
+    titre: "Le porno — ce que l'acte prouve vraiment",
+    lignes: [
+      "Je dis vouloir, en tant qu'homme, avoir accès aux femmes que je veux. Aux plus belles.",
+      "Ce que mes actes prouvent que je veux, c'est autre chose : me branler comme un lâche, une merde, n'importe quoi.",
+      "Regarder un autre homme baiser la femme qui est l'objet de mon désir. Et payer ce spectacle avec mon énergie.",
+      "Ce n'est pas un désir d'homme. C'est un désir de spectateur.",
+      "Je ne prends pas sa place. Je le regarde la prendre, et je paie pour le voir.",
+      "Puis je mets de la musique et je rêve d'être grand. Je m'appelle homme de dominion. Fils de Dieu.",
+      "Un homme de dominion qui vient de regarder un autre homme prendre sa place. La même heure. La même main.",
+      "Voilà la boucle entière : le porno, la main, la musique, la rêverie de grandeur. Et rien au bout.",
+      "Aucune femme que je dis vouloir ne saura jamais que j'existe, parce que je passe le temps qui devrait me construire à en regarder d'autres.",
+    ],
+  },
+  {
     // La rêverie compulsive, et ce qu'elle vole exactement. Ce n'est pas une
     // distraction parmi d'autres : c'est la consommation par avance du résultat
     // qu'il devrait payer. Une fois la scène jouée, la faim est passée.
