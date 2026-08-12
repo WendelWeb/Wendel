@@ -37,6 +37,32 @@ export const MIROIR: MiroirBloc[] = [
     ],
   },
   {
+    // Sa formulation la plus dure, et la plus exacte : l'inaction n'est pas
+    // neutre, c'est une preuve. Chaque seconde sans acte démontre qu'il veut
+    // garder ce qu'il a. Ce bloc renverse tout le reste de l'app — la Vision et
+    // les objectifs disent ce qu'il déclare vouloir ; celui-ci dit ce qu'il
+    // prouve vouloir, et seule la preuve compte.
+    id: "consentement",
+    titre: "Ce que je prouve à chaque seconde",
+    lignes: [
+      "J'accepte mon état actuel. Et à chaque seconde, je le prouve.",
+      "Je prouve que je veux rester cette taille.",
+      "Je prouve que je veux garder ce corps.",
+      "Je prouve que je veux garder ce visage.",
+      "Je prouve que je veux garder ce charisme.",
+      "Je prouve que je veux garder cette voix.",
+      "Je prouve que je veux garder cette vie.",
+      "Je ne prouve jamais vraiment que je veux ce que je dis vouloir.",
+      "Dire n'est pas vouloir. Vouloir se prouve, et la preuve est un acte.",
+      "Ce que je fais est la seule déclaration honnête de ce que je veux. Le reste est du bruit.",
+      "Je n'ai pas à me demander ce que je veux : il suffit de regarder ce que je fais de mes heures.",
+      "Mon emploi du temps réel est ma vraie liste d'objectifs.",
+      "Chaque seconde est un vote. Je vote pour rester le même.",
+      "Ne rien faire n'est pas neutre : c'est signer.",
+      "L'homme que je serai dans un an est déjà en train d'être choisi, seconde par seconde, par ce que je fais maintenant.",
+    ],
+  },
+  {
     id: "preuves",
     titre: "Les preuves — il n'y en a aucune",
     lignes: [
@@ -151,9 +177,12 @@ export const MIROIR: MiroirBloc[] = [
 /** Toutes les lignes à plat. */
 export const MIROIR_LIGNES: string[] = MIROIR.flatMap((b) => b.lignes);
 
-/** L'énoncé qui ouvre le miroir — sa thèse, en une phrase. */
+/**
+ * L'énoncé qui ouvre le miroir. Sa formulation la plus dure : l'écart entre ce
+ * qu'il dit vouloir et ce qu'il prouve vouloir — et seule la preuve compte.
+ */
 export const MIROIR_THESE =
-  "Je ne suis pas une seule des choses que je dis vouloir être. Voilà l'homme réel, à cette heure-ci.";
+  "J'accepte mon état actuel, et à chaque seconde je le prouve. Je ne prouve jamais vraiment que je veux ce que je dis vouloir.";
 
 /**
  * La sortie. Elle n'adoucit rien — c'est sa phrase, et c'est la seule porte
