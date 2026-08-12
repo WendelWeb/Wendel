@@ -1063,8 +1063,70 @@ function subject(c: LiturgyContext, name: string, messe: boolean): string {
   return `${h} · ${name} · noyau ${c.coreDone}/${c.coreTotal} — à voix haute`;
 }
 
+/**
+ * L'office du miroir — le seul contenu, désormais.
+ *
+ * Tout ce que portaient les anciens emails (le chapitre, les répétitions, le
+ * carnet, la vision, les citations) a été mis de côté à sa demande : il ne les
+ * lisait pas, et c'était même une ligne de son propre constat. Reste ce qu'il a
+ * écrit aujourd'hui sur lui-même, en entier — les dix-sept blocs, sans tirage
+ * au sort, sans extrait.
+ *
+ * Le code des offices précédents n'est pas supprimé : il suffit de rappeler
+ * buildMesse / buildHeure pour le retrouver intact.
+ */
+function buildMiroirOffice(c: LiturgyContext): Liturgy {
+  const messe = isMesse(c.hour);
+  const role = messe ? MESSES[c.hour] : (ROLES[c.hour] ?? { name: "L'heure", intent: "", accent: "verdict" as Accent });
+
+  const mvts: Movement[] = [
+    appel(c, messe),
+    {
+      kind: "miroir",
+      label: "Le miroir — l'état réel",
+      note: MIROIR_THESE,
+      times: 1,
+      items: [],
+    },
+    // Un mouvement par bloc : dix-sept, dans l'ordre où il les a dictés.
+    ...MIROIR.map(
+      (b): Movement => ({
+        kind: "miroir",
+        label: b.titre,
+        times: 1,
+        items: b.lignes,
+      }),
+    ),
+    {
+      kind: "declaration",
+      label: "La sortie",
+      note: "La seule porte que ce constat laisse ouverte.",
+      times: 1,
+      items: [MIROIR_SORTIE],
+    },
+  ];
+
+  const w = totalWords(mvts);
+  return {
+    kind: messe ? "messe" : "heure",
+    hour: c.hour,
+    name: role.name,
+    intent: "Ce que tu es, maintenant. Rien d'autre.",
+    subject: `${String(c.hour).padStart(2, "0")}h · Le miroir — noyau ${c.coreDone}/${c.coreTotal} · J−${c.daysToJan}`,
+    movements: mvts,
+    words: w,
+    minutes: Math.round((w / MPM) * 10) / 10,
+    chapter: { n: 0, title: "", book: "" },
+  };
+}
+
 /** L'office de cette heure-là. */
 export function buildLiturgy(c: LiturgyContext): Liturgy {
+  return buildMiroirOffice(c);
+}
+
+/** Les anciens offices, gardés intacts si un jour il les redemande. */
+export function buildLiturgyComplete(c: LiturgyContext): Liturgy {
   return isMesse(c.hour) ? buildMesse(c) : buildHeure(c);
 }
 

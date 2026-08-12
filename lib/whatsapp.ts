@@ -232,23 +232,15 @@ export function buildOffice(
     "",
   ];
 
-  if (mir) {
-    avant.push("*LE MIROIR — l'état réel*");
-    if (mir.note) avant.push(`_${mir.note}_`);
-    avant.push("");
-    for (const l of mir.items.filter((x) => x.trim()).slice(0, 5)) {
-      avant.push(`• ${l}`);
-    }
+  // Le miroir occupe tout : chaque bloc, dans l'ordre, avec son titre. Ce qui
+  // ne rentre pas dans les deux messages est coupé — l'email le porte en entier.
+  const blocs = lit.movements.filter((m) => m.kind === "miroir" && m.items.length);
+  if (mir?.note) avant.push(`_${mir.note}_`, "");
+  for (const b of blocs) {
+    avant.push(`*${b.label}*`);
+    for (const l of b.items) avant.push(`• ${l}`);
     avant.push("");
   }
-
-  avant.push(
-    "*Une main qui se masturbe ne bâtira pas ces choses.*",
-    "*Des yeux qui regardent du porno ne les verront jamais.*",
-    "_Every action has consequences. Chaque action est un échange, et un pacte._",
-    "_Only God and you can stop you. Il n'y a pas de troisième porte._",
-    "",
-  );
 
   const apres: string[] = [];
   const cits = parLabel(/citation/i);
