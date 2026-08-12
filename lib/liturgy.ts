@@ -41,6 +41,12 @@ import {
 } from "./sting";
 import { ALL_STOPP_PHRASES } from "./stopp";
 import {
+  MIROIR,
+  MIROIR_LIGNES,
+  MIROIR_THESE,
+  MIROIR_SORTIE,
+} from "./miroir";
+import {
   ACCOMPLISSEMENTS,
   PROMESSES,
   CORPS_RAPPEL,
@@ -204,6 +210,7 @@ const POURQUOI = (
 
 export type MovementKind =
   | "mantra"
+  | "miroir"
   | "inspection"
   | "appel"
   | "fragment"
@@ -453,6 +460,39 @@ function inspection(): Movement {
       "Un homme qui ne tient pas les deux mètres carrés autour de lui ne tiendra pas un port en eau profonde.",
     ],
     href: "/today",
+  };
+}
+
+/**
+ * LE MIROIR — l'état réel, dans chaque office, avant tout le reste.
+ *
+ * Toute l'app décrit l'homme qu'il veut être. Sans ce bloc, chaque email
+ * s'adressait à quelqu'un qui n'existe pas encore — et il pouvait le lire en
+ * s'y reconnaissant par avance, ce qui est exactement le mécanisme qu'il
+ * dénonce : rêver le résultat au lieu de le payer.
+ *
+ * Une messe prend un bloc entier ; une heure en prend quatre lignes tirées au
+ * sort. Le tirage n'est pas de la décoration : lue à l'identique dix fois par
+ * jour, même cette liste-là s'émousserait.
+ */
+function miroir(seed: string, messe: boolean): Movement {
+  if (messe) {
+    const b = pick(MIROIR, `${seed}:mir`)[0];
+    return {
+      kind: "miroir",
+      label: "Le miroir — l'état réel",
+      title: b.titre,
+      note: MIROIR_THESE,
+      times: 1,
+      items: [...b.lignes, "", MIROIR_SORTIE],
+    };
+  }
+  return {
+    kind: "miroir",
+    label: "Le miroir — l'état réel",
+    note: MIROIR_THESE,
+    times: 1,
+    items: [...pick(MIROIR_LIGNES, `${seed}:mir`, 4), "", MIROIR_SORTIE],
   };
 }
 
@@ -866,6 +906,7 @@ function buildHeure(c: LiturgyContext): Liturgy {
   const mvts: Movement[] = [];
   mvts.push(mantra("tete"));
   mvts.push(appel(c, false));
+  mvts.push(miroir(seed, false));
   // Les heures restent courtes : un passage, pas le chapitre. À 8h, la ration
   // double en donne deux — c'est l'heure où il est au fond de son bloc.
   mvts.push(passage(c, n, role.accent === "chapitre" ? 2 : 1));
@@ -946,6 +987,7 @@ function buildMesse(c: LiturgyContext): Liturgy {
   const mvts: Movement[] = [];
   mvts.push(mantra("tete"));
   mvts.push(appel(c, true));
+  mvts.push(miroir(seed, true));
   mvts.push(inspection());
   mvts.push(chapitre(n));
 

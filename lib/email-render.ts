@@ -118,6 +118,21 @@ function movementHtml(m: Movement): string {
       );
     }
 
+    case "miroir":
+      return card(
+        `${eyebrow(m.label, "#fca5a5")}
+         ${m.note ? `<div style="color:#fecaca;font-size:13px;font-weight:700;line-height:1.5;margin-bottom:13px">${esc(m.note)}</div>` : ""}
+         ${titre}
+         ${m.items
+           .map((l) =>
+             l.trim() === ""
+               ? `<div style="height:1px;background:rgba(255,255,255,.14);margin:14px 0"></div>`
+               : `<div style="color:#fff;font-size:13.5px;font-weight:600;line-height:1.55;margin-bottom:7px">${esc(l)}</div>`,
+           )
+           .join("")}`,
+        "#450a0a",
+      );
+
     case "inspection":
       return card(
         `${eyebrow(m.label, "#fff")}${consigne}

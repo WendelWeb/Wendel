@@ -222,17 +222,33 @@ export function buildOffice(
   const chap = lit.movements.find((m) => m.kind === "fragment");
   const chapEntier = chap ? chap.items.join("\n\n") : "";
 
-  // Tout sauf le chapitre — c'est le socle incompressible.
+  // Tout sauf le chapitre — c'est le socle incompressible. Le miroir vient en
+  // premier, avant la loi : sans lui, le message s'adresse à l'homme qu'il veut
+  // être, et il peut le lire en s'y reconnaissant par avance.
+  const mir = lit.movements.find((m) => m.kind === "miroir");
   const avant: string[] = [
     `*FORGED · ${h}h — ${lit.name}*`,
     `J−${c.daysToJan} · noyau ${c.coreDone}/${c.coreTotal} · rétention jour ${c.retentionDays}`,
     "",
+  ];
+
+  if (mir) {
+    avant.push("*LE MIROIR — l'état réel*");
+    if (mir.note) avant.push(`_${mir.note}_`);
+    avant.push("");
+    for (const l of mir.items.filter((x) => x.trim()).slice(0, 5)) {
+      avant.push(`• ${l}`);
+    }
+    avant.push("");
+  }
+
+  avant.push(
     "*Une main qui se masturbe ne bâtira pas ces choses.*",
     "*Des yeux qui regardent du porno ne les verront jamais.*",
     "_Every action has consequences. Chaque action est un échange, et un pacte._",
     "_Only God and you can stop you. Il n'y a pas de troisième porte._",
     "",
-  ];
+  );
 
   const apres: string[] = [];
   const cits = parLabel(/citation/i);
