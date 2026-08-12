@@ -158,6 +158,27 @@ export const MIROIR: MiroirBloc[] = [
       "Je ne peux pas arrêter le maladaptive daydreaming.",
       "Je ne vais pas en montagne.",
       "Je cherche désespérément l'attention des filles.",
+      "Je ne tiens pas mes heures de méditation.",
+      "Je ne tiens pas mes séances de deep work.",
+      "Je veux gagner de l'argent sur YouTube et je ne publie même pas de putains de vidéos. C'est tout le dossier.",
+    ],
+  },
+  {
+    // La rêverie compulsive, et ce qu'elle vole exactement. Ce n'est pas une
+    // distraction parmi d'autres : c'est la consommation par avance du résultat
+    // qu'il devrait payer. Une fois la scène jouée, la faim est passée.
+    id: "reverie",
+    titre: "Les scènes que je rejoue au lieu de vivre",
+    lignes: [
+      "Je rejoue sans fin les mêmes scènes : l'interview, la réussite déjà acquise, la sagesse que je dispense.",
+      "Dans ces scènes, je propose une sagesse et une intelligence qui n'existent tout simplement pas.",
+      "Je consomme le résultat en imagination — et après, je n'ai plus faim pour le construire.",
+      "Et si je continue ainsi, cela n'arrivera sûrement jamais. À 200%.",
+      "Je ne refuse pas d'arrêter la rêverie compulsive : je ne décide même pas de l'arrêter.",
+      "Je ne décide pas d'arrêter d'imaginer, simplement pour garder l'esprit calme et faire le travail.",
+      "Rêver l'interview me coûte l'interview.",
+      "Chaque scène rejouée est une avance prise sur une gloire que je ne paierai jamais.",
+      "L'homme de mes scènes mentales a fait le travail. Moi, je le regarde le faire.",
     ],
   },
   {
