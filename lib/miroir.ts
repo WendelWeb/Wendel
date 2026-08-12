@@ -96,6 +96,41 @@ export const MIROIR: MiroirBloc[] = [
     ],
   },
   {
+    // La preuve la plus lourde du miroir, parce qu'elle est matérielle et
+    // qu'elle est dans sa chambre. Il n'a pas seulement omis d'agir : il a payé
+    // les outils, puis s'est arrêté là. L'achat comme substitut de l'acte —
+    // exactement le même mécanisme que bâtir l'app sans s'en servir.
+    id: "achats",
+    titre: "Ce que j'ai acheté et jamais ouvert",
+    lignes: [
+      "J'ai commandé l'acide exfoliant sur Amazon. Il est chez moi. Je ne l'ai pas utilisé depuis des mois.",
+      "J'ai acheté les pommades pour les waves, le durag. Ils sont là. Non utilisés.",
+      "J'ai acheté les bandes blanchissantes — trente minutes sur les dents. Jamais ouvertes.",
+      "Acheter m'a donné la sensation d'agir. C'est exactement là que l'action s'est arrêtée.",
+      "Ce ne sont pas des objets posés dans une chambre. C'est ma volonté, ma discipline et mes actes, posés sur une étagère.",
+      "Il ne me manque même pas le produit. Il est déjà payé, déjà là, à un mètre de moi.",
+      "J'ai les dents jaunes par choix, pas par manque. Trente minutes m'en séparent, et elles sont gratuites.",
+      "Entre moi et une peau nette, il n'y a ni argent, ni temps, ni connaissance. Il n'y a que le geste.",
+    ],
+  },
+  {
+    // Sa question, et sa réponse. Le miroir ne la commente pas : la logique est
+    // la sienne et elle est juste. Ce qu'on veut se lit dans ce qu'on a fait
+    // hier, la semaine dernière, et dans cette minute-ci.
+    id: "question",
+    titre: "La question — et la vraie réponse",
+    lignes: [
+      "Est-ce qu'hier représente ce que je veux ?",
+      "Est-ce que la semaine dernière représente ce que je veux ?",
+      "Est-ce qu'aujourd'hui représente ce que je veux ?",
+      "Est-ce que cette minute-ci représente ce que je veux ?",
+      "La réponse est non. Et pourtant, c'est ce que j'ai choisi — heure après heure.",
+      "Donc : je ne veux pas d'une peau éclatante. Je ne veux pas d'accomplissements surhumains. Je ne veux rien de tout ça.",
+      "Ce que je veux, c'est ce que je fais. Il n'existe pas d'autre définition, et aucun tribunal n'en acceptera une autre.",
+      "La seule façon de changer ma réponse est de changer l'heure qui vient. Pas l'année : l'heure.",
+    ],
+  },
+  {
     id: "preuves",
     titre: "Les preuves — il n'y en a aucune",
     lignes: [
