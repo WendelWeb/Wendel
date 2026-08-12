@@ -93,6 +93,25 @@ export const MIROIR: MiroirBloc[] = [
     ],
   },
   {
+    // Tout ce qui suit est le résultat direct d'un geste non posé : se laver le
+    // visage, se brosser les dents, mettre du parfum, soulever dur, manger
+    // proprement. Aucune de ces lignes n'est une fatalité — chacune se corrige
+    // en jours ou en semaines. C'est pour ça qu'elles sont dans le miroir.
+    id: "apparence",
+    titre: "Le visage et le corps, sans filtre",
+    lignes: [
+      "1m70. 67 kilos. Faible. Voilà l'homme réel, mesuré.",
+      "Un visage non soigné, couvert de boutons.",
+      "Des dents jaunes.",
+      "Aucun parfum. Rien qui reste quand je pars.",
+      "Aucun charisme. Aucune présence.",
+      "En dessous de la moyenne, sur à peu près tout ce qui se voit.",
+      "Invisible. Insignifiant. Repoussant.",
+      "Je passe dans une pièce sans que personne ne s'en aperçoive, et c'est exactement ce que j'ai construit.",
+      "Rien de tout cela n'est un accident. Chaque ligne est un geste que je n'ai pas posé.",
+    ],
+  },
+  {
     id: "corps",
     titre: "Le corps — cinq ans pour rien",
     lignes: [
@@ -166,6 +185,10 @@ export const MIROIR: MiroirBloc[] = [
       "Je gaspille mon temps chaque jour, et je pense quand même atteindre mes objectifs.",
       "Je traite demain comme le jour merveilleux où ma médiocrité disparaîtra toute seule.",
       "Je continue à rêver pendant que les années passent et me prouvent le contraire.",
+      "Et ce sera comme ça demain.",
+      "Comme ça dans une semaine.",
+      "Comme ça dans un mois. Dans six mois.",
+      "Comme ça dans un an. Dans deux ans.",
       "Le mois prochain sera exactement pareil.",
       "La fin de l'année sera exactement pareille.",
       "L'année suivante aussi. Puis 25 ans. Puis 30. Puis 40.",
