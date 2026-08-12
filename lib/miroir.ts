@@ -63,6 +63,39 @@ export const MIROIR: MiroirBloc[] = [
     ],
   },
   {
+    // L'envers exact du mantra. Le mantra dit ce que la main et les yeux
+    // empêchent de bâtir ; ce bloc dit à quoi ils servent en ce moment. Le
+    // corps comme instrument, et son usage réel — pas rêvé.
+    id: "membres",
+    titre: "Mes membres — à quoi ils servent réellement",
+    lignes: [
+      "Ma main ne bâtit rien de ce que je dis, de ce que je pense, de ce que je prévois. Elle me sert à me masturber.",
+      "Mes pieds ne marchent pas dans la gloire. Ils marchent dans la poussière, et ils me servent à rentrer dans ma chambre pour me branler.",
+      "Mes yeux ne regardent pas l'accomplissement de ce que j'ai prévu. Ils regardent du porno.",
+      "Ce corps, Il l'a formé de Ses mains — et voilà l'usage que j'en fais.",
+      "Voilà l'emploi réel de ce qu'Il m'a confié. Pas l'emploi rêvé : l'emploi réel.",
+      "Un lâche. Une merde. Indigne de Dieu, de Sa confiance et de Ses bénédictions.",
+    ],
+  },
+  {
+    // Sa formulation la plus fine, et la plus destructrice : la distinction
+    // entre vouloir et vouloir vouloir. Elle explique tout le reste du miroir —
+    // rien n'a été fait parce que rien n'a jamais été voulu, seulement désiré.
+    id: "vouloir",
+    titre: "Je ne les veux pas — je veux les vouloir",
+    lignes: [
+      "Si je voulais vraiment ces choses, j'aurais fait le nécessaire pour les voir.",
+      "Si je voulais les voitures, j'aurais fait le nécessaire.",
+      "Si je voulais les immeubles, les entreprises, la gloire, la renommée, j'aurais fait le nécessaire.",
+      "Je ne les veux pas. Je veux les vouloir.",
+      "Ce que j'aime, c'est la sensation de vouloir. Elle ne coûte rien, elle ne demande aucun acte, et elle donne presque le même plaisir.",
+      "Le désir que je n'ai pas payé n'est pas un désir. C'est un divertissement.",
+      "Un homme qui veut vraiment quelque chose se reconnaît à ce qu'il a sacrifié. Je n'ai rien sacrifié.",
+      "Je confonds l'émotion de vouloir avec la décision de faire.",
+      "Tant que vouloir restera gratuit, je continuerai à vouloir, et je n'aurai jamais rien.",
+    ],
+  },
+  {
     id: "preuves",
     titre: "Les preuves — il n'y en a aucune",
     lignes: [
