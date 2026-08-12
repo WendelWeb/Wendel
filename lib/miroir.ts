@@ -102,6 +102,38 @@ export const MIROIR: MiroirBloc[] = [
     ],
   },
   {
+    // Le seul bloc qu'il n'a pas dicté. Il a dit avoir oublié des choses et m'a
+    // laissé compléter : voici ce qui se voit de l'extérieur et pas de
+    // l'intérieur. Rien d'inventé — c'est la suite logique de ses propres
+    // lignes (la feuille imprimée jamais cochée, les emails jamais ouverts), et
+    // c'est ce qui s'est passé sous mes yeux pendant qu'on bâtissait cette app.
+    id: "evitement",
+    titre: "L'évitement par la construction",
+    lignes: [
+      "Je construis les outils pour ne pas avoir à m'en servir.",
+      "J'ai bâti une app, un livre de 587 pages, 2 000 citations, un système d'emails automatiques. Je n'ai ouvert aucun de ces emails.",
+      "Ajouter une fonctionnalité de plus me donne la sensation d'avancer. C'est la version sophistiquée de la procrastination.",
+      "Dès qu'un système est prêt à être suivi, je préfère le modifier plutôt que de le suivre.",
+      "Je passe plus de temps à régler le compteur qu'à faire la chose qu'il compte.",
+      "Chaque nouvelle idée m'arrive exactement au moment où il faudrait exécuter la précédente.",
+      "Je demande qu'on me construise un système de discipline, et je n'ai pas la discipline de l'utiliser.",
+      "Préparer, c'est encore une façon de ne pas commencer.",
+    ],
+  },
+  {
+    id: "lucidite",
+    titre: "Ce que je sais déjà — et qui ne change rien",
+    lignes: [
+      "Je sais tout ça. Je l'ai écrit moi-même.",
+      "Mon problème n'est pas l'ignorance. Je n'ai plus rien à apprendre avant d'agir.",
+      "Il ne me manque aucune information. Il ne me manque aucun outil. Il ne me manque aucun système.",
+      "Je connais la loi du vaisseau par cœur — je l'ai écrite — et je ne l'applique pas.",
+      "Être lucide sur ma médiocrité ne la corrige pas. Ça la rend juste plus honteuse.",
+      "Comprendre n'est pas faire. Écrire n'est pas faire. Lire n'est pas faire.",
+      "Chaque jour où je ne change rien est un vote pour l'homme que je suis déjà.",
+    ],
+  },
+  {
     id: "temps",
     titre: "Ce qui arrive si rien ne change",
     lignes: [
