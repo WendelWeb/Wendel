@@ -5,6 +5,7 @@ import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
 import {
   Target,
+  Eye,
   BarChart3,
   Dumbbell,
   BookOpen,
@@ -25,6 +26,7 @@ import RefreshButton from "./RefreshButton";
 // Four everyday destinations. Urgence is NOT here — it gets the raised center
 // button, because reaching it in one thumb-tap is the whole point of this app.
 const LEFT_TABS = [
+  { href: "/miroir", label: "Le miroir", Icon: Eye },
   { href: "/today", label: "Aujourd'hui", Icon: Target },
   { href: "/vaisseau", label: "Vaisseau", Icon: Ship },
 ];

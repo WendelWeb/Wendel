@@ -5,6 +5,7 @@ import { usePathname } from "next/navigation";
 import { useTransition } from "react";
 import {
   Target,
+  Eye,
   BarChart3,
   Dumbbell,
   BookOpen,
@@ -21,6 +22,7 @@ import {
 import { signOutAction } from "@/app/actions";
 
 const TABS = [
+  { href: "/miroir", label: "Le miroir", Icon: Eye },
   { href: "/today", label: "Aujourd'hui", Icon: Target },
   { href: "/progression", label: "Progression", Icon: BarChart3 },
   { href: "/muscu", label: "Muscu", Icon: Dumbbell },
