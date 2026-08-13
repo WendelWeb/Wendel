@@ -22,7 +22,7 @@ export default async function VisionPage() {
   const serment = await getSerment(userId);
 
   if (!serment.debloque) {
-    const restants = CIBLE_JOURS - serment.jours;
+    const restants = Math.max(1, CIBLE_JOURS - serment.jourActuel + 1);
     return (
       <main className="px-4 pb-16 pt-10">
         <div
@@ -41,7 +41,7 @@ export default async function VisionPage() {
 
           <p className="mt-7 flex items-baseline justify-center gap-2">
             <span className="tnum font-display text-[46px] font-bold leading-none text-white">
-              {serment.jours}
+              {serment.jourActuel}
             </span>
             <span className="text-[16px] font-semibold text-white/40">
               / {CIBLE_JOURS}
@@ -51,7 +51,7 @@ export default async function VisionPage() {
             <div
               className="h-full rounded-full"
               style={{
-                width: `${Math.min(100, Math.round((serment.jours / CIBLE_JOURS) * 100))}%`,
+                width: `${Math.min(100, Math.round((serment.jourActuel / CIBLE_JOURS) * 100))}%`,
                 background: "var(--gold-border)",
               }}
             />
@@ -60,7 +60,7 @@ export default async function VisionPage() {
           <p className="mt-4 text-[12.5px] leading-relaxed text-white/40">
             Encore {restants} {restants > 1 ? "jours" : "jour"}. Ouverture prévue
             le {serment.dateOuverture}.
-            {serment.record > serment.jours && (
+            {serment.record > serment.jourActuel && (
               <>
                 {" "}
                 Ta plus longue série : {serment.record} jours.

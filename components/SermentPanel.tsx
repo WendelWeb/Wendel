@@ -48,7 +48,7 @@ export default function SermentPanel({
   const creneau = CRENEAUX.find((c) => c.id === etat.ouvert);
   const dejaFait = etat.ouvert ? etat.aujourdhui[etat.ouvert] : undefined;
   const complet = CASES.every((c) => conf[c.id]);
-  const pct = Math.min(100, Math.round((etat.jours / CIBLE_JOURS) * 100));
+  const pct = Math.min(100, Math.round((etat.jourActuel / CIBLE_JOURS) * 100));
 
   function declarer(choix: "vouloir" | "perpetuer") {
     setErreur(null);
@@ -85,11 +85,18 @@ export default function SermentPanel({
             </p>
             <p className="mt-1.5 flex items-baseline gap-2">
               <span className="tnum font-display text-[38px] font-bold leading-none text-white">
-                {etat.jours}
+                {etat.jourActuel}
               </span>
               <span className="text-[15px] font-semibold text-white/40">
                 / {CIBLE_JOURS} jours
               </span>
+            </p>
+            <p className="mt-1 text-[11px] font-semibold text-white/40">
+              {etat.rechuteAujourdhui
+                ? "Aujourd'hui ne compte pas."
+                : etat.faitAujourdhui === CRENEAUX.length
+                  ? "Journée tenue."
+                  : `Aujourd'hui — ${etat.faitAujourdhui}/${CRENEAUX.length} déclarations`}
             </p>
           </div>
           <div className="text-right">

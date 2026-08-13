@@ -59,6 +59,44 @@ describe("l'audit à quatre cases", () => {
   });
 });
 
+describe("on commence aujourd'hui, pas demain", () => {
+  it("sans rien de déclaré, on est déjà au jour 1", () => {
+    const e = etatSerment([], AUCUNE, AUJ, 8);
+    expect(e.jours).toBe(0); // aucun jour banké
+    expect(e.jourActuel).toBe(1); // mais la journée en cours est le jour 1
+    expect(e.jourVivant).toBe(true);
+  });
+
+  it("après une série de 9 jours, aujourd'hui est le jour 10", () => {
+    const d = Array.from({ length: 9 }, (_, i) => pleine(j(-(i + 1)))).flat();
+    const e = etatSerment(d, AUCUNE, AUJ, 8);
+    expect(e.jours).toBe(9);
+    expect(e.jourActuel).toBe(10);
+  });
+
+  it("un « perpétuer » tue la journée en cours", () => {
+    const d: Declaration[] = [{ date: AUJ, creneau: "matin", choix: "perpetuer" }];
+    const e = etatSerment(d, AUCUNE, AUJ, 8);
+    expect(e.jourVivant).toBe(false);
+    expect(e.jourActuel).toBe(0);
+  });
+
+  it("une rechute tue la journée en cours", () => {
+    const e = etatSerment([], [{ date: AUJ, kind: "porn" }], AUJ, 8);
+    expect(e.jourVivant).toBe(false);
+    expect(e.jourActuel).toBe(0);
+  });
+
+  it("le jour 30 vécu débloque une fois les trois créneaux tenus", () => {
+    const vingtNeuf = Array.from({ length: 29 }, (_, i) => pleine(j(-(i + 1)))).flat();
+    const enCours = etatSerment(vingtNeuf, AUCUNE, AUJ, 8);
+    expect(enCours.jourActuel).toBe(30);
+    expect(enCours.debloque).toBe(false); // pas encore tenu
+    const fini = etatSerment([...vingtNeuf, ...pleine(AUJ)], AUCUNE, AUJ, 20);
+    expect(fini.debloque).toBe(true);
+  });
+});
+
 describe("le compteur des 30 jours", () => {
   it("part de zéro", () => {
     expect(etatSerment([], AUCUNE, AUJ, 8).jours).toBe(0);
@@ -127,10 +165,13 @@ describe("le compteur des 30 jours", () => {
   });
 
   it("annonce la date d'ouverture d'après ce qui reste", () => {
+    // Dix jours bankés, aujourd'hui est le onzième et il court encore :
+    // il reste dix-neuf jours APRÈS aujourd'hui.
     const d = Array.from({ length: 10 }, (_, i) => pleine(j(-(i + 1)))).flat();
     const e = etatSerment(d, AUCUNE, AUJ, 8);
     expect(e.jours).toBe(10);
-    expect(e.dateOuverture).toBe(jourSuivant(AUJ, 20));
+    expect(e.jourActuel).toBe(11);
+    expect(e.dateOuverture).toBe(jourSuivant(AUJ, 19));
   });
 
   it("compte les déclarations du jour pour l'affichage", () => {

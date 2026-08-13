@@ -112,6 +112,13 @@ export interface RechuteDeclaree {
 export interface EtatSerment {
   /** Jours consécutifs pleinement tenus, aujourd'hui compris s'il est complet. */
   jours: number;
+  /**
+   * Le jour qu'il est en train de vivre. On commence aujourd'hui, pas demain :
+   * tant que la journée n'est pas cassée, elle porte déjà son numéro.
+   */
+  jourActuel: number;
+  /** Aujourd'hui est-il encore récupérable (ni « perpétuer », ni rechute). */
+  jourVivant: boolean;
   /** Ce qui est déjà déclaré aujourd'hui. */
   aujourdhui: Partial<Record<Creneau, Choix>>;
   /** Une rechute a-t-elle été déclarée aujourd'hui. */
@@ -191,14 +198,28 @@ export function etatSerment(
   const complet = !rechuteAujourdhui && faitAujourdhui === CRENEAUX.length;
   const total = jours + (complet ? 1 : 0);
 
+  // Aujourd'hui est mort si une rechute a été déclarée ou si un créneau déjà
+  // passé porte « perpétuer ». Sinon la journée court encore, et elle porte
+  // son numéro dès maintenant — on ne commence pas demain.
+  const perpetueAujourdhui = CRENEAUX.some(
+    (c) => aujourdhui[c.id] === "perpetuer",
+  );
+  const jourVivant = !rechuteAujourdhui && !perpetueAujourdhui;
+  const jourActuel = complet ? total : jourVivant ? jours + 1 : jours;
+
   return {
     jours: total,
+    jourActuel,
+    jourVivant,
     aujourdhui,
     rechuteAujourdhui,
     ouvert: creneauOuvert(heure),
     faitAujourdhui,
     debloque: total >= CIBLE_JOURS,
     record: Math.max(record, total),
-    dateOuverture: jourSuivant(aujourdhuiDate, Math.max(0, CIBLE_JOURS - total)),
+    dateOuverture: jourSuivant(
+      aujourdhuiDate,
+      Math.max(0, CIBLE_JOURS - (jourVivant ? jours + 1 : jours)),
+    ),
   };
 }
