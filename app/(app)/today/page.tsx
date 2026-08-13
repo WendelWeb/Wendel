@@ -1,5 +1,5 @@
 import { requireUserId } from "@/lib/auth";
-import { exigerDebloque } from "@/lib/verrou";
+import { exigerDebloqueOuPC } from "@/lib/verrou";
 import { getOrCreateTodayLog, getStreak } from "@/lib/daily";
 import { getProgram } from "@/lib/programs";
 import { getPlan } from "@/lib/plans";
@@ -11,7 +11,7 @@ export const dynamic = "force-dynamic";
 
 export default async function TodayPage() {
   const userId = await requireUserId();
-  await exigerDebloque(userId);
+  await exigerDebloqueOuPC(userId);
   const [log, streak, program, plan] = await Promise.all([
     getOrCreateTodayLog(userId),
     getStreak(userId),

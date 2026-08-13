@@ -25,6 +25,7 @@ const AUCUNE: RechuteDeclaree[] = [];
 
 describe("les fenêtres horaires", () => {
   it("un créneau par plage, rien en dehors", () => {
+    expect(creneauOuvert(4)).toBe("matin");
     expect(creneauOuvert(5)).toBe("matin");
     expect(creneauOuvert(10)).toBe("matin");
     expect(creneauOuvert(11)).toBe("midi");
@@ -32,7 +33,7 @@ describe("les fenêtres horaires", () => {
     expect(creneauOuvert(17)).toBe("soir");
     expect(creneauOuvert(23)).toBe("soir");
     expect(creneauOuvert(2)).toBeNull();
-    expect(creneauOuvert(4)).toBeNull();
+    
   });
 
   it("les plages ne se chevauchent pas — impossible de déclarer deux créneaux à la même heure", () => {

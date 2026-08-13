@@ -57,6 +57,26 @@ export const VERDICTS: Record<string, ItemVerdict> = {
       "Le vaisseau vide ne tient pas la parole qu'un vaisseau plein tient sans effort.",
     ],
   },
+  meditation_pm: {
+    chapter: 120,
+    gravity: 7,
+    domino: [
+      "Pas de méditation du soir. La journée se referme sur son bruit, pas sur son silence (ch. 16).",
+      "Quand je dis méditation, c'est méditation — matin ET soir, pas « si j'ai le temps » (ch. 120).",
+      "Le soir est le moment où le système nerveux enregistre la journée. Tu l'as laissé enregistrer n'importe quoi.",
+      "Tu t'endors dans l'état où tu as passé la journée, et tu te réveilleras dedans.",
+    ],
+  },
+  bible_pm: {
+    chapter: 31,
+    gravity: 6,
+    domino: [
+      "Lecture du soir sautée. L'Ancien Testament attend, et l'attente dure depuis des années (ch. 31).",
+      "Vingt minutes. C'est tout ce que ça demandait, et tu ne les as pas données.",
+      "Ce n'est pas un rituel décoratif : c'est l'opération qui protège ce qui se manifeste.",
+      "La dernière chose entrée dans ta tête ce soir, ce sera autre chose. Tu sais quoi.",
+    ],
+  },
   meditation: {
     chapter: 120,
     gravity: 7,

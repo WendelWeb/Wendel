@@ -1,6 +1,7 @@
 import "server-only";
 import { eq } from "drizzle-orm";
 import { redirect } from "next/navigation";
+import { headers } from "next/headers";
 import { db } from "./db";
 import { visionAccess } from "./schema";
 import { getSerment } from "./serments";
@@ -22,6 +23,29 @@ export async function verrouille(userId: string): Promise<boolean> {
 
 /** À appeler en tête de chaque page verrouillée. */
 export async function exigerDebloque(userId: string): Promise<void> {
+  if (await verrouille(userId)) redirect("/miroir");
+}
+
+/**
+ * Est-ce un ordinateur ?
+ *
+ * Deux pages restent ouvertes pendant les 30 jours, mais sur PC seulement :
+ * la page du jour, pour cocher ce qu'il accomplit, et les réglages, pour
+ * modifier son plan. Sur téléphone l'app reste le miroir et rien d'autre —
+ * c'est là qu'il ouvre l'app par réflexe, et c'est ce réflexe qu'on ferme.
+ *
+ * Détection par user-agent : ce n'est pas inviolable, et ça n'a pas à l'être.
+ * Ce verrou ne protège pas contre un attaquant, il protège contre un geste
+ * machinal. Le seul à pouvoir le contourner est celui qu'il sert.
+ */
+export function estOrdinateur(): boolean {
+  const ua = headers().get("user-agent") ?? "";
+  return !/Android|iPhone|iPad|iPod|Mobile|Opera Mini|IEMobile/i.test(ua);
+}
+
+/** Verrouillée, sauf sur ordinateur. Pour la page du jour et les réglages. */
+export async function exigerDebloqueOuPC(userId: string): Promise<void> {
+  if (estOrdinateur()) return;
   if (await verrouille(userId)) redirect("/miroir");
 }
 

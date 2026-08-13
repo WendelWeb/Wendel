@@ -23,7 +23,7 @@ export const CHECKLIST: ChecklistSectionData[] = [
       {
         id: "gym",
         label: "Muscu — séance selon programme (0 cheat)",
-        time: "10h30",
+        time: "13h",
       },
       {
         id: "fasting",
@@ -51,78 +51,74 @@ export const CHECKLIST: ChecklistSectionData[] = [
     section: "MATIN",
     color: "#0F172A",
     items: [
-      { id: "wake", label: "Réveil 5h00 — eau, 0 téléphone", time: "5h00" },
+      { id: "wake", label: "Réveil 4h30 — eau, 0 téléphone", time: "4h30" },
       {
         id: "serment",
         label: "Serment du jour — lire les lois à voix haute",
-        time: "5h02",
+        time: "4h32",
       },
       {
         id: "bible",
-        label: "PS 24 × 3 + 1 chapitre biblique + 5 min cacao",
-        time: "5h05",
+        label: "Lecture biblique 20 min — Ancien Testament + PS 24 × 3",
+        time: "4h35",
+      },
+      {
+        id: "meditation",
+        label: "Méditation 20 min + affirmations positives",
+        time: "4h55",
       },
       {
         id: "meal",
         label: "Préparer le repas (6 œufs + 100g pâtes + shaker) — pas encore manger",
-        time: "5h10",
-      },
-      {
-        id: "meditation",
-        label: "Méditation 15 min + affirmations positives",
         time: "5h15",
       },
       {
         id: "room_clean",
         label: "Chambre propre & lit fait (consigne de l'alliance)",
-        time: "5h20",
+        time: "5h25",
       },
       {
         id: "run",
         label: "Course 30 min — matin",
-        time: "5h30",
+        time: "5h35",
       },
       {
         id: "hair",
         label: "Brossage cheveux 5 min (cap / durag)",
-        time: "6h30",
+        time: "6h15",
       },
       {
         id: "goals",
         label: "Images goals ouvertes (vision du matin)",
-        time: "6h45",
+        time: "6h25",
       },
       {
         id: "manifesto_am",
         label: "Manifeste 3× à voix haute (EN → FR → Créole)",
-        time: "6h50",
+        time: "6h35",
       },
-    ],
-  },
-  {
-    section: "DEEP WORK",
-    color: "#1E3A5F",
-    items: [
       {
         id: "discipline_v1",
         label: "Vidéos discipline PC — 15 min",
-        time: "6h55",
-      },
-      {
-        id: "dw1",
-        label: "Deep work bloc 1 — 4h30 focus (1 livrable concret)",
-        time: "7h–11h30",
+        time: "6h45",
       },
     ],
   },
   {
-    section: "APRÈS-MIDI",
-    color: "#3B1F6E",
+    // 12 heures de deep work par jour. C'est sa décision, prise en connaissance
+    // de cause : « je veux aller à l'extrême cette fois ».
+    section: "DEEP WORK — 12 H",
+    color: "#1E3A5F",
     items: [
       {
+        id: "dw1",
+        label: "Deep work bloc 1 — 6h focus (1 livrable concret)",
+        time: "7h–13h",
+      },
+      {
         id: "dw2",
-        label: "Deep work bloc 2 — 4h30 focus (projet différent du matin)",
-        time: "13h–17h30",
+        label: "Deep work bloc 2 — 6h focus (projet différent du matin)",
+        time: "14h30–20h30",
       },
     ],
   },
@@ -133,25 +129,35 @@ export const CHECKLIST: ChecklistSectionData[] = [
       {
         id: "skincare",
         label: "Routine peau : nettoyant + acide salicylique + hydratant",
-        time: "20h00",
+        time: "20h30",
+      },
+      {
+        id: "bible_pm",
+        label: "Lecture biblique 20 min — Ancien Testament",
+        time: "20h40",
+      },
+      {
+        id: "meditation_pm",
+        label: "Méditation 20 min",
+        time: "21h00",
       },
       {
         id: "manifesto_pm",
         label: "Manifeste 3× à voix haute (EN → FR → Créole)",
-        time: "20h45",
+        time: "21h20",
       },
-      { id: "affirmations", label: "Affirmations positives du soir", time: "21h00" },
+      { id: "affirmations", label: "Affirmations positives du soir", time: "21h30" },
       {
         id: "ps24_pm",
         label: "Psaume 24 + parler à Dieu — avant de dormir (consigne de l'alliance)",
-        time: "21h00",
+        time: "21h35",
       },
       {
         id: "no_screen",
         // FORGED est la seule exception : la messe du soir se lit sur écran à
         // 21h. Sans cette clause, lire l'office casserait le noyau chaque soir.
-        label: "0 écran après 17h30 (sauf FORGED) — coucher 21h00, tel mode avion",
-        time: "17h30",
+        label: "0 écran hors travail (sauf FORGED) — coucher 21h45, tel mode avion",
+        time: "21h45",
       },
     ],
   },

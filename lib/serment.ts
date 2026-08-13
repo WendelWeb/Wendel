@@ -46,7 +46,7 @@ export interface CreneauMeta {
 }
 
 export const CRENEAUX: CreneauMeta[] = [
-  { id: "matin", label: "Au réveil", quand: "5h – 11h", debut: 5, fin: 10 },
+  { id: "matin", label: "Au réveil", quand: "4h30 – 11h", debut: 4, fin: 10 },
   { id: "midi", label: "À midi", quand: "11h – 17h", debut: 11, fin: 16 },
   { id: "soir", label: "Avant de dormir", quand: "17h – minuit", debut: 17, fin: 23 },
 ];

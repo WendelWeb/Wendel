@@ -20,7 +20,7 @@ import {
 
 // Le plan par défaut est la journée écrite dans le code. Ces bornes existent
 // pour qu'un ajout d'objectif ou de règle ne passe pas inaperçu.
-const OBJECTIFS = 24;
+const OBJECTIFS = 26;
 const REGLES = 10;
 const TOTAL = OBJECTIFS + REGLES;
 

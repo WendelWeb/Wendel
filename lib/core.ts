@@ -21,6 +21,9 @@ export const CORE_IDS: string[] = [
   "dw1",
   // 🙏 L'esprit
   "bible",
+  "bible_pm",
+  "meditation",
+  "meditation_pm",
   "lecture",
   "manifesto_am",
   "ps24_pm",
