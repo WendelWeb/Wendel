@@ -61,11 +61,11 @@ export async function declarer(
       raison: "Aucun créneau n'est ouvert à cette heure-ci.",
     };
 
-  if (choix === "vouloir" && !auditComplet(confirmations))
+  if (choix === "vouloir" && !auditComplet(confirmations, creneau))
     return {
       ok: false,
       raison:
-        "Les quatre cases doivent être cochées. Si tu ne peux pas, ce n'est pas une déclaration — c'est une rechute.",
+        "Toutes les cases doivent être cochées. Si tu ne peux pas, ce n'est pas une déclaration — c'est une rechute.",
     };
 
   await db

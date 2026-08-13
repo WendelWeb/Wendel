@@ -3,10 +3,12 @@ import {
   etatSerment,
   creneauOuvert,
   auditComplet,
+  casesPour,
   prochainCreneau,
   jourSuivant,
   CIBLE_JOURS,
   CRENEAUX,
+  type Confirmations,
   type Declaration,
   type RechuteDeclaree,
 } from "./serment";
@@ -45,20 +47,49 @@ describe("les fenêtres horaires", () => {
   });
 });
 
+const TOUT: Confirmations = {
+  pasTiktok: true,
+  pasGazeuse: true,
+  pasPorn: true,
+  fichiers: true,
+  lecture: true,
+  reverie: true,
+  meditation: true,
+  bible: true,
+};
+
 describe("l'audit", () => {
   it("toutes, ou rien", () => {
-    expect(
-      auditComplet({ pasTiktok: true, pasGazeuse: true, pasPorn: true, fichiers: true, lecture: true, reverie: true }),
-    ).toBe(true);
-    expect(
-      auditComplet({ pasTiktok: true, pasGazeuse: true, pasPorn: true, fichiers: false, lecture: true, reverie: true }),
-    ).toBe(false);
-    expect(
-      auditComplet({ pasTiktok: false, pasGazeuse: true, pasPorn: true, fichiers: true, lecture: true, reverie: true }),
-    ).toBe(false);
-    expect(
-      auditComplet({ pasTiktok: true, pasGazeuse: true, pasPorn: true, fichiers: true, lecture: false, reverie: true }),
-    ).toBe(false);
+    expect(auditComplet(TOUT, "matin")).toBe(true);
+    expect(auditComplet({ ...TOUT, fichiers: false }, "matin")).toBe(false);
+    expect(auditComplet({ ...TOUT, pasTiktok: false }, "matin")).toBe(false);
+    expect(auditComplet({ ...TOUT, lecture: false }, "matin")).toBe(false);
+    expect(auditComplet({ ...TOUT, reverie: false }, "matin")).toBe(false);
+  });
+
+  it("méditation et Bible : exigées matin et soir, pas à midi", () => {
+    const ids = (c: "matin" | "midi" | "soir") => casesPour(c).map((x) => x.id);
+    expect(ids("matin")).toContain("meditation");
+    expect(ids("matin")).toContain("bible");
+    expect(ids("soir")).toContain("meditation");
+    expect(ids("soir")).toContain("bible");
+    expect(ids("midi")).not.toContain("meditation");
+    expect(ids("midi")).not.toContain("bible");
+  });
+
+  it("à midi, l'audit passe sans méditation ni Bible", () => {
+    const sansRituel = { ...TOUT, meditation: false, bible: false };
+    expect(auditComplet(sansRituel, "midi")).toBe(true);
+    expect(auditComplet(sansRituel, "matin")).toBe(false);
+    expect(auditComplet(sansRituel, "soir")).toBe(false);
+  });
+
+  it("chaque case du créneau compte, aucune n'est décorative", () => {
+    for (const creneau of ["matin", "midi", "soir"] as const) {
+      for (const c of casesPour(creneau)) {
+        expect(auditComplet({ ...TOUT, [c.id]: false }, creneau)).toBe(false);
+      }
+    }
   });
 });
 

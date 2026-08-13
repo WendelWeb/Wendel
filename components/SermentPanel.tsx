@@ -6,6 +6,7 @@ import { Check, Lock, AlertTriangle, X } from "lucide-react";
 import {
   CRENEAUX,
   CASES,
+  casesPour,
   RECHUTES,
   CIBLE_JOURS,
   prochainCreneau,
@@ -26,6 +27,8 @@ const VIDE: Confirmations = {
   fichiers: false,
   lecture: false,
   reverie: false,
+  meditation: false,
+  bible: false,
 };
 
 /**
@@ -58,7 +61,9 @@ export default function SermentPanel({
 
   const creneau = CRENEAUX.find((c) => c.id === etat.ouvert);
   const dejaFait = etat.ouvert ? etat.aujourdhui[etat.ouvert] : undefined;
-  const complet = CASES.every((c) => conf[c.id]);
+  // Les cases dependent du creneau : ni meditation ni Bible a midi.
+  const mesCases = etat.ouvert ? casesPour(etat.ouvert) : CASES;
+  const complet = mesCases.every((c) => conf[c.id]);
   const pct = Math.min(100, Math.round((etat.jourActuel / CIBLE_JOURS) * 100));
 
   function declarer(choix: "vouloir" | "perpetuer") {
@@ -259,10 +264,10 @@ export default function SermentPanel({
           /* L'audit — quatre cases, et elles doivent toutes tomber */
           <div>
             <p className="mb-3 text-[12px] font-semibold leading-relaxed text-white/70">
-              Coche ce qui est vrai. Les quatre, ou rien.
+              Coche ce qui est vrai. Toutes, ou rien.
             </p>
             <ul className="flex flex-col gap-2">
-              {CASES.map((c) => {
+              {mesCases.map((c) => {
                 const on = conf[c.id];
                 // La case de lecture reste fermée tant qu'il n'est pas
                 // descendu jusqu'au bas du miroir.

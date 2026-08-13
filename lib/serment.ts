@@ -63,15 +63,26 @@ export interface Confirmations {
   fichiers: boolean;
   lecture: boolean;
   reverie: boolean;
+  meditation: boolean;
+  bible: boolean;
 }
 
-export const CASES: {
+export interface CaseAudit {
   id: keyof Confirmations;
   label: string;
   rechute?: Rechute;
   /** Vraie seulement pour la lecture : la case ne s'ouvre pas d'elle-même. */
   verifiee?: boolean;
-}[] = [
+  /**
+   * Les créneaux où cette case s'applique. Absent = les trois.
+   * La méditation et la lecture biblique n'ont lieu que matin et soir : les
+   * demander à midi ferait cocher une case pour un acte qui n'existe pas, et
+   * une case qu'on coche par habitude ne vaut plus rien.
+   */
+  creneaux?: Creneau[];
+}
+
+export const CASES: CaseAudit[] = [
   { id: "pasTiktok", label: "Je n'ai pas réinstallé TikTok", rechute: "tiktok" },
   { id: "pasGazeuse", label: "Je n'ai pas bu de boisson gazeuse", rechute: "gazeuse" },
   { id: "pasPorn", label: "Je n'ai pas regardé de porno", rechute: "porn" },
@@ -89,6 +100,17 @@ export const CASES: {
       "Je n'ai pas écouté de musique en rêvassant, et j'ai coupé chaque rêverie par une parole à voix haute",
   },
   {
+    id: "meditation",
+    label: "J'ai fait mes 20 minutes de méditation",
+    creneaux: ["matin", "soir"],
+  },
+  {
+    id: "bible",
+    label:
+      "J'ai fait mes 20 minutes de lecture biblique — l'Ancien Testament, jusqu'au bout",
+    creneaux: ["matin", "soir"],
+  },
+  {
     // La seule case que l'écran vérifie lui-même : elle ne devient cochable
     // qu'une fois arrivé au bas du miroir. Une case qu'on peut cocher sans
     // avoir lu ne prouve rien — celle-ci oblige à traverser le texte.
@@ -99,15 +121,20 @@ export const CASES: {
   },
 ];
 
+/** Les cases qui s'appliquent à ce créneau-là. */
+export function casesPour(creneau: Creneau): CaseAudit[] {
+  return CASES.filter((c) => !c.creneaux || c.creneaux.includes(creneau));
+}
+
 export const RECHUTES: { id: Rechute; label: string }[] = [
   { id: "tiktok", label: "J'ai réinstallé TikTok" },
   { id: "gazeuse", label: "J'ai bu une boisson gazeuse" },
   { id: "porn", label: "J'ai regardé du porno" },
 ];
 
-/** Toutes les cases sont-elles cochées. */
-export function auditComplet(c: Confirmations): boolean {
-  return CASES.every((x) => c[x.id]);
+/** Toutes les cases de ce créneau sont-elles cochées. */
+export function auditComplet(c: Confirmations, creneau: Creneau): boolean {
+  return casesPour(creneau).every((x) => c[x.id]);
 }
 
 /** Le créneau ouvert à cette heure-là, ou null hors des plages. */
