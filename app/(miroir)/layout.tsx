@@ -27,7 +27,7 @@ export default async function MiroirLayout({
   const ferme = await verrouille(userId);
 
   return (
-    <div className="min-h-[100dvh] bg-black md:flex">
+    <div className="min-h-[100dvh] bg-background md:flex">
       <SideNav verrouille={ferme} />
       <div className="min-w-0 flex-1">{children}</div>
       <BottomNav verrouille={ferme} />

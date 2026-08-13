@@ -14,6 +14,8 @@ import {
   type EtatSerment,
   type Rechute,
 } from "@/lib/serment";
+import ConsequencePanel from "./ConsequencePanel";
+import { DESCENTE } from "@/lib/consequence";
 import {
   declarerAction,
   declarerRechuteAction,
@@ -180,10 +182,13 @@ export default function SermentPanel({
       {/* L'action du moment */}
       <div className="mt-4 border-t border-white/10 px-5 py-4">
         {etat.rechuteAujourdhui ? (
-          <p className="text-[13px] font-semibold leading-relaxed text-red">
-            Rechute déclarée aujourd&apos;hui. Le compteur est à zéro. Demain
-            recommence — et ce sera le jour 1, pas la suite.
-          </p>
+          <div>
+            <p className="mb-4 text-[13px] font-semibold leading-relaxed text-red">
+              Rechute déclarée aujourd&apos;hui. Le compteur est à zéro. Demain
+              recommence — et ce sera le jour 1, pas la suite.
+            </p>
+            <ConsequencePanel c={DESCENTE} sens="descente" />
+          </div>
         ) : !creneau ? (
           <p className="text-[13px] leading-relaxed text-white/50">
             Aucun créneau ouvert. Le prochain :{" "}
@@ -211,6 +216,14 @@ export default function SermentPanel({
                 </>
               )}
             </p>
+
+            {/* Perpétuer n'est pas un bouton indolore : il doit voir ce qu'il
+                vient de choisir, aussi nettement que l'autre chemin. */}
+            {dejaFait === "perpetuer" && (
+              <div className="mt-4">
+                <ConsequencePanel c={DESCENTE} sens="descente" />
+              </div>
+            )}
 
             {/* La fenêtre gagnée : quelques minutes sur sa Vision, pour voir
                 ce qu'il vient de choisir. Elle se referme quand il dit « j'ai
