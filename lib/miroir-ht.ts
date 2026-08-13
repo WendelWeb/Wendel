@@ -199,6 +199,20 @@ export const MIROIR_HT: MiroirBloc[] = [
     ],
   },
   {
+    id: "jeunesse",
+    titre: "Fòs jenès mwen, mwen bay li nan sa",
+    lignes: [
+      "Santi m nan po yon granmoun katrevenzan, nan laj mwen.",
+      "23 an, epi mwen leve bouke. Chak jou.",
+      "Bay fòs jenès mwen nan vye bagay sa a.",
+      "Epi li p ap janm tounen.",
+      "Ane sa yo pa ka rachte. Pa gen dezyèm jenès.",
+      "Enèji m ap boule jodi a se sèl enèji mwen t ap janm genyen nan laj sa a.",
+      "A 40 an mwen ka gen lajan an. Mwen p ap gen ane sa yo ankò.",
+      "Sèl kapital ki pa ka refèt, se li menm mwen gaspiye chak jou.",
+    ],
+  },
+  {
     id: "corps",
     titre: "Kò a — senk ane pou anyen",
     lignes: [

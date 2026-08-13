@@ -196,6 +196,20 @@ export const MIROIR_EN: MiroirBloc[] = [
     ],
   },
   {
+    id: "jeunesse",
+    titre: "My young strength, given to this",
+    lignes: [
+      "Feeling like an eighty-year-old man in my own skin, at my age.",
+      "23 years old, and I wake up tired. Every single day.",
+      "Giving the strength of my youth to this shit.",
+      "And it will never come back.",
+      "Those years cannot be bought back. There is no second youth.",
+      "The energy I burn today is the only energy I will ever have had at this age.",
+      "At 40 I may have the money. I will not have these years.",
+      "The one capital that cannot be rebuilt is the one I waste every day.",
+    ],
+  },
+  {
     id: "corps",
     titre: "The body — five years for nothing",
     lignes: [

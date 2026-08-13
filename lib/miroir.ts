@@ -182,6 +182,22 @@ export const MIROIR: MiroirBloc[] = [
     ],
   },
   {
+    // La seule chose de toute la liste qui ne se rattrape pas. L'argent se
+    // refait, le corps se refait, la peau se refait — ces années-là, non.
+    id: "jeunesse",
+    titre: "Ma force de jeunesse, donnée à ça",
+    lignes: [
+      "Me sentir dans la peau d'un vieillard de 80 ans, à mon âge.",
+      "23 ans, et je me lève fatigué. Tous les jours.",
+      "Donner ma force de jeunesse à cette merde.",
+      "Et elle ne reviendra jamais.",
+      "Ces années-là ne se rachètent pas. Il n'y a pas de deuxième jeunesse.",
+      "L'énergie que je brûle aujourd'hui est la seule que j'aurai jamais eue à cet âge.",
+      "À 40 ans j'aurai peut-être l'argent. Je n'aurai plus ces années.",
+      "Le seul capital qui ne se refait pas, c'est celui que je gaspille chaque jour.",
+    ],
+  },
+  {
     id: "corps",
     titre: "5 ans à la gym",
     lignes: [

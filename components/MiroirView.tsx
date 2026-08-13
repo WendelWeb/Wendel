@@ -4,6 +4,8 @@ import { useEffect, useRef, useState } from "react";
 import type { MiroirBloc } from "@/lib/miroir";
 import type { EtatSerment } from "@/lib/serment";
 import SermentPanel from "./SermentPanel";
+import EnvieOverlay from "./EnvieOverlay";
+import { Flame } from "lucide-react";
 
 export interface MiroirLangue {
   code: "en" | "fr" | "ht";
@@ -51,6 +53,7 @@ export default function MiroirView({
   // s'ouvre qu'une fois ce repère atteint, tout en bas. Changer de langue
   // remet le compteur à zéro : on ne lit pas l'anglais en ayant scrollé le
   // français.
+  const [envie, setEnvie] = useState(false);
   const [luJusquAuBout, setLu] = useState(false);
   const finRef = useRef<HTMLDivElement | null>(null);
 
@@ -94,6 +97,21 @@ export default function MiroirView({
             </div>
           ))}
         </div>
+
+        {/* Le bouton de l'envie — en premier, avant tout le reste. Quand ça
+            monte, il ne doit pas avoir à chercher. Il remplace la page Urgence
+            qu'il a fermée avec les autres. */}
+        <button
+          type="button"
+          onClick={() => setEnvie(true)}
+          className="mb-5 flex w-full items-center justify-center gap-2.5 rounded-2xl px-4 py-4 text-[15px] font-bold uppercase tracking-wide text-white transition active:scale-[0.99]"
+          style={{ background: "var(--red)" }}
+        >
+          <Flame size={18} />
+          Je ressens l&apos;envie
+        </button>
+
+        {envie && <EnvieOverlay onClose={() => setEnvie(false)} />}
 
         {/* Le mécanisme des 30 jours — avant le constat, parce que c'est la
             seule chose sur cet écran qui puisse changer une ligne du constat. */}
