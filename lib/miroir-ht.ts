@@ -261,6 +261,24 @@ export const MIROIR_HT: MiroirBloc[] = [
     ],
   },
   {
+    id: "jugement-divin",
+    titre: "Sa Etènèl la kondane — epi mwen menm mwen pratike",
+    lignes: [
+      "Etènèl la pa kondane sèlman moun tout moun ap montre ak dwèt yo — omoseksyalite, maji, li nan zetwal.",
+      "« Men pou moun ki lach yo, moun ki pa kwè yo, moun ki fè bagay ki degoutan yo, ansasen yo, moun ki nan imoralite seksyèl yo, moun k ap fè maji yo, moun k ap sèvi zidòl yo, ak tout mantè yo, plas yo se nan letan dife ak souf la. » (Revelasyon 21:8)",
+      "Se moun ki lach yo yo nonmen ANVAN TOUT LÒT. Anvan ansasen yo. Anvan moun k ap sèvi zidòl yo.",
+      "Mwen nan lis sa a, epi mwen nan premye plas la.",
+      "« Pa twonpe tèt nou : ni moun ki nan imoralite seksyèl, ni moun k ap sèvi zidòl… p ap eritye wayòm Bondye a. » (1 Korentyen 6:9-10)",
+      "« Zèv lachè yo klè : imoralite seksyèl, malpwòpte, dezòd… moun k ap fè bagay sa yo p ap eritye wayòm Bondye a. » (Galat 5:19-21)",
+      "Esklav lachè li, esklav men li, nonm ki mennen pa dezi li : kondane tou. Ak non l ladan l.",
+      "Sa se pa yon feblès yo tolere epi yo mete sou kote. Se sa ki anpeche antre nan Wayòm nan.",
+      "Mwen rasire tèt mwen lè m konpare peche mwen ak peche lòt moun. Bondye pa fè klasman sa a.",
+      "Mwen pa mwens kondane paske fot mwen an òdinè, kache, epi li pa blese pèsonn lòt pase mwen menm.",
+      "Mwen pa « yon bon ti gason ki gen yon ti pwoblèm ». Mwen nan lis la, sou premye liy lan.",
+      "Epi mwen konnen sa. Epi mwen pral rekòmanse aswè a.",
+    ],
+  },
+  {
     id: "temps",
     titre: "Sa k ap rive si anyen pa chanje",
     lignes: [

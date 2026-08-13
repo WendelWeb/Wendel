@@ -307,6 +307,28 @@ export const MIROIR: MiroirBloc[] = [
     ],
   },
   {
+    // Son point, et il est exact — les textes sont plus durs que ce qu'il dit.
+    // Apocalypse 21:8 nomme les lâches EN PREMIER, avant les meurtriers et les
+    // idolâtres. Ce n'est pas une faute tolérée qu'on range à part : c'est dans
+    // la même liste, en tête. Les références sont citées telles qu'elles sont.
+    id: "jugement-divin",
+    titre: "Ce que l'Éternel a condamné — et que je pratique",
+    lignes: [
+      "L'Éternel n'a pas condamné seulement ceux qu'on montre du doigt — l'homosexualité, la magie, la lecture des astres.",
+      "« Mais pour les lâches, les incrédules, les abominables, les meurtriers, les impudiques, les enchanteurs, les idolâtres, et tous les menteurs, leur part sera dans l'étang ardent de feu et de soufre. » (Apocalypse 21:8)",
+      "Les lâches sont nommés EN PREMIER. Avant les meurtriers. Avant les idolâtres.",
+      "Je suis dans cette liste, et je suis en tête de liste.",
+      "« Ne vous y trompez pas : ni les impudiques, ni les idolâtres… n'hériteront le royaume de Dieu. » (1 Corinthiens 6:9-10)",
+      "« Les œuvres de la chair sont manifestes : impudicité, impureté, dissolution… ceux qui commettent de telles choses n'hériteront point le royaume de Dieu. » (Galates 5:19-21)",
+      "L'esclave de sa chair, l'esclave de sa main, l'homme mené par son désir : condamné aussi. Nommément.",
+      "Ce n'est pas une faiblesse tolérée qu'on range à part. C'est ce qui empêche d'entrer dans le Royaume.",
+      "Je me rassure en comparant mon péché à celui des autres. Dieu ne fait pas ce classement-là.",
+      "Je ne suis pas moins condamné parce que ma faute est banale, cachée, et qu'elle ne blesse personne d'autre que moi.",
+      "Je ne suis pas « un bon garçon avec un petit problème ». Je suis dans la liste, à la première ligne.",
+      "Et je le sais. Et je recommence ce soir.",
+    ],
+  },
+  {
     id: "temps",
     titre: "Ce qui arrive si rien ne change",
     lignes: [

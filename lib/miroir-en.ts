@@ -258,6 +258,24 @@ export const MIROIR_EN: MiroirBloc[] = [
     ],
   },
   {
+    id: "jugement-divin",
+    titre: "What the LORD condemned — and what I practice",
+    lignes: [
+      "The LORD did not condemn only the ones people point at — homosexuality, sorcery, reading the stars.",
+      "\"But the cowardly, the unbelieving, the vile, the murderers, the sexually immoral, those who practice magic arts, the idolaters and all liars — their place will be in the fiery lake of burning sulfur.\" (Revelation 21:8)",
+      "The cowardly are named FIRST. Before the murderers. Before the idolaters.",
+      "I am on that list, and I am at the top of it.",
+      "\"Do not be deceived: neither the sexually immoral nor idolaters… will inherit the kingdom of God.\" (1 Corinthians 6:9-10)",
+      "\"The acts of the flesh are obvious: sexual immorality, impurity, debauchery… those who live like this will not inherit the kingdom of God.\" (Galatians 5:19-21)",
+      "The slave of his flesh, the slave of his hand, the man led by his desire: condemned too. By name.",
+      "This is not a tolerated weakness filed away somewhere else. This is what bars entry to the Kingdom.",
+      "I reassure myself by comparing my sin to other people's. God does not run that ranking.",
+      "I am not less condemned because my fault is ordinary, hidden, and hurts no one but me.",
+      "I am not \"a good guy with a small problem\". I am on the list, on the first line.",
+      "And I know it. And I will do it again tonight.",
+    ],
+  },
+  {
     id: "temps",
     titre: "What happens if nothing changes",
     lignes: [
