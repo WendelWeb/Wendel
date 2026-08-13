@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useTransition } from "react";
+import { useRouter } from "next/navigation";
 import { Check, Lock, AlertTriangle, X } from "lucide-react";
 import {
   CRENEAUX,
@@ -12,7 +13,11 @@ import {
   type EtatSerment,
   type Rechute,
 } from "@/lib/serment";
-import { declarerAction, declarerRechuteAction } from "@/app/serment-actions";
+import {
+  declarerAction,
+  declarerRechuteAction,
+  ouvrirVisionAction,
+} from "@/app/serment-actions";
 
 const VIDE: Confirmations = {
   pasTiktok: false,
@@ -49,6 +54,7 @@ export default function SermentPanel({
   const [rechuteOuverte, setRechuteOuverte] = useState(false);
   const [erreur, setErreur] = useState<string | null>(null);
   const [pending, start] = useTransition();
+  const router = useRouter();
 
   const creneau = CRENEAUX.find((c) => c.id === etat.ouvert);
   const dejaFait = etat.ouvert ? etat.aujourdhui[etat.ouvert] : undefined;
@@ -183,20 +189,44 @@ export default function SermentPanel({
             .
           </p>
         ) : dejaFait ? (
-          <p className="text-[13px] leading-relaxed text-white/60">
-            {dejaFait === "vouloir" ? (
-              <>
-                Déclaré pour ce créneau : <strong className="text-white">je le veux vraiment</strong>.
-                Prochain rendez-vous :{" "}
-                {prochainCreneau(heure).label.toLowerCase()}.
-              </>
-            ) : (
-              <>
-                Déclaré pour ce créneau : <strong className="text-red">je perpétue</strong>.
-                La journée ne comptera pas.
-              </>
+          <div>
+            <p className="text-[13px] leading-relaxed text-white/60">
+              {dejaFait === "vouloir" ? (
+                <>
+                  Déclaré pour ce créneau :{" "}
+                  <strong className="text-white">je le veux vraiment</strong>.
+                  Prochain rendez-vous :{" "}
+                  {prochainCreneau(heure).label.toLowerCase()}.
+                </>
+              ) : (
+                <>
+                  Déclaré pour ce créneau :{" "}
+                  <strong className="text-red">je perpétue</strong>. La journée
+                  ne comptera pas.
+                </>
+              )}
+            </p>
+
+            {/* La fenêtre gagnée : quelques minutes sur sa Vision, pour voir
+                ce qu'il vient de choisir. Elle se referme quand il dit « j'ai
+                fini » ou qu'il quitte l'app. */}
+            {dejaFait === "vouloir" && (
+              <button
+                type="button"
+                disabled={pending}
+                onClick={() =>
+                  start(async () => {
+                    const r = await ouvrirVisionAction();
+                    if (r.ok) router.push("/vision");
+                  })
+                }
+                className="mt-3.5 w-full rounded-xl px-4 py-3.5 text-[14px] font-bold uppercase tracking-wide text-black transition active:scale-[0.99] disabled:opacity-50"
+                style={{ background: "var(--gold-border)" }}
+              >
+                Voir ce que je viens de choisir
+              </button>
             )}
-          </p>
+          </div>
         ) : !ouvert ? (
           <div className="flex flex-col gap-2.5">
             <p className="mb-0.5 text-[11px] font-bold uppercase tracking-[0.16em] text-white/40">

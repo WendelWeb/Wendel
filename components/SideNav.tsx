@@ -53,7 +53,7 @@ export default function SideNav({ verrouille = false }: { verrouille?: boolean }
       </div>
 
       <nav className="flex flex-1 flex-col gap-1 px-3">
-        {(verrouille ? TABS.filter((t) => t.href === "/miroir" || t.href === "/urgence") : TABS).map(({ href, label, Icon }) => {
+        {(verrouille ? TABS.filter((t) => t.href === "/miroir") : TABS).map(({ href, label, Icon }) => {
           const active = pathname === href || pathname.startsWith(href + "/");
           return (
             <Link

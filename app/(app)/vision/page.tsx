@@ -6,6 +6,8 @@ import { getSerment } from "@/lib/serments";
 import { CIBLE_JOURS } from "@/lib/serment";
 import { todayHaiti, daysBetween } from "@/lib/dates";
 import VisionEditor from "@/components/VisionEditor";
+import FenetreVision from "@/components/FenetreVision";
+import { visionOuverte } from "@/lib/verrou";
 
 export const dynamic = "force-dynamic";
 
@@ -20,6 +22,24 @@ export const dynamic = "force-dynamic";
 export default async function VisionPage() {
   const userId = await requireUserId();
   const serment = await getSerment(userId);
+  const acces = await visionOuverte(userId);
+
+  // La fenêtre gagnée par une déclaration : quelques minutes pour voir ce
+  // qu'il vient de choisir, avec le décompte sous les yeux.
+  if (!serment.debloque && acces.ouverte && acces.jusqua) {
+    const v = await getVision(userId);
+    return (
+      <>
+        <FenetreVision jusqua={acces.jusqua.toISOString()} />
+        <VisionEditor
+          initialContent={v.content}
+          initialCreed={v.creed}
+          daysToJan={daysBetween(todayHaiti(), "2027-01-01")}
+          daysTo30={daysBetween(todayHaiti(), "2033-05-16")}
+        />
+      </>
+    );
+  }
 
   if (!serment.debloque) {
     const restants = Math.max(1, CIBLE_JOURS - serment.jourActuel + 1);

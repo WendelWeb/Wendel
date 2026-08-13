@@ -151,6 +151,22 @@ export const sermentBreaches = pgTable("serment_breaches", {
   createdAt: timestamp("created_at").defaultNow(),
 });
 
+// LA FENÊTRE SUR LA VISION.
+//
+// Après chaque déclaration tenue, il peut ouvrir sa Vision quelques minutes
+// pour voir ce qu'il vient de choisir. La fenêtre se referme dès qu'il dit
+// « j'ai fini », dès qu'il quitte l'app, ou d'elle-même à l'expiration — parce
+// qu'un onglet laissé ouvert redeviendrait un accès permanent.
+export const visionAccess = pgTable("vision_access", {
+  id: uuid("id").defaultRandom().primaryKey(),
+  userId: uuid("user_id")
+    .references(() => users.id)
+    .notNull()
+    .unique(),
+  openUntil: timestamp("open_until"),
+  updatedAt: timestamp("updated_at").defaultNow(),
+});
+
 export const retention = pgTable("retention", {
   id: uuid("id").defaultRandom().primaryKey(),
   userId: uuid("user_id")

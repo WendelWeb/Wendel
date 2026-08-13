@@ -272,8 +272,10 @@ export default function BottomNav({ verrouille = false }: { verrouille?: boolean
             <Tab key={t.href} {...t} active={isOn(pathname, t.href)} />
           ))}
 
-          {/* URGENCE — the panic lever. Raised, red, impossible to miss. */}
+          {/* URGENCE — the panic lever. Raised, red, impossible to miss.
+              Fermée elle aussi pendant les 30 jours : il l'a demandé. */}
           <div className="flex flex-1 justify-center">
+            {verrouille ? null : (
             <Link
               href="/urgence"
               aria-label="Urgence — je suis tenté"
@@ -292,6 +294,7 @@ export default function BottomNav({ verrouille = false }: { verrouille?: boolean
                 SOS
               </span>
             </Link>
+            )}
           </div>
 
           {droite.map((t) => (
