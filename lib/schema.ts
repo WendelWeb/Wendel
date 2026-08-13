@@ -114,6 +114,43 @@ export const plans = pgTable("plans", {
   updatedAt: timestamp("updated_at").defaultNow(),
 });
 
+// LES 30 JOURS — trois déclarations par jour, chacune avec son audit à quatre
+// cases. Une ligne par créneau et par date : impossible de déclarer deux fois
+// le même moment.
+export const sermentChecks = pgTable(
+  "serment_checks",
+  {
+    id: uuid("id").defaultRandom().primaryKey(),
+    userId: uuid("user_id")
+      .references(() => users.id)
+      .notNull(),
+    date: date("date").notNull(),
+    creneau: text("creneau").notNull(), // matin | midi | soir
+    choix: text("choix").notNull(), // vouloir | perpetuer
+    // Les quatre cases, gardées telles qu'il les a cochées : la trace compte
+    // autant que le résultat.
+    confirmations: jsonb("confirmations")
+      .default({})
+      .$type<Record<string, boolean>>(),
+    createdAt: timestamp("created_at").defaultNow(),
+  },
+  (t) => ({
+    uniqueUserDateCreneau: unique().on(t.userId, t.date, t.creneau),
+  }),
+);
+
+// Les rechutes déclarées. Aucune suppression n'est prévue : un aveu qu'on peut
+// retirer n'est pas un aveu.
+export const sermentBreaches = pgTable("serment_breaches", {
+  id: uuid("id").defaultRandom().primaryKey(),
+  userId: uuid("user_id")
+    .references(() => users.id)
+    .notNull(),
+  date: date("date").notNull(),
+  kind: text("kind").notNull(), // tiktok | gazeuse | porn
+  createdAt: timestamp("created_at").defaultNow(),
+});
+
 export const retention = pgTable("retention", {
   id: uuid("id").defaultRandom().primaryKey(),
   userId: uuid("user_id")

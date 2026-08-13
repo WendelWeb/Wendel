@@ -11,6 +11,8 @@ import { MIROIR, MIROIR_THESE, MIROIR_SORTIE } from "@/lib/miroir";
 import { MIROIR_RETOURNE } from "@/lib/miroir-plus";
 import { MIROIR_EN, MIROIR_EN_THESE, MIROIR_EN_SORTIE } from "@/lib/miroir-en";
 import { MIROIR_HT, MIROIR_HT_THESE, MIROIR_HT_SORTIE } from "@/lib/miroir-ht";
+import { getSerment } from "@/lib/serments";
+import { haitiHour } from "@/lib/dates";
 import MiroirView, { type MiroirLangue } from "@/components/MiroirView";
 
 export const dynamic = "force-dynamic";
@@ -44,12 +46,13 @@ const LANGUES: MiroirLangue[] = [
 
 export default async function MiroirPage() {
   const userId = await requireUserId();
-  const [log, streak, ret, program, plan] = await Promise.all([
+  const [log, streak, ret, program, plan, serment] = await Promise.all([
     getOrCreateTodayLog(userId),
     getStreak(userId),
     getRetention(userId),
     getProgram(userId),
     getPlan(userId),
+    getSerment(userId),
   ]);
 
   const rest = isRestDay(program, weekdayHaiti());
@@ -59,6 +62,8 @@ export default async function MiroirPage() {
   return (
     <MiroirView
       langues={LANGUES}
+      serment={serment}
+      heure={haitiHour()}
       etat={{
         daysToJan: daysUntil(today, DATE_JANVIER),
         daysTo30: daysUntil(today, DATE_TRENTE_ANS),

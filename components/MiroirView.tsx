@@ -2,6 +2,8 @@
 
 import { useState } from "react";
 import type { MiroirBloc } from "@/lib/miroir";
+import type { EtatSerment } from "@/lib/serment";
+import SermentPanel from "./SermentPanel";
 
 export interface MiroirLangue {
   code: "en" | "fr" | "ht";
@@ -25,9 +27,13 @@ export interface MiroirLangue {
  */
 export default function MiroirView({
   langues,
+  serment,
+  heure,
   etat,
 }: {
   langues: MiroirLangue[];
+  serment: EtatSerment;
+  heure: number;
   etat: {
     daysToJan: number;
     daysTo30: number;
@@ -65,6 +71,10 @@ export default function MiroirView({
             </div>
           ))}
         </div>
+
+        {/* Le mécanisme des 30 jours — avant le constat, parce que c'est la
+            seule chose sur cet écran qui puisse changer une ligne du constat. */}
+        <SermentPanel etat={serment} heure={heure} />
 
         {/* Les trois langues de son manifeste : EN → FR → Kreyòl */}
         <div className="mb-6 flex gap-2">
