@@ -117,6 +117,22 @@ export const MIROIR_EN: MiroirBloc[] = [
     ],
   },
   {
+    id: "limites",
+    titre: "I don't even fill this small life",
+    lignes: [
+      "I am not trying to find my limits. I don't even fill this small, mediocre life I'm already in.",
+      "I am not even at the edge of what my current life already allows.",
+      "I talk about surpassing the human, and I don't even occupy the twenty-four hours I have.",
+      "I touch no ceiling. I have never come close to a single ceiling.",
+      "Nobody can know what I'm capable of: I have never carried anything through to the end, not even something small.",
+      "My mediocrity itself is not filled. It is half empty.",
+      "I don't know my limits because I have never made it all the way to them.",
+      "I dream of the boundless from a bed I haven't even made.",
+      "Before wanting to exceed my limits, I would first have to reach the edge of this small space.",
+      "The little I have, I do not use. And I dare to ask for more.",
+    ],
+  },
+  {
     id: "preuves",
     titre: "The evidence — there is none",
     lignes: [

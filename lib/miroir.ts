@@ -131,6 +131,25 @@ export const MIROIR: MiroirBloc[] = [
     ],
   },
   {
+    // Le renversement d'échelle : il parle de dépasser l'humain, et il n'a
+    // jamais atteint le bord de la vie qu'il a déjà. On ne peut pas savoir de
+    // quoi il est capable — il n'a jamais rien mené jusqu'au bout, même petit.
+    id: "limites",
+    titre: "Je ne remplis même pas cette petite vie",
+    lignes: [
+      "Je ne cherche pas à connaître mes limites. Je ne remplis même pas cette petite vie médiocre dans laquelle je suis.",
+      "Je ne suis même pas au bout de ce que ma vie actuelle permet déjà.",
+      "Je parle de dépasser l'humain, et je n'occupe même pas les vingt-quatre heures que j'ai.",
+      "Je ne touche aucun plafond. Je n'ai jamais approché un seul plafond.",
+      "Personne ne peut savoir de quoi je suis capable : je n'ai jamais rien mené jusqu'au bout, même petit.",
+      "Ma médiocrité elle-même n'est pas remplie. Elle est à moitié vide.",
+      "Je ne connais pas mes limites parce que je ne me suis jamais rendu jusqu'à elles.",
+      "Je rêve de démesure depuis un lit que je n'ai même pas fait.",
+      "Avant de vouloir dépasser mes limites, il faudrait déjà atteindre le bord de ce petit espace-là.",
+      "Le peu que j'ai, je ne l'exploite pas. Et j'ose en réclamer plus.",
+    ],
+  },
+  {
     id: "preuves",
     titre: "Les preuves — il n'y en a aucune",
     lignes: [

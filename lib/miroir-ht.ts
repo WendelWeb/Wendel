@@ -120,6 +120,22 @@ export const MIROIR_HT: MiroirBloc[] = [
     ],
   },
   {
+    id: "limites",
+    titre: "Mwen pa menm ranpli ti lavi sa a",
+    lignes: [
+      "Mwen pa ap chèche konnen limit mwen. Mwen pa menm ranpli ti lavi medyòk sa a mwen ye ladan l lan.",
+      "Mwen pa menm rive nan bout sa lavi mwen genyen kounye a deja pèmèt.",
+      "Mwen pale sou depase moun, epi mwen pa menm okipe venn-kat èdtan mwen genyen yo.",
+      "Mwen pa touche okenn plafon. Mwen pa janm menm pwoche yon sèl plafon.",
+      "Pèsonn pa ka konnen sa mwen kapab fè : mwen pa janm mennen anyen jouk nan bout, menm yon ti bagay.",
+      "Medyokrite mwen an menm pa ranpli. Li a mwatye vid.",
+      "Mwen pa konnen limit mwen paske mwen pa janm rive jouk kote yo ye a.",
+      "Mwen reve gwo bagay depi nan yon kabann mwen pa menm ranje.",
+      "Anvan m vle depase limit mwen, fòk mwen ta rive nan bò ti espas sa a dabò.",
+      "Ti kras mwen genyen an, mwen pa sèvi avè l. Epi mwen gen kran mande plis.",
+    ],
+  },
+  {
     id: "preuves",
     titre: "Prèv yo — pa gen okenn",
     lignes: [
