@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import type { MiroirBloc } from "@/lib/miroir";
 import type { EtatSerment } from "@/lib/serment";
 import SermentPanel from "./SermentPanel";
@@ -46,6 +46,29 @@ export default function MiroirView({
   const [code, setCode] = useState<"en" | "fr" | "ht">("fr");
   const L = langues.find((l) => l.code === code) ?? langues[0];
 
+  // La cinquième obligation : avoir relu tout ce qu'il a écrit. Une case à
+  // cocher ne prouverait rien, alors l'écran vérifie lui-même — la case ne
+  // s'ouvre qu'une fois ce repère atteint, tout en bas. Changer de langue
+  // remet le compteur à zéro : on ne lit pas l'anglais en ayant scrollé le
+  // français.
+  const [luJusquAuBout, setLu] = useState(false);
+  const finRef = useRef<HTMLDivElement | null>(null);
+
+  useEffect(() => setLu(false), [code]);
+
+  useEffect(() => {
+    const cible = finRef.current;
+    if (!cible) return;
+    const obs = new IntersectionObserver(
+      ([e]) => {
+        if (e.isIntersecting) setLu(true);
+      },
+      { rootMargin: "0px 0px -40px 0px" },
+    );
+    obs.observe(cible);
+    return () => obs.disconnect();
+  }, [code]);
+
   return (
     <main className="min-h-[100dvh] bg-black px-4 pb-28 pt-6">
       <div className="mx-auto max-w-3xl">
@@ -74,7 +97,11 @@ export default function MiroirView({
 
         {/* Le mécanisme des 30 jours — avant le constat, parce que c'est la
             seule chose sur cet écran qui puisse changer une ligne du constat. */}
-        <SermentPanel etat={serment} heure={heure} />
+        <SermentPanel
+          etat={serment}
+          heure={heure}
+          luJusquAuBout={luJusquAuBout}
+        />
 
         {/* Les trois langues de son manifeste : EN → FR → Kreyòl */}
         <div className="mb-6 flex gap-2">
@@ -129,6 +156,16 @@ export default function MiroirView({
             style={{ color: "var(--gold-border)" }}
           >
             {L.sortie}
+          </p>
+        </div>
+
+        {/* Le repère de fin. L'atteindre débloque la cinquième case. */}
+        <div ref={finRef} className="pt-8 text-center">
+          <p className="text-[11.5px] font-semibold uppercase tracking-[0.2em] text-white/25">
+            Tu as tout relu
+          </p>
+          <p className="mt-2 text-[12.5px] leading-relaxed text-white/35">
+            Remonte en haut : la cinquième case est maintenant ouverte.
           </p>
         </div>
       </div>

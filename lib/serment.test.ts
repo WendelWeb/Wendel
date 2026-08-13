@@ -45,16 +45,19 @@ describe("les fenêtres horaires", () => {
   });
 });
 
-describe("l'audit à quatre cases", () => {
-  it("les quatre, ou rien", () => {
+describe("l'audit à cinq cases", () => {
+  it("les cinq, ou rien", () => {
     expect(
-      auditComplet({ pasTiktok: true, pasGazeuse: true, pasPorn: true, fichiers: true }),
+      auditComplet({ pasTiktok: true, pasGazeuse: true, pasPorn: true, fichiers: true, lecture: true }),
     ).toBe(true);
     expect(
-      auditComplet({ pasTiktok: true, pasGazeuse: true, pasPorn: true, fichiers: false }),
+      auditComplet({ pasTiktok: true, pasGazeuse: true, pasPorn: true, fichiers: false, lecture: true }),
     ).toBe(false);
     expect(
-      auditComplet({ pasTiktok: false, pasGazeuse: true, pasPorn: true, fichiers: true }),
+      auditComplet({ pasTiktok: false, pasGazeuse: true, pasPorn: true, fichiers: true, lecture: true }),
+    ).toBe(false);
+    expect(
+      auditComplet({ pasTiktok: true, pasGazeuse: true, pasPorn: true, fichiers: true, lecture: false }),
     ).toBe(false);
   });
 });

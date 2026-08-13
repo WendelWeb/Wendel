@@ -19,6 +19,7 @@ const VIDE: Confirmations = {
   pasGazeuse: false,
   pasPorn: false,
   fichiers: false,
+  lecture: false,
 };
 
 /**
@@ -35,9 +36,12 @@ const VIDE: Confirmations = {
 export default function SermentPanel({
   etat,
   heure,
+  luJusquAuBout,
 }: {
   etat: EtatSerment;
   heure: number;
+  /** Vrai une fois qu'il a réellement atteint le bas du miroir. */
+  luJusquAuBout: boolean;
 }) {
   const [conf, setConf] = useState<Confirmations>(VIDE);
   const [ouvert, setOuvert] = useState(false);
@@ -229,15 +233,20 @@ export default function SermentPanel({
             <ul className="flex flex-col gap-2">
               {CASES.map((c) => {
                 const on = conf[c.id];
+                // La case de lecture reste fermée tant qu'il n'est pas
+                // descendu jusqu'au bas du miroir.
+                const bloquee = c.verifiee && !luJusquAuBout;
                 return (
                   <li key={c.id}>
                     <button
                       type="button"
+                      disabled={bloquee}
                       onClick={() => setConf((x) => ({ ...x, [c.id]: !x[c.id] }))}
-                      className="flex w-full items-start gap-3 rounded-xl px-3.5 py-3 text-left transition active:scale-[0.99]"
+                      className="flex w-full items-start gap-3 rounded-xl px-3.5 py-3 text-left transition active:scale-[0.99] disabled:cursor-not-allowed"
                       style={{
                         background: on ? "rgba(22,163,74,.16)" : "#161616",
                         border: `1px solid ${on ? "#15803d" : "transparent"}`,
+                        opacity: bloquee ? 0.45 : 1,
                       }}
                     >
                       <span
@@ -251,6 +260,12 @@ export default function SermentPanel({
                       </span>
                       <span className="text-[13.5px] font-medium leading-snug text-white/90">
                         {c.label}
+                        {bloquee && (
+                          <span className="mt-1 block text-[11.5px] font-semibold text-white/40">
+                            Descends jusqu&apos;au bas de cette page pour pouvoir
+                            cocher.
+                          </span>
+                        )}
                       </span>
                     </button>
                   </li>

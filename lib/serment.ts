@@ -61,12 +61,15 @@ export interface Confirmations {
   pasGazeuse: boolean;
   pasPorn: boolean;
   fichiers: boolean;
+  lecture: boolean;
 }
 
 export const CASES: {
   id: keyof Confirmations;
   label: string;
   rechute?: Rechute;
+  /** Vraie seulement pour la lecture : la case ne s'ouvre pas d'elle-même. */
+  verifiee?: boolean;
 }[] = [
   { id: "pasTiktok", label: "Je n'ai pas réinstallé TikTok", rechute: "tiktok" },
   { id: "pasGazeuse", label: "Je n'ai pas bu de boisson gazeuse", rechute: "gazeuse" },
@@ -74,6 +77,15 @@ export const CASES: {
   {
     id: "fichiers",
     label: "Je suis allé dans mes fichiers regarder ce que je vais accomplir",
+  },
+  {
+    // La seule case que l'écran vérifie lui-même : elle ne devient cochable
+    // qu'une fois arrivé au bas du miroir. Une case qu'on peut cocher sans
+    // avoir lu ne prouve rien — celle-ci oblige à traverser le texte.
+    id: "lecture",
+    label:
+      "J'ai relu tout ce que j'ai écrit — mes choix de ces 8 dernières années et mon état actuel",
+    verifiee: true,
   },
 ];
 
@@ -83,9 +95,9 @@ export const RECHUTES: { id: Rechute; label: string }[] = [
   { id: "porn", label: "J'ai regardé du porno" },
 ];
 
-/** Les quatre cases sont-elles cochées. */
+/** Les cinq cases sont-elles cochées. */
 export function auditComplet(c: Confirmations): boolean {
-  return c.pasTiktok && c.pasGazeuse && c.pasPorn && c.fichiers;
+  return c.pasTiktok && c.pasGazeuse && c.pasPorn && c.fichiers && c.lecture;
 }
 
 /** Le créneau ouvert à cette heure-là, ou null hors des plages. */
