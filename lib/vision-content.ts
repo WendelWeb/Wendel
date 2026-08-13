@@ -126,6 +126,30 @@ Décret, pas souhait. Ce n'est pas une question de « possible » — c'est la d
 - Contrôle politique national, poids géopolitique régional (Caraïbe) et international. Diplomatie, alliances, souveraineté.
 - Ce n'est pas un budget — c'est le levier : celui qui bâtit tout ça détient le pouvoir réel.
 
+# 🇭🇹 HAÏTI À LA TABLE — 6e SIÈGE PERMANENT, OU UNE AUTRE TABLE
+Le Conseil de sécurité de l'ONU compte cinq membres permanents depuis 1945 : États-Unis, Russie, Chine, France, Royaume-Uni. Cinq pays décident, le reste du monde subit. **Haïti sera le sixième — ou il n'y aura plus de conseil qui compte.**
+- **Haïti membre permanent du Conseil de sécurité**, avec droit de veto. Pas un siège tournant, pas un strapontin : le veto.
+- **Ou bien créer l'organisation qui remplace celle-là** — plus puissante que l'ONU, avec Haïti à sa fondation et à sa tête. Quand on ne t'ouvre pas la porte, tu ne frappes pas plus fort : tu bâtis la maison.
+- On n'entre pas dans ce club en le demandant. On y entre quand refuser devient trop coûteux pour les autres.
+- Le siège se prend avec ce qui est déjà écrit dans cette Vision : l'armée privée du top 5, les ports, la finance, l'IA souveraine, les ressources. Le siège n'est pas un objectif à part — c'est ce que produit le reste.
+
+# 💣 PUISSANCE BELLIGÉRANTE — AU NIVEAU DES ÉTATS-UNIS, DE LA RUSSIE, DE LA CHINE
+Pas une puissance régionale. Pas une puissance émergente. **Un mastodonte belligérant, du même rang que les trois qui font trembler le monde aujourd'hui.**
+- Capacité de projection mondiale : frapper, tenir, et se retirer n'importe où sur la planète.
+- Dissuasion réelle — celle qui fait qu'on ne tente rien, jamais, parce que le prix est connu d'avance.
+- Un siège à la table des grands ne se donne pas, il s'impose. La diplomatie ne fait que constater le rapport de force qui existe déjà.
+- Le jour où une décision mondiale se prendra sans Haïti, elle ne tiendra pas.
+- Ce n'est pas de l'agression. C'est la fin de deux siècles où mon pays a été celui à qui l'on dicte.
+
+# ♟️ PAR MES PROPRES STRATÉGIES — RUSE, NÉGOCIATION, COUPS DE MAÎTRE
+Rien de tout cela ne me sera donné, ni hérité, ni concédé par bonté. **J'y arrive par ma tête.**
+- **Mes propres stratégies.** Pas celles d'un conseiller, pas celles d'un livre : les miennes, pensées par moi, exécutées par moi.
+- **Mes négociations.** Je m'assois en face et je repars avec ce que je suis venu chercher — parce que j'ai préparé ce que l'autre ignore, et parce que je peux me lever de la table.
+- **Ma ruse.** Voir deux coups plus loin. Laisser croire. Attendre le moment exact. Ne jamais annoncer ce que je vais faire.
+- **Mes coups de maître.** Ces mouvements que personne n'a vus venir, et qu'on étudiera après coup en se demandant comment c'était possible.
+- On ne me trouvera pas dans la salle où l'on supplie. On me trouvera dans celle où l'on décide.
+- Et une ruse ne s'improvise pas : elle se prépare dans des heures de travail que personne ne voit. C'est là que tout se joue — pas au moment du coup, mais dans les mois qui le rendent possible.
+
 # 🛣️ INFRASTRUCTURES — routes, ponts, plages
 - Réseau routier moderne (autoroutes, ponts), aménagement de plages & stations balnéaires de classe mondiale — **$10 Md–40 Md**.
 - Désenclaver la nation, attirer le tourisme haut de gamme.
