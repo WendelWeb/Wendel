@@ -3,6 +3,7 @@ import { notFound } from "next/navigation";
 import { ArrowLeft, ChevronLeft, ChevronRight, List, Gavel } from "lucide-react";
 import { getChapter, getAdjacent } from "@/lib/vaisseau";
 import { requireUserId } from "@/lib/auth";
+import { exigerDebloque } from "@/lib/verrou";
 import { getOrCreateTodayLog } from "@/lib/daily";
 import ChapterReadButton from "@/components/ChapterReadButton";
 
@@ -36,6 +37,7 @@ export default async function ChapterPage({
         : "browse";
 
   const userId = await requireUserId();
+  await exigerDebloque(userId);
   const log = await getOrCreateTodayLog(userId);
   const alreadyRead =
     ctx === "verdict"

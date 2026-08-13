@@ -1,4 +1,5 @@
 import { requireUserId } from "@/lib/auth";
+import { exigerDebloque } from "@/lib/verrou";
 import { getOrCreateTodayLog, getStreak } from "@/lib/daily";
 import { getRetention } from "@/lib/retention";
 import { getProgram } from "@/lib/programs";
@@ -12,6 +13,7 @@ export const dynamic = "force-dynamic";
 
 export default async function RetardsPage() {
   const userId = await requireUserId();
+  await exigerDebloque(userId);
   const [log, streak, ret, program] = await Promise.all([
     getOrCreateTodayLog(userId),
     getStreak(userId),

@@ -1,6 +1,8 @@
 import { redirect } from "next/navigation";
 import { auth } from "@/lib/auth";
 import BottomNav from "@/components/BottomNav";
+import { requireUserId } from "@/lib/auth";
+import { verrouille } from "@/lib/verrou";
 import SideNav from "@/components/SideNav";
 
 /**
@@ -21,11 +23,14 @@ export default async function MiroirLayout({
   const session = await auth();
   if (!session?.user) redirect("/auth/login");
 
+  const userId = await requireUserId();
+  const ferme = await verrouille(userId);
+
   return (
     <div className="min-h-[100dvh] bg-black md:flex">
-      <SideNav />
+      <SideNav verrouille={ferme} />
       <div className="min-w-0 flex-1">{children}</div>
-      <BottomNav />
+      <BottomNav verrouille={ferme} />
     </div>
   );
 }

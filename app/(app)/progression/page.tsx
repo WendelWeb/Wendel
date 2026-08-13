@@ -1,4 +1,5 @@
 import { requireUserId } from "@/lib/auth";
+import { exigerDebloque } from "@/lib/verrou";
 import { getLogsInRange, getGlobalStats, getStreak } from "@/lib/daily";
 import { getProgram } from "@/lib/programs";
 import { isRestDay } from "@/lib/program";
@@ -20,6 +21,7 @@ export const dynamic = "force-dynamic";
 
 export default async function ProgressionPage() {
   const userId = await requireUserId();
+  await exigerDebloque(userId);
   const today = todayHaiti();
   const start = addDays(today, -29);
 

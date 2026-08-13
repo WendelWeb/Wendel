@@ -20,6 +20,7 @@ const VIDE: Confirmations = {
   pasPorn: false,
   fichiers: false,
   lecture: false,
+  reverie: false,
 };
 
 /**

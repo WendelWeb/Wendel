@@ -62,6 +62,7 @@ export interface Confirmations {
   pasPorn: boolean;
   fichiers: boolean;
   lecture: boolean;
+  reverie: boolean;
 }
 
 export const CASES: {
@@ -77,6 +78,15 @@ export const CASES: {
   {
     id: "fichiers",
     label: "Je suis allé dans mes fichiers regarder ce que je vais accomplir",
+  },
+  {
+    // La rêverie compulsive, prise par ses deux bouts : le déclencheur (la
+    // musique, qui ouvre la porte) et l'automatisme lui-même, qu'il faut
+    // couper à voix haute. Une pensée qu'on chasse en silence revient ; une
+    // pensée qu'on interrompt en parlant se voit interrompue.
+    id: "reverie",
+    label:
+      "Je n'ai pas écouté de musique en rêvassant, et j'ai coupé chaque rêverie par une parole à voix haute",
   },
   {
     // La seule case que l'écran vérifie lui-même : elle ne devient cochable
@@ -95,9 +105,9 @@ export const RECHUTES: { id: Rechute; label: string }[] = [
   { id: "porn", label: "J'ai regardé du porno" },
 ];
 
-/** Les cinq cases sont-elles cochées. */
+/** Toutes les cases sont-elles cochées. */
 export function auditComplet(c: Confirmations): boolean {
-  return c.pasTiktok && c.pasGazeuse && c.pasPorn && c.fichiers && c.lecture;
+  return CASES.every((x) => c[x.id]);
 }
 
 /** Le créneau ouvert à cette heure-là, ou null hors des plages. */

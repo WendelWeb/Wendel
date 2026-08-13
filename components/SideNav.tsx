@@ -37,7 +37,7 @@ const TABS = [
   { href: "/reglages", label: "Réglages", Icon: SlidersHorizontal },
 ];
 
-export default function SideNav() {
+export default function SideNav({ verrouille = false }: { verrouille?: boolean }) {
   const pathname = usePathname();
   const [, startTransition] = useTransition();
 
@@ -53,7 +53,7 @@ export default function SideNav() {
       </div>
 
       <nav className="flex flex-1 flex-col gap-1 px-3">
-        {TABS.map(({ href, label, Icon }) => {
+        {(verrouille ? TABS.filter((t) => t.href === "/miroir" || t.href === "/urgence") : TABS).map(({ href, label, Icon }) => {
           const active = pathname === href || pathname.startsWith(href + "/");
           return (
             <Link

@@ -2,6 +2,7 @@ import Link from "next/link";
 import { ChevronRight, Siren } from "lucide-react";
 import { CHAPTER_META, type ChapterMeta } from "@/lib/vaisseau-meta";
 import { requireUserId } from "@/lib/auth";
+import { exigerDebloque } from "@/lib/verrou";
 import { getOrCreateTodayLog } from "@/lib/daily";
 import { lectureProgress } from "@/lib/lecture";
 import { getRetention } from "@/lib/retention";
@@ -16,6 +17,7 @@ export const dynamic = "force-dynamic";
 
 export default async function VaisseauPage() {
   const userId = await requireUserId();
+  await exigerDebloque(userId);
   const [log, ret, mtn] = await Promise.all([
     getOrCreateTodayLog(userId),
     getRetention(userId),

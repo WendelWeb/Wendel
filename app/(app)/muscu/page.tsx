@@ -1,4 +1,5 @@
 import { requireUserId } from "@/lib/auth";
+import { exigerDebloque } from "@/lib/verrou";
 import { getGymSession } from "@/lib/daily";
 import { getProgram } from "@/lib/programs";
 import { todayHaiti, formatLong, weekdayHaiti } from "@/lib/dates";
@@ -9,6 +10,7 @@ export const dynamic = "force-dynamic";
 
 export default async function MuscuPage() {
   const userId = await requireUserId();
+  await exigerDebloque(userId);
   const [program, session] = await Promise.all([
     getProgram(userId),
     getGymSession(userId, todayHaiti()),

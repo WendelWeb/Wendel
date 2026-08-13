@@ -1,5 +1,6 @@
 import { SlidersHorizontal } from "lucide-react";
 import { requireUserId } from "@/lib/auth";
+import { exigerDebloque } from "@/lib/verrou";
 import { getPlan } from "@/lib/plans";
 import { isDefaultPlan } from "@/lib/plan";
 import PlanEditor from "@/components/PlanEditor";
@@ -8,6 +9,7 @@ export const dynamic = "force-dynamic";
 
 export default async function ReglagesPage() {
   const userId = await requireUserId();
+  await exigerDebloque(userId);
   const plan = await getPlan(userId);
   const defaut = isDefaultPlan(plan);
 

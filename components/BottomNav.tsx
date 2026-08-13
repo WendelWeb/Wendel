@@ -157,7 +157,7 @@ function Tab({
   );
 }
 
-export default function BottomNav() {
+export default function BottomNav({ verrouille = false }: { verrouille?: boolean }) {
   const pathname = usePathname();
   const [moreOpen, setMoreOpen] = useState(false);
 
@@ -175,13 +175,20 @@ export default function BottomNav() {
     return () => window.removeEventListener("keydown", onKey);
   }, [moreOpen]);
 
+  // Pendant les 30 jours : le miroir et l'urgence, rien d'autre. Montrer un
+  // onglet fermé reviendrait à lui tendre chaque jour ce qu'il s'est interdit.
+  const gauche = verrouille
+    ? LEFT_TABS.filter((t) => t.href === "/miroir")
+    : LEFT_TABS;
+  const droite = verrouille ? [] : RIGHT_TABS;
+
   const urgenceActive = isOn(pathname, "/urgence");
   const moreActive = MORE_HREFS.some((h) => isOn(pathname, h));
 
   return (
     <>
       {/* ——— Overflow sheet ——— */}
-      {moreOpen && (
+      {moreOpen && !verrouille && (
         <div
           className="animate-overlay-in fixed inset-0 z-50 flex items-end bg-black/50 md:hidden"
           onClick={() => setMoreOpen(false)}
@@ -211,7 +218,7 @@ export default function BottomNav() {
             <div className="max-h-[65dvh] overflow-y-auto px-3 pb-4">
               <RefreshButton variant="row" />
 
-              {MORE_GROUPS.map((g) => (
+              {(verrouille ? [] : MORE_GROUPS).map((g) => (
                 <section key={g.group} className="mt-3">
                   <p className="px-2 pb-1.5 text-[10px] font-bold uppercase tracking-[0.2em] text-text-muted">
                     {g.group}
@@ -261,7 +268,7 @@ export default function BottomNav() {
         style={{ paddingBottom: "env(safe-area-inset-bottom)" }}
       >
         <div className="mx-auto flex h-[64px] max-w-md items-stretch">
-          {LEFT_TABS.map((t) => (
+          {gauche.map((t) => (
             <Tab key={t.href} {...t} active={isOn(pathname, t.href)} />
           ))}
 
@@ -287,7 +294,7 @@ export default function BottomNav() {
             </Link>
           </div>
 
-          {RIGHT_TABS.map((t) => (
+          {droite.map((t) => (
             <Tab key={t.href} {...t} active={isOn(pathname, t.href)} />
           ))}
 
