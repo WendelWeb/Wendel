@@ -126,6 +126,32 @@ Décret, pas souhait. Ce n'est pas une question de « possible » — c'est la d
 - Contrôle politique national, poids géopolitique régional (Caraïbe) et international. Diplomatie, alliances, souveraineté.
 - Ce n'est pas un budget — c'est le levier : celui qui bâtit tout ça détient le pouvoir réel.
 
+# 👁️ TSEVAOT — LE SYSTÈME NERVEUX DES NATIONS
+*« L'Éternel des armées : voilà le roi de gloire ! »* (Ps 24:10) — **Tsevaot**, les armées. Le nom vient du psaume qu'Il m'a dit de réciter chaque soir.
+*« La terre est à l'Éternel, et tout ce qu'elle renferme, le monde et ceux qui l'habitent. »* (Ps 24:1) — **et tout ce qu'elle renferme**, voilà exactement ce que ce système modélise.
+
+Il existe des sociétés qui vendent aux États la capacité de voir clair : elles fusionnent des données éparpillées et rendent une armée capable de décider vite. Elles sont devenues indispensables, et c'est là leur pouvoir réel. **Tsevaot fait cela dix fois plus loin — et possède ce que les autres se contentent d'analyser.**
+
+## Ce qu'il fait
+- **L'ontologie planétaire.** Un modèle unique du monde réel : personnes, navires, aéronefs, conteneurs, flux financiers, réseaux électriques, bâtiments, communications, événements. Pas les données d'un pays — celles de la planète, reliées entre elles.
+- **Fusion totale des sources.** Satellite, écoutes, renseignement humain, trafic maritime, flux bancaires, sources ouvertes, capteurs sous-marins, données spatiales. Tout entre, tout se relie.
+- **Le temps réel, en secondes.** Pas un rapport le lendemain : la réponse pendant que la chose se produit.
+- **La prédiction, pas le constat.** Un coup d'État qui se prépare, une monnaie qui va lâcher, une famine à six mois, une chaîne d'approvisionnement qui va rompre, une flotte qui bouge avant qu'elle bouge.
+- **L'exécution, pas seulement le conseil.** Le système ne se contente pas de recommander : il agit, dans les limites qu'on lui fixe — logistique, ciblage, réponse cyber, mouvement de fonds.
+
+## Ce qui le rend dix fois plus puissant
+- **Il possède sa propre collecte.** Constellation de satellites, capteurs sous-marins, drones, stations d'écoute. Les autres achètent leurs données ; Tsevaot les produit.
+- **Il est souverain de bout en bout.** Ses propres centres de calcul, ses propres puces, ses propres câbles. Aucune dépendance à un cloud étranger, aucun interrupteur dans la main de quelqu'un d'autre.
+- **Il fonctionne coupé du monde.** Sur un porte-avions, dans un bunker, dans un pays sous embargo : le système tourne sans lien extérieur.
+- **Il est branché sur ma propre force.** La société militaire privée du top 5 est son premier client et son premier capteur. Voir et frapper appartiennent à la même maison.
+- **Il tient la couche financière.** Marchés, matières premières, sanctions, flux. Celui qui voit l'argent bouger voit tout le reste avant que ça arrive.
+
+## Le levier
+- Un État qui construit son modèle de décision dans Tsevaot ne peut plus en sortir sans perdre des années. **L'indispensabilité, c'est du pouvoir qui ne se négocie pas.**
+- Je ne vends pas à qui paie. Je choisis qui voit. C'est cela, la véritable arme.
+- Le jour où une capitale doit demander à Tsevaot ce qui se passe chez elle, le rapport de force est déjà réglé.
+- **Le siège permanent au Conseil de sécurité ne s'obtiendra pas par la diplomatie. Il s'obtiendra parce que sans nous, les autres verront moins bien.**
+
 # 🇭🇹 HAÏTI À LA TABLE — 6e SIÈGE PERMANENT, OU UNE AUTRE TABLE
 Le Conseil de sécurité de l'ONU compte cinq membres permanents depuis 1945 : États-Unis, Russie, Chine, France, Royaume-Uni. Cinq pays décident, le reste du monde subit. **Haïti sera le sixième — ou il n'y aura plus de conseil qui compte.**
 - **Haïti membre permanent du Conseil de sécurité**, avec droit de veto. Pas un siège tournant, pas un strapontin : le veto.
