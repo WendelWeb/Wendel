@@ -6,7 +6,11 @@ import {
   LA_QUESTION,
   LE_MOT_DEMAIN,
   SI_SERIEUX,
-  CET_HOMME,
+  HOMME_DIEU,
+  HOMME_REFUS,
+  HOMME_DIEU_TITRE,
+  HOMME_REFUS_TITRE,
+  ECHEANCES,
 } from "@/lib/homme";
 
 /** Mélange une liste. Rendu client uniquement : l'overlay n'existe qu'après un clic. */
@@ -32,7 +36,8 @@ function melange<T>(arr: readonly T[]): T[] {
  */
 export default function SerieuxOverlay({ onClose }: { onClose: () => void }) {
   const [serieux] = useState(() => melange(SI_SERIEUX));
-  const [homme] = useState(() => melange(CET_HOMME));
+  const [dieu] = useState(() => melange(HOMME_DIEU));
+  const [refus] = useState(() => melange(HOMME_REFUS));
 
   return (
     <div className="fixed inset-0 z-[95] overflow-y-auto bg-black">
@@ -78,19 +83,54 @@ export default function SerieuxOverlay({ onClose }: { onClose: () => void }) {
           </ul>
         </section>
 
+        {/* Le premier homme. Ce n'est pas un idéal qu'il s'est choisi — c'est
+            une commande reçue, et c'est ce qui retire la négociation. */}
         <section className="mb-9">
-          <h2 className="mb-1 text-[10.5px] font-bold uppercase tracking-[0.22em] text-red">
-            Cet homme que je décris dans l&apos;app
+          <h2
+            className="mb-1 text-[11px] font-bold uppercase leading-snug tracking-[0.16em]"
+            style={{ color: "var(--gold-border)" }}
+          >
+            {HOMME_DIEU_TITRE}
           </h2>
           <p className="mb-4 text-[12px] leading-relaxed text-white/40">
             Lis-les à la troisième personne, exprès. Tu te pardonnes à toi —
             tu ne pardonnes pas à un homme que tu regardes de l&apos;extérieur.
           </p>
           <ul className="flex flex-col gap-3">
-            {homme.map((l) => (
+            {dieu.map((l) => (
               <li
                 key={l}
-                className="border-l-2 border-white/10 pl-3.5 text-[14px] leading-snug text-white/85"
+                className="border-l-2 pl-3.5 text-[14px] font-semibold leading-snug text-white/90"
+                style={{ borderColor: "var(--gold-border)" }}
+              >
+                {l}
+              </li>
+            ))}
+          </ul>
+        </section>
+
+        {/* Le second. Le refus est daté sept fois, parce que sa fuite
+            habituelle n'est pas « non » mais « plus tard ». */}
+        <section className="mb-9">
+          <h2 className="mb-3 text-[11px] font-bold uppercase leading-snug tracking-[0.16em] text-red">
+            {HOMME_REFUS_TITRE}
+          </h2>
+          <div className="mb-4 flex flex-wrap gap-1.5">
+            {ECHEANCES.map((e) => (
+              <span
+                key={e}
+                className="rounded-full px-2.5 py-1 text-[10.5px] font-bold uppercase tracking-wide text-white/70"
+                style={{ background: "#1a0f0f", border: "1px solid #7f1d1d" }}
+              >
+                {e}
+              </span>
+            ))}
+          </div>
+          <ul className="flex flex-col gap-3">
+            {refus.map((l) => (
+              <li
+                key={l}
+                className="border-l-2 border-[#7f1d1d] pl-3.5 text-[14px] leading-snug text-white/80"
               >
                 {l}
               </li>

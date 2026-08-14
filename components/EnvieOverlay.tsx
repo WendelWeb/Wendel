@@ -13,7 +13,7 @@ import {
   tirerPhrases,
 } from "@/lib/envie";
 import { DECLARATION_FINALE, DECLARATION_SCEAU } from "@/lib/declaration";
-import { LA_QUESTION, CET_HOMME } from "@/lib/homme";
+import { LA_QUESTION, HOMME_DIEU, HOMME_REFUS } from "@/lib/homme";
 import { RECHUTES, type Rechute } from "@/lib/serment";
 import { DESCENTE, MONTEE } from "@/lib/consequence";
 import ConsequencePanel from "./ConsequencePanel";
@@ -45,8 +45,11 @@ type Etape =
 export default function EnvieOverlay({ onClose }: { onClose: () => void }) {
   const [etape, setEtape] = useState<Etape>("etat");
   const [phrases] = useState(() => tirerPhrases());
-  const [hommeIci] = useState(
-    () => CET_HOMME[Math.floor(Math.random() * CET_HOMME.length)],
+  const [dieuIci] = useState(
+    () => HOMME_DIEU[Math.floor(Math.random() * HOMME_DIEU.length)],
+  );
+  const [refusIci] = useState(
+    () => HOMME_REFUS[Math.floor(Math.random() * HOMME_REFUS.length)],
   );
   const [i, setI] = useState(0);
   const [pending, start] = useTransition();
@@ -346,8 +349,14 @@ export default function EnvieOverlay({ onClose }: { onClose: () => void }) {
               <p className="font-display text-[15px] font-bold leading-snug text-white">
                 {LA_QUESTION}
               </p>
-              <p className="mt-2.5 text-[13px] leading-snug text-white/70">
-                {hommeIci}
+              <p
+                className="mt-2.5 text-[13px] font-semibold leading-snug"
+                style={{ color: "var(--gold-border)" }}
+              >
+                {dieuIci}
+              </p>
+              <p className="mt-2 text-[13px] leading-snug text-white/60">
+                {refusIci}
               </p>
             </div>
 

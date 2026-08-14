@@ -2,7 +2,8 @@ import {
   LA_QUESTION,
   LE_MOT_DEMAIN,
   SI_SERIEUX,
-  CET_HOMME,
+  HOMME_DIEU,
+  HOMME_REFUS,
 } from "@/lib/homme";
 import { sampled, picked, branch, visitSeed } from "@/lib/rotate";
 
@@ -29,7 +30,8 @@ export default function Homme({
 }) {
   const s = seed ?? visitSeed();
   const serieux = sampled(SI_SERIEUX, branch(s, "serieux"), 3);
-  const homme = sampled(CET_HOMME, branch(s, "homme"), 3);
+  const dieu = sampled(HOMME_DIEU, branch(s, "dieu"), 2);
+  const refus = sampled(HOMME_REFUS, branch(s, "refus"), 2);
   const demain = picked(LE_MOT_DEMAIN, branch(s, "demain"));
   const spacing = placement === "top" ? "mb-6 mt-3" : "mt-8 mb-4";
 
@@ -53,9 +55,23 @@ export default function Homme({
         ))}
       </ul>
 
+      {/* Les deux hommes, l'un sous l'autre : celui que Dieu veut, en or ;
+          celui qu'il refuse d'être — à sept échéances — en rouge. */}
       <ul className="mt-4 flex flex-col gap-2.5 border-t border-white/10 pt-3.5">
-        {homme.map((l) => (
-          <li key={l} className="text-[13.5px] leading-snug text-white/75">
+        {dieu.map((l) => (
+          <li
+            key={l}
+            className="text-[13.5px] font-semibold leading-snug"
+            style={{ color: "var(--gold-border)" }}
+          >
+            {l}
+          </li>
+        ))}
+      </ul>
+
+      <ul className="mt-3.5 flex flex-col gap-2.5">
+        {refus.map((l) => (
+          <li key={l} className="text-[13.5px] leading-snug text-white/60">
             {l}
           </li>
         ))}

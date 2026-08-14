@@ -1,31 +1,57 @@
-// « CET HOMME QUE JE DÉCRIS DANS L'APP » — la question posée partout.
+// LES DEUX HOMMES — la question posée partout.
 //
-// Il l'a demandée lui-même, et c'est la question la plus dure de toute l'app,
-// parce qu'elle ne se discute pas. Il a écrit 587 pages, une Vision, un
-// miroir : l'homme y est entièrement décrit. Il ne reste qu'à demander, à
-// chaque geste, si celui qui fait ce geste est celui-là.
+// Il l'a redressée lui-même, et le redressement est décisif. L'homme décrit
+// dans cette app n'est pas un idéal qu'il se serait fabriqué : c'est l'homme
+// que Dieu veut qu'il soit. Ça retire toute possibilité de négocier — on
+// discute un objectif personnel, on ne discute pas ça.
 //
-// Deux formes seulement, et c'est voulu :
+// Et en face, il n'a pas voulu d'un simple « ce que je suis ». Il a voulu une
+// échéance, et il l'a étirée lui-même : l'homme qu'il ne veut être ni demain,
+// ni dans un mois, ni dans trois, six, un an, cinq ans, dix ans. C'est la
+// forme exacte de la fuite qu'il connaît — « pas maintenant, plus tard » — et
+// la liste ferme la porte à chaque « plus tard » d'avance.
 //
-//   • « Si je suis vraiment sérieux, … » — le test au présent, complété à
-//     chaque fois par la chose exacte qui est devant lui.
-//   • « Cet homme que je décris dans l'app … » — le même test, mais à la
-//     troisième personne. Il est plus dur à esquiver : on se pardonne à soi,
-//     on ne pardonne pas à un homme qu'on regarde de l'extérieur.
+// Deux formes de test :
+//
+//   • « Si je suis vraiment sérieux, … » — au présent, complété par la chose
+//     exacte qui est devant lui.
+//   • Les deux hommes — le même test à la troisième personne. Il est plus dur
+//     à esquiver : on se pardonne à soi, on ne pardonne pas à un homme qu'on
+//     regarde de l'extérieur.
 //
 // Et le mot « demain » est nommé, parce qu'il a dit lui-même que c'est avec
 // ce mot-là qu'il a brûlé dix ans.
 //
 // Client-safe.
 
+/** Les deux titres, tels qu'il les a dictés. */
+export const HOMME_DIEU_TITRE =
+  "L'homme que je décris dans l'app — celui que Dieu veut que je sois";
+
+export const HOMME_REFUS_TITRE =
+  "L'homme que je ne veux pas être — ni demain, ni dans un mois, ni dans trois, ni dans six, ni dans un an, ni dans cinq ans, ni dans dix ans";
+
 /** La question, telle qu'il l'a formulée. Elle ouvre le bloc partout. */
-export const LA_QUESTION = "Cet homme que je décris dans l'app, il fait quoi là ? Il ne fait pas quoi ?";
+export const LA_QUESTION =
+  "L'homme que je décris dans l'app — celui que Dieu veut que je sois — il fait quoi là ? Et l'homme que je ne veux être ni demain ni dans dix ans, il fait quoi ?";
+
+/** L'échelle des « plus tard », dans son ordre. */
+export const ECHEANCES: string[] = [
+  "demain",
+  "dans un mois",
+  "dans trois mois",
+  "dans six mois",
+  "dans un an",
+  "dans cinq ans",
+  "dans dix ans",
+];
 
 /** Le mot qui a coûté les dix ans. */
 export const LE_MOT_DEMAIN: string[] = [
   "« Demain. » C'est le mot exact avec lequel j'ai brûlé dix ans.",
   "Ce n'est jamais une grande trahison. C'est ce mot-là, dit doucement, une fois par jour, pendant dix ans.",
   "Je n'ai pas perdu dix ans d'un coup. Je les ai perdus en remettant à demain, chaque jour, la même petite chose.",
+  "Je ne veux pas être cet homme demain. Ni dans un mois. Ni dans trois. Ni dans six. Ni dans un an. Ni dans cinq. Ni dans dix. Donc pas ce soir non plus.",
 ];
 
 /**
@@ -61,29 +87,53 @@ export const SI_SERIEUX: string[] = [
 ];
 
 /**
- * Le même test, mais vu de l'extérieur. C'est la version qui fait mal : on se
- * pardonne à soi-même, on ne pardonne pas à un homme qu'on regarde.
+ * Le premier homme : celui que Dieu veut qu'il soit. Ce n'est pas un modèle
+ * qu'il s'est choisi — c'est une commande reçue, et c'est ce qui retire la
+ * possibilité de négocier.
  */
-export const CET_HOMME: string[] = [
-  "Cet homme que je décris dans l'app tient ses 20 minutes de méditation. Même quand il n'en a pas envie. Surtout quand il n'en a pas envie.",
-  "Cet homme que je décris dans l'app ne scrolle pas TikTok à 23h.",
-  "Cet homme que je décris dans l'app n'ouvre pas de porno. Jamais. Pas « moins ».",
-  "Cet homme que je décris dans l'app ne se masturbe pas avec la main dont il dit qu'elle bâtira des hôpitaux.",
-  "Cet homme que je décris dans l'app ne rêvasse pas sa gloire : il la fabrique pendant que les autres la rêvent.",
-  "Cet homme que je décris dans l'app se lève à 4h30 sans négocier avec lui-même.",
-  "Cet homme que je décris dans l'app fait ses 12 heures de deep work et ne les raconte à personne.",
-  "Cet homme que je décris dans l'app monte la montagne dimanche et jeudi, qu'il pleuve ou qu'il soit fatigué.",
-  "Cet homme que je décris dans l'app a les dents propres, le visage soigné, et sent bon. Tous les jours.",
-  "Cet homme que je décris dans l'app ne dit pas « demain ». Ce mot n'existe pas dans sa bouche.",
-  "Cet homme que je décris dans l'app ne remet rien. Ce qu'il a décidé, il le fait dans l'heure.",
-  "Cet homme que je décris dans l'app tient les quatre choses que Dieu lui a demandées. Quatre. Il n'en rate aucune.",
-  "Cet homme que je décris dans l'app ne se plaint pas d'être fatigué à 23 ans.",
-  "Cet homme que je décris dans l'app ne cherche pas ses limites : il remplit d'abord la vie qu'il a déjà.",
-  "Cet homme que je décris dans l'app dort à 21h45 parce qu'il sait ce que coûte une heure de plus.",
-  "Cet homme que je décris dans l'app n'a pas besoin qu'on le regarde pour tenir.",
-  "Cet homme que je décris dans l'app ne laisse pas trois minutes de désir décider de ses dix prochaines années.",
-  "Cet homme que je décris dans l'app relit ce qu'il a écrit, et ce qu'il lit lui ressemble.",
-  "Cet homme que je décris dans l'app ne construit pas des outils pour éviter de s'en servir.",
-  "Cet homme que je décris dans l'app fait ce que je suis en train de repousser. Là. Maintenant.",
-  "Cet homme que je décris dans l'app, ce n'est pas encore moi. Et c'est exactement ça, le problème à régler aujourd'hui.",
+export const HOMME_DIEU: string[] = [
+  "L'homme que Dieu veut que je sois tient ses 20 minutes de méditation. Même quand il n'en a pas envie. Surtout quand il n'en a pas envie.",
+  "L'homme que Dieu veut que je sois se lève à 4h30 sans négocier avec lui-même.",
+  "L'homme que Dieu veut que je sois fait ses 12 heures de deep work et ne les raconte à personne.",
+  "L'homme que Dieu veut que je sois monte la montagne dimanche et jeudi, qu'il pleuve ou qu'il soit fatigué.",
+  "L'homme que Dieu veut que je sois tient les quatre choses qu'Il lui a demandées. Quatre. Il n'en rate aucune.",
+  "L'homme que Dieu veut que je sois a les dents propres, le visage soigné, et sent bon. Tous les jours.",
+  "L'homme que Dieu veut que je sois ne dit pas « demain ». Ce mot n'existe pas dans sa bouche.",
+  "L'homme que Dieu veut que je sois ne remet rien. Ce qu'il a décidé, il le fait dans l'heure.",
+  "L'homme que Dieu veut que je sois ne se masturbe pas avec la main dont il dit qu'elle bâtira des hôpitaux.",
+  "L'homme que Dieu veut que je sois ne rêvasse pas sa gloire : il la fabrique pendant que les autres la rêvent.",
+  "L'homme que Dieu veut que je sois ne cherche pas ses limites : il remplit d'abord la vie qu'il a déjà.",
+  "L'homme que Dieu veut que je sois dort à 21h45 parce qu'il sait ce que coûte une heure de plus.",
+  "L'homme que Dieu veut que je sois n'a pas besoin qu'on le regarde pour tenir.",
+  "L'homme que Dieu veut que je sois ne laisse pas trois minutes de désir décider de ses dix prochaines années.",
+  "L'homme que Dieu veut que je sois relit ce qu'il a écrit, et ce qu'il lit lui ressemble.",
+  "L'homme que Dieu veut que je sois ne construit pas des outils pour éviter de s'en servir.",
+  "L'homme que Dieu veut que je sois est déjà décrit en entier dans cette app. Il ne manque que celui qui l'incarne.",
+  "L'homme que Dieu veut que je sois fait ce que je suis en train de repousser. Là. Maintenant.",
+  "L'homme que Dieu veut que je sois, ce n'est pas encore moi. Et c'est exactement ça, le problème à régler aujourd'hui.",
+];
+
+/**
+ * Le second : celui qu'il refuse d'être — et le refus est daté sept fois,
+ * parce que sa fuite habituelle n'est pas « oui » mais « plus tard ».
+ */
+export const HOMME_REFUS: string[] = [
+  "L'homme que je ne veux pas être scrolle TikTok à 23h. Ni demain, ni dans un mois, ni dans dix ans.",
+  "L'homme que je ne veux pas être ouvre du porno et appelle ça une pause.",
+  "L'homme que je ne veux pas être se masturbe, puis écrit une page sur la grandeur.",
+  "L'homme que je ne veux pas être rêve son interview au lieu de faire le travail qui la provoquerait.",
+  "L'homme que je ne veux pas être écoute de la musique en se racontant des scènes où il a déjà gagné.",
+  "L'homme que je ne veux pas être se lève fatigué à 23 ans, et se lèvera fatigué à 33.",
+  "L'homme que je ne veux pas être dit « demain » — et il le dira encore dans six mois avec la même voix.",
+  "L'homme que je ne veux pas être achète les outils, et ne les ouvre jamais.",
+  "L'homme que je ne veux pas être écrit 587 pages qu'il n'applique pas.",
+  "L'homme que je ne veux pas être promet trois fois par jour et ne tient pas une seule journée entière.",
+  "L'homme que je ne veux pas être parle de 50 hôpitaux et ne range pas sa chambre.",
+  "L'homme que je ne veux pas être laisse ses crédits payés dormir et va sur X.",
+  "L'homme que je ne veux pas être a cinq ans de gym et aucun corps à montrer.",
+  "L'homme que je ne veux pas être méprise les faux vertueux, et n'a lui-même aucun acte à produire.",
+  "L'homme que je ne veux pas être aura 33 ans avec exactement la même liste d'objectifs non réalisés.",
+  "L'homme que je ne veux pas être donnera sa force de jeunesse à ça — et elle ne reviendra jamais.",
+  "L'homme que je ne veux pas être, je ne veux pas l'être demain. Ni dans un mois. Ni dans trois. Ni dans six. Ni dans un an. Ni dans cinq. Ni dans dix.",
+  "L'homme que je ne veux pas être, c'est celui que je suis en train d'être à cette seconde si je ne bouge pas.",
 ];
