@@ -16,6 +16,7 @@ import {
 } from "@/lib/serment";
 import ConsequencePanel from "./ConsequencePanel";
 import ConfirmRechute from "./ConfirmRechute";
+import ConfirmIrreversible from "./ConfirmIrreversible";
 import { DESCENTE } from "@/lib/consequence";
 import { DECLARATION_FINALE, DECLARATION_SCEAU } from "@/lib/declaration";
 import {
@@ -62,6 +63,7 @@ export default function SermentPanel({
   // Le type choisi, en attente de confirmation. Rien n'est écrit tant qu'il
   // n'a pas confirmé sur le deuxième écran.
   const [aConfirmer, setAConfirmer] = useState<Rechute | null>(null);
+  const [perpetuerOuvert, setPerpetuerOuvert] = useState(false);
   const [erreur, setErreur] = useState<string | null>(null);
   const [pending, start] = useTransition();
   const router = useRouter();
@@ -303,9 +305,11 @@ export default function SermentPanel({
                 et de le prouver par tous mes choix
               </span>
             </button>
+            {/* Le geste qui casse la journée. Il ne s'écrit plus au premier
+                tap : c'est celui-ci que sa main a touché par erreur. */}
             <button
               type="button"
-              onClick={() => declarer("perpetuer")}
+              onClick={() => setPerpetuerOuvert(true)}
               disabled={pending}
               className="rounded-xl px-4 py-3 text-left text-[13px] font-semibold leading-snug transition active:scale-[0.99]"
               style={{ background: "#1a1a1a", color: "rgba(255,255,255,.55)" }}
@@ -404,6 +408,37 @@ export default function SermentPanel({
         )}
       </div>
 
+      {/* « Je perpétue » — le clic qui a tout cassé par erreur. Même
+          garde-fou que la rechute, et la même sortie en grand. */}
+      {perpetuerOuvert && (
+        <div
+          className="fixed inset-0 z-[80] flex items-center justify-center bg-black/80 p-4"
+          onClick={() => setPerpetuerOuvert(false)}
+          role="dialog"
+          aria-modal="true"
+        >
+          <div
+            onClick={(e) => e.stopPropagation()}
+            className="max-h-[92dvh] w-full max-w-sm overflow-y-auto rounded-2xl p-5"
+            style={{ background: "#141414", border: "1.5px solid #7f1d1d" }}
+          >
+            <ConfirmIrreversible
+              titre="Aujourd'hui je choisis de continuer à perpétuer tout ce que j'ai écrit"
+              detail="Si tu confirmes, la journée est cassée : elle ne comptera pas, et la série repart de zéro."
+              labelConfirmer="Oui, aujourd'hui je perpétue"
+              jourActuel={etat.jourActuel}
+              record={etat.record}
+              pending={pending}
+              onAnnuler={() => setPerpetuerOuvert(false)}
+              onConfirmer={() => {
+                setPerpetuerOuvert(false);
+                declarer("perpetuer");
+              }}
+            />
+          </div>
+        </div>
+      )}
+
       {/* La rechute — irréversible, et l'écran le dit avant */}
       {rechuteOuverte && (
         <div
@@ -417,7 +452,7 @@ export default function SermentPanel({
         >
           <div
             onClick={(e) => e.stopPropagation()}
-            className="w-full max-w-sm rounded-2xl p-5"
+            className="max-h-[92dvh] w-full max-w-sm overflow-y-auto rounded-2xl p-5"
             style={{ background: "#141414", border: "1.5px solid #7f1d1d" }}
           >
             <div className="mb-1 flex items-center justify-between">
