@@ -55,8 +55,9 @@ export default async function MiroirPage() {
     getSerment(userId),
   ]);
 
-  const rest = isRestDay(program, weekdayHaiti());
-  const core = planCoreStatus(plan, log.completedItems, rest);
+  const wd = weekdayHaiti();
+  const rest = isRestDay(program, wd);
+  const core = planCoreStatus(plan, log.completedItems, rest, wd);
   const today = todayHaiti();
 
   return (

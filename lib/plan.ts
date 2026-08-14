@@ -27,6 +27,13 @@ export interface PlanItem {
   core: boolean;
   /** Disparaît les jours de repos total (course, muscu). */
   trainingOnly?: boolean;
+  /**
+   * Jours de la semaine où l'objectif existe (0 = dimanche … 6 = samedi).
+   * Absent = tous les jours. La montagne n'a lieu que jeudi et dimanche :
+   * l'afficher les autres jours ferait une case impossible à cocher, donc un
+   * noyau impossible à tenir.
+   */
+  jours?: number[];
 }
 
 export interface Plan {
@@ -45,6 +52,7 @@ export const DEFAULT_PLAN: Plan = {
           kind: "objectif",
           core: CORE_IDS.includes(i.id),
           trainingOnly: i.id === "run" || i.id === "gym",
+          jours: i.jours,
         }),
       ),
     ),
@@ -112,6 +120,9 @@ export function normalizePlan(input: unknown): Plan {
       kind,
       core: it.core === true,
       trainingOnly: it.trainingOnly === true,
+      jours: Array.isArray(it.jours)
+        ? it.jours.filter((j) => Number.isInteger(j) && j >= 0 && j <= 6)
+        : undefined,
     });
   }
 
@@ -131,13 +142,25 @@ export function planMinutes(time: string): number {
 }
 
 /** Les entrées actives aujourd'hui — les jours de repos retirent course/muscu. */
-export function activeItems(plan: Plan, rest: boolean): PlanItem[] {
-  return rest ? plan.items.filter((i) => !i.trainingOnly) : plan.items;
+export function activeItems(
+  plan: Plan,
+  rest: boolean,
+  weekday?: number,
+): PlanItem[] {
+  return plan.items.filter((i) => {
+    if (rest && i.trainingOnly) return false;
+    if (i.jours && weekday !== undefined && !i.jours.includes(weekday)) return false;
+    return true;
+  });
 }
 
 /** Les objectifs (hors règles), rangés du début à la fin de la journée. */
-export function orderedObjectives(plan: Plan, rest: boolean): PlanItem[] {
-  return activeItems(plan, rest)
+export function orderedObjectives(
+  plan: Plan,
+  rest: boolean,
+  weekday?: number,
+): PlanItem[] {
+  return activeItems(plan, rest, weekday)
     .filter((i) => i.kind === "objectif")
     .sort((a, b) => planMinutes(a.time) - planMinutes(b.time));
 }
@@ -147,15 +170,23 @@ export function planRules(plan: Plan): PlanItem[] {
 }
 
 /** Le noyau du jour : ce qui doit être coché pour que la journée compte. */
-export function planCoreIds(plan: Plan, rest: boolean): string[] {
-  return activeItems(plan, rest)
+export function planCoreIds(
+  plan: Plan,
+  rest: boolean,
+  weekday?: number,
+): string[] {
+  return activeItems(plan, rest, weekday)
     .filter((i) => i.core)
     .map((i) => i.id);
 }
 
 /** Tous les identifiants qui comptent aujourd'hui, noyau ou pas. */
-export function planAllIds(plan: Plan, rest: boolean): string[] {
-  return activeItems(plan, rest).map((i) => i.id);
+export function planAllIds(
+  plan: Plan,
+  rest: boolean,
+  weekday?: number,
+): string[] {
+  return activeItems(plan, rest, weekday).map((i) => i.id);
 }
 
 /** Les libellés, pour afficher un identifiant en clair (verdicts, emails). */
@@ -181,8 +212,9 @@ export function planCoreStatus(
   plan: Plan,
   completed: Record<string, boolean> | null | undefined,
   rest: boolean,
+  weekday?: number,
 ): PlanCoreStatus {
-  const ids = planCoreIds(plan, rest);
+  const ids = planCoreIds(plan, rest, weekday);
   const c = completed ?? {};
   const missing = ids.filter((id) => c[id] !== true);
   return {

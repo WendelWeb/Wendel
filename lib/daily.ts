@@ -27,8 +27,9 @@ async function activeChecklistIdsToday(userId: string): Promise<string[]> {
     getProgram(userId),
     getPlan(userId),
   ]);
-  const rest = isRestDay(program, weekdayHaiti());
-  return orderedObjectives(plan, rest).map((i) => i.id);
+  const wd = weekdayHaiti();
+  const rest = isRestDay(program, wd);
+  return orderedObjectives(plan, rest, wd).map((i) => i.id);
 }
 
 /** Les règles de son plan — le second terme du dénominateur du score. */
@@ -125,14 +126,20 @@ async function getDayStatuses(userId: string): Promise<DayStatus[]> {
     getProgram(userId),
     getPlan(userId),
   ]);
-  return rows.map((r) => ({
-    date: r.date,
-    passed: planCoreStatus(
-      plan,
-      r.completedItems,
-      isRestDay(program, weekday(r.date)),
-    ).complete,
-  }));
+  return rows.map((r) => {
+    // Le jour de la semaine du jour concerné, pas celui d'aujourd'hui : sans
+    // ça, un lundi relu un dimanche exigerait la montagne rétroactivement.
+    const wd = weekday(r.date);
+    return {
+      date: r.date,
+      passed: planCoreStatus(
+        plan,
+        r.completedItems,
+        isRestDay(program, wd),
+        wd,
+      ).complete,
+    };
+  });
 }
 
 /** Recompute the streak record from full history and persist it. */

@@ -16,6 +16,7 @@ import {
 } from "@/lib/serment";
 import ConsequencePanel from "./ConsequencePanel";
 import { DESCENTE } from "@/lib/consequence";
+import { DECLARATION_FINALE, DECLARATION_SCEAU } from "@/lib/declaration";
 import {
   declarerAction,
   declarerRechuteAction,
@@ -222,6 +223,41 @@ export default function SermentPanel({
             {dejaFait === "perpetuer" && (
               <div className="mt-4">
                 <ConsequencePanel c={DESCENTE} sens="descente" />
+              </div>
+            )}
+
+            {/* Ce qu'il déclare vouloir, après avoir prouvé ce qu'il n'a pas
+                fait. L'audit est une abstention ; ceci est la demande — et
+                aucune abstention n'a jamais bâti quoi que ce soit. */}
+            {dejaFait === "vouloir" && (
+              <div
+                className="mt-4 rounded-2xl px-5 py-5"
+                style={{ background: "#111", border: "1.5px solid var(--gold-border)" }}
+              >
+                <p className="mb-3.5 text-[10px] font-bold uppercase tracking-[0.22em] text-white/40">
+                  Maintenant, dis ça à voix haute
+                </p>
+                <ul className="flex flex-col gap-2.5">
+                  {DECLARATION_FINALE.map((l) => (
+                    <li
+                      key={l}
+                      className="font-display text-[15px] font-bold leading-snug text-white"
+                    >
+                      {l}
+                    </li>
+                  ))}
+                </ul>
+                <div className="mt-4 flex flex-col gap-2 border-t border-white/12 pt-3.5">
+                  {DECLARATION_SCEAU.map((l) => (
+                    <p
+                      key={l}
+                      className="text-[13px] font-semibold leading-relaxed"
+                      style={{ color: "var(--gold-border)" }}
+                    >
+                      {l}
+                    </p>
+                  ))}
+                </div>
               </div>
             )}
 

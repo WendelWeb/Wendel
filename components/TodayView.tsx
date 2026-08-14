@@ -63,6 +63,7 @@ export default function TodayView({
   initialValidated,
   initialCounters,
   restDay,
+  weekday,
   gymLabel,
   daysToJan,
   plan,
@@ -77,6 +78,8 @@ export default function TodayView({
   initialValidated: boolean;
   initialCounters: Record<string, number>;
   restDay: boolean;
+  /** 0 = dimanche. La montagne ne s'affiche que dimanche et jeudi. */
+  weekday: number;
   gymLabel: string;
   daysToJan: number;
   plan: Plan;
@@ -84,12 +87,12 @@ export default function TodayView({
   // Tout vient du plan : les objectifs affichés, les règles, le noyau, le
   // dénominateur du score. Modifier le plan dans les réglages change la
   // journée dès le rechargement.
-  const items = orderedObjectives(plan, restDay);
+  const items = orderedObjectives(plan, restDay, weekday);
   const regles = planRules(plan);
   const activeChecklist = items.map((i) => i.id);
   const ruleIds = regles.map((r) => r.id);
   const activeAllIds = [...activeChecklist, ...ruleIds];
-  const coreSet = new Set(planCoreIds(plan, restDay));
+  const coreSet = new Set(planCoreIds(plan, restDay, weekday));
   const planLabel = planLabels(plan);
   const [states, setStates] = useState<StateMap>(() =>
     initStates(initialCompleted, initialFailed),
@@ -123,7 +126,7 @@ export default function TodayView({
     const completedMap: BoolMap = {};
     for (const [id, st] of Object.entries(states))
       if (st === "done") completedMap[id] = true;
-    return planCoreStatus(plan, completedMap, restDay);
+    return planCoreStatus(plan, completedMap, restDay, weekday);
   }, [states, restDay, plan]);
 
   const labelFor = (id: string) =>

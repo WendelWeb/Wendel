@@ -5,7 +5,8 @@ import type { MiroirBloc } from "@/lib/miroir";
 import type { EtatSerment } from "@/lib/serment";
 import SermentPanel from "./SermentPanel";
 import EnvieOverlay from "./EnvieOverlay";
-import { Flame } from "lucide-react";
+import PourquoiOverlay from "./PourquoiOverlay";
+import { Flame, Target } from "lucide-react";
 
 export interface MiroirLangue {
   code: "en" | "fr" | "ht";
@@ -54,6 +55,7 @@ export default function MiroirView({
   // remet le compteur à zéro : on ne lit pas l'anglais en ayant scrollé le
   // français.
   const [envie, setEnvie] = useState(false);
+  const [pourquoi, setPourquoi] = useState(false);
   const [luJusquAuBout, setLu] = useState(false);
   const finRef = useRef<HTMLDivElement | null>(null);
 
@@ -111,7 +113,22 @@ export default function MiroirView({
           Je ressens l&apos;envie
         </button>
 
+        {/* Le POURQUOI reste ouvert pendant les 30 jours, contrairement à la
+            Vision. La Vision dit ce qu'il veut obtenir — elle se mérite. Le
+            POURQUOI est ce qui le fait tenir quand il n'a plus envie : le
+            fermer serait retirer le carburant en pleine côte. */}
+        <button
+          type="button"
+          onClick={() => setPourquoi(true)}
+          className="mb-5 flex w-full items-center justify-center gap-2.5 rounded-2xl px-4 py-3.5 text-[14px] font-bold uppercase tracking-wide text-black transition active:scale-[0.99]"
+          style={{ background: "var(--gold-border)" }}
+        >
+          <Target size={17} />
+          Pourquoi je fais tout ça
+        </button>
+
         {envie && <EnvieOverlay onClose={() => setEnvie(false)} />}
+        {pourquoi && <PourquoiOverlay onClose={() => setPourquoi(false)} />}
 
         {/* Le mécanisme des 30 jours — avant le constat, parce que c'est la
             seule chose sur cet écran qui puisse changer une ligne du constat. */}

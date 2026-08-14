@@ -20,7 +20,7 @@ import {
 
 // Le plan par défaut est la journée écrite dans le code. Ces bornes existent
 // pour qu'un ajout d'objectif ou de règle ne passe pas inaperçu.
-const OBJECTIFS = 26;
+const OBJECTIFS = 27;
 const REGLES = 10;
 const TOTAL = OBJECTIFS + REGLES;
 
@@ -114,6 +114,21 @@ describe("le plan journalier", () => {
     expect(repos).not.toContain("run");
     expect(repos).not.toContain("gym");
     expect(planCoreIds(DEFAULT_PLAN, true)).not.toContain("gym");
+  });
+
+  // Il a demandé deux montagnes de deux heures par semaine : dimanche et
+  // jeudi. Les autres jours, la case ne doit pas exister — sinon le noyau est
+  // incomplet cinq jours sur sept et la série ne peut jamais démarrer.
+  it("la montagne n'apparaît que le dimanche et le jeudi", () => {
+    const jour = (wd: number) =>
+      orderedObjectives(DEFAULT_PLAN, false, wd).map((i) => i.id);
+    expect(jour(0)).toContain("montagne");
+    expect(jour(4)).toContain("montagne");
+    for (const wd of [1, 2, 3, 5, 6]) {
+      expect(jour(wd)).not.toContain("montagne");
+      expect(planCoreIds(DEFAULT_PLAN, false, wd)).not.toContain("montagne");
+    }
+    expect(planCoreIds(DEFAULT_PLAN, false, 0)).toContain("montagne");
   });
 
   it("range la journée de 5h jusqu'au soir, l'informel à la fin", () => {

@@ -2,6 +2,13 @@ export interface ChecklistItem {
   id: string;
   label: string;
   time: string;
+  /**
+   * Jours de la semaine où l'objectif existe (0 = dimanche … 6 = samedi).
+   * Absent = tous les jours. La montagne, par exemple, n'a lieu que le jeudi
+   * et le dimanche : l'afficher les autres jours ferait une case impossible à
+   * cocher, donc un noyau impossible à tenir.
+   */
+  jours?: number[];
 }
 
 export interface ChecklistSectionData {
@@ -119,6 +126,21 @@ export const CHECKLIST: ChecklistSectionData[] = [
         id: "dw2",
         label: "Deep work bloc 2 — 6h focus (projet différent du matin)",
         time: "14h30–20h30",
+      },
+    ],
+  },
+  {
+    // « Il m'a dit d'aller en montagne de temps en temps. » Jusqu'ici c'était
+    // « de temps en temps », donc jamais. Deux rendez-vous fixes : jeudi et
+    // dimanche, deux heures chacun.
+    section: "LA MONTAGNE — jeudi & dimanche",
+    color: "#B45309",
+    items: [
+      {
+        id: "montagne",
+        label: "Montagne 2h — seul, avec Dieu (consigne de l'alliance)",
+        time: "14h30",
+        jours: [0, 4],
       },
     ],
   },

@@ -84,7 +84,7 @@ export async function liturgyContext(
   const rest = isRestDay(program, jour);
   // Le noyau vient de SON plan : s'il l'a modifié dans les réglages, l'email
   // lui parle de la journée qu'il s'est réellement fixée, pas d'une autre.
-  const core = planCoreStatus(plan, log?.completedItems, rest);
+  const core = planCoreStatus(plan, log?.completedItems, rest, jour);
   const libelles = planLabels(plan);
   const { toJan, to30 } = deadlines(today);
 

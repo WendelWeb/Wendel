@@ -29,6 +29,7 @@ export const CORE_IDS: string[] = [
   "ps24_pm",
   // 🏔️ Consignes de l'alliance (environnement)
   "room_clean",
+  "montagne",
   // 📜 Le serment — la répétition qui ancre
   "serment",
 ];

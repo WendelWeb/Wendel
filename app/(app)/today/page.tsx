@@ -34,6 +34,7 @@ export default async function TodayPage() {
       initialValidated={log.validated ?? false}
       initialCounters={log.counters ?? {}}
       restDay={rest}
+      weekday={wd}
       gymLabel={gymSessionLabel(program, wd)}
       daysToJan={daysBetween(todayHaiti(), "2027-01-01")}
       plan={plan}

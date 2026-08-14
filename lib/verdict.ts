@@ -57,6 +57,16 @@ export const VERDICTS: Record<string, ItemVerdict> = {
       "Le vaisseau vide ne tient pas la parole qu'un vaisseau plein tient sans effort.",
     ],
   },
+  montagne: {
+    chapter: 32,
+    gravity: 8,
+    domino: [
+      "Pas de montagne. C'est une consigne reçue de Sa bouche, pas une sortie loisir (ch. 32).",
+      "« Va en montagne de temps en temps » — jeudi et dimanche, c'est ça, le temps en temps.",
+      "Tu demandes que l'alliance tienne de Son côté, et tu ne tiens pas les quatre choses qu'Il t'a demandées.",
+      "Deux heures par semaine. C'est tout ce qu'Il a demandé, et tu ne les donnes pas.",
+    ],
+  },
   meditation_pm: {
     chapter: 120,
     gravity: 7,
