@@ -29,6 +29,12 @@ export const LA_LOI: string[] = [
   "Une promesse, ça s'attend. Une loi, ça s'applique — ou ça ne s'applique pas, selon ce que je fais de mon corps.",
   "Prier ne remplace pas la maîtrise. Ça ne l'a jamais fait. Ni pour moi, ni pour personne.",
   "Je peux passer ma vie à réclamer ce qui m'a été promis, et mourir sans l'avoir touché, parce que je n'ai jamais rempli la condition.",
+  "La loi ne me connaît pas. Elle ne sait pas que je suis né dans le Nord-Ouest, ni ce que j'ai écrit, ni ce que j'ai reçu. Elle regarde une seule chose : ce que je fais de mon énergie aujourd'hui.",
+  "Elle est impersonnelle, et c'est une bonne nouvelle : ça veut dire qu'elle ne peut pas me refuser si je remplis la condition.",
+  "Personne ne peut se maîtriser à ma place. Pas même Lui — sinon Il l'aurait déjà fait.",
+  "Mon corps est le seul territoire que je gouverne réellement aujourd'hui. Si je le perds, je ne gouverne rien du tout.",
+  "La direction, c'est une seule chose tenue dix ans. Pas cinquante tenues zéro jour.",
+  "Ce que je conçois se réalise à la vitesse à laquelle je me maîtrise. Pas plus vite. Jamais plus vite.",
 ];
 
 /**
@@ -45,6 +51,12 @@ export const LES_PREUVES: string[] = [
   "Donc ce n'est pas la prière qui décide. C'est ce qu'un homme fait de son énergie entre deux prières.",
   "La loi ne demande pas ta foi. Elle demande ta discipline. Elle est la même pour l'athée et pour toi.",
   "Ces hommes-là ne t'ont pas battu parce qu'ils sont meilleurs. Ils t'ont battu parce qu'ils ne se gaspillent pas.",
+  "Regarde ton propre pays : le plus prié de l'hémisphère, et le plus effondré. La prière seule n'a jamais construit une route.",
+  "Et ce n'est pas moi qui le dis : « la foi sans les œuvres est morte. » C'est écrit dans ta Bible, pas dans un livre d'athée.",
+  "Une prière qui remplace un acte est une rêverie avec les mains jointes. Tu connais déjà la rêverie — tu sais ce qu'elle produit.",
+  "Tu ne peux pas prier pour sortir d'une chose que tu rechoisis chaque soir.",
+  "Ces hommes n'ont pas non plus une énergie supérieure. Ils ont juste arrêté de la laisser fuir.",
+  "Et ils ne se dispersent pas : un seul objectif, tenu dix ans. Toi tu en as cinquante, tenus zéro jour.",
 ];
 
 /**
@@ -57,4 +69,8 @@ export const LE_CONTRAT: string[] = [
   "La promesse existe. Mais elle est branchée sur une condition que je romps moi-même, une fois par jour, avec ma main.",
   "Il a tenu Sa part. La mienne tient en un mot : ne pas gaspiller.",
   "Ce n'est pas Lui qui me fait attendre. C'est moi qui coupe le courant chaque soir.",
+  "Il ne m'a pas demandé d'être religieux. Il m'a demandé quatre choses concrètes — la montagne, le Psaume 24, Lui parler, ma chambre. Et je n'en tiens aucune.",
+  "Sa promesse n'était pas « tu seras béni ». Elle était « si tu ne gaspilles pas ». C'est une clause, pas un cadeau.",
+  "Et si des hommes qui ne Le craignent pas obtiennent ce que je n'obtiens pas, c'est que la clause s'applique à eux aussi. Ils la remplissent, moi non.",
+  "Rien ne m'est dû. Tout m'est ouvert. C'est exactement la même phrase, et c'est toute la différence.",
 ];
