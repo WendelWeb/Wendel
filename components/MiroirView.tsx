@@ -6,7 +6,8 @@ import type { EtatSerment } from "@/lib/serment";
 import SermentPanel from "./SermentPanel";
 import EnvieOverlay from "./EnvieOverlay";
 import PourquoiOverlay from "./PourquoiOverlay";
-import { Flame, Target } from "lucide-react";
+import SerieuxOverlay from "./SerieuxOverlay";
+import { Flame, Target, ShieldCheck } from "lucide-react";
 
 export interface MiroirLangue {
   code: "en" | "fr" | "ht";
@@ -56,6 +57,7 @@ export default function MiroirView({
   // français.
   const [envie, setEnvie] = useState(false);
   const [pourquoi, setPourquoi] = useState(false);
+  const [serieux, setSerieux] = useState(false);
   const [luJusquAuBout, setLu] = useState(false);
   const finRef = useRef<HTMLDivElement | null>(null);
 
@@ -127,8 +129,21 @@ export default function MiroirView({
           Pourquoi je fais tout ça
         </button>
 
+        {/* La liste entière, quand c'est lui qui la demande. Les bandeaux des
+            pages n'en montrent que six à la fois — ici, tout, d'un coup. */}
+        <button
+          type="button"
+          onClick={() => setSerieux(true)}
+          className="mb-5 flex w-full items-center justify-center gap-2.5 rounded-2xl px-4 py-3.5 text-[14px] font-bold uppercase tracking-wide text-white transition active:scale-[0.99]"
+          style={{ background: "#0f0a0a", border: "1.5px solid #7f1d1d" }}
+        >
+          <ShieldCheck size={17} className="text-red" />
+          Je suis sérieux
+        </button>
+
         {envie && <EnvieOverlay onClose={() => setEnvie(false)} />}
         {pourquoi && <PourquoiOverlay onClose={() => setPourquoi(false)} />}
+        {serieux && <SerieuxOverlay onClose={() => setSerieux(false)} />}
 
         {/* Le mécanisme des 30 jours — avant le constat, parce que c'est la
             seule chose sur cet écran qui puisse changer une ligne du constat. */}

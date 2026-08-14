@@ -1,0 +1,136 @@
+"use client";
+
+import { useState } from "react";
+import { ShieldCheck, X } from "lucide-react";
+import {
+  LA_QUESTION,
+  LE_MOT_DEMAIN,
+  SI_SERIEUX,
+  CET_HOMME,
+} from "@/lib/homme";
+
+/** Mélange une liste. Rendu client uniquement : l'overlay n'existe qu'après un clic. */
+function melange<T>(arr: readonly T[]): T[] {
+  const c = [...arr];
+  for (let i = c.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [c[i], c[j]] = [c[j], c[i]];
+  }
+  return c;
+}
+
+/**
+ * « JE SUIS SÉRIEUX » — la liste entière, pas un extrait.
+ *
+ * Les bandeaux des pages n'en montrent que six à la fois, parce qu'un mur
+ * qu'on croise cinquante fois par jour cesse d'être lu. Ce bouton fait
+ * l'inverse : il ouvre tout, d'un coup, quand c'est lui qui le demande.
+ *
+ * L'ordre change à chaque ouverture — sinon il apprend la liste par cœur et
+ * son œil descend sans lire. C'est déjà ce qui est arrivé aux feuilles
+ * imprimées qu'il a collées au mur.
+ */
+export default function SerieuxOverlay({ onClose }: { onClose: () => void }) {
+  const [serieux] = useState(() => melange(SI_SERIEUX));
+  const [homme] = useState(() => melange(CET_HOMME));
+
+  return (
+    <div className="fixed inset-0 z-[95] overflow-y-auto bg-black">
+      <div className="mx-auto max-w-2xl px-5 py-8">
+        <div className="mb-6 flex items-start justify-between gap-4">
+          <div className="flex items-center gap-2">
+            <ShieldCheck size={19} className="text-red" />
+            <h1 className="font-display text-xl font-bold uppercase tracking-wide text-white">
+              Je suis sérieux ?
+            </h1>
+          </div>
+          <button
+            type="button"
+            onClick={onClose}
+            aria-label="Fermer"
+            className="flex-shrink-0 text-white/40"
+          >
+            <X size={22} />
+          </button>
+        </div>
+
+        <p className="mb-8 border-l-[3px] border-red pl-4 font-display text-[16px] font-bold leading-snug text-white">
+          {LA_QUESTION}
+        </p>
+
+        <section className="mb-9">
+          <h2 className="mb-1 text-[10.5px] font-bold uppercase tracking-[0.22em] text-red">
+            Si je suis vraiment sérieux
+          </h2>
+          <p className="mb-4 text-[12px] leading-relaxed text-white/40">
+            Chaque ligne se termine par ce que tu as devant toi maintenant.
+            Aucune ne parle de demain.
+          </p>
+          <ul className="flex flex-col gap-3">
+            {serieux.map((l) => (
+              <li
+                key={l}
+                className="border-l-2 border-white/10 pl-3.5 text-[14px] font-semibold leading-snug text-white/90"
+              >
+                {l}
+              </li>
+            ))}
+          </ul>
+        </section>
+
+        <section className="mb-9">
+          <h2 className="mb-1 text-[10.5px] font-bold uppercase tracking-[0.22em] text-red">
+            Cet homme que je décris dans l&apos;app
+          </h2>
+          <p className="mb-4 text-[12px] leading-relaxed text-white/40">
+            Lis-les à la troisième personne, exprès. Tu te pardonnes à toi —
+            tu ne pardonnes pas à un homme que tu regardes de l&apos;extérieur.
+          </p>
+          <ul className="flex flex-col gap-3">
+            {homme.map((l) => (
+              <li
+                key={l}
+                className="border-l-2 border-white/10 pl-3.5 text-[14px] leading-snug text-white/85"
+              >
+                {l}
+              </li>
+            ))}
+          </ul>
+        </section>
+
+        <section
+          className="mb-7 rounded-2xl px-5 py-5"
+          style={{ background: "#0f0a0a", border: "1.5px solid #7f1d1d" }}
+        >
+          <h2 className="mb-3 text-[10px] font-bold uppercase tracking-[0.22em] text-white/40">
+            Le mot qui a coûté dix ans
+          </h2>
+          <div className="flex flex-col gap-2.5">
+            {LE_MOT_DEMAIN.map((l) => (
+              <p
+                key={l}
+                className="text-[13.5px] font-semibold leading-relaxed text-red"
+              >
+                {l}
+              </p>
+            ))}
+          </div>
+        </section>
+
+        <p className="mb-4 text-center text-[13px] leading-relaxed text-white/55">
+          Il n&apos;y a rien à cocher ici. La seule réponse à cette question,
+          c&apos;est ce que tu fais dans les cinq prochaines minutes.
+        </p>
+
+        <button
+          type="button"
+          onClick={onClose}
+          className="w-full rounded-xl px-4 py-4 text-[15px] font-bold uppercase tracking-wide text-white transition active:scale-[0.99]"
+          style={{ background: "#15803d" }}
+        >
+          Je ferme, et je le fais maintenant
+        </button>
+      </div>
+    </div>
+  );
+}
