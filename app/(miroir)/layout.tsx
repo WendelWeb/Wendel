@@ -5,6 +5,7 @@ import { requireUserId } from "@/lib/auth";
 import { verrouille } from "@/lib/verrou";
 import SideNav from "@/components/SideNav";
 import Depassement from "@/components/Depassement";
+import Homme from "@/components/Homme";
 import { visitSeed } from "@/lib/rotate";
 
 /**
@@ -39,9 +40,11 @@ export default async function MiroirLayout({
     <div className="min-h-[100dvh] bg-background md:flex">
       <SideNav verrouille={ferme} />
       <div className="min-w-0 flex-1">
+        <Homme placement="top" seed={graineHaut} />
         <Depassement placement="top" seed={graineHaut} />
         {children}
         <Depassement placement="bottom" seed={graineBas} />
+        <Homme placement="bottom" seed={graineBas} />
       </div>
       <BottomNav verrouille={ferme} />
     </div>

@@ -13,6 +13,7 @@ import {
   tirerPhrases,
 } from "@/lib/envie";
 import { DECLARATION_FINALE, DECLARATION_SCEAU } from "@/lib/declaration";
+import { LA_QUESTION, CET_HOMME } from "@/lib/homme";
 import { RECHUTES, type Rechute } from "@/lib/serment";
 import { DESCENTE, MONTEE } from "@/lib/consequence";
 import ConsequencePanel from "./ConsequencePanel";
@@ -44,6 +45,9 @@ type Etape =
 export default function EnvieOverlay({ onClose }: { onClose: () => void }) {
   const [etape, setEtape] = useState<Etape>("etat");
   const [phrases] = useState(() => tirerPhrases());
+  const [hommeIci] = useState(
+    () => CET_HOMME[Math.floor(Math.random() * CET_HOMME.length)],
+  );
   const [i, setI] = useState(0);
   const [pending, start] = useTransition();
 
@@ -327,10 +331,25 @@ export default function EnvieOverlay({ onClose }: { onClose: () => void }) {
             <h2 className="mb-2 font-display text-xl font-bold uppercase leading-snug tracking-wide text-white">
               Maintenant, décide
             </h2>
-            <p className="mb-7 text-[13.5px] leading-relaxed text-white/55">
+            <p className="mb-5 text-[13.5px] leading-relaxed text-white/55">
               Tu as tout relu. Il n&apos;y a pas de troisième porte, et fermer
               cet écran sans choisir, c&apos;est déjà avoir choisi.
             </p>
+
+            {/* Sa question, à la seconde exacte où elle mord le plus. On se
+                pardonne à soi-même ; on ne pardonne pas à un homme qu'on
+                regarde de l'extérieur. */}
+            <div
+              className="mb-7 rounded-xl px-4 py-4"
+              style={{ background: "#0f0a0a", border: "1px solid #7f1d1d" }}
+            >
+              <p className="font-display text-[15px] font-bold leading-snug text-white">
+                {LA_QUESTION}
+              </p>
+              <p className="mt-2.5 text-[13px] leading-snug text-white/70">
+                {hommeIci}
+              </p>
+            </div>
 
             <button
               type="button"
