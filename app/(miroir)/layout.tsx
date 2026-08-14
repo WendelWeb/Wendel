@@ -4,6 +4,8 @@ import BottomNav from "@/components/BottomNav";
 import { requireUserId } from "@/lib/auth";
 import { verrouille } from "@/lib/verrou";
 import SideNav from "@/components/SideNav";
+import Depassement from "@/components/Depassement";
+import { visitSeed } from "@/lib/rotate";
 
 /**
  * Le groupe du miroir — son propre layout, volontairement nu.
@@ -26,10 +28,21 @@ export default async function MiroirLayout({
   const userId = await requireUserId();
   const ferme = await verrouille(userId);
 
+  // Le mantra reste dehors — mais le dépassement entre, parce qu'il l'a
+  // demandé « même dans le miroir ». Et c'est la seule chose qui ait sa place
+  // ici : tout cet écran dit ce qu'il est, celui-là seul dit ce qui vient
+  // au-dessus de ce qui est écrit.
+  const graineHaut = visitSeed();
+  const graineBas = visitSeed();
+
   return (
     <div className="min-h-[100dvh] bg-background md:flex">
       <SideNav verrouille={ferme} />
-      <div className="min-w-0 flex-1">{children}</div>
+      <div className="min-w-0 flex-1">
+        <Depassement placement="top" seed={graineHaut} />
+        {children}
+        <Depassement placement="bottom" seed={graineBas} />
+      </div>
       <BottomNav verrouille={ferme} />
     </div>
   );

@@ -3,6 +3,7 @@ import { auth } from "@/lib/auth";
 import BottomNav from "@/components/BottomNav";
 import SideNav from "@/components/SideNav";
 import Mantra from "@/components/Mantra";
+import Depassement from "@/components/Depassement";
 import { visitSeed } from "@/lib/rotate";
 import { requireUserId } from "@/lib/auth";
 import { verrouille } from "@/lib/verrou";
@@ -36,7 +37,9 @@ export default async function AppLayout({
       <div className="min-w-0 flex-1">
         <div className="mx-auto w-full max-w-md pb-24 md:max-w-none md:pb-12">
           <Mantra placement="top" seed={graineHaut} />
+          <Depassement placement="top" seed={graineHaut} />
           {children}
+          <Depassement placement="bottom" seed={graineBas} />
           <Mantra placement="bottom" seed={graineBas} />
         </div>
       </div>

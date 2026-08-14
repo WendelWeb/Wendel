@@ -12,6 +12,23 @@
 //
 // Client-safe.
 
+/**
+ * LE DÉPASSEMENT — la dernière chose qu'il a ajoutée, et celle qui change le
+ * sens de tout le reste.
+ *
+ * Isolé de la déclaration parce qu'il a demandé qu'on le mette sur toutes les
+ * pages, le miroir compris. C'est cohérent : tout ce que contient cette app
+ * décrit un plafond écrit — la Vision, le livre, les objectifs. Ces trois
+ * lignes-là disent que le plafond écrit n'est qu'un plancher. Une app qui ne
+ * porterait que ce qui y est écrit finirait par devenir la limite de l'homme
+ * qui la lit.
+ */
+export const DEPASSEMENT: string[] = [
+  "Je ferai des choses plus grandes que tout ce qui est écrit dans cette app — des choses auxquelles je n'ai même pas encore l'audace de penser.",
+  "J'aurai plus de pouvoir et plus d'influence que je n'en ai jamais imaginé.",
+  "Et ça se fera à un point que ça m'étonnera moi-même. Moi qui ai écrit tout ça, je serai étonné par mes accomplissements, par leur réussite, et par leur vitesse.",
+];
+
 export const DECLARATION_FINALE: string[] = [
   "Je décide de tout, tout, tout réaliser.",
   "Même les objectifs que je n'ai jamais écrits.",
@@ -26,9 +43,7 @@ export const DECLARATION_FINALE: string[] = [
   "Et j'aurai tellement de pouvoir que je n'en subirai aucune conséquence.",
   "Tout, tout, tout — jusqu'au plus petit détail — sera réalisé.",
   "Je veux tout.",
-  "Et je ferai des choses plus grandes que tout ce qui est écrit dans cette app — des choses auxquelles je n'ai même pas encore l'audace de penser.",
-  "J'aurai plus de pouvoir et plus d'influence que je n'en ai jamais imaginé.",
-  "Et ça se fera à un point que ça m'étonnera moi-même. Moi qui ai écrit tout ça, je serai étonné par mes accomplissements, par leur réussite, et par leur vitesse.",
+  ...DEPASSEMENT,
   "C'est pour ça que je conserve mon énergie. Au maximum.",
 ];
 
