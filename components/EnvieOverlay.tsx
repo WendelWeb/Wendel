@@ -1,23 +1,33 @@
 "use client";
 
 import { useState, useTransition } from "react";
-import { Flame, ChevronRight, X, Brain, GitBranch } from "lucide-react";
+import { Flame, ChevronRight, X, Brain, GitBranch, Crown } from "lucide-react";
 import {
   ETAT_ACTUEL,
   SYSTEMES,
   CE_QUE_LA_DECISION_FAIT,
   ARBRE,
+  LE_PRIX,
   NB_PHRASES,
   SORTIES,
   tirerPhrases,
 } from "@/lib/envie";
+import { DECLARATION_FINALE, DECLARATION_SCEAU } from "@/lib/declaration";
 import { RECHUTES, type Rechute } from "@/lib/serment";
-import { DESCENTE } from "@/lib/consequence";
+import { DESCENTE, MONTEE } from "@/lib/consequence";
 import ConsequencePanel from "./ConsequencePanel";
 import { declarerRechuteAction } from "@/app/serment-actions";
 import { logStoppAction } from "@/app/actions";
 
-type Etape = "etat" | "cerveau" | "phrases" | "arbre" | "decision" | "cede";
+type Etape =
+  | "etat"
+  | "cerveau"
+  | "phrases"
+  | "prix"
+  | "arbre"
+  | "decision"
+  | "tiens"
+  | "cede";
 
 /**
  * L'écran de l'envie.
@@ -38,7 +48,7 @@ export default function EnvieOverlay({ onClose }: { onClose: () => void }) {
   const [pending, start] = useTransition();
 
   function avancer() {
-    if (i + 1 >= phrases.length) setEtape("arbre");
+    if (i + 1 >= phrases.length) setEtape("prix");
     else setI((n) => n + 1);
   }
 
@@ -170,6 +180,62 @@ export default function EnvieOverlay({ onClose }: { onClose: () => void }) {
           </>
         )}
 
+        {/* LE PRIX — entre les phrases et l'arbre. Les vingt phrases lui ont
+            rappelé ce qu'il est ; celui-ci lui rappelle ce qu'il exige. C'est
+            l'écart entre les deux qui mord, pas la médiocrité toute seule. */}
+        {etape === "prix" && (
+          <>
+            <div className="mb-2 flex items-center gap-2">
+              <Crown size={18} style={{ color: "var(--gold-border)" }} />
+              <h2 className="font-display text-lg font-bold uppercase tracking-wide text-white">
+                Et voilà ce que tu exiges
+              </h2>
+            </div>
+            <p className="mb-6 text-[13px] leading-relaxed text-white/55">
+              Tu viens de relire ce que tu es. Maintenant relis ce que tu
+              demandes — et regarde l&apos;écart.
+            </p>
+
+            <ul className="mb-7 flex flex-col gap-3.5">
+              {LE_PRIX.map((l, n) => (
+                <li key={l} className="flex gap-3">
+                  <span
+                    className="mt-[7px] h-1.5 w-1.5 flex-shrink-0 rounded-full"
+                    style={{
+                      background:
+                        n >= LE_PRIX.length - 3
+                          ? "var(--gold-border)"
+                          : "#3f3f46",
+                    }}
+                  />
+                  <span
+                    className="text-[14px] leading-snug"
+                    style={{
+                      color:
+                        n >= LE_PRIX.length - 3
+                          ? "rgba(255,255,255,.95)"
+                          : "rgba(255,255,255,.8)",
+                      fontWeight: n >= LE_PRIX.length - 3 ? 600 : 400,
+                    }}
+                  >
+                    {l}
+                  </span>
+                </li>
+              ))}
+            </ul>
+
+            <button
+              type="button"
+              onClick={() => setEtape("arbre")}
+              className="flex w-full items-center justify-center gap-2 rounded-xl px-4 py-4 text-[15px] font-bold uppercase tracking-wide text-white transition active:scale-[0.99]"
+              style={{ background: "#7f1d1d" }}
+            >
+              Ce qui se joue maintenant
+              <ChevronRight size={17} />
+            </button>
+          </>
+        )}
+
         {etape === "arbre" && (
           <>
             <div className="mb-2 flex items-center gap-2">
@@ -268,7 +334,7 @@ export default function EnvieOverlay({ onClose }: { onClose: () => void }) {
 
             <button
               type="button"
-              onClick={tenir}
+              onClick={() => setEtape("tiens")}
               disabled={pending}
               className="mb-3 w-full rounded-xl px-5 py-4 text-left transition active:scale-[0.99] disabled:opacity-60"
               style={{ background: "#15803d" }}
@@ -294,6 +360,73 @@ export default function EnvieOverlay({ onClose }: { onClose: () => void }) {
               <span className="mt-1 block text-[12.5px] leading-snug text-white/55">
                 {SORTIES.cede.detail}
               </span>
+            </button>
+          </>
+        )}
+
+        {/* Le bon choix ne doit pas sortir en silence. Il avait demandé que
+            les phrases s'affichent et qu'il ait à les répéter quand il décide
+            de faire le bon choix — c'est ici, et pas ailleurs, parce que
+            c'est la seule seconde où il vient de payer pour le droit de les
+            dire. Symétrique de l'écran de la rechute : même poids. */}
+        {etape === "tiens" && (
+          <>
+            <div className="mb-5 flex items-center justify-between gap-3">
+              <h2 className="font-display text-lg font-bold uppercase leading-snug tracking-wide text-white">
+                Alors dis-le à voix haute
+              </h2>
+              <button
+                type="button"
+                onClick={() => setEtape("decision")}
+                aria-label="Revenir"
+                className="flex-shrink-0 text-white/40"
+              >
+                <X size={19} />
+              </button>
+            </div>
+
+            <div
+              className="mb-6 rounded-2xl px-5 py-5"
+              style={{
+                background: "#0d1a0f",
+                border: "1.5px solid var(--gold-border)",
+              }}
+            >
+              <ul className="flex flex-col gap-2.5">
+                {DECLARATION_FINALE.map((l) => (
+                  <li
+                    key={l}
+                    className="font-display text-[15px] font-bold leading-snug text-white"
+                  >
+                    {l}
+                  </li>
+                ))}
+              </ul>
+              <div className="mt-4 flex flex-col gap-2 border-t border-white/12 pt-3.5">
+                {DECLARATION_SCEAU.map((l) => (
+                  <p
+                    key={l}
+                    className="text-[13px] font-semibold leading-relaxed"
+                    style={{ color: "var(--gold-border)" }}
+                  >
+                    {l}
+                  </p>
+                ))}
+              </div>
+            </div>
+
+            <div className="mb-6">
+              <ConsequencePanel c={MONTEE} sens="montee" />
+            </div>
+
+            <button
+              type="button"
+              onClick={tenir}
+              disabled={pending}
+              className="w-full rounded-xl px-4 py-4 text-[15px] font-bold uppercase tracking-wide text-white transition active:scale-[0.99] disabled:opacity-60"
+              style={{ background: "#15803d" }}
+            >
+              C&apos;est dit — je me lève maintenant
             </button>
           </>
         )}

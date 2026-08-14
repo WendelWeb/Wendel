@@ -140,6 +140,30 @@ export const ARBRE: string[] = [
   "Le saut ne se fera pas plus tard, dans un moment de grandeur. Il se fait ici, sur un geste de trois secondes que personne ne verra.",
 ];
 
+/**
+ * LE PRIX — ce que ce geste coûte, mesuré contre ce qu'il demande.
+ *
+ * Tout le reste de cet écran lui met sous les yeux ce qu'il est. Il manquait
+ * l'autre moitié : ce qu'il exige. Un homme qui ne voit que sa médiocrité
+ * finit par céder par découragement — c'est l'écart entre les deux qui mord,
+ * pas la médiocrité seule.
+ *
+ * Ses mots, y compris les plus arrogants. Les adoucir ici reviendrait à
+ * réduire la facture, et c'est le montant de la facture qui le fait tenir.
+ */
+export const LE_PRIX: string[] = [
+  "Tu ne demandes pas une petite vie. Tu demandes les raids militaires, les coups d'État, la conquête, le renversement du pouvoir ennemi, la capture d'un président.",
+  "Tu demandes assez de pouvoir pour faire toutes les dingueries que tu décideras — des plus sérieuses jusqu'aux plus enfantines — sans en subir la moindre conséquence.",
+  "Tu demandes Haïti à la table des puissances, 50 hôpitaux, et un nom qui hante les théories du complot pendant des millénaires.",
+  "ABSOLUTE DOMINANCE. C'est le mot que tu as choisi toi-même. Pas moi.",
+  "Et tu demandes tout ça très jeune, à une vitesse qu'aucun homme n'a jamais tenue dans l'Histoire.",
+  "Personne n'a jamais tenu cette vitesse-là. Personne. Et sûrement pas avec ce qu'il reste d'un homme qui vient de céder.",
+  "L'absolute dominance sur le monde commence par l'absolute dominance sur toi-même. Il n'y a pas d'autre ordre possible — et il n'y a pas d'exception pour cette fois-ci.",
+  "Un homme qui ne commande pas trois minutes de son propre désir ne commandera jamais une flotte, ni un pays, ni une salle.",
+  "C'est pour ça que chaque goutte d'énergie compte. Et chaque seconde. Y compris celle-ci, pendant que tu lis.",
+  "Ce geste ne te coûte pas trois minutes. Il te coûte de la vitesse — et la vitesse est la seule chose qui ne se rachète à aucun prix.",
+];
+
 /** Ce qu'on lui propose à la fin. Il n'y a pas de troisième porte. */
 export const SORTIES = {
   tiens: {
