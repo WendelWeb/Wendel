@@ -83,6 +83,16 @@ export const POURQUOI_SIEN: PourquoiBloc[] = [
       "L'absolute dominance sur le monde commence par l'absolute dominance sur moi-même. Il n'y a pas d'autre ordre possible.",
     ],
   },
+  {
+    id: "depassement",
+    titre: "Et tout ça n'est même pas le plafond",
+    lignes: [
+      "Je ferai des choses plus grandes que tout ce qui est écrit dans cette app — des choses auxquelles je n'ai même pas encore l'audace de penser.",
+      "J'aurai plus de pouvoir et plus d'influence que je n'en ai jamais imaginé.",
+      "Et ça se fera à un point que ça m'étonnera moi-même. Moi qui ai écrit tout ça, je serai étonné par mes accomplissements, par leur réussite, et par leur vitesse.",
+      "Donc ce que je lis ici est le plancher. Pas la limite.",
+    ],
+  },
 ];
 
 /**
