@@ -5,6 +5,7 @@ import SideNav from "@/components/SideNav";
 import Mantra from "@/components/Mantra";
 import Depassement from "@/components/Depassement";
 import Homme from "@/components/Homme";
+import Loi from "@/components/Loi";
 import { visitSeed } from "@/lib/rotate";
 import { requireUserId } from "@/lib/auth";
 import { verrouille } from "@/lib/verrou";
@@ -40,7 +41,9 @@ export default async function AppLayout({
           <Mantra placement="top" seed={graineHaut} />
           <Homme placement="top" seed={graineHaut} />
           <Depassement placement="top" seed={graineHaut} />
+          <Loi placement="top" seed={graineHaut} />
           {children}
+          <Loi placement="bottom" seed={graineBas} />
           <Depassement placement="bottom" seed={graineBas} />
           <Homme placement="bottom" seed={graineBas} />
           <Mantra placement="bottom" seed={graineBas} />

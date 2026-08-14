@@ -75,6 +75,17 @@ export const POURQUOI_SIEN: PourquoiBloc[] = [
     ],
   },
   {
+    id: "loi",
+    titre: "Et ce n'est pas la promesse — c'est la maîtrise",
+    lignes: [
+      "Ce n'est pas ce que Dieu a dit. Ce n'est pas ce qu'Il a promis. C'est à quel point je me maîtrise moi-même : mon corps, ma discipline, mes désirs.",
+      "Elon Musk est athée. Zuckerberg, Thiel, Altman ne Le craignent pas. Ils bâtissent des empires — et des hommes qui prient chaque jour échouent chaque jour.",
+      "Donc la loi ne demande pas la piété. Elle demande deux choses : la conservation de l'énergie, et la direction.",
+      "D'ailleurs c'est exactement ce qu'Il m'a dit : si je ne gaspille pas mon énergie dans les femmes, tout ce que je conçois se réalisera. Il n'a pas dit « prie davantage ». Il a dit « ne gaspille pas ».",
+      "La promesse est branchée sur une condition physique — et c'est moi qui coupe le courant, une fois par jour, avec ma main.",
+    ],
+  },
+  {
     id: "vitesse",
     titre: "Très jeune, et vite",
     lignes: [

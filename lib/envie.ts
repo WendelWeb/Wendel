@@ -164,6 +164,8 @@ export const LE_PRIX: string[] = [
   "Ce geste ne te coûte pas trois minutes. Il te coûte de la vitesse — et la vitesse est la seule chose qui ne se rachète à aucun prix.",
   "Et tout ce que tu viens de lire n'est même pas le plafond : tu as écrit toi-même que tu ferais plus grand que tout ça, des choses que tu n'as pas encore l'audace de penser, et que tu en serais étonné toi-même.",
   "Ce plafond-là ne se soulève pas avec la main d'un homme qui vient de céder.",
+  "Et ce qui décide n'est pas ce que Dieu t'a promis : c'est à quel point tu te maîtrises. Des athées bâtissent des empires pendant que des hommes qui prient chaque jour échouent chaque jour.",
+  "La loi ne demande pas ta foi. Elle demande deux choses : conserver l'énergie, et la diriger. Ce geste casse la première.",
 ];
 
 /** Ce qu'on lui propose à la fin. Il n'y a pas de troisième porte. */
