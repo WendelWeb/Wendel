@@ -245,7 +245,6 @@ export function etatSerment(
     (c) => aujourdhui[c.id] === "vouloir",
   ).length;
   const complet = !rechuteAujourdhui && faitAujourdhui === CRENEAUX.length;
-  const total = jours + (complet ? 1 : 0);
 
   // Aujourd'hui est mort si une rechute a été déclarée ou si un créneau déjà
   // passé porte « perpétuer ». Sinon la journée court encore, et elle porte
@@ -253,8 +252,18 @@ export function etatSerment(
   const perpetueAujourdhui = CRENEAUX.some(
     (c) => aujourdhui[c.id] === "perpetuer",
   );
-  const jourVivant = !rechuteAujourdhui && !perpetueAujourdhui;
-  const jourActuel = complet ? total : jourVivant ? jours + 1 : jours;
+  const casse = rechuteAujourdhui || perpetueAujourdhui;
+  const jourVivant = !casse;
+
+  // Une seule rechute annule tout, à la seconde. Ses mots : « dès lors que je
+  // rechute une fois, c'est mort, ça recommence demain, streak annulé. »
+  //
+  // Avant, le compteur gardait les jours déjà acquis jusqu'au lendemain — il
+  // voyait encore 5/30 après avoir cassé. C'était faux : la série était déjà
+  // perdue, l'écran mentait d'un jour. Le record, lui, est calculé sur
+  // l'historique et survit : ce qui a été tenu a été tenu.
+  const total = casse ? 0 : jours + (complet ? 1 : 0);
+  const jourActuel = casse ? 0 : complet ? total : jours + 1;
 
   return {
     jours: total,
@@ -266,9 +275,10 @@ export function etatSerment(
     faitAujourdhui,
     debloque: total >= CIBLE_JOURS,
     record: Math.max(record, total),
+    // Jour cassé : le jour 1 est demain, donc le jour 30 tombe à +30.
     dateOuverture: jourSuivant(
       aujourdhuiDate,
-      Math.max(0, CIBLE_JOURS - (jourVivant ? jours + 1 : jours)),
+      Math.max(0, CIBLE_JOURS - jourActuel),
     ),
   };
 }

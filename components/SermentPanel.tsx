@@ -117,9 +117,14 @@ export default function SermentPanel({
                 / {CIBLE_JOURS} jours
               </span>
             </p>
-            <p className="mt-1 text-[11px] font-semibold text-white/40">
-              {etat.rechuteAujourdhui
-                ? "Aujourd'hui ne compte pas."
+            <p
+              className="mt-1 text-[11px] font-semibold"
+              style={{
+                color: etat.jourVivant ? "rgba(255,255,255,.4)" : "var(--red)",
+              }}
+            >
+              {!etat.jourVivant
+                ? "Série annulée. Ça repart demain au jour 1."
                 : etat.faitAujourdhui === CRENEAUX.length
                   ? "Journée tenue."
                   : `Aujourd'hui — ${etat.faitAujourdhui}/${CRENEAUX.length} déclarations`}
@@ -189,11 +194,15 @@ export default function SermentPanel({
 
       {/* L'action du moment */}
       <div className="mt-4 border-t border-white/10 px-5 py-4">
-        {etat.rechuteAujourdhui ? (
+        {!etat.jourVivant ? (
           <div>
             <p className="mb-4 text-[13px] font-semibold leading-relaxed text-red">
-              Rechute déclarée aujourd&apos;hui. Le compteur est à zéro. Demain
-              recommence — et ce sera le jour 1, pas la suite.
+              {etat.rechuteAujourdhui
+                ? "Rechute déclarée aujourd'hui."
+                : "Tu as déclaré que tu perpétues."}{" "}
+              C&apos;est mort pour aujourd&apos;hui. Le compteur est à zéro, la
+              série est annulée. Ça recommence demain — et ce sera le jour 1,
+              pas la suite.
             </p>
             <ConsequencePanel c={DESCENTE} sens="descente" />
           </div>

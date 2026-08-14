@@ -122,6 +122,40 @@ describe("on commence aujourd'hui, pas demain", () => {
     expect(e.jourActuel).toBe(0);
   });
 
+  // Ses mots : « dès lors que je rechute une fois, c'est mort, ça recommence
+  // demain, streak annulé. » Le compteur ne garde donc rien jusqu'au
+  // lendemain — il tombe à zéro à la seconde.
+  it("une rechute annule la série acquise immédiatement", () => {
+    const neuf = Array.from({ length: 9 }, (_, i) => pleine(j(-(i + 1)))).flat();
+    expect(etatSerment(neuf, AUCUNE, AUJ, 8).jourActuel).toBe(10);
+
+    const apres = etatSerment(neuf, [{ date: AUJ, kind: "porn" }], AUJ, 8);
+    expect(apres.jours).toBe(0);
+    expect(apres.jourActuel).toBe(0);
+    expect(apres.debloque).toBe(false);
+    // Ce qui a été tenu reste tenu : le record survit à la casse.
+    expect(apres.record).toBe(9);
+  });
+
+  it("un « perpétuer » annule la série de la même façon", () => {
+    const neuf = Array.from({ length: 9 }, (_, i) => pleine(j(-(i + 1)))).flat();
+    const d: Declaration[] = [
+      ...neuf,
+      { date: AUJ, creneau: "matin", choix: "perpetuer" },
+    ];
+    const e = etatSerment(d, AUCUNE, AUJ, 8);
+    expect(e.jours).toBe(0);
+    expect(e.jourActuel).toBe(0);
+    expect(e.record).toBe(9);
+  });
+
+  it("après une journée cassée, demain repart au jour 1", () => {
+    const neuf = Array.from({ length: 9 }, (_, i) => pleine(j(-(i + 1)))).flat();
+    const demain = etatSerment(neuf, [{ date: AUJ, kind: "porn" }], j(1), 8);
+    expect(demain.jourActuel).toBe(1);
+    expect(demain.jourVivant).toBe(true);
+  });
+
   it("le jour 30 vécu débloque une fois les trois créneaux tenus", () => {
     const vingtNeuf = Array.from({ length: 29 }, (_, i) => pleine(j(-(i + 1)))).flat();
     const enCours = etatSerment(vingtNeuf, AUCUNE, AUJ, 8);
@@ -177,7 +211,10 @@ describe("le compteur des 30 jours", () => {
     const r: RechuteDeclaree[] = [{ date: AUJ, kind: "tiktok" }];
     const e = etatSerment(d, r, AUJ, 20);
     expect(e.rechuteAujourdhui).toBe(true);
-    expect(e.jours).toBe(1); // hier tient encore ; aujourd'hui ne compte pas
+    // Le jour d'hier ne sauve rien : une rechute annule la série entière,
+    // tout de suite. Seul le record en garde la trace.
+    expect(e.jours).toBe(0);
+    expect(e.record).toBe(1);
   });
 
   it("débloque à 30 jours, pas à 29", () => {
