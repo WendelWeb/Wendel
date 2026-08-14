@@ -141,7 +141,13 @@ export default function MiroirView({
           Je suis sérieux
         </button>
 
-        {envie && <EnvieOverlay onClose={() => setEnvie(false)} />}
+        {envie && (
+          <EnvieOverlay
+            onClose={() => setEnvie(false)}
+            jourActuel={serment.jourActuel}
+            record={serment.record}
+          />
+        )}
         {pourquoi && <PourquoiOverlay onClose={() => setPourquoi(false)} />}
         {serieux && <SerieuxOverlay onClose={() => setSerieux(false)} />}
 

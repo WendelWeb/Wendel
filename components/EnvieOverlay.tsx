@@ -17,6 +17,7 @@ import { LA_QUESTION, HOMME_DIEU, HOMME_REFUS } from "@/lib/homme";
 import { RECHUTES, type Rechute } from "@/lib/serment";
 import { DESCENTE, MONTEE } from "@/lib/consequence";
 import ConsequencePanel from "./ConsequencePanel";
+import ConfirmRechute from "./ConfirmRechute";
 import { declarerRechuteAction } from "@/app/serment-actions";
 import { logStoppAction } from "@/app/actions";
 
@@ -42,7 +43,16 @@ type Etape =
  * Vingt taps prennent deux à trois minutes. C'est la durée d'une vague : elle
  * passe pendant qu'il lit.
  */
-export default function EnvieOverlay({ onClose }: { onClose: () => void }) {
+export default function EnvieOverlay({
+  onClose,
+  jourActuel,
+  record,
+}: {
+  onClose: () => void;
+  /** Pour chiffrer ce que la rechute coûte, avant de la confirmer. */
+  jourActuel: number;
+  record: number;
+}) {
   const [etape, setEtape] = useState<Etape>("etat");
   const [phrases] = useState(() => tirerPhrases());
   const [dieuIci] = useState(
@@ -52,6 +62,7 @@ export default function EnvieOverlay({ onClose }: { onClose: () => void }) {
     () => HOMME_REFUS[Math.floor(Math.random() * HOMME_REFUS.length)],
   );
   const [i, setI] = useState(0);
+  const [aConfirmer, setAConfirmer] = useState<Rechute | null>(null);
   const [pending, start] = useTransition();
 
   function avancer() {
@@ -73,6 +84,7 @@ export default function EnvieOverlay({ onClose }: { onClose: () => void }) {
   function rechute(kind: Rechute) {
     start(async () => {
       await declarerRechuteAction(kind);
+      setAConfirmer(null);
       onClose();
     });
   }
@@ -479,31 +491,45 @@ export default function EnvieOverlay({ onClose }: { onClose: () => void }) {
               <ConsequencePanel c={DESCENTE} sens="descente" />
             </div>
 
-            <p className="mb-3 text-[12.5px] font-semibold text-white/60">
-              Déclare-le. Le compteur retombe à zéro, et ça ne s&apos;annule pas.
-            </p>
-            <div className="flex flex-col gap-2">
-              {RECHUTES.map((r) => (
-                <button
-                  key={r.id}
-                  type="button"
-                  onClick={() => rechute(r.id)}
-                  disabled={pending}
-                  className="rounded-xl px-4 py-3.5 text-left text-[14px] font-semibold text-white transition active:scale-[0.99] disabled:opacity-60"
-                  style={{ background: "#7f1d1d" }}
-                >
-                  {r.label}
-                </button>
-              ))}
-            </div>
+            {aConfirmer ? (
+              <ConfirmRechute
+                kind={aConfirmer}
+                jourActuel={jourActuel}
+                record={record}
+                pending={pending}
+                onAnnuler={() => setAConfirmer(null)}
+                onConfirmer={() => rechute(aConfirmer)}
+              />
+            ) : (
+              <>
+                <p className="mb-3 text-[12.5px] font-semibold text-white/60">
+                  Déclare-le. Le compteur retombe à zéro, et ça ne
+                  s&apos;annule pas.
+                </p>
+                <div className="flex flex-col gap-2">
+                  {RECHUTES.map((r) => (
+                    <button
+                      key={r.id}
+                      type="button"
+                      onClick={() => setAConfirmer(r.id)}
+                      disabled={pending}
+                      className="rounded-xl px-4 py-3.5 text-left text-[14px] font-semibold text-white transition active:scale-[0.99] disabled:opacity-60"
+                      style={{ background: "#7f1d1d" }}
+                    >
+                      {r.label}
+                    </button>
+                  ))}
+                </div>
 
-            <button
-              type="button"
-              onClick={() => setEtape("decision")}
-              className="mt-4 w-full py-2 text-[12.5px] font-semibold text-white/40"
-            >
-              Finalement, je ne cède pas
-            </button>
+                <button
+                  type="button"
+                  onClick={() => setEtape("decision")}
+                  className="mt-4 w-full py-2 text-[12.5px] font-semibold text-white/40"
+                >
+                  Finalement, je ne cède pas
+                </button>
+              </>
+            )}
           </>
         )}
       </div>

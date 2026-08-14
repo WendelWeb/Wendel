@@ -15,6 +15,7 @@ import {
   type Rechute,
 } from "@/lib/serment";
 import ConsequencePanel from "./ConsequencePanel";
+import ConfirmRechute from "./ConfirmRechute";
 import { DESCENTE } from "@/lib/consequence";
 import { DECLARATION_FINALE, DECLARATION_SCEAU } from "@/lib/declaration";
 import {
@@ -58,6 +59,9 @@ export default function SermentPanel({
   const [conf, setConf] = useState<Confirmations>(VIDE);
   const [ouvert, setOuvert] = useState(false);
   const [rechuteOuverte, setRechuteOuverte] = useState(false);
+  // Le type choisi, en attente de confirmation. Rien n'est écrit tant qu'il
+  // n'a pas confirmé sur le deuxième écran.
+  const [aConfirmer, setAConfirmer] = useState<Rechute | null>(null);
   const [erreur, setErreur] = useState<string | null>(null);
   const [pending, start] = useTransition();
   const router = useRouter();
@@ -84,6 +88,7 @@ export default function SermentPanel({
   function rechute(kind: Rechute) {
     start(async () => {
       await declarerRechuteAction(kind);
+      setAConfirmer(null);
       setRechuteOuverte(false);
       setConf(VIDE);
       setOuvert(false);
@@ -403,7 +408,10 @@ export default function SermentPanel({
       {rechuteOuverte && (
         <div
           className="fixed inset-0 z-[80] flex items-center justify-center bg-black/80 p-4"
-          onClick={() => setRechuteOuverte(false)}
+          onClick={() => {
+            setAConfirmer(null);
+            setRechuteOuverte(false);
+          }}
           role="dialog"
           aria-modal="true"
         >
@@ -414,35 +422,52 @@ export default function SermentPanel({
           >
             <div className="mb-1 flex items-center justify-between">
               <p className="text-[10px] font-bold uppercase tracking-[0.2em] text-red">
-                Ce qui s&apos;est passé
+                {aConfirmer ? "Un instant" : "Ce qui s'est passé"}
               </p>
               <button
                 type="button"
-                onClick={() => setRechuteOuverte(false)}
+                onClick={() => {
+                  setAConfirmer(null);
+                  setRechuteOuverte(false);
+                }}
                 aria-label="Fermer"
                 className="text-white/40"
               >
                 <X size={18} />
               </button>
             </div>
-            <p className="mb-4 text-[12.5px] leading-relaxed text-white/60">
-              Le compteur retombe à zéro immédiatement, et ça ne s&apos;annule
-              pas. C&apos;est le seul aveu qui vaut quelque chose.
-            </p>
-            <div className="flex flex-col gap-2">
-              {RECHUTES.map((r) => (
-                <button
-                  key={r.id}
-                  type="button"
-                  onClick={() => rechute(r.id)}
-                  disabled={pending}
-                  className="rounded-xl px-4 py-3 text-left text-[13.5px] font-semibold text-white transition active:scale-[0.99]"
-                  style={{ background: "#7f1d1d" }}
-                >
-                  {r.label}
-                </button>
-              ))}
-            </div>
+            {aConfirmer ? (
+              <ConfirmRechute
+                kind={aConfirmer}
+                jourActuel={etat.jourActuel}
+                record={etat.record}
+                pending={pending}
+                onAnnuler={() => setAConfirmer(null)}
+                onConfirmer={() => rechute(aConfirmer)}
+              />
+            ) : (
+              <>
+                <p className="mb-4 text-[12.5px] leading-relaxed text-white/60">
+                  Le compteur retombe à zéro immédiatement, et ça ne
+                  s&apos;annule pas. C&apos;est le seul aveu qui vaut quelque
+                  chose.
+                </p>
+                <div className="flex flex-col gap-2">
+                  {RECHUTES.map((r) => (
+                    <button
+                      key={r.id}
+                      type="button"
+                      onClick={() => setAConfirmer(r.id)}
+                      disabled={pending}
+                      className="rounded-xl px-4 py-3 text-left text-[13.5px] font-semibold text-white transition active:scale-[0.99]"
+                      style={{ background: "#7f1d1d" }}
+                    >
+                      {r.label}
+                    </button>
+                  ))}
+                </div>
+              </>
+            )}
           </div>
         </div>
       )}
