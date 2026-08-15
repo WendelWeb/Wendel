@@ -8,6 +8,7 @@ import EnvieOverlay from "./EnvieOverlay";
 import PourquoiOverlay from "./PourquoiOverlay";
 import SerieuxOverlay from "./SerieuxOverlay";
 import { Flame, Target, ShieldCheck } from "lucide-react";
+import { LA_REPETITION } from "@/lib/inconfort";
 
 export interface MiroirLangue {
   code: "en" | "fr" | "ht";
@@ -222,6 +223,18 @@ export default function MiroirView({
           </p>
           <p className="mt-2 text-[12.5px] leading-relaxed text-white/35">
             Remonte en haut : la cinquième case est maintenant ouverte.
+          </p>
+          {/* Sa consigne sur l'app elle-même : revenir, relire, répéter.
+              Elle a sa place ici, à l'endroit exact où il est tenté de se
+              dire qu'il a fini. */}
+          <p
+            className="mx-auto mt-6 max-w-md text-[12.5px] font-semibold leading-relaxed"
+            style={{ color: "var(--gold-border)" }}
+          >
+            {LA_REPETITION[0]}
+          </p>
+          <p className="mx-auto mt-2 max-w-md text-[12px] leading-relaxed text-white/40">
+            {LA_REPETITION[1]} {LA_REPETITION[5]}
           </p>
         </div>
       </div>

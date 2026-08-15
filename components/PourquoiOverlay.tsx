@@ -3,6 +3,7 @@
 import { Target, X } from "lucide-react";
 import { POURQUOI_SIEN, POURQUOI_VINGT } from "@/lib/pourquoi";
 import { DECLARATION_FINALE, DECLARATION_SCEAU } from "@/lib/declaration";
+import DecisionsPanel from "./DecisionsPanel";
 
 /**
  * Le POURQUOI, ouvert à tout moment.
@@ -103,6 +104,10 @@ export default function PourquoiOverlay({ onClose }: { onClose: () => void }) {
                 {l}
               </p>
             ))}
+          </div>
+
+          <div className="mt-4 border-t border-white/12 pt-4">
+            <DecisionsPanel />
           </div>
         </section>
 

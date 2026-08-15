@@ -12,6 +12,7 @@ import {
   HOMME_REFUS_TITRE,
   ECHEANCES,
 } from "@/lib/homme";
+import { INCONFORT_TITRE, L_INCONFORT, LA_REPETITION } from "@/lib/inconfort";
 
 /** Mélange une liste. Rendu client uniquement : l'overlay n'existe qu'après un clic. */
 function melange<T>(arr: readonly T[]): T[] {
@@ -150,6 +151,36 @@ export default function SerieuxOverlay({ onClose }: { onClose: () => void }) {
               <p
                 key={l}
                 className="text-[13.5px] font-semibold leading-relaxed text-red"
+              >
+                {l}
+              </p>
+            ))}
+          </div>
+        </section>
+
+        {/* L'inconfort — parce que la réponse à « je suis sérieux ? » se paie
+            toujours dans la même monnaie, et qu'il vaut mieux la nommer avant
+            qu'il la découvre. */}
+        <section
+          className="mb-7 rounded-2xl px-5 py-5"
+          style={{ background: "#08090c", border: "1.5px solid #1e3a5f" }}
+        >
+          <h2 className="mb-3.5 text-[10px] font-bold uppercase tracking-[0.22em] text-white/40">
+            {INCONFORT_TITRE}
+          </h2>
+          <ul className="flex flex-col gap-2.5">
+            {L_INCONFORT.map((l) => (
+              <li key={l} className="text-[13.5px] leading-snug text-white/85">
+                {l}
+              </li>
+            ))}
+          </ul>
+          <div className="mt-4 flex flex-col gap-2 border-t border-white/10 pt-3.5">
+            {LA_REPETITION.map((l) => (
+              <p
+                key={l}
+                className="text-[12.5px] font-semibold leading-relaxed"
+                style={{ color: "var(--gold-border)" }}
               >
                 {l}
               </p>

@@ -17,6 +17,7 @@ import {
 import ConsequencePanel from "./ConsequencePanel";
 import ConfirmRechute from "./ConfirmRechute";
 import ConfirmIrreversible from "./ConfirmIrreversible";
+import DecisionsPanel from "./DecisionsPanel";
 import { DESCENTE } from "@/lib/consequence";
 import { DECLARATION_FINALE, DECLARATION_SCEAU } from "@/lib/declaration";
 import {
@@ -273,6 +274,8 @@ export default function SermentPanel({
                       {l}
                     </p>
                   ))}
+                </div>                <div className="mt-4 border-t border-white/12 pt-4">
+                  <DecisionsPanel />
                 </div>
               </div>
             )}

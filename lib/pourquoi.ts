@@ -75,6 +75,18 @@ export const POURQUOI_SIEN: PourquoiBloc[] = [
     ],
   },
   {
+    id: "inconfort",
+    titre: "L'inconfort n'est pas sur le chemin — il est le chemin",
+    lignes: [
+      "Je dois obligatoirement traverser l'inconfort que je refuse d'affronter chaque jour. Aucune route ne le contourne.",
+      "Aucun arbre ne peut toucher le ciel sans que ses racines descendent jusqu'en enfer.",
+      "La douleur que je sens, c'est ça même, le chemin. Quand je l'évite, je ne repousse pas la douleur — je repousse l'arrivée.",
+      "Si c'était facile, tout le monde le ferait. Et si tout le monde le faisait, ça ne vaudrait rien.",
+      "On ne rêve pas de grandeur sans grand esprit, sans sacrifice, sans dureté.",
+      "Et je dois revenir ici relire et répéter ce que j'ai écrit : c'est par la répétition que ça s'inscrit. Ce n'est pas du temps pris sur le travail — c'est le travail.",
+    ],
+  },
+  {
     id: "loi",
     titre: "Et ce n'est pas la promesse — c'est la maîtrise",
     lignes: [

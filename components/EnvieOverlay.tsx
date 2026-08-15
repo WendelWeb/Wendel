@@ -18,6 +18,7 @@ import { RECHUTES, type Rechute } from "@/lib/serment";
 import { DESCENTE, MONTEE } from "@/lib/consequence";
 import ConsequencePanel from "./ConsequencePanel";
 import ConfirmRechute from "./ConfirmRechute";
+import DecisionsPanel from "./DecisionsPanel";
 import { declarerRechuteAction } from "@/app/serment-actions";
 import { logStoppAction } from "@/app/actions";
 
@@ -452,6 +453,10 @@ export default function EnvieOverlay({
                     {l}
                   </p>
                 ))}
+              </div>
+
+              <div className="mt-4 border-t border-white/12 pt-4">
+                <DecisionsPanel />
               </div>
             </div>
 

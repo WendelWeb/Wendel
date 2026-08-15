@@ -166,6 +166,8 @@ export const LE_PRIX: string[] = [
   "Ce plafond-là ne se soulève pas avec la main d'un homme qui vient de céder.",
   "Et ce qui décide n'est pas ce que Dieu t'a promis : c'est à quel point tu te maîtrises. Des athées bâtissent des empires pendant que des hommes qui prient chaque jour échouent chaque jour.",
   "La loi ne demande pas ta foi. Elle demande deux choses : conserver l'énergie, et la diriger. Ce geste casse la première.",
+  "Et l'inconfort que tu ressens là n'est pas un obstacle sur la route : c'est la route. Aucun arbre ne touche le ciel sans que ses racines descendent jusqu'en enfer.",
+  "Si c'était facile, tout le monde le ferait — et ça ne vaudrait rien. Ce que tu fuis en trois secondes est exactement ce qui t'aurait construit.",
 ];
 
 /** Ce qu'on lui propose à la fin. Il n'y a pas de troisième porte. */
