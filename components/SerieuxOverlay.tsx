@@ -12,7 +12,13 @@ import {
   HOMME_REFUS_TITRE,
   ECHEANCES,
 } from "@/lib/homme";
-import { INCONFORT_TITRE, L_INCONFORT, LA_REPETITION } from "@/lib/inconfort";
+import {
+  INCONFORT_TITRE,
+  L_INCONFORT,
+  LA_FUITE,
+  L_ACCEPTATION,
+  LA_REPETITION,
+} from "@/lib/inconfort";
 
 /** Mélange une liste. Rendu client uniquement : l'overlay n'existe qu'après un clic. */
 function melange<T>(arr: readonly T[]): T[] {
@@ -175,6 +181,34 @@ export default function SerieuxOverlay({ onClose }: { onClose: () => void }) {
               </li>
             ))}
           </ul>
+
+          {/* La fuite — sa propre correction, et la plus exacte : ce n'est pas
+              l'inconfort qui a coûté dix ans, c'est la fuite devant lui. */}
+          <p className="mb-3 mt-5 text-[10px] font-bold uppercase tracking-[0.22em] text-red">
+            Ce que je fuis vraiment
+          </p>
+          <ul className="flex flex-col gap-2.5">
+            {LA_FUITE.map((l) => (
+              <li
+                key={l}
+                className="text-[13.5px] font-semibold leading-snug text-white/90"
+              >
+                {l}
+              </li>
+            ))}
+          </ul>
+
+          <p className="mb-3 mt-5 text-[10px] font-bold uppercase tracking-[0.22em] text-white/40">
+            Ce que j&apos;accepte — physique et psychologique
+          </p>
+          <ul className="flex flex-col gap-2.5">
+            {L_ACCEPTATION.map((l) => (
+              <li key={l} className="text-[13.5px] leading-snug text-white/80">
+                {l}
+              </li>
+            ))}
+          </ul>
+
           <div className="mt-4 flex flex-col gap-2 border-t border-white/10 pt-3.5">
             {LA_REPETITION.map((l) => (
               <p

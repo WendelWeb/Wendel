@@ -83,6 +83,8 @@ export const POURQUOI_SIEN: PourquoiBloc[] = [
       "La douleur que je sens, c'est ça même, le chemin. Quand je l'évite, je ne repousse pas la douleur — je repousse l'arrivée.",
       "Si c'était facile, tout le monde le ferait. Et si tout le monde le faisait, ça ne vaudrait rien.",
       "On ne rêve pas de grandeur sans grand esprit, sans sacrifice, sans dureté.",
+      "Et ce n'est pas l'inconfort qui m'a coûté dix ans : c'est la fuite devant lui. La fuite devant ce que je sais que je dois faire, et surtout la fuite devant l'ennui — trois minutes de vide, et je pars.",
+      "J'accepte la douleur physique et la douleur psychologique. Je ne demande pas qu'elles disparaissent : je demande de pouvoir travailler pendant qu'elles sont là. C'est toute la compétence, il n'y en a pas d'autre.",
       "Et je dois revenir ici relire et répéter ce que j'ai écrit : c'est par la répétition que ça s'inscrit. Ce n'est pas du temps pris sur le travail — c'est le travail.",
     ],
   },
