@@ -19,6 +19,7 @@ import {
   L_ACCEPTATION,
   LA_REPETITION,
 } from "@/lib/inconfort";
+import { NIETZSCHE_TOUT } from "@/lib/nietzsche";
 
 /** Mélange une liste. Rendu client uniquement : l'overlay n'existe qu'après un clic. */
 function melange<T>(arr: readonly T[]): T[] {
@@ -220,6 +221,38 @@ export default function SerieuxOverlay({ onClose }: { onClose: () => void }) {
               </p>
             ))}
           </div>
+        </section>
+
+        {/* Nietzsche, avec les sources. Une citation sans source est une
+            phrase de motivation déguisée, et il en a déjà trop lu. */}
+        <section className="mb-8">
+          <h2 className="mb-1 text-[10.5px] font-bold uppercase tracking-[0.22em] text-red">
+            Ce que Nietzsche a écrit là-dessus
+          </h2>
+          <p className="mb-5 text-[12px] leading-relaxed text-white/40">
+            L&apos;arbre dont les racines descendent en enfer n&apos;est pas de
+            lui sous cette forme : c&apos;est une contraction de deux passages
+            réels. Les deux ouvrent la liste, et ils sont plus durs que la
+            version qui circule.
+          </p>
+          <ul className="flex flex-col gap-5">
+            {NIETZSCHE_TOUT.map((c) => (
+              <li key={c.t} className="border-l-2 border-white/12 pl-4">
+                <p className="font-display text-[14.5px] font-bold leading-snug text-white">
+                  « {c.t} »
+                </p>
+                <p
+                  className="mt-1.5 text-[11px] font-semibold uppercase tracking-wide"
+                  style={{ color: "var(--gold-border)" }}
+                >
+                  {c.source}
+                </p>
+                <p className="mt-1.5 text-[12.5px] leading-relaxed text-white/50">
+                  {c.pour}
+                </p>
+              </li>
+            ))}
+          </ul>
         </section>
 
         <p className="mb-4 text-center text-[13px] leading-relaxed text-white/55">
