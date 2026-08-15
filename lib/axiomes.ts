@@ -138,4 +138,16 @@ export const AXIOMES_MARTEAU: string[] = [
   "Ton corps ne demande pas ce que tu avais prévu. Il demande ce que tu as fait, et il tient les comptes tout seul.",
   "L'Histoire ne demande pas ce que tu voulais. Elle demande ce qui reste.",
   "Le compteur ne demande pas pourquoi. Il demande combien de jours — et il n'écoute aucune explication.",
+
+  // Les dix dernières.
+  "Qu'est-ce que le courage, chez toi ? — Quatre-vingt-dix secondes. Après, ce n'est plus du courage, c'est du travail.",
+  "On appelle cela une mauvaise journée. Moi je l'appelle une donnée : tu viens d'apprendre exactement à quelle heure tu casses.",
+  "Ne te plains pas que ce soit lourd. C'est lourd pour tout le monde — la seule différence, c'est qui repose la charge.",
+  "Tu veux être craint des puissants, et tu as peur d'un écran noir à quatre heures trente. Commence par l'écran noir.",
+  "Le sol ne demande pas combien de fois tu es tombé. Il demande seulement si tu es debout maintenant.",
+  "Qu'est-ce qu'un homme, au fond ? — La somme de ce qu'il a refusé, jamais celle de ce qu'il a désiré.",
+  "On appelle cela recommencer à zéro. Moi je l'appelle le seul jour où tu as encore le choix : les vingt-neuf autres ne seront que de l'obéissance.",
+  "Ne dis pas : je verrai demain qui je suis. Tu le sais déjà — regarde ce que tu tiens dans ta main à cette seconde.",
+  "Tu veux une vie dont on parlera. Alors donne-lui aujourd'hui quelque chose à raconter, sinon il n'y aura rien à dire de ce jeudi.",
+  "L'homme que tu veux devenir n'est pas devant toi, à distance. Il est derrière la seule chose que tu es en train d'éviter.",
 ];
