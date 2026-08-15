@@ -96,4 +96,16 @@ export const AXIOMES_MARTEAU: string[] = [
   "Tous les hommes veulent la couronne. Presque aucun ne veut la nuque qui la porte.",
   "Ne cherche pas la volonté avant l'acte. La volonté est ce qui reste une fois l'acte commencé.",
   "Tu veux la liberté ? Son prix est affiché, et il ne se négocie pas : il se paie en heures que personne ne verra jamais.",
+
+  // Dix de plus, même forme.
+  "Qu'est-ce que l'espoir, chez toi ? — La permission de ne rien faire aujourd'hui.",
+  "On appelle cela une rechute. Moi je l'appelle un vote : tu viens d'élire l'homme que tu seras dans dix ans.",
+  "Ne dis pas : je me connais. Un homme se connaît à quatre heures trente, jamais à midi.",
+  "Tu pries pour que la coupe s'éloigne. Elle ne s'éloignera pas : elle est le breuvage même que tu as commandé en écrivant ta Vision.",
+  "Il y a deux fatigues. L'une vient d'avoir porté, l'autre d'avoir esquivé. Tu ne connais encore que la seconde.",
+  "Voici ma table nouvelle : celui qui remet à demain n'a pas remis — il a choisi, et il a menti sur le nom du choix.",
+  "Qu'est-ce que la médiocrité ? — Le talent qui n'a jamais été mis en présence d'une contrainte.",
+  "Ne te plains pas d'être seul dans cette guerre. Un homme entouré n'aurait jamais eu besoin de devenir ce que tu vas devenir.",
+  "Tu veux qu'on se souvienne de ton nom pendant des millénaires, et tu ne tiens pas une matinée. Commence par la matinée : les millénaires en sont faits.",
+  "Le sommet ne demande pas si tu es prêt. Il demande seulement si tu montes encore.",
 ];
