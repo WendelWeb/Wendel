@@ -18,6 +18,9 @@ import {
   LA_FUITE,
   L_ACCEPTATION,
   LA_REPETITION,
+  J_ACCEPTE_LE_PRIX,
+  LE_TEMPS_PASSERA,
+  LA_PORTE,
 } from "@/lib/inconfort";
 import { NIETZSCHE_TOUT } from "@/lib/nietzsche";
 
@@ -216,6 +219,57 @@ export default function SerieuxOverlay({ onClose }: { onClose: () => void }) {
                 key={l}
                 className="text-[12.5px] font-semibold leading-relaxed"
                 style={{ color: "var(--gold-border)" }}
+              >
+                {l}
+              </p>
+            ))}
+          </div>
+        </section>
+
+        {/* Le prix accepté — et l'argument qui retire au report son dernier
+            avantage : les heures passeront de toute façon. */}
+        <section
+          className="mb-8 rounded-2xl px-5 py-5"
+          style={{ background: "#0c0a06", border: "1.5px solid var(--gold-border)" }}
+        >
+          <h2 className="mb-3.5 text-[10px] font-bold uppercase tracking-[0.22em] text-white/40">
+            J&apos;accepte le prix
+          </h2>
+          <ul className="flex flex-col gap-2.5">
+            {J_ACCEPTE_LE_PRIX.map((l) => (
+              <li
+                key={l}
+                className="text-[13.5px] font-semibold leading-snug text-white/90"
+              >
+                {l}
+              </li>
+            ))}
+          </ul>
+
+          {/* L'échelle : chaque échelon plus irrécupérable que le précédent. */}
+          <ul className="mt-4 flex flex-col gap-2.5 border-t border-white/12 pt-3.5">
+            {LE_TEMPS_PASSERA.map((l, n) => (
+              <li
+                key={l}
+                className="font-display text-[14px] leading-snug"
+                style={{
+                  color:
+                    n >= LE_TEMPS_PASSERA.length - 3
+                      ? "rgba(255,255,255,.95)"
+                      : "rgba(255,255,255,.75)",
+                  fontWeight: n >= LE_TEMPS_PASSERA.length - 3 ? 700 : 500,
+                }}
+              >
+                {l}
+              </li>
+            ))}
+          </ul>
+
+          <div className="mt-4 flex flex-col gap-2 border-t border-white/12 pt-3.5">
+            {LA_PORTE.map((l) => (
+              <p
+                key={l}
+                className="text-[13px] font-semibold leading-relaxed text-red"
               >
                 {l}
               </p>

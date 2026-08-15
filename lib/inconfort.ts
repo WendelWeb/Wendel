@@ -80,6 +80,56 @@ export const L_ACCEPTATION: string[] = [
   "Le confort n'est pas un état que j'atteindrai. C'est ce que j'échange contre tout le reste, chaque soir.",
 ];
 
+/**
+ * LE PRIX, ACCEPTÉ — et l'argument qui rend le refus impossible.
+ *
+ * Son raisonnement est imparable et je ne l'avais nulle part : les heures
+ * passeront de toute façon. Le choix n'a jamais été entre payer et ne pas
+ * payer — il est entre payer en effort maintenant, ou payer en regret le
+ * soir, pour la même durée exactement.
+ *
+ * C'est ce qui retire au report son dernier avantage apparent. Remettre à
+ * demain ne fait pas économiser le temps : ça le dépense sans rien acheter.
+ */
+export const J_ACCEPTE_LE_PRIX: string[] = [
+  "J'accepte le prix. Je l'accepte — et je ne le renégocie plus chaque soir.",
+  "Rien de ce que je veux n'a de version gratuite. Aucune.",
+  "Le prix ne baisse pas quand j'attends. Il monte.",
+  "Pourquoi regretter à la fin de la journée et remettre à demain, alors que la journée sera passée dans les deux cas ?",
+  "Le regret du soir coûte exactement le même temps que le travail que j'ai évité. À la seconde près.",
+  "Je ne veux plus payer en regret ce que j'aurais pu payer en effort.",
+  "Le choix n'est pas entre payer et ne pas payer. Il est entre payer, et payer pour rien.",
+];
+
+/**
+ * L'échelle du temps qui passe, dans son ordre à lui — de l'heure jusqu'à la
+ * jeunesse. Chaque échelon dit la même chose et frappe plus fort que le
+ * précédent, parce que chacun est plus irrécupérable.
+ */
+export const LE_TEMPS_PASSERA: string[] = [
+  "Les heures passeront de toute façon. La seule question est ce qu'il en restera à 21h45.",
+  "La journée passera de toute façon. Elle est déjà en train de passer pendant que je lis ça.",
+  "La semaine passera de toute façon. Dimanche arrivera, que j'aie monté la montagne ou non.",
+  "Le mois passera de toute façon.",
+  "L'année passera de toute façon. Le 1er janvier arrivera, avec ou sans le chantier debout.",
+  "La décennie passera de toute façon. J'aurai 33 ans — la seule chose qui change, c'est ce que j'aurai dans les mains ce jour-là.",
+  "Ma vie passera de toute façon.",
+  "Et ma jeunesse passera de toute façon. Elle, elle ne revient pas. Jamais.",
+  "Le temps n'attend pas ma décision. Il passe pendant que je décide.",
+];
+
+/**
+ * La porte qui se ferme. C'est la ligne la plus dure qu'il ait écrite, et
+ * elle est juste : la promesse est conditionnée à une chose qui s'épuise.
+ */
+export const LA_PORTE: string[] = [
+  "Un jour, Dieu ne pourra plus rien pour moi. Pas parce qu'Il aura changé — parce que j'aurai dépensé ce qu'Il m'avait donné à dépenser.",
+  "Il ne rend pas les années. Il ne les a jamais rendues à personne.",
+  "Le corps de mes 23 ans ne se rachète pas à 40 ans, à aucun prix, avec aucune prière.",
+  "La promesse tient. Mais elle tient sur un homme qui a encore quelque chose à donner.",
+  "Il attend un vaisseau plein. Un jour, il n'y aura plus rien dedans à remplir.",
+];
+
 export const LA_REPETITION: string[] = [
   "Je dois revenir sur cette app, relire, et répéter ce que j'ai écrit. C'est par la répétition que ça s'inscrit.",
   "Lire une fois, c'est comprendre. Répéter, c'est devenir. Je confonds les deux depuis huit ans.",

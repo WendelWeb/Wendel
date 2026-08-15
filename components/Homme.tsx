@@ -5,6 +5,7 @@ import {
   HOMME_DIEU,
   HOMME_REFUS,
 } from "@/lib/homme";
+import { LE_TEMPS_PASSERA } from "@/lib/inconfort";
 import { sampled, picked, branch, visitSeed } from "@/lib/rotate";
 
 /**
@@ -32,7 +33,13 @@ export default function Homme({
   const serieux = sampled(SI_SERIEUX, branch(s, "serieux"), 3);
   const dieu = sampled(HOMME_DIEU, branch(s, "dieu"), 2);
   const refus = sampled(HOMME_REFUS, branch(s, "refus"), 2);
-  const demain = picked(LE_MOT_DEMAIN, branch(s, "demain"));
+  // Le mot « demain » et l'échelle du temps disent la même chose par deux
+  // bouts : ce qu'il perd en reportant, et ce qui passe pendant qu'il
+  // reporte. Le pied du bandeau tire dans les deux.
+  const demain = picked(
+    [...LE_MOT_DEMAIN, ...LE_TEMPS_PASSERA],
+    branch(s, "demain"),
+  );
   const spacing = placement === "top" ? "mb-6 mt-3" : "mt-8 mb-4";
 
   return (
