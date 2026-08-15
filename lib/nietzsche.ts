@@ -123,6 +123,30 @@ export const NIETZSCHE_DUREE: Citation[] = [
   },
 ];
 
+/** Le travail invisible, et le talent qui n'existe pas. */
+export const NIETZSCHE_TRAVAIL: Citation[] = [
+  {
+    t: "Les plus grands événements, ce ne sont pas nos heures les plus bruyantes, mais nos heures les plus silencieuses.",
+    source: "Ainsi parlait Zarathoustra, « L'heure la plus silencieuse »",
+    pour: "Personne ne verra les six heures assis. C'est précisément pour ça qu'elles comptent : ce qui se voit est déjà du résultat, pas de la construction.",
+  },
+  {
+    t: "Tout ce qui est décisif naît « malgré ».",
+    source: "Ecce Homo, « Pourquoi je suis si sage »",
+    pour: "Malgré la fatigue, malgré l'envie, malgré le fait de ne pas être prêt. Il n'y a pas de version de ta journée où les conditions sont réunies.",
+  },
+  {
+    t: "Ne parlez pas de dons, de talents innés ! On peut nommer toutes sortes de grands hommes qui n'étaient guère doués. Ils acquirent la grandeur.",
+    source: "Humain, trop humain, § 163",
+    pour: "Tu écris que tu n'as aucune preuve de ton intelligence. Il te répond que la preuve ne se trouve pas : elle s'acquiert, et par le travail seul.",
+  },
+  {
+    t: "Quand nous appelons quelqu'un « divin », nous disons : ici, nous n'avons pas à rivaliser.",
+    source: "Humain, trop humain, § 162",
+    pour: "C'est pour ça que tu admires Musk plutôt que de le copier. Le génie est une excuse qu'on accorde aux autres pour s'en dispenser soi-même.",
+  },
+];
+
 /** L'ennui, et la fuite. */
 export const NIETZSCHE_ENNUI: Citation[] = [
   {
@@ -202,6 +226,7 @@ export const NIETZSCHE_TOUT: Citation[] = [
   ...NIETZSCHE_DOULEUR,
   ...NIETZSCHE_MAITRISE,
   ...NIETZSCHE_DUREE,
+  ...NIETZSCHE_TRAVAIL,
   ...NIETZSCHE_ENNUI,
   ...NIETZSCHE_DURETE,
   ...NIETZSCHE_LIBERTE,

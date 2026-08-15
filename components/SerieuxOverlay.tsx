@@ -23,6 +23,7 @@ import {
   LA_PORTE,
 } from "@/lib/inconfort";
 import { NIETZSCHE_TOUT } from "@/lib/nietzsche";
+import { AXIOMES, AXIOMES_TITRE } from "@/lib/axiomes";
 
 /** Mélange une liste. Rendu client uniquement : l'overlay n'existe qu'après un clic. */
 function melange<T>(arr: readonly T[]): T[] {
@@ -50,11 +51,21 @@ export default function SerieuxOverlay({ onClose }: { onClose: () => void }) {
   const [dieu] = useState(() => melange(HOMME_DIEU));
   const [refus] = useState(() => melange(HOMME_REFUS));
   const [nietzsche] = useState(() => melange(NIETZSCHE_TOUT));
+  const [axiomes] = useState(() => melange(AXIOMES));
   // L ordre des sections change aussi. Il ne lit jamais jusqu au bout : si
   // l ordre est fixe, il relit toujours les memes deux premieres et ne voit
   // jamais Nietzsche ni le prix.
   const [ordre] = useState(() =>
-    melange(["serieux", "dieu", "refus", "demain", "inconfort", "prix", "nietzsche"]),
+    melange([
+      "serieux",
+      "dieu",
+      "refus",
+      "demain",
+      "inconfort",
+      "prix",
+      "nietzsche",
+      "axiomes",
+    ]),
   );
 
   const sections: Record<string, React.ReactNode> = {
@@ -180,8 +191,8 @@ export default function SerieuxOverlay({ onClose }: { onClose: () => void }) {
             ))}
           </ul>
 
-    /* La fuite — sa propre correction, et la plus exacte : ce n'est pas
-              l'inconfort qui a coûté dix ans, c'est la fuite devant lui. */
+          {/* La fuite — sa propre correction, et la plus exacte : ce n'est
+              pas l'inconfort qui a coûté dix ans, c'est la fuite devant lui. */}
           <p className="mb-3 mt-5 text-[10px] font-bold uppercase tracking-[0.22em] text-red">
             Ce que je fuis vraiment
           </p>
@@ -242,7 +253,7 @@ export default function SerieuxOverlay({ onClose }: { onClose: () => void }) {
             ))}
           </ul>
 
-    /* L'échelle : chaque échelon plus irrécupérable que le précédent. */
+          {/* L'échelle : chaque échelon plus irrécupérable que le précédent. */}
           <ul className="mt-4 flex flex-col gap-2.5 border-t border-white/12 pt-3.5">
             {LE_TEMPS_PASSERA.map((l, n) => (
               <li
@@ -305,6 +316,31 @@ export default function SerieuxOverlay({ onClose }: { onClose: () => void }) {
               </li>
             ))}
           </ul>
+      </section>
+    ),
+
+    /* Les miennes. Séparées des vraies citations, et dites comme telles :
+       une fausse attribution détruirait la valeur de toutes les autres. */
+    axiomes: (
+      <section className="mb-8">
+        <h2 className="mb-1 text-[10.5px] font-bold uppercase tracking-[0.22em] text-red">
+          {AXIOMES_TITRE}
+        </h2>
+        <p className="mb-5 text-[12px] leading-relaxed text-white/40">
+          Aucune n&apos;est de Nietzsche et aucune ne le prétend. Elles
+          s&apos;appuient sur ce qui existe dans ta vie : les 587 pages, le
+          samedi soir avant la montagne, la seconde où ta main bouge avant toi.
+        </p>
+        <ul className="flex flex-col gap-3.5">
+          {axiomes.map((l) => (
+            <li
+              key={l}
+              className="border-l-2 border-white/12 pl-4 font-display text-[14.5px] font-bold leading-snug text-white/90"
+            >
+              {l}
+            </li>
+          ))}
+        </ul>
       </section>
     ),
 
