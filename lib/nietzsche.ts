@@ -155,6 +155,16 @@ export const NIETZSCHE_ENNUI: Citation[] = [
     pour: "L'ennui que tu fuis en trois secondes est le calme plat qui précède le vent. Tu descends du bateau juste avant.",
   },
   {
+    t: "Qu'est-ce qui est mauvais ? Tout ce qui provient de la faiblesse.",
+    source: "L'Antéchrist, § 2",
+    pour: "La ligne qui suit celle sur le bonheur. Ce que tu fais le soir ne vient pas d'un désir : ça vient d'une faiblesse, et il la nomme sans détour.",
+  },
+  {
+    t: "Rester maître de ses quatre vertus : le courage, la pénétration, la sympathie, la solitude.",
+    source: "Par-delà le bien et le mal, § 284",
+    pour: "La solitude est listée comme une vertu à tenir, pas comme un état à subir. Douze heures seul devant deux écrans en est l'exercice.",
+  },
+  {
     t: "On doit chercher ce qui est difficile ; et là où l'on ne trouve rien de difficile, on doit se le rendre difficile soi-même.",
     source: "d'après Ainsi parlait Zarathoustra, « De l'esprit de lourdeur »",
     pour: "La difficulté ne se subit pas : elle se choisit. Sinon elle te choisit, et bien plus tard.",
