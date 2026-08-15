@@ -7,7 +7,23 @@ import SideNav from "@/components/SideNav";
 import Depassement from "@/components/Depassement";
 import Homme from "@/components/Homme";
 import Loi from "@/components/Loi";
-import { visitSeed } from "@/lib/rotate";
+import { visitSeed, shuffled, branch } from "@/lib/rotate";
+
+/**
+ * Les trois bandeaux du miroir, dans un ordre tire au sort a chaque visite.
+ * Meme raison que dans le groupe (app) : il ne lit presque jamais une page
+ * entiere, donc c est l ordre qui doit bouger, pas seulement le contenu.
+ */
+function bandeaux(graine: number, placement: "top" | "bottom") {
+  return shuffled(
+    [
+      <Homme key="homme" placement={placement} seed={graine} />,
+      <Depassement key="depassement" placement={placement} seed={graine} />,
+      <Loi key="loi" placement={placement} seed={graine} />,
+    ],
+    branch(graine, `ordre-${placement}`),
+  );
+}
 
 /**
  * Le groupe du miroir — son propre layout, volontairement nu.
@@ -41,13 +57,9 @@ export default async function MiroirLayout({
     <div className="min-h-[100dvh] bg-background md:flex">
       <SideNav verrouille={ferme} />
       <div className="min-w-0 flex-1">
-        <Homme placement="top" seed={graineHaut} />
-        <Depassement placement="top" seed={graineHaut} />
-        <Loi placement="top" seed={graineHaut} />
+        {bandeaux(graineHaut, "top")}
         {children}
-        <Loi placement="bottom" seed={graineBas} />
-        <Depassement placement="bottom" seed={graineBas} />
-        <Homme placement="bottom" seed={graineBas} />
+        {bandeaux(graineBas, "bottom")}
       </div>
       <BottomNav verrouille={ferme} />
     </div>

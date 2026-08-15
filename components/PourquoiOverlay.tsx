@@ -1,5 +1,6 @@
 "use client";
 
+import { useState } from "react";
 import { Target, X } from "lucide-react";
 import { POURQUOI_SIEN, POURQUOI_VINGT } from "@/lib/pourquoi";
 import { DECLARATION_FINALE, DECLARATION_SCEAU } from "@/lib/declaration";
@@ -13,7 +14,22 @@ import DecisionsPanel from "./DecisionsPanel";
  * POURQUOI est autre chose — c'est ce qui le fait tenir à la minute où il n'a
  * plus envie. Le fermer serait retirer le carburant en pleine côte.
  */
+/** Melange une liste. Rendu client uniquement : l overlay n existe qu apres un clic. */
+function melange<T>(arr: readonly T[]): T[] {
+  const c = [...arr];
+  for (let i = c.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [c[i], c[j]] = [c[j], c[i]];
+  }
+  return c;
+}
+
 export default function PourquoiOverlay({ onClose }: { onClose: () => void }) {
+  // L ordre change a chaque ouverture : il ne lit jamais jusqu au bout, donc
+  // c est ce qui arrive en premier qui doit changer.
+  const [blocs] = useState(() => melange(POURQUOI_SIEN));
+  const [vingt] = useState(() => melange(POURQUOI_VINGT));
+
   return (
     <div className="fixed inset-0 z-[95] overflow-y-auto bg-black">
       <div className="mx-auto max-w-2xl px-5 py-8">
@@ -37,7 +53,7 @@ export default function PourquoiOverlay({ onClose }: { onClose: () => void }) {
           </button>
         </div>
 
-        {POURQUOI_SIEN.map((b) => (
+        {blocs.map((b) => (
           <section key={b.id} className="mb-8">
             <h2 className="mb-3 text-[10.5px] font-bold uppercase tracking-[0.22em] text-red">
               {b.titre}
@@ -65,7 +81,7 @@ export default function PourquoiOverlay({ onClose }: { onClose: () => void }) {
             de ta Vision, une consigne de l&apos;alliance.
           </p>
           <ol className="flex flex-col gap-3.5">
-            {POURQUOI_VINGT.map((l, i) => (
+            {vingt.map((l, i) => (
               <li key={l} className="flex gap-3">
                 <span className="tnum mt-[3px] flex-shrink-0 text-[11px] font-bold text-white/25">
                   {String(i + 1).padStart(2, "0")}

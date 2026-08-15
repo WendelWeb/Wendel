@@ -1,4 +1,5 @@
 import { LOI_TITRE, LA_LOI, LES_PREUVES, LE_CONTRAT } from "@/lib/loi";
+import { NIETZSCHE_TOUT } from "@/lib/nietzsche";
 import { sampled, picked, branch, visitSeed } from "@/lib/rotate";
 
 /**
@@ -26,6 +27,7 @@ export default function Loi({
   const loi = picked(LA_LOI, branch(s, "loi"));
   const preuves = sampled(LES_PREUVES, branch(s, "preuves"), 2);
   const contrat = picked(LE_CONTRAT, branch(s, "contrat"));
+  const n = picked(NIETZSCHE_TOUT, branch(s, "nietzsche"));
   const spacing = placement === "top" ? "mb-6 mt-3" : "mt-8 mb-4";
 
   return (
@@ -55,6 +57,17 @@ export default function Loi({
       >
         {contrat}
       </p>
+
+      {/* Une citation par chargement, avec sa source. Sans source, ce serait
+          une phrase de motivation de plus — il en a déjà trop lu. */}
+      <div className="mt-3.5 border-t border-white/10 pt-3.5">
+        <p className="text-[12.5px] font-medium italic leading-snug text-white/75">
+          « {n.t} »
+        </p>
+        <p className="mt-1 text-[10px] font-bold uppercase tracking-wide text-white/30">
+          {n.source}
+        </p>
+      </div>
     </section>
   );
 }

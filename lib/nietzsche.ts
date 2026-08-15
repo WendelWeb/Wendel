@@ -142,6 +142,105 @@ export const NIETZSCHE_ENNUI: Citation[] = [
   },
 ];
 
+/** La dureté, le danger, le combat. */
+export const NIETZSCHE_DURETE: Citation[] = [
+  {
+    t: "Cette table nouvelle, ô mes frères, je la place au-dessus de vous : devenez durs !",
+    source: "Ainsi parlait Zarathoustra, « Des vieilles et des nouvelles tables », 29",
+    pour: "Ce n'est pas un conseil, c'est un impératif. Et il est adressé à ceux qui veulent créer quelque chose, pas à ceux qui veulent être aimés.",
+  },
+  {
+    t: "Bâtissez vos villes sur les pentes du Vésuve ! Envoyez vos vaisseaux vers des mers inexplorées ! Vivez en guerre !",
+    source: "Le Gai Savoir, § 283",
+    pour: "La sécurité que tu cherches le soir est exactement ce qu'il dit de refuser. Le confort n'est pas un abri : c'est le lieu où rien ne se construit.",
+  },
+  {
+    t: "Deux choses veut l'homme véritable : le danger et le jeu.",
+    source: "Ainsi parlait Zarathoustra, « Des vieilles et des jeunes femmelettes »",
+    pour: "Ce que tu appelles distraction n'est ni l'un ni l'autre. C'est l'évitement des deux.",
+  },
+  {
+    t: "Je vous conseille non pas le travail, mais le combat. Je vous conseille non pas la paix, mais la victoire.",
+    source: "Ainsi parlait Zarathoustra, « De la guerre et des guerriers »",
+    pour: "Douze heures de deep work ne sont pas un emploi du temps : c'est un siège. Traite-les comme tel et elles cessent d'être négociables.",
+  },
+  {
+    t: "La profonde souffrance rend noble ; elle sépare.",
+    source: "Par-delà le bien et le mal, § 270",
+    pour: "Elle sépare de qui ? De ceux qui n'y sont pas passés. C'est ça, l'écart que tu veux — et il ne s'obtient pas autrement.",
+  },
+  {
+    t: "Il faut être une mer pour recevoir un fleuve impur sans devenir immonde.",
+    source: "Ainsi parlait Zarathoustra, Prologue, 3",
+    pour: "Sois assez vaste pour encaisser sans être sali. Un homme petit est souillé par tout ce qui l'atteint.",
+  },
+];
+
+/** La liberté — mesurée à la résistance vaincue. */
+export const NIETZSCHE_LIBERTE: Citation[] = [
+  {
+    t: "Comment se mesure la liberté ? À la résistance qu'il faut vaincre, à la peine qu'il en coûte pour rester en haut. Le plus haut type d'homme libre serait à chercher là où l'on surmonte constamment la plus grande résistance.",
+    source: "Crépuscule des idoles, « Flâneries d'un inactuel », 38",
+    pour: "Ta fuck-you money, définie par un autre : la liberté ne se mesure pas au confort obtenu, mais à la résistance vaincue pour rester debout.",
+  },
+  {
+    t: "Être indépendant est l'affaire d'un très petit nombre : c'est un privilège des forts.",
+    source: "Par-delà le bien et le mal, § 29",
+    pour: "Ce que tu veux n'est pas rare par hasard. C'est rare parce que le prix élimine presque tout le monde avant l'arrivée.",
+  },
+  {
+    t: "Peux-tu te donner à toi-même ton mal et ton bien, et suspendre au-dessus de toi ta volonté comme une loi ?",
+    source: "Ainsi parlait Zarathoustra, « Du chemin du créateur »",
+    pour: "Suspendre sa volonté au-dessus de soi comme une loi : c'est exactement ce que fait le serment des trente jours.",
+  },
+  {
+    t: "Combien de vérité un esprit supporte-t-il, combien de vérité ose-t-il ? Cela devint pour moi la véritable mesure des valeurs.",
+    source: "Ecce Homo, Avant-propos, 3",
+    pour: "C'est la mesure du miroir. Un homme se juge à la quantité de vérité qu'il peut lire sur lui-même sans fermer l'écran.",
+  },
+];
+
+/**
+ * L'éternel retour — le test le plus dur qu'il ait posé, et il tient en une
+ * question qu'on peut se poser tous les soirs.
+ */
+export const NIETZSCHE_RETOUR: Citation[] = [
+  {
+    t: "Cette vie, telle que tu la vis maintenant et l'as vécue, il te faudra la revivre encore une fois et d'innombrables fois. Te jetterais-tu à terre en grinçant des dents — ou bien dirais-tu : jamais je n'entendis chose plus divine ?",
+    source: "Le Gai Savoir, § 341",
+    pour: "Le seul test qui vaille, et il se pose ce soir : cette journée exacte, répétée pour l'éternité. Si la réponse te fait grincer des dents, tu sais déjà quoi changer.",
+  },
+  {
+    t: "Amor fati : que ce soit désormais mon amour ! Je veux, un jour, n'être plus que quelqu'un qui dit Oui.",
+    source: "Le Gai Savoir, § 276",
+    pour: "Pas subir sa journée : la vouloir. C'est la seule position d'où l'inconfort ne peut plus être une raison de fuir.",
+  },
+  {
+    t: "L'esprit qui porte s'agenouille comme le chameau, voulant être bien chargé. Qu'y a-t-il de lourd ? demande-t-il, et il s'agenouille pour qu'on l'en charge.",
+    source: "Ainsi parlait Zarathoustra, « Des trois métamorphoses »",
+    pour: "La première métamorphose est celle-là : demander la charge, pas la fuir. Le lion et l'enfant viennent après — jamais avant.",
+  },
+];
+
+/** La solitude, et le bruit des autres. */
+export const NIETZSCHE_SOLITUDE: Citation[] = [
+  {
+    t: "Fuis, mon ami, dans ta solitude ! Je te vois étourdi par le bruit des grands hommes et piqué par les aiguillons des petits.",
+    source: "Ainsi parlait Zarathoustra, « Des mouches de la place publique »",
+    pour: "X, les commentaires, ce que les autres construisent : le bruit qui te retire ta journée sans rien te donner en échange.",
+  },
+  {
+    t: "Ce qui est grand chez l'homme, c'est qu'il est un pont et non un but.",
+    source: "Ainsi parlait Zarathoustra, Prologue, 4",
+    pour: "Tu n'es pas en retard sur une destination. Tu es le passage lui-même — et un pont se juge à ce qui le traverse.",
+  },
+  {
+    t: "Ce qui se fait par amour a toujours lieu par-delà le bien et le mal.",
+    source: "Par-delà le bien et le mal, § 153",
+    pour: "Pour ce que tu aimes assez, tu ne demandes plus la permission — ni aux autres, ni à toi-même à 23h.",
+  },
+];
+
 /** Tout, à plat. */
 export const NIETZSCHE_TOUT: Citation[] = [
   ...NIETZSCHE_RACINES,
@@ -149,4 +248,8 @@ export const NIETZSCHE_TOUT: Citation[] = [
   ...NIETZSCHE_MAITRISE,
   ...NIETZSCHE_DUREE,
   ...NIETZSCHE_ENNUI,
+  ...NIETZSCHE_DURETE,
+  ...NIETZSCHE_LIBERTE,
+  ...NIETZSCHE_RETOUR,
+  ...NIETZSCHE_SOLITUDE,
 ];

@@ -13,6 +13,7 @@ import { MIROIR_EN, MIROIR_EN_THESE, MIROIR_EN_SORTIE } from "@/lib/miroir-en";
 import { MIROIR_HT, MIROIR_HT_THESE, MIROIR_HT_SORTIE } from "@/lib/miroir-ht";
 import { getSerment } from "@/lib/serments";
 import { haitiHour } from "@/lib/dates";
+import { shuffled, branch, visitSeed } from "@/lib/rotate";
 import MiroirView, { type MiroirLangue } from "@/components/MiroirView";
 
 export const dynamic = "force-dynamic";
@@ -60,9 +61,21 @@ export default async function MiroirPage() {
   const core = planCoreStatus(plan, log.completedItems, rest, wd);
   const today = todayHaiti();
 
+  // L'ordre des blocs change à chaque visite. Il l'a demandé après avoir
+  // constaté qu'il ne lit jamais une page entière : si l'ordre est fixe, il
+  // relit éternellement les mêmes trois premiers blocs et ne voit jamais les
+  // vingt autres. Le tirage se fait ici, sur le serveur, pour que le rendu
+  // client corresponde exactement — un mélange côté client casserait
+  // l'hydratation.
+  const graine = visitSeed();
+  const langues: MiroirLangue[] = LANGUES.map((l, i) => ({
+    ...l,
+    blocs: shuffled(l.blocs, branch(graine, `miroir-${i}`)),
+  }));
+
   return (
     <MiroirView
-      langues={LANGUES}
+      langues={langues}
       serment={serment}
       heure={haitiHour()}
       etat={{

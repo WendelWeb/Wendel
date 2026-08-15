@@ -49,32 +49,18 @@ export default function SerieuxOverlay({ onClose }: { onClose: () => void }) {
   const [serieux] = useState(() => melange(SI_SERIEUX));
   const [dieu] = useState(() => melange(HOMME_DIEU));
   const [refus] = useState(() => melange(HOMME_REFUS));
+  const [nietzsche] = useState(() => melange(NIETZSCHE_TOUT));
+  // L ordre des sections change aussi. Il ne lit jamais jusqu au bout : si
+  // l ordre est fixe, il relit toujours les memes deux premieres et ne voit
+  // jamais Nietzsche ni le prix.
+  const [ordre] = useState(() =>
+    melange(["serieux", "dieu", "refus", "demain", "inconfort", "prix", "nietzsche"]),
+  );
 
-  return (
-    <div className="fixed inset-0 z-[95] overflow-y-auto bg-black">
-      <div className="mx-auto max-w-2xl px-5 py-8">
-        <div className="mb-6 flex items-start justify-between gap-4">
-          <div className="flex items-center gap-2">
-            <ShieldCheck size={19} className="text-red" />
-            <h1 className="font-display text-xl font-bold uppercase tracking-wide text-white">
-              Je suis sérieux ?
-            </h1>
-          </div>
-          <button
-            type="button"
-            onClick={onClose}
-            aria-label="Fermer"
-            className="flex-shrink-0 text-white/40"
-          >
-            <X size={22} />
-          </button>
-        </div>
+  const sections: Record<string, React.ReactNode> = {
+    serieux: (
+      <section className="mb-9">
 
-        <p className="mb-8 border-l-[3px] border-red pl-4 font-display text-[16px] font-bold leading-snug text-white">
-          {LA_QUESTION}
-        </p>
-
-        <section className="mb-9">
           <h2 className="mb-1 text-[10.5px] font-bold uppercase tracking-[0.22em] text-red">
             Si je suis vraiment sérieux
           </h2>
@@ -92,10 +78,12 @@ export default function SerieuxOverlay({ onClose }: { onClose: () => void }) {
               </li>
             ))}
           </ul>
-        </section>
+      </section>
+    ),
 
-        {/* Le premier homme. Ce n'est pas un idéal qu'il s'est choisi — c'est
-            une commande reçue, et c'est ce qui retire la négociation. */}
+    /* Le premier homme. Ce n'est pas un idéal qu'il s'est choisi — c'est
+            une commande reçue, et c'est ce qui retire la négociation. */
+    dieu: (
         <section className="mb-9">
           <h2
             className="mb-1 text-[11px] font-bold uppercase leading-snug tracking-[0.16em]"
@@ -118,10 +106,12 @@ export default function SerieuxOverlay({ onClose }: { onClose: () => void }) {
               </li>
             ))}
           </ul>
-        </section>
+      </section>
+    ),
 
-        {/* Le second. Le refus est daté sept fois, parce que sa fuite
-            habituelle n'est pas « non » mais « plus tard ». */}
+    /* Le second. Le refus est daté sept fois, parce que sa fuite
+            habituelle n'est pas « non » mais « plus tard ». */
+    refus: (
         <section className="mb-9">
           <h2 className="mb-3 text-[11px] font-bold uppercase leading-snug tracking-[0.16em] text-red">
             {HOMME_REFUS_TITRE}
@@ -147,8 +137,10 @@ export default function SerieuxOverlay({ onClose }: { onClose: () => void }) {
               </li>
             ))}
           </ul>
-        </section>
+      </section>
+    ),
 
+    demain: (
         <section
           className="mb-7 rounded-2xl px-5 py-5"
           style={{ background: "#0f0a0a", border: "1.5px solid #7f1d1d" }}
@@ -166,11 +158,13 @@ export default function SerieuxOverlay({ onClose }: { onClose: () => void }) {
               </p>
             ))}
           </div>
-        </section>
+      </section>
+    ),
 
-        {/* L'inconfort — parce que la réponse à « je suis sérieux ? » se paie
+    /* L'inconfort — parce que la réponse à « je suis sérieux ? » se paie
             toujours dans la même monnaie, et qu'il vaut mieux la nommer avant
-            qu'il la découvre. */}
+            qu'il la découvre. */
+    inconfort: (
         <section
           className="mb-7 rounded-2xl px-5 py-5"
           style={{ background: "#08090c", border: "1.5px solid #1e3a5f" }}
@@ -186,8 +180,8 @@ export default function SerieuxOverlay({ onClose }: { onClose: () => void }) {
             ))}
           </ul>
 
-          {/* La fuite — sa propre correction, et la plus exacte : ce n'est pas
-              l'inconfort qui a coûté dix ans, c'est la fuite devant lui. */}
+    /* La fuite — sa propre correction, et la plus exacte : ce n'est pas
+              l'inconfort qui a coûté dix ans, c'est la fuite devant lui. */
           <p className="mb-3 mt-5 text-[10px] font-bold uppercase tracking-[0.22em] text-red">
             Ce que je fuis vraiment
           </p>
@@ -224,10 +218,12 @@ export default function SerieuxOverlay({ onClose }: { onClose: () => void }) {
               </p>
             ))}
           </div>
-        </section>
+      </section>
+    ),
 
-        {/* Le prix accepté — et l'argument qui retire au report son dernier
-            avantage : les heures passeront de toute façon. */}
+    /* Le prix accepté — et l'argument qui retire au report son dernier
+            avantage : les heures passeront de toute façon. */
+    prix: (
         <section
           className="mb-8 rounded-2xl px-5 py-5"
           style={{ background: "#0c0a06", border: "1.5px solid var(--gold-border)" }}
@@ -246,7 +242,7 @@ export default function SerieuxOverlay({ onClose }: { onClose: () => void }) {
             ))}
           </ul>
 
-          {/* L'échelle : chaque échelon plus irrécupérable que le précédent. */}
+    /* L'échelle : chaque échelon plus irrécupérable que le précédent. */
           <ul className="mt-4 flex flex-col gap-2.5 border-t border-white/12 pt-3.5">
             {LE_TEMPS_PASSERA.map((l, n) => (
               <li
@@ -275,10 +271,12 @@ export default function SerieuxOverlay({ onClose }: { onClose: () => void }) {
               </p>
             ))}
           </div>
-        </section>
+      </section>
+    ),
 
-        {/* Nietzsche, avec les sources. Une citation sans source est une
-            phrase de motivation déguisée, et il en a déjà trop lu. */}
+    /* Nietzsche, avec les sources. Une citation sans source est une
+            phrase de motivation déguisée, et il en a déjà trop lu. */
+    nietzsche: (
         <section className="mb-8">
           <h2 className="mb-1 text-[10.5px] font-bold uppercase tracking-[0.22em] text-red">
             Ce que Nietzsche a écrit là-dessus
@@ -290,7 +288,7 @@ export default function SerieuxOverlay({ onClose }: { onClose: () => void }) {
             version qui circule.
           </p>
           <ul className="flex flex-col gap-5">
-            {NIETZSCHE_TOUT.map((c) => (
+            {nietzsche.map((c) => (
               <li key={c.t} className="border-l-2 border-white/12 pl-4">
                 <p className="font-display text-[14.5px] font-bold leading-snug text-white">
                   « {c.t} »
@@ -307,7 +305,38 @@ export default function SerieuxOverlay({ onClose }: { onClose: () => void }) {
               </li>
             ))}
           </ul>
-        </section>
+      </section>
+    ),
+
+  };
+
+  return (
+    <div className="fixed inset-0 z-[95] overflow-y-auto bg-black">
+      <div className="mx-auto max-w-2xl px-5 py-8">
+        <div className="mb-6 flex items-start justify-between gap-4">
+          <div className="flex items-center gap-2">
+            <ShieldCheck size={19} className="text-red" />
+            <h1 className="font-display text-xl font-bold uppercase tracking-wide text-white">
+              Je suis sérieux ?
+            </h1>
+          </div>
+          <button
+            type="button"
+            onClick={onClose}
+            aria-label="Fermer"
+            className="flex-shrink-0 text-white/40"
+          >
+            <X size={22} />
+          </button>
+        </div>
+
+        <p className="mb-8 border-l-[3px] border-red pl-4 font-display text-[16px] font-bold leading-snug text-white">
+          {LA_QUESTION}
+        </p>
+
+        {ordre.map((k) => (
+          <div key={k}>{sections[k]}</div>
+        ))}
 
         <p className="mb-4 text-center text-[13px] leading-relaxed text-white/55">
           Il n&apos;y a rien à cocher ici. La seule réponse à cette question,
