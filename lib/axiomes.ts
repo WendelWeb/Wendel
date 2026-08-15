@@ -59,3 +59,41 @@ export const AXIOMES: string[] = [
   "Ta main a construit cette app en quelques jours. Elle est donc capable. Le problème n'a jamais été la capacité.",
   "Il n'y a rien à trouver, rien à comprendre de plus, rien à préparer. Tu sais déjà tout. Il ne reste que la partie qui fait mal.",
 ];
+
+export const MARTEAU_TITRE = "Dans son registre — mais de moi, pas de lui";
+
+/**
+ * Les mêmes, dans la forme de Zarathoustra : la question qui démasque, le
+ * « et moi je te dis », la table nouvelle, le dernier homme, la généalogie du
+ * besoin. La forme n'est pas un ornement — elle force à nommer d'où vient un
+ * geste au lieu de le déplorer, et c'est exactement ce dont il a besoin.
+ *
+ * Aucune n'est de Nietzsche, aucune ne le prétend, et l'écran le dit avant de
+ * les afficher. Le pastiche est assumé ; l'attribution, jamais.
+ */
+export const AXIOMES_MARTEAU: string[] = [
+  "Qu'est-ce que la lâcheté ? — Vouloir la fin, et renégocier le prix chaque soir.",
+  "On t'a dit : Dieu pourvoira. Et moi je te dis : Il a déjà pourvu. Il t'a donné un corps de vingt-trois ans — et tu le dépenses en trois minutes.",
+  "Il y a en toi un dernier homme. Il cligne des yeux et il dit : « demain, quand je serai reposé. » Ce dernier homme a dix ans d'avance sur ta discipline.",
+  "Tu appelles cela du repos. Je l'appelle un acompte versé à l'homme que tu refuses d'être.",
+  "J'aime celui qui s'assoit sans en avoir envie : il ne sait pas encore qu'il vient de commencer.",
+  "Regarde d'où te vient le besoin d'écrire une page de plus. Ce n'est pas l'amour du travail — c'est la peur du travail suivant.",
+  "Voici ma table nouvelle : ce que tu ne peux pas montrer, tu ne l'as pas fait.",
+  "Celui qui gravit une montagne le dimanche apprend une chose qu'aucun livre ne contient : que ses jambes obéissent.",
+  "Deux hommes se disputent ta main. L'un veut trois secondes, l'autre veut trente ans. Tu la donnes toujours au plus pressé.",
+  "Tu dis : je manque de temps. Tu ne manques pas de temps — tu manques de refus.",
+  "Qu'est-ce que le talent ? — Le nom que donnent au travail ceux qui ne l'ont pas vu se faire.",
+  "Ne dis pas que tu combats tes désirs. Tu ne combats rien : tu attends qu'ils passent, le téléphone à la main.",
+  "Ô toi qui veux commander à des flottes : commande d'abord à un doigt, un soir, pendant trois minutes.",
+  "Il n'y a pas de grands hommes. Il n'y a que des hommes qui ont refusé plus longtemps.",
+  "Tu as fait de ta chambre le portrait exact de ton gouvernement.",
+  "Ton pire ennemi n'est pas celui qui te frappe. C'est celui qui te propose de recommencer demain — et il a ta voix.",
+  "Ce que tu nommes envie est une opinion de trois minutes qui prétend décider de trente ans.",
+  "Ne demande pas que l'inconfort cesse. Demande de savoir travailler dedans : il ne cessera jamais, il changera seulement de nom.",
+  "Celui qui a besoin d'être vu pour tenir tiendra exactement le temps qu'on le regarde.",
+  "Qu'est-ce qui est méprisable ? — Écrire sa grandeur le soir, et la vendre le lendemain pour trois minutes.",
+  "Ta promesse reçue sur la montagne n'est pas un cadeau : c'est une facture avec une échéance. Et tu as huit ans de retard.",
+  "Tous les hommes veulent la couronne. Presque aucun ne veut la nuque qui la porte.",
+  "Ne cherche pas la volonté avant l'acte. La volonté est ce qui reste une fois l'acte commencé.",
+  "Tu veux la liberté ? Son prix est affiché, et il ne se négocie pas : il se paie en heures que personne ne verra jamais.",
+];

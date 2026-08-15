@@ -23,7 +23,12 @@ import {
   LA_PORTE,
 } from "@/lib/inconfort";
 import { NIETZSCHE_TOUT } from "@/lib/nietzsche";
-import { AXIOMES, AXIOMES_TITRE } from "@/lib/axiomes";
+import {
+  AXIOMES,
+  AXIOMES_TITRE,
+  AXIOMES_MARTEAU,
+  MARTEAU_TITRE,
+} from "@/lib/axiomes";
 
 /** Mélange une liste. Rendu client uniquement : l'overlay n'existe qu'après un clic. */
 function melange<T>(arr: readonly T[]): T[] {
@@ -52,6 +57,7 @@ export default function SerieuxOverlay({ onClose }: { onClose: () => void }) {
   const [refus] = useState(() => melange(HOMME_REFUS));
   const [nietzsche] = useState(() => melange(NIETZSCHE_TOUT));
   const [axiomes] = useState(() => melange(AXIOMES));
+  const [marteau] = useState(() => melange(AXIOMES_MARTEAU));
   // L ordre des sections change aussi. Il ne lit jamais jusqu au bout : si
   // l ordre est fixe, il relit toujours les memes deux premieres et ne voit
   // jamais Nietzsche ni le prix.
@@ -336,6 +342,28 @@ export default function SerieuxOverlay({ onClose }: { onClose: () => void }) {
             <li
               key={l}
               className="border-l-2 border-white/12 pl-4 font-display text-[14.5px] font-bold leading-snug text-white/90"
+            >
+              {l}
+            </li>
+          ))}
+        </ul>
+
+        {/* Le pastiche est assumé ; l'attribution, jamais. */}
+        <h2 className="mb-1 mt-8 text-[10.5px] font-bold uppercase tracking-[0.22em] text-red">
+          {MARTEAU_TITRE}
+        </h2>
+        <p className="mb-5 text-[12px] leading-relaxed text-white/40">
+          Sa forme à lui — la question qui démasque, le « et moi je te dis »,
+          la table nouvelle — appliquée à ta vie. La forme n&apos;est pas un
+          ornement : elle oblige à nommer d&apos;où vient un geste au lieu de
+          le déplorer.
+        </p>
+        <ul className="flex flex-col gap-4">
+          {marteau.map((l) => (
+            <li
+              key={l}
+              className="border-l-2 pl-4 text-[14.5px] font-medium italic leading-snug text-white/85"
+              style={{ borderColor: "var(--gold-border)" }}
             >
               {l}
             </li>
