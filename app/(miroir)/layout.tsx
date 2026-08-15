@@ -4,6 +4,7 @@ import BottomNav from "@/components/BottomNav";
 import { requireUserId } from "@/lib/auth";
 import { verrouille } from "@/lib/verrou";
 import SideNav from "@/components/SideNav";
+import BackBar from "@/components/BackBar";
 import Depassement from "@/components/Depassement";
 import Homme from "@/components/Homme";
 import Loi from "@/components/Loi";
@@ -57,6 +58,7 @@ export default async function MiroirLayout({
     <div className="min-h-[100dvh] bg-background md:flex">
       <SideNav verrouille={ferme} />
       <div className="min-w-0 flex-1">
+        <BackBar />
         {bandeaux(graineHaut, "top")}
         {children}
         {bandeaux(graineBas, "bottom")}

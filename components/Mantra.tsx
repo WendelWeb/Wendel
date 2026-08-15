@@ -1,3 +1,5 @@
+"use client";
+
 import type { ReactNode } from "react";
 import { Hand, Eye } from "lucide-react";
 import { INTERROGATION, SI_TU_CEDES, DECLARATIONS } from "@/lib/sting";
@@ -6,6 +8,7 @@ import { QUOTES, categoryMeta } from "@/lib/quotes";
 import { DELAYED } from "@/lib/delayed";
 import { MANTRA_LINES } from "@/lib/mantra-lines";
 import { sampled, picked, shuffled, branch, visitSeed } from "@/lib/rotate";
+import { useSeed } from "./useSeed";
 
 // LE MANTRA — en haut ET en bas de CHAQUE page (rendu dans le layout).
 //
@@ -33,7 +36,7 @@ export default function Mantra({
   seed?: number;
 }) {
   const spacing = placement === "top" ? "mb-6 mt-3" : "mt-10 pb-2";
-  const s = seed ?? visitSeed();
+  const s = useSeed(seed ?? visitSeed());
 
   const cedes = sampled(SI_TU_CEDES, branch(s, "cedes"), 6);
   const marteau = picked(

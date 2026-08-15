@@ -2,6 +2,7 @@ import { redirect } from "next/navigation";
 import { auth } from "@/lib/auth";
 import BottomNav from "@/components/BottomNav";
 import SideNav from "@/components/SideNav";
+import BackBar from "@/components/BackBar";
 import Mantra from "@/components/Mantra";
 import Depassement from "@/components/Depassement";
 import Homme from "@/components/Homme";
@@ -57,6 +58,7 @@ export default async function AppLayout({
     <div className="min-h-[100dvh] bg-background md:flex">
       <SideNav verrouille={ferme} />
       <div className="min-w-0 flex-1">
+        <BackBar />
         <div className="mx-auto w-full max-w-md pb-24 md:max-w-none md:pb-12">
           {bandeaux(graineHaut, "top")}
           {children}

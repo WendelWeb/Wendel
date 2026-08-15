@@ -32,7 +32,10 @@ export default function PourquoiOverlay({ onClose }: { onClose: () => void }) {
 
   return (
     <div className="fixed inset-0 z-[95] overflow-y-auto bg-black">
-      <div className="mx-auto max-w-2xl px-5 py-8">
+      <div
+        className="mx-auto max-w-2xl px-5 pb-8"
+        style={{ paddingTop: "calc(env(safe-area-inset-top) + 2rem)" }}
+      >
         <div className="mb-7 flex items-start justify-between gap-4">
           <div className="flex items-center gap-2">
             <Target size={19} style={{ color: "var(--gold-border)" }} />

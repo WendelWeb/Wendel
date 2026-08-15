@@ -1,6 +1,9 @@
+"use client";
+
 import { LOI_TITRE, LA_LOI, LES_PREUVES, LE_CONTRAT } from "@/lib/loi";
 import { NIETZSCHE_TOUT } from "@/lib/nietzsche";
 import { sampled, picked, branch, visitSeed } from "@/lib/rotate";
+import { useSeed } from "./useSeed";
 
 /**
  * LA LOI — sur chaque page, comme les deux autres bandeaux.
@@ -23,7 +26,7 @@ export default function Loi({
   placement?: "top" | "bottom";
   seed?: number;
 }) {
-  const s = seed ?? visitSeed();
+  const s = useSeed(seed ?? visitSeed());
   const loi = picked(LA_LOI, branch(s, "loi"));
   const preuves = sampled(LES_PREUVES, branch(s, "preuves"), 2);
   const contrat = picked(LE_CONTRAT, branch(s, "contrat"));

@@ -1,9 +1,12 @@
+"use client";
+
 import {
   DECLARATION_FINALE,
   DECLARATION_SCEAU,
   DEPASSEMENT,
 } from "@/lib/declaration";
 import { sampled, branch, visitSeed } from "@/lib/rotate";
+import { useSeed } from "./useSeed";
 
 /**
  * LE DÉPASSEMENT — sur chaque page, le miroir compris.
@@ -27,7 +30,7 @@ export default function Depassement({
   placement?: "top" | "bottom";
   seed?: number;
 }) {
-  const s = seed ?? visitSeed();
+  const s = useSeed(seed ?? visitSeed());
   // Le reste de la déclaration, moins les trois lignes déjà affichées
   // au-dessus — sinon le tirage se répète à lui-même.
   const echos = sampled(

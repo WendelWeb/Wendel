@@ -1,3 +1,5 @@
+"use client";
+
 import {
   LA_QUESTION,
   LE_MOT_DEMAIN,
@@ -7,6 +9,7 @@ import {
 } from "@/lib/homme";
 import { LE_TEMPS_PASSERA } from "@/lib/inconfort";
 import { sampled, picked, branch, visitSeed } from "@/lib/rotate";
+import { useSeed } from "./useSeed";
 
 /**
  * LA QUESTION — sur chaque page, en haut et en bas.
@@ -29,7 +32,7 @@ export default function Homme({
   placement?: "top" | "bottom";
   seed?: number;
 }) {
-  const s = seed ?? visitSeed();
+  const s = useSeed(seed ?? visitSeed());
   const serieux = sampled(SI_SERIEUX, branch(s, "serieux"), 3);
   const dieu = sampled(HOMME_DIEU, branch(s, "dieu"), 2);
   const refus = sampled(HOMME_REFUS, branch(s, "refus"), 2);
