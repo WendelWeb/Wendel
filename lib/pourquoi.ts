@@ -75,6 +75,18 @@ export const POURQUOI_SIEN: PourquoiBloc[] = [
     ],
   },
   {
+    id: "comptes",
+    titre: "Et je ne suis pas seul dans l'équation",
+    lignes: [
+      "Ma force masculine est à son sommet maintenant — pas dans dix ans. Qu'est-ce que j'en fais aujourd'hui ?",
+      "Qu'est-ce que je fais dont mes ancêtres seraient fiers ? Ils ont porté des choses que je ne porterais pas une journée.",
+      "Qu'est-ce que je fais pour Sa gloire ? Il me posera la question, et je ne pourrai pas répondre par une intention.",
+      "Qu'est-ce que je fais aujourd'hui pour mon pays ? Il ne manque pas d'hommes qui en parlent — il manque d'hommes qui livrent.",
+      "Il y a un vieillard qui s'éteint pendant que je lis ça, de ce qui se soigne ailleurs. Ma lenteur a un prix, et ce n'est pas moi qui le paie.",
+      "Mes enfants hériteront soit de ce que j'aurai bâti, soit de mes excuses. Il n'y a pas de troisième héritage.",
+    ],
+  },
+  {
     id: "inconfort",
     titre: "L'inconfort n'est pas sur le chemin — il est le chemin",
     lignes: [

@@ -29,6 +29,7 @@ import {
   AXIOMES_MARTEAU,
   MARTEAU_TITRE,
 } from "@/lib/axiomes";
+import { COMPTES } from "@/lib/comptes";
 
 /** Mélange une liste. Rendu client uniquement : l'overlay n'existe qu'après un clic. */
 function melange<T>(arr: readonly T[]): T[] {
@@ -58,6 +59,7 @@ export default function SerieuxOverlay({ onClose }: { onClose: () => void }) {
   const [nietzsche] = useState(() => melange(NIETZSCHE_TOUT));
   const [axiomes] = useState(() => melange(AXIOMES));
   const [marteau] = useState(() => melange(AXIOMES_MARTEAU));
+  const [comptes] = useState(() => melange(COMPTES));
   // L ordre des sections change aussi. Il ne lit jamais jusqu au bout : si
   // l ordre est fixe, il relit toujours les memes deux premieres et ne voit
   // jamais Nietzsche ni le prix.
@@ -71,6 +73,7 @@ export default function SerieuxOverlay({ onClose }: { onClose: () => void }) {
       "prix",
       "nietzsche",
       "axiomes",
+      "comptes",
     ]),
   );
 
@@ -322,6 +325,41 @@ export default function SerieuxOverlay({ onClose }: { onClose: () => void }) {
               </li>
             ))}
           </ul>
+      </section>
+    ),
+
+    /* Tout le reste de l'écran lui parle de lui. Celle-ci rappelle les cinq
+       créanciers qui attendent quelque chose de cette énergie-là. */
+    comptes: (
+      <section className="mb-8">
+        <h2 className="mb-1 text-[10.5px] font-bold uppercase tracking-[0.22em] text-red">
+          À qui je dois des comptes
+        </h2>
+        <p className="mb-5 text-[12px] leading-relaxed text-white/40">
+          Chaque question est au présent. Pas « qu&apos;est-ce que je ferai » :
+          qu&apos;est-ce que je fais. Le futur est exactement l&apos;endroit où
+          tu te caches depuis huit ans.
+        </p>
+        {comptes.map((b) => (
+          <div key={b.id} className="mb-6">
+            <h3
+              className="mb-2.5 text-[11px] font-bold uppercase tracking-[0.16em]"
+              style={{ color: "var(--gold-border)" }}
+            >
+              {b.titre}
+            </h3>
+            <ul className="flex flex-col gap-2.5">
+              {b.lignes.map((l) => (
+                <li
+                  key={l}
+                  className="border-l-2 border-white/12 pl-3.5 text-[14px] leading-snug text-white/85"
+                >
+                  {l}
+                </li>
+              ))}
+            </ul>
+          </div>
+        ))}
       </section>
     ),
 

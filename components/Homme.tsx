@@ -8,6 +8,7 @@ import {
   HOMME_REFUS,
 } from "@/lib/homme";
 import { LE_TEMPS_PASSERA } from "@/lib/inconfort";
+import { QUESTIONS_COMPTES } from "@/lib/comptes";
 import { sampled, picked, branch, visitSeed } from "@/lib/rotate";
 import { useSeed } from "./useSeed";
 
@@ -43,6 +44,7 @@ export default function Homme({
     [...LE_MOT_DEMAIN, ...LE_TEMPS_PASSERA],
     branch(s, "demain"),
   );
+  const compte = picked(QUESTIONS_COMPTES, branch(s, "compte"));
   const spacing = placement === "top" ? "mb-6 mt-3" : "mt-8 mb-4";
 
   return (
@@ -87,7 +89,16 @@ export default function Homme({
         ))}
       </ul>
 
-      <p className="mt-4 border-t border-white/10 pt-3.5 text-[12.5px] font-semibold leading-relaxed text-red">
+      {/* Une question de créancier par chargement. Le reste du bandeau parle
+          de lui ; celle-ci rappelle qu'il n'est pas seul dans l'équation. */}
+      <p
+        className="mt-4 border-t border-white/10 pt-3.5 font-display text-[13.5px] font-bold leading-snug"
+        style={{ color: "var(--gold-border)" }}
+      >
+        {compte}
+      </p>
+
+      <p className="mt-3 text-[12.5px] font-semibold leading-relaxed text-red">
         {demain}
       </p>
     </section>
