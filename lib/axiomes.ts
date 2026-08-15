@@ -108,4 +108,34 @@ export const AXIOMES_MARTEAU: string[] = [
   "Ne te plains pas d'être seul dans cette guerre. Un homme entouré n'aurait jamais eu besoin de devenir ce que tu vas devenir.",
   "Tu veux qu'on se souvienne de ton nom pendant des millénaires, et tu ne tiens pas une matinée. Commence par la matinée : les millénaires en sont faits.",
   "Le sommet ne demande pas si tu es prêt. Il demande seulement si tu montes encore.",
+
+  // Les cinq moules qu'il a retenus, poussés plus loin : la définition qui
+  // démasque, le renommage, la plainte retournée en condition, l'échelle
+  // ramenée à ce matin, et le critère qui n'écoute aucune explication.
+  "Qu'est-ce que la préparation, chez toi ? — Le nom noble que tu donnes à l'attente.",
+  "Qu'est-ce que la motivation, chez toi ? — Un emprunt contracté le soir et jamais remboursé le matin.",
+  "Qu'est-ce que le repos, chez toi ? — Une récompense réclamée avant le travail.",
+  "Qu'est-ce que l'ambition, chez toi ? — Une émotion, tant qu'elle n'a pas d'horaire.",
+  "Qu'est-ce que la honte, chez toi ? — La seule chose que tu produises encore de façon fiable.",
+
+  "On appelle cela une pause. Moi je l'appelle une frontière : de l'autre côté il y a un autre homme, et c'est lui qui finira ta journée.",
+  "On appelle cela de la fatigue. Moi je l'appelle une négociation ouverte par le corps — et tu cèdes avant même la première offre.",
+  "On appelle cela une distraction. Moi je l'appelle un choix de carrière, répété quarante fois par jour.",
+  "On appelle cela un rêve. Moi je l'appelle une dette : tu l'as contractée devant Dieu, sur une montagne, en 2021.",
+  "On appelle cela du talent gâché. Moi je l'appelle du talent jamais convoqué — on ne gâche que ce qu'on a d'abord employé.",
+
+  "Ne te plains pas d'être né dans le Nord-Ouest. Un homme né au centre n'aurait jamais eu de raison de déplacer le centre.",
+  "Ne te plains pas de ton corps d'aujourd'hui. Un homme déjà fort n'apprendrait rien en le devenant.",
+  "Ne te plains pas que personne ne t'attende. Personne n'attendait aucun de ceux dont tu répètes les noms.",
+  "Ne te plains pas d'avoir tout à refaire. Un homme qui aurait déjà réussi à vingt-trois ans n'aurait plus rien à prouver — et ne prouverait plus rien.",
+
+  "Tu veux cinquante hôpitaux, et tu ne tiens pas vingt minutes de méditation. Commence par les vingt minutes : les hôpitaux en sont faits.",
+  "Tu veux un siège permanent à l'ONU, et tu ne tiens pas ta chambre. Commence par la chambre : les sièges en sont faits.",
+  "Tu veux la domination absolue, et tu ne domines pas trois minutes. Commence par les trois minutes : le monde en est fait.",
+
+  "Le travail ne demande pas si tu es inspiré. Il demande seulement si tu es assis.",
+  "La montagne ne demande pas si tu as bien dormi. Elle demande seulement si tu montes.",
+  "Ton corps ne demande pas ce que tu avais prévu. Il demande ce que tu as fait, et il tient les comptes tout seul.",
+  "L'Histoire ne demande pas ce que tu voulais. Elle demande ce qui reste.",
+  "Le compteur ne demande pas pourquoi. Il demande combien de jours — et il n'écoute aucune explication.",
 ];
