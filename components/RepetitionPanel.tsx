@@ -3,9 +3,11 @@
 import { useEffect, useState } from "react";
 import { Repeat, Check } from "lucide-react";
 import {
-  REPS_PAR_SEANCE,
-  REPS_PAR_JOUR,
   BLOCS_REPETITION,
+  SACRIFICE_OUVERTURE,
+  SACRIFICE_POUR,
+  REPS_PAR_SEANCE_TOTAL,
+  REPS_PAR_JOUR,
   PROTOCOLE,
   CE_QUE_DIT_LA_SCIENCE,
   cleRepetition,
@@ -13,35 +15,46 @@ import {
 import { CRENEAUX, type Creneau } from "@/lib/serment";
 
 interface Seance {
-  reps: number;
+  /** Les répétitions faites, bloc par bloc. */
+  reps: number[];
   acte: string;
 }
 
-const VIDE: Seance = { reps: 0, acte: "" };
+const VIDE: Seance = { reps: BLOCS_REPETITION.map(() => 0), acte: "" };
+
+function lire(brut: string | null): Seance {
+  if (!brut) return { ...VIDE, reps: [...VIDE.reps] };
+  try {
+    const s = JSON.parse(brut) as Partial<Seance>;
+    const reps = BLOCS_REPETITION.map((_, i) => s.reps?.[i] ?? 0);
+    return { reps, acte: s.acte ?? "" };
+  } catch {
+    return { ...VIDE, reps: [...VIDE.reps] };
+  }
+}
 
 /**
- * LES SEPT RÉPÉTITIONS.
+ * LES RÉPÉTITIONS — 21 + 7, trois fois par jour.
  *
- * Deux choses le structurent, et aucune n'est décorative.
+ * Le premier bloc énumère : l'ouverture ne bouge pas, la destination change à
+ * chaque passage. C'est la seule forme qui tienne pour vingt et une
+ * répétitions — redire le même paragraphe vingt et une fois ferait quatorze
+ * minutes, et surtout la bouche finirait par le produire sans que l'oreille
+ * l'écoute. C'est exactement ce qui a tué les feuilles collées au mur.
  *
- * La phrase-noyau ne tourne pas. C'est le seul bloc de l'app dont le contenu
- * est fixe, et c'est délibéré : tout le reste change à chaque visite pour
+ * Le second ne bouge pas du tout : sept fois à l'identique. C'est le seul
+ * contenu fixe de toute l'app, et c'est délibéré — tout le reste tourne pour
  * qu'il ne s'habitue pas, celui-ci reste identique parce que la répétition
  * exige l'identique.
  *
- * Et la séance ne se valide pas sans acte. Répéter sans agir dans les cinq
- * minutes, c'est exactement ce qu'il fait déjà en rejouant l'interview dans sa
- * tête : la récompense sans la facture. Le champ est court exprès — on n'y
- * écrit pas une intention, on y écrit ce qu'on vient de faire.
- *
- * Stockage local, par jour et par créneau : rien à migrer, et ça survit à la
- * fermeture de l'app. Ce n'est pas une preuve — c'est un compteur.
+ * Et la séance ne se valide pas sans acte nommé dans les cinq minutes.
+ * Répéter sans agir, c'est ce qu'il fait déjà en rejouant l'interview dans sa
+ * tête : la récompense sans la facture.
  */
 export default function RepetitionPanel({
   creneau,
   today,
 }: {
-  /** Le créneau ouvert, ou null hors créneau. */
   creneau: Creneau | null;
   today: string;
 }) {
@@ -50,22 +63,24 @@ export default function RepetitionPanel({
   const [ouvert, setOuvert] = useState(false);
   const [science, setScience] = useState(false);
 
-  // Relecture au montage : le localStorage n'existe pas côté serveur, donc
-  // tout se fait ici, après l'hydratation.
+  function recompterJour() {
+    let t = 0;
+    for (const c of CRENEAUX) {
+      const s = lire(localStorage.getItem(cleRepetition(today, c.id)));
+      t += s.reps.reduce((a, b) => a + b, 0);
+    }
+    setTotal(t);
+  }
+
   useEffect(() => {
     if (!creneau) return;
     try {
-      const brut = localStorage.getItem(cleRepetition(today, creneau));
-      setSeance(brut ? (JSON.parse(brut) as Seance) : VIDE);
-      let t = 0;
-      for (const c of CRENEAUX) {
-        const b = localStorage.getItem(cleRepetition(today, c.id));
-        if (b) t += (JSON.parse(b) as Seance).reps;
-      }
-      setTotal(t);
+      setSeance(lire(localStorage.getItem(cleRepetition(today, creneau))));
+      recompterJour();
     } catch {
       /* un stockage illisible ne doit pas casser l'écran */
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [creneau, today]);
 
   function enregistrer(s: Seance) {
@@ -73,19 +88,18 @@ export default function RepetitionPanel({
     if (!creneau) return;
     try {
       localStorage.setItem(cleRepetition(today, creneau), JSON.stringify(s));
-      let t = 0;
-      for (const c of CRENEAUX) {
-        const b = localStorage.getItem(cleRepetition(today, c.id));
-        if (b) t += (JSON.parse(b) as Seance).reps;
-      }
-      setTotal(t);
+      recompterJour();
     } catch {
       /* idem */
     }
   }
 
   const meta = CRENEAUX.find((c) => c.id === creneau);
-  const fini = seance.reps >= REPS_PAR_SEANCE;
+  const faitesSeance = seance.reps.reduce((a, b) => a + b, 0);
+  // Le bloc en cours : le premier qui n'est pas terminé.
+  const iBloc = BLOCS_REPETITION.findIndex((b, i) => seance.reps[i] < b.fois);
+  const bloc = iBloc >= 0 ? BLOCS_REPETITION[iBloc] : null;
+  const fini = iBloc < 0;
   const valide = fini && seance.acte.trim().length > 0;
 
   return (
@@ -101,7 +115,7 @@ export default function RepetitionPanel({
         <span className="flex items-center gap-2.5">
           <Repeat size={17} style={{ color: "var(--gold-border)" }} />
           <span className="font-display text-[15px] font-bold uppercase tracking-wide text-white">
-            Les {REPS_PAR_SEANCE} répétitions
+            Les répétitions
           </span>
         </span>
         <span className="tnum flex-shrink-0 text-[13px] font-bold text-white/50">
@@ -120,64 +134,80 @@ export default function RepetitionPanel({
           ) : (
             <>
               <p className="mb-3 text-[11px] font-bold uppercase tracking-[0.16em] text-white/40">
-                {meta?.label} — séance {seance.reps}/{REPS_PAR_SEANCE}
+                {meta?.label} — {faitesSeance}/{REPS_PAR_SEANCE_TOTAL}
               </p>
 
-              {/* Les trois blocs. Fixes, et c'est voulu : la répétition exige
-                  l'identique quand tout le reste de l'app tourne. */}
-              <div
-                className="mb-4 rounded-xl px-4 py-4"
-                style={{ background: "#111", border: "1px solid var(--gold-border)" }}
-              >
-                {BLOCS_REPETITION.map((b, n) => (
+              {bloc ? (
+                <>
+                  <p className="mb-1 text-[9.5px] font-bold uppercase tracking-[0.2em] text-red">
+                    {bloc.titre} — {seance.reps[iBloc] + 1}/{bloc.fois}
+                  </p>
+                  <p className="mb-3 text-[11.5px] leading-relaxed text-white/40">
+                    {bloc.role}
+                  </p>
+
                   <div
-                    key={b.id}
-                    className={n > 0 ? "mt-4 border-t border-white/10 pt-3.5" : ""}
+                    className="mb-4 rounded-xl px-4 py-4"
+                    style={{ background: "#111", border: "1px solid var(--gold-border)" }}
                   >
-                    <p className="mb-2 text-[9.5px] font-bold uppercase tracking-[0.2em] text-white/35">
-                      {b.titre}
-                    </p>
-                    {b.lignes.map((l) => (
-                      <p
-                        key={l}
-                        className="font-display text-[15px] font-bold leading-snug text-white"
-                      >
-                        {l}
-                      </p>
+                    {bloc.enumere ? (
+                      <>
+                        <p className="font-display text-[15px] font-bold leading-snug text-white">
+                          {SACRIFICE_OUVERTURE}
+                        </p>
+                        <p
+                          className="mt-1.5 font-display text-[16px] font-bold leading-snug"
+                          style={{ color: "var(--gold-border)" }}
+                        >
+                          {SACRIFICE_POUR[seance.reps[iBloc]]}
+                        </p>
+                      </>
+                    ) : (
+                      bloc.lignes.map((l) => (
+                        <p
+                          key={l}
+                          className="font-display text-[15px] font-bold leading-snug text-white"
+                        >
+                          {l}
+                        </p>
+                      ))
+                    )}
+                  </div>
+
+                  <div className="mb-4 flex flex-wrap gap-1">
+                    {Array.from({ length: bloc.fois }, (_, i) => (
+                      <div
+                        key={i}
+                        className="h-[5px] min-w-[8px] flex-1 rounded-full transition-all"
+                        style={{
+                          background:
+                            i < seance.reps[iBloc]
+                              ? "var(--gold-border)"
+                              : "rgba(255,255,255,.1)",
+                        }}
+                      />
                     ))}
                   </div>
-                ))}
-              </div>
 
-              <div className="mb-4 flex gap-1.5">
-                {Array.from({ length: REPS_PAR_SEANCE }, (_, i) => (
-                  <div
-                    key={i}
-                    className="h-[6px] flex-1 rounded-full transition-all"
-                    style={{
-                      background:
-                        i < seance.reps ? "var(--gold-border)" : "rgba(255,255,255,.1)",
+                  <button
+                    type="button"
+                    onClick={() => {
+                      const reps = [...seance.reps];
+                      reps[iBloc] += 1;
+                      enregistrer({ ...seance, reps });
                     }}
-                  />
-                ))}
-              </div>
-
-              {!fini ? (
-                <button
-                  type="button"
-                  onClick={() =>
-                    enregistrer({ ...seance, reps: seance.reps + 1 })
-                  }
-                  className="w-full rounded-xl px-4 py-4 text-[15px] font-bold uppercase tracking-wide text-black transition active:scale-[0.99]"
-                  style={{ background: "var(--gold-border)" }}
-                >
-                  Je viens de la dire à voix haute
-                </button>
+                    className="w-full rounded-xl px-4 py-4 text-[15px] font-bold uppercase tracking-wide text-black transition active:scale-[0.99]"
+                    style={{ background: "var(--gold-border)" }}
+                  >
+                    Je viens de la dire à voix haute
+                  </button>
+                </>
               ) : (
                 <>
                   <p className="mb-2 text-[12.5px] font-semibold leading-relaxed text-white/70">
-                    Sept fois, c&apos;est fait. Maintenant la seule partie qui
-                    compte : qu&apos;as-tu fait dans les cinq minutes ?
+                    {REPS_PAR_SEANCE_TOTAL} répétitions, c&apos;est fait.
+                    Maintenant la seule partie qui compte : qu&apos;as-tu fait
+                    dans les cinq minutes ?
                   </p>
                   <input
                     type="text"

@@ -57,7 +57,11 @@ import {
   BOUGE,
 } from "./decision";
 import { RETENTION_AFFIRMATIONS, retentionPhase, PROTOCOL_PHASES } from "./affirmations";
-import { BLOCS_REPETITION, REPS_PAR_SEANCE } from "./repetition";
+import {
+  BLOCS_REPETITION,
+  SACRIFICE_OUVERTURE,
+  SACRIFICE_POUR,
+} from "./repetition";
 
 // ——————————————————————————————————————————————————————————————
 // Cadran
@@ -1189,10 +1193,15 @@ function buildMiroirOffice(c: LiturgyContext, langue: Langue = "fr"): Liturgy {
     ...BLOCS_REPETITION.map(
       (b): Movement => ({
         kind: "declaration",
-        label: `${b.titre} — ${REPS_PAR_SEANCE} fois à voix haute`,
+        label: `${b.titre} — ${b.fois} fois à voix haute`,
         note: b.role,
-        times: REPS_PAR_SEANCE,
-        items: b.lignes,
+        times: b.fois,
+        // Le bloc qui énumère porte ses destinations, une par répétition :
+        // sans elles, l'email donnerait l'ouverture seule et il n'aurait
+        // rien à dire vingt et une fois.
+        items: b.enumere
+          ? SACRIFICE_POUR.map((d) => `${SACRIFICE_OUVERTURE} ${d}`)
+          : b.lignes,
       }),
     ),
     {
