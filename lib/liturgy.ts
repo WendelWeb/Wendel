@@ -1190,12 +1190,17 @@ function buildMiroirOffice(c: LiturgyContext, langue: Langue = "fr"): Liturgy {
     // Il l'a demandé ainsi, et c'est cohérent : l'espacement est ce qui
     // travaille, et un email par heure est le seul espacement qui le trouve
     // là où il est, sans qu'il ait à ouvrir quoi que ce soit.
-    ...BLOCS_REPETITION.map(
+    // Les messes portent le protocole entier ; les heures n'en portent que le
+    // noyau, trois fois. Un email horaire de vingt et une répétitions ferait
+    // quinze minutes, et il avait fixé la limite à sept — c'est aussi ce que
+    // dit la littérature : au-delà de quelques passages rapprochés, chaque
+    // répétition supplémentaire n'ajoute presque rien.
+    ...(messe ? BLOCS_REPETITION : BLOCS_REPETITION.filter((b) => b.id === "decision")).map(
       (b): Movement => ({
         kind: "declaration",
-        label: `${b.titre} — ${b.fois} fois à voix haute`,
+        label: `${b.titre} — ${messe ? b.fois : 3} fois à voix haute`,
         note: b.role,
-        times: b.fois,
+        times: messe ? b.fois : 3,
         // Le bloc qui énumère porte ses destinations, une par répétition :
         // sans elles, l'email donnerait l'ouverture seule et il n'aurait
         // rien à dire vingt et une fois.
