@@ -70,6 +70,7 @@ export const LA_FUITE: string[] = [
  * depuis huit ans, et il ne l'a jamais gagné.
  */
 export const L_ACCEPTATION: string[] = [
+  "Un homme est un homme seulement quand la douleur ne décide pas de ses actions.",
   "J'accepte la douleur physique. Les jambes qui brûlent, le corps qui refuse, la faim, le froid, le manque de sommeil quand il le faut.",
   "J'accepte la douleur psychologique. L'ennui, l'angoisse de commencer, le vide, la honte de voir où j'en suis, la peur d'échouer devant témoins.",
   "Je ne demande pas qu'elles disparaissent. Je demande de pouvoir travailler pendant qu'elles sont là.",

@@ -47,6 +47,7 @@ L'homme que je refuse d'être, c'est d'abord tout ce que je suis encore aujourd'
 
 # 🎯 OBJECTIF — AVANT LE 1ER JANVIER 2027
 Décret, pas souhait. Ce n'est pas une question de « possible » — c'est la discipline et la foi qui rendent l'impossible possible. « Rien ne vous sera impossible » (ch. 39).
+- **LE BUT SUPRÊME : être méconnaissable. Même par moi-même.** Pas amélioré, pas « en progrès » — méconnaissable. Que la photo d'aujourd'hui et celle du 1er janvier 2027 ne puissent pas être le même homme. Tout le reste de cette liste n'est que le détail de cette seule ligne.
 - Sacrifice total : 0 porno, 0 masturbation, 0 TikTok, 0 sucre, 0 gazeuse — rétention totale.
 - **1m88 · 90 kg · 10% BF.** Un corps plus que parfait — à mon goût, pas à celui d'un autre.
 - **Membre viril : 18 cm.**

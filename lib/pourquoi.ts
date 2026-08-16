@@ -78,6 +78,7 @@ export const POURQUOI_SIEN: PourquoiBloc[] = [
     id: "avant-2027",
     titre: "Parce que tout ça a une date",
     lignes: [
+      "Le but suprême : être méconnaissable. Même par moi-même. Pas amélioré — méconnaissable.",
       "Avant le 1er janvier 2027 : 90 kg à 10 % de masse grasse, la peau saine et éclatante, les waves faites, un corps plus que parfait à mon goût.",
       "20 000 $ minimum par jour. Pas de l'argent reçu : de l'argent produit par ce que j'ai bâti.",
       "Vivre seul. Quitter la maison de mes parents. Mon toit, mes règles, mes heures.",

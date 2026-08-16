@@ -120,6 +120,7 @@ export const HOMME_DIEU: string[] = [
   "L'homme que Dieu veut que je sois vit seul, et son toit ne doit rien à personne.",
   "L'homme que Dieu veut que je sois n'annonce pas ses chantiers : on les découvre commencés.",
   "L'homme que Dieu veut que je sois a un corps qui prouve dix ans de discipline avant qu'il ouvre la bouche.",
+  "L'homme que Dieu veut que je sois ne laisse pas la douleur décider de ses actions. C'est même la seule définition qu'il en donne.",
 ];
 
 /**

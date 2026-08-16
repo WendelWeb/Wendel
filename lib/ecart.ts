@@ -19,6 +19,7 @@ export interface Ecart {
 }
 
 export const ECARTS: Ecart[] = [
+  { cible: "Méconnaissable — même par moi-même", aujourdhui: "Reconnaissable au premier coup d'œil. Rien n'a bougé depuis huit ans." },
   { cible: "90 kg, 10 % de masse grasse", aujourdhui: "67 kg. Faible. Cinq ans de gym sans corps à montrer." },
   { cible: "Peau saine, brillante, éclatante", aujourdhui: "Le visage non soigné, plein de boutons. L'acide exfoliant jamais ouvert." },
   { cible: "Dents blanches, parfum tous les jours", aujourdhui: "Dents jaunes. Aucun parfum." },

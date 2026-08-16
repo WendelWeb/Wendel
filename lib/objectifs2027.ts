@@ -24,6 +24,18 @@ export interface CibleBloc {
 
 export const CIBLES_2027: CibleBloc[] = [
   {
+    id: "supreme",
+    titre: "Le but suprême",
+    lignes: [
+      "Être méconnaissable. Même par moi-même.",
+      "Pas amélioré. Pas « en progrès ». Méconnaissable.",
+      "Que la photo d'aujourd'hui et celle du 1er janvier 2027 ne puissent pas être le même homme.",
+      "Que ceux qui me croiseront cherchent leurs mots, et ne les trouvent pas.",
+      "Et que le premier à ne pas me reconnaître, ce soit moi.",
+      "Tout ce qui suit n'est que la liste détaillée de cette seule ligne.",
+    ],
+  },
+  {
     id: "corps",
     titre: "Le corps",
     lignes: [

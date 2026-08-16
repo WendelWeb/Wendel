@@ -4,6 +4,7 @@ import { useEffect, useRef, useState } from "react";
 import type { MiroirBloc } from "@/lib/miroir";
 import type { EtatSerment } from "@/lib/serment";
 import SermentPanel from "./SermentPanel";
+import RepetitionPanel from "./RepetitionPanel";
 import EnvieOverlay from "./EnvieOverlay";
 import PourquoiOverlay from "./PourquoiOverlay";
 import SerieuxOverlay from "./SerieuxOverlay";
@@ -35,11 +36,14 @@ export default function MiroirView({
   langues,
   serment,
   heure,
+  today,
   etat,
 }: {
   langues: MiroirLangue[];
   serment: EtatSerment;
   heure: number;
+  /** La date du jour a Haiti, pour le compteur local des repetitions. */
+  today: string;
   etat: {
     daysToJan: number;
     daysTo30: number;
@@ -207,6 +211,10 @@ export default function MiroirView({
             ))}
           </div>
         </section>
+
+        {/* Les sept repetitions, juste avant le serment : la phrase se dit
+            avant de cocher, pas apres. */}
+        <RepetitionPanel creneau={serment.ouvert} today={today} />
 
         {/* Le mécanisme des 30 jours — avant le constat, parce que c'est la
             seule chose sur cet écran qui puisse changer une ligne du constat. */}

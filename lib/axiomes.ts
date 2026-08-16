@@ -156,4 +156,6 @@ export const AXIOMES_MARTEAU: string[] = [
   "Tu ne rateras pas 2027 en décembre. Tu es en train de le rater ce matin, à la minute où tu choisis.",
   "Ne te plains pas que l'échéance soit courte. Une échéance longue ne t'a jamais fait bouger — c'est bien le problème.",
   "L'année ne demande pas si tu as commencé. Elle compte ce qui est debout au dernier jour.",
+  "Un homme est un homme seulement quand la douleur ne décide pas de ses actions. Tout le reste est une question de degré.",
+  "Qu'est-ce qui décide, chez toi ? — La douleur. Et tant que c'est elle, personne d'autre ne commande.",
 ];

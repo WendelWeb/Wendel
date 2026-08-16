@@ -78,6 +78,7 @@ export default async function MiroirPage() {
       langues={langues}
       serment={serment}
       heure={haitiHour()}
+      today={today}
       etat={{
         daysToJan: daysUntil(today, DATE_JANVIER),
         daysTo30: daysUntil(today, DATE_TRENTE_ANS),
