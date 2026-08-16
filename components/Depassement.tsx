@@ -5,7 +5,8 @@ import {
   DECLARATION_SCEAU,
   DEPASSEMENT,
 } from "@/lib/declaration";
-import { sampled, branch, visitSeed } from "@/lib/rotate";
+import { INSTRUMENT } from "@/lib/instrument";
+import { sampled, picked, branch, visitSeed } from "@/lib/rotate";
 import { useSeed } from "./useSeed";
 
 /**
@@ -40,6 +41,7 @@ export default function Depassement({
     branch(s, "depassement"),
     2,
   );
+  const emploi = picked(INSTRUMENT, branch(s, "instrument"));
   const spacing = placement === "top" ? "mb-6 mt-3" : "mt-8 mb-4";
 
   return (
@@ -62,6 +64,16 @@ export default function Depassement({
           </li>
         ))}
       </ul>
+
+      {/* Ce que Dieu pourrait faire de lui, et ce qu Il trouve. */}
+      <div className="mt-4 border-t border-white/12 pt-3.5">
+        <p className="font-display text-[13.5px] font-bold leading-snug text-white">
+          {emploi.mission}
+        </p>
+        <p className="mt-1.5 text-[12.5px] font-semibold leading-snug text-red">
+          {emploi.mais}
+        </p>
+      </div>
 
       <div className="mt-4 flex flex-col gap-2 border-t border-white/12 pt-3.5">
         {echos.map((l) => (

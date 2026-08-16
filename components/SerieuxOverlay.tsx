@@ -30,6 +30,12 @@ import {
   MARTEAU_TITRE,
 } from "@/lib/axiomes";
 import { COMPTES } from "@/lib/comptes";
+import {
+  INSTRUMENT,
+  INSTRUMENT_TITRE,
+  INSTRUMENT_ANCRE,
+  INSTRUMENT_SORTIE,
+} from "@/lib/instrument";
 
 /** Mélange une liste. Rendu client uniquement : l'overlay n'existe qu'après un clic. */
 function melange<T>(arr: readonly T[]): T[] {
@@ -60,6 +66,7 @@ export default function SerieuxOverlay({ onClose }: { onClose: () => void }) {
   const [axiomes] = useState(() => melange(AXIOMES));
   const [marteau] = useState(() => melange(AXIOMES_MARTEAU));
   const [comptes] = useState(() => melange(COMPTES));
+  const [instrument] = useState(() => melange(INSTRUMENT));
   // L ordre des sections change aussi. Il ne lit jamais jusqu au bout : si
   // l ordre est fixe, il relit toujours les memes deux premieres et ne voit
   // jamais Nietzsche ni le prix.
@@ -74,6 +81,7 @@ export default function SerieuxOverlay({ onClose }: { onClose: () => void }) {
       "nietzsche",
       "axiomes",
       "comptes",
+      "instrument",
     ]),
   );
 
@@ -325,6 +333,57 @@ export default function SerieuxOverlay({ onClose }: { onClose: () => void }) {
               </li>
             ))}
           </ul>
+      </section>
+    ),
+
+    /* Le retournement : non pas ce qu'il perd, mais ce que Dieu ne peut pas
+       faire parce qu'Il ne trouve pas l'instrument disponible. */
+    instrument: (
+      <section className="mb-8">
+        <h2 className="mb-3 text-[10.5px] font-bold uppercase tracking-[0.22em] text-red">
+          {INSTRUMENT_TITRE}
+        </h2>
+
+        <div className="mb-5 flex flex-col gap-3">
+          {INSTRUMENT_ANCRE.map((a) => (
+            <div key={a.source}>
+              <p className="text-[13px] italic leading-snug text-white/70">
+                « {a.t} »
+              </p>
+              <p className="mt-1 text-[10px] font-bold uppercase tracking-wide text-white/30">
+                {a.source}
+              </p>
+            </div>
+          ))}
+        </div>
+
+        <ul className="flex flex-col gap-5">
+          {instrument.map((e) => (
+            <li key={e.mission} className="border-l-2 border-white/12 pl-4">
+              <p className="font-display text-[14.5px] font-bold leading-snug text-white">
+                {e.mission}
+              </p>
+              <p className="mt-1.5 text-[13.5px] font-semibold leading-snug text-red">
+                {e.mais}
+              </p>
+            </li>
+          ))}
+        </ul>
+
+        <div
+          className="mt-6 rounded-2xl px-5 py-4"
+          style={{ background: "#0c0a06", border: "1.5px solid var(--gold-border)" }}
+        >
+          {INSTRUMENT_SORTIE.map((l) => (
+            <p
+              key={l}
+              className="mb-2 text-[13.5px] font-semibold leading-relaxed last:mb-0"
+              style={{ color: "var(--gold-border)" }}
+            >
+              {l}
+            </p>
+          ))}
+        </div>
       </section>
     ),
 
