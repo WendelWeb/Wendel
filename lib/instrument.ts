@@ -164,6 +164,169 @@ export const INSTRUMENT: Emploi[] = [
       "Dieu pourrait t'utiliser dès ce matin — Il n'attend ni ton diplôme, ni ton argent, ni ton âge.",
     mais: "Il attend une seule chose, et c'est la seule que tu ne Lui donnes pas : un homme qui se tient.",
   },
+
+  // Trente-deux de plus. Le moule ne bouge pas ; ce qui change, c'est le
+  // visage de celui qui attend au bout — et l'excuse qui l'en empêche.
+  {
+    mission:
+      "Dieu pourrait t'utiliser pour ramener ceux qui sont partis : faire revenir la diaspora dans un pays qui tient debout.",
+    mais: "Mais Il te cherche ce matin, et tu dors encore. Il n'a que des mains disponibles à envoyer.",
+  },
+  {
+    mission:
+      "Dieu pourrait t'utiliser pour libérer ceux qu'on retient contre rançon pendant que leurs familles vendent tout.",
+    mais: "Mais Il n'envoie pas au front un soldat qui déserte tous les soirs.",
+  },
+  {
+    mission:
+      "Dieu pourrait t'utiliser pour donner un père aux orphelins que cette guerre a faits.",
+    mais: "Mais Il cherche un homme, pas un garçon qui n'a jamais tenu une promesse une semaine entière.",
+  },
+  {
+    mission:
+      "Dieu pourrait t'utiliser pour sortir des hommes de prison qui n'y ont jamais eu leur place.",
+    mais: "Mais toi tu t'enfermes chaque soir dans une cellule dont tu as la clé.",
+  },
+  {
+    mission:
+      "Dieu pourrait t'utiliser pour relever ce que le tremblement de terre a couché et que personne n'a jamais relevé.",
+    mais: "Mais on ne relève pas un pays avec un homme qui ne se relève pas d'un réveil.",
+  },
+  {
+    mission:
+      "Dieu pourrait t'utiliser pour nourrir un pays qui importe presque tout ce qu'il mange.",
+    mais: "Mais Il regarde ton emploi du temps, et Il sait exactement où sont passées les heures.",
+  },
+  {
+    mission:
+      "Dieu pourrait t'utiliser pour rendre la terre aux paysans et faire pousser à nouveau ce qui poussait ici avant.",
+    mais: "Mais tu veux la moisson sans la saison. Ça n'existe nulle part, pas même chez Lui.",
+  },
+  {
+    mission:
+      "Dieu pourrait t'utiliser pour bâtir des routes là où il n'y a que des pistes depuis toujours.",
+    mais: "Mais Il n'a pas besoin d'un homme qui écrit. Il a besoin d'un homme qui se lève.",
+  },
+  {
+    mission:
+      "Dieu pourrait t'utiliser pour ouvrir un port en eau profonde et rendre ce pays maître de ce qui entre et sort.",
+    mais: "Mais un homme qui ne tient pas les deux mètres carrés autour de lui ne tiendra pas un port.",
+  },
+  {
+    mission:
+      "Dieu pourrait t'utiliser pour donner de l'eau potable à des villages qui enterrent encore des enfants à cause d'elle.",
+    mais: "Mais l'appel arrive toujours à des mains occupées. Les tiennes le sont — mais pas à ça.",
+  },
+  {
+    mission:
+      "Dieu pourrait t'utiliser pour donner du travail à des milliers d'hommes, et retirer aux gangs leur seul argument de recrutement.",
+    mais: "Mais Il ne peut pas te confier mille hommes si tu ne peux pas t'en gouverner un.",
+  },
+  {
+    mission:
+      "Dieu pourrait t'utiliser pour donner à un garçon de quinze ans une raison de ne pas prendre une arme cette semaine.",
+    mais: "Mais ce garçon a besoin d'un exemple, et tu es en train d'en être un — dans l'autre sens.",
+  },
+  {
+    mission:
+      "Dieu pourrait t'utiliser pour bâtir une université où l'on n'ait plus à partir pour apprendre.",
+    mais: "Mais on n'enseigne pas ce qu'on ne fait pas soi-même. Ils le verraient dès le premier jour.",
+  },
+  {
+    mission:
+      "Dieu pourrait t'utiliser pour former des médecins qui restent au lieu de partir dès qu'ils le peuvent.",
+    mais: "Mais Il ne met pas Son nom sur une œuvre dont l'auteur se cache.",
+  },
+  {
+    mission:
+      "Dieu pourrait t'utiliser pour mettre fin au restavèk, à ces enfants donnés comme on donne un objet.",
+    mais: "Mais celui qu'Il appelle doit être debout à l'heure de l'appel. Tu négocies encore avec ton réveil.",
+  },
+  {
+    mission:
+      "Dieu pourrait t'utiliser pour rendre justice à ceux qui n'en ont jamais obtenu et qui ont cessé d'en demander.",
+    mais: "Mais tu réclames un signe, et Lui te réclame une matinée. Aucun des deux ne cède.",
+  },
+  {
+    mission:
+      "Dieu pourrait t'utiliser pour bâtir une entreprise que le monde entier utilise, sortie d'ici et de nulle part ailleurs.",
+    mais: "Mais tu as le talent et pas les heures. Le talent seul n'a jamais rien livré.",
+  },
+  {
+    mission:
+      "Dieu pourrait t'utiliser pour détruire l'idée qu'en Haïti rien ne marche et rien ne marchera jamais.",
+    mais: "Mais tant que ta propre journée ne marche pas, tu es la preuve qu'ils ont raison.",
+  },
+  {
+    mission:
+      "Dieu pourrait t'utiliser pour montrer que Son nom est plus craint que celui de n'importe quel houngan.",
+    mais: "Mais eux se privent, jeûnent et veillent pour leur puissance. Toi, tu ne te prives de rien.",
+  },
+  {
+    mission:
+      "Dieu pourrait t'utiliser pour prouver que la pureté n'est pas une faiblesse mais une arme que personne ne sait plus manier.",
+    mais: "Mais l'arme est chez toi depuis huit ans, dans son étui, jamais sortie.",
+  },
+  {
+    mission:
+      "Dieu pourrait t'utiliser pour montrer à un président corrompu ce qu'est un homme incorruptible.",
+    mais: "Mais un homme qui se trahit lui-même chaque soir se vendra le jour où le prix sera assez haut.",
+  },
+  {
+    mission:
+      "Dieu pourrait t'utiliser pour rouvrir des églises et des écoles transformées en bases par les gangs.",
+    mais: "Mais Il ne te punit pas : Il attend. Et pendant qu'Il attend, d'autres meurent.",
+  },
+  {
+    mission:
+      "Dieu pourrait t'utiliser pour que ce pays cesse de dépendre de l'aide de gens qui ne l'aiment pas.",
+    mais: "Mais tu dépends encore d'une décharge de trois minutes. On commence par se libérer de ça.",
+  },
+  {
+    mission:
+      "Dieu pourrait t'utiliser pour faire négocier avec Haïti des puissances qui, jusqu'ici, lui dictent.",
+    mais: "Mais on ne négocie pas avec un homme dont on peut prévoir la faiblesse à l'heure près.",
+  },
+  {
+    mission:
+      "Dieu pourrait t'utiliser pour répondre aux prières que ta propre mère fait pour toi depuis des années.",
+    mais: "Mais la réponse à ses prières, c'est toi — et tu es en retard.",
+  },
+  {
+    mission:
+      "Dieu pourrait t'utiliser pour montrer à tes frères et sœurs qu'une autre vie que celle-là est possible.",
+    mais: "Mais ils regardent ce que tu fais, pas ce que tu écris. Et ce que tu fais, ils l'ont déjà vu.",
+  },
+  {
+    mission:
+      "Dieu pourrait t'utiliser pour qu'un enfant du Nord-Ouest sache qu'on peut venir d'ici et compter dans le monde.",
+    mais: "Mais cet enfant a besoin d'un exemple vivant, pas d'un manuscrit de 587 pages jamais appliqué.",
+  },
+  {
+    mission:
+      "Dieu pourrait t'utiliser pour bâtir quelque chose qui te survive de deux cents ans.",
+    mais: "Mais tu ne survis pas encore à une soirée seul dans ta chambre.",
+  },
+  {
+    mission:
+      "Dieu pourrait t'utiliser pour faire de cette montagne de 2021 un lieu dont on parlera longtemps après toi.",
+    mais: "Mais tu n'y es pas monté dimanche dernier. Ni le dimanche d'avant.",
+  },
+  {
+    mission:
+      "Dieu pourrait t'utiliser pour prouver qu'Il parle encore aujourd'hui, exactement comme autrefois.",
+    mais: "Mais Il t'a déjà parlé, et Il a demandé quatre choses. Tu n'en tiens aucune.",
+  },
+  {
+    mission:
+      "Dieu pourrait t'utiliser maintenant, sans rien changer de ce que tu es par ailleurs.",
+    mais: "Mais tu attends qu'Il te rende fort avant d'obéir, et Il attend que tu obéisses pour te rendre fort. C'est toi qui bloques.",
+  },
+  {
+    mission:
+      "Dieu pourrait t'utiliser, toi précisément, plutôt qu'un autre. Il t'a préparé pour ça et tu le sais.",
+    mais: "Mais il y a un autre homme, ailleurs, qui se lève à 4h30 en ce moment même. Il n'a pas ton talent. Il aura ta place.",
+  },
 ];
 
 /**
