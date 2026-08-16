@@ -150,7 +150,12 @@ export default function MiroirView({
           />
         )}
         {pourquoi && <PourquoiOverlay onClose={() => setPourquoi(false)} />}
-        {serieux && <SerieuxOverlay onClose={() => setSerieux(false)} />}
+        {serieux && (
+          <SerieuxOverlay
+            onClose={() => setSerieux(false)}
+            daysToJan={etat.daysToJan}
+          />
+        )}
 
         {/* Le mécanisme des 30 jours — avant le constat, parce que c'est la
             seule chose sur cet écran qui puisse changer une ligne du constat. */}

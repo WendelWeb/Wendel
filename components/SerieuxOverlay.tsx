@@ -36,6 +36,7 @@ import {
   INSTRUMENT_ANCRE,
   INSTRUMENT_SORTIE,
 } from "@/lib/instrument";
+import { CIBLES_2027, RAPPEL_2027, ECHEANCE_2027 } from "@/lib/objectifs2027";
 
 /** Mélange une liste. Rendu client uniquement : l'overlay n'existe qu'après un clic. */
 function melange<T>(arr: readonly T[]): T[] {
@@ -58,7 +59,14 @@ function melange<T>(arr: readonly T[]): T[] {
  * son œil descend sans lire. C'est déjà ce qui est arrivé aux feuilles
  * imprimées qu'il a collées au mur.
  */
-export default function SerieuxOverlay({ onClose }: { onClose: () => void }) {
+export default function SerieuxOverlay({
+  onClose,
+  daysToJan,
+}: {
+  onClose: () => void;
+  /** Le compte a rebours de l echeance, calcule sur le serveur. */
+  daysToJan: number;
+}) {
   const [serieux] = useState(() => melange(SI_SERIEUX));
   const [dieu] = useState(() => melange(HOMME_DIEU));
   const [refus] = useState(() => melange(HOMME_REFUS));
@@ -67,6 +75,9 @@ export default function SerieuxOverlay({ onClose }: { onClose: () => void }) {
   const [marteau] = useState(() => melange(AXIOMES_MARTEAU));
   const [comptes] = useState(() => melange(COMPTES));
   const [instrument] = useState(() => melange(INSTRUMENT));
+  // Les cibles gardent leur ordre : le corps avant l argent avant les
+  // chantiers, et ce qu il a oublie apres ce qu il a dit.
+  const cibles = CIBLES_2027;
   // L ordre des sections change aussi. Il ne lit jamais jusqu au bout : si
   // l ordre est fixe, il relit toujours les memes deux premieres et ne voit
   // jamais Nietzsche ni le prix.
@@ -82,6 +93,7 @@ export default function SerieuxOverlay({ onClose }: { onClose: () => void }) {
       "axiomes",
       "comptes",
       "instrument",
+      "cibles",
     ]),
   );
 
@@ -333,6 +345,61 @@ export default function SerieuxOverlay({ onClose }: { onClose: () => void }) {
               </li>
             ))}
           </ul>
+      </section>
+    ),
+
+    /* L'échéance. Pas la Vision — la Vision se contemple et reste fermée
+       trente jours. Une échéance, ça se compte à rebours. */
+    cibles: (
+      <section className="mb-8">
+        <div className="mb-4 flex items-baseline justify-between gap-3">
+          <h2 className="text-[10.5px] font-bold uppercase tracking-[0.22em] text-red">
+            Ce qui doit être vrai avant le {ECHEANCE_2027}
+          </h2>
+          <span className="tnum flex-shrink-0 text-[15px] font-bold text-white">
+            J−{daysToJan}
+          </span>
+        </div>
+
+        {cibles.map((b) => (
+          <div key={b.id} className="mb-6">
+            <h3
+              className="mb-2.5 text-[11px] font-bold uppercase tracking-[0.16em]"
+              style={{ color: b.ajoute ? "rgba(255,255,255,.35)" : "var(--gold-border)" }}
+            >
+              {b.titre}
+            </h3>
+            <ul className="flex flex-col gap-2.5">
+              {b.lignes.map((l) => (
+                <li
+                  key={l}
+                  className="border-l-2 pl-3.5 text-[14px] leading-snug"
+                  style={{
+                    borderColor: b.ajoute ? "rgba(255,255,255,.12)" : "var(--gold-border)",
+                    color: b.ajoute ? "rgba(255,255,255,.75)" : "rgba(255,255,255,.92)",
+                    fontWeight: b.ajoute ? 400 : 600,
+                  }}
+                >
+                  {l}
+                </li>
+              ))}
+            </ul>
+          </div>
+        ))}
+
+        <div
+          className="rounded-2xl px-5 py-4"
+          style={{ background: "#0f0a0a", border: "1.5px solid #7f1d1d" }}
+        >
+          {RAPPEL_2027.map((l) => (
+            <p
+              key={l}
+              className="mb-2 text-[13.5px] font-semibold leading-relaxed text-red last:mb-0"
+            >
+              {l}
+            </p>
+          ))}
+        </div>
       </section>
     ),
 

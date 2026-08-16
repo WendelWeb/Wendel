@@ -48,10 +48,14 @@ L'homme que je refuse d'être, c'est d'abord tout ce que je suis encore aujourd'
 # 🎯 OBJECTIF — AVANT LE 1ER JANVIER 2027
 Décret, pas souhait. Ce n'est pas une question de « possible » — c'est la discipline et la foi qui rendent l'impossible possible. « Rien ne vous sera impossible » (ch. 39).
 - Sacrifice total : 0 porno, 0 masturbation, 0 TikTok, 0 sucre, 0 gazeuse — rétention totale.
-- **1m88 · 90 kg · 10% BF.**
-- **Peau éclatante · beauté au sommet.**
+- **1m88 · 90 kg · 10% BF.** Un corps plus que parfait — à mon goût, pas à celui d'un autre.
+- **Membre viril : 18 cm.**
+- **Peau saine, brillante, éclatante · beauté au sommet.** Plus un seul bouton. Les waves faites et tenues. Dents blanches, parfum tous les jours.
+- **20 000 $ minimum par jour** — soit 600 000 $ par mois, plus de 7 millions sur l'année. Pas de l'argent reçu : de l'argent produit par ce que j'ai bâti.
+- **Vivre seul. Quitter la maison de mes parents.** Mon toit, mes règles, mes heures.
 - Voitures fin 2026 : **GLE 63 Coupé · Escalade · Range Rover Sport**.
 - Projets lancés en 2026 : agriculture, immobilier (achat de terrain), aider des gens, début de construction d'une école.
+- **Commencer à construire tout ce que j'ai planifié — surtout l'immobilier.** Pas des annonces : des chantiers que quelqu'un peut aller voir.
 - Je ne m'intéresse pas à ce qui est possible. Je m'intéresse à la discipline et à la foi qui rendent l'impossible possible.
 
 # 🏥 50 HÔPITAUX ULTRA-MODERNES — classe mondiale
