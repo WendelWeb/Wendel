@@ -57,6 +57,7 @@ import {
   BOUGE,
 } from "./decision";
 import { RETENTION_AFFIRMATIONS, retentionPhase, PROTOCOL_PHASES } from "./affirmations";
+import { BLOCS_REPETITION, REPS_PAR_SEANCE } from "./repetition";
 
 // ——————————————————————————————————————————————————————————————
 // Cadran
@@ -1180,6 +1181,28 @@ function buildMiroirOffice(c: LiturgyContext, langue: Langue = "fr"): Liturgy {
       note: T.sortieNote,
       times: 1,
       items: [T.sortie],
+    },
+    // Les sept répétitions — dans CHAQUE email, pas seulement dans les messes.
+    // Il l'a demandé ainsi, et c'est cohérent : l'espacement est ce qui
+    // travaille, et un email par heure est le seul espacement qui le trouve
+    // là où il est, sans qu'il ait à ouvrir quoi que ce soit.
+    ...BLOCS_REPETITION.map(
+      (b): Movement => ({
+        kind: "declaration",
+        label: `${b.titre} — ${REPS_PAR_SEANCE} fois à voix haute`,
+        note: b.role,
+        times: REPS_PAR_SEANCE,
+        items: b.lignes,
+      }),
+    ),
+    {
+      kind: "declaration",
+      label: "Et maintenant, l'acte",
+      note: "Une séance sans acte dans les cinq minutes ne compte pas. C'est de la rêverie avec de meilleurs mots.",
+      times: 1,
+      items: [
+        "Repose ce téléphone et fais, dans les cinq minutes, la première chose que ces phrases exigent.",
+      ],
     },
   ];
 

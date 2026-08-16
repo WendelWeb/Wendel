@@ -5,7 +5,7 @@ import { Repeat, Check } from "lucide-react";
 import {
   REPS_PAR_SEANCE,
   REPS_PAR_JOUR,
-  PHRASE_NOYAU,
+  BLOCS_REPETITION,
   PROTOCOLE,
   CE_QUE_DIT_LA_SCIENCE,
   cleRepetition,
@@ -123,18 +123,29 @@ export default function RepetitionPanel({
                 {meta?.label} — séance {seance.reps}/{REPS_PAR_SEANCE}
               </p>
 
-              {/* La phrase-noyau. Fixe, et c'est voulu. */}
+              {/* Les trois blocs. Fixes, et c'est voulu : la répétition exige
+                  l'identique quand tout le reste de l'app tourne. */}
               <div
                 className="mb-4 rounded-xl px-4 py-4"
                 style={{ background: "#111", border: "1px solid var(--gold-border)" }}
               >
-                {PHRASE_NOYAU.map((l) => (
-                  <p
-                    key={l}
-                    className="font-display text-[15px] font-bold leading-snug text-white"
+                {BLOCS_REPETITION.map((b, n) => (
+                  <div
+                    key={b.id}
+                    className={n > 0 ? "mt-4 border-t border-white/10 pt-3.5" : ""}
                   >
-                    {l}
-                  </p>
+                    <p className="mb-2 text-[9.5px] font-bold uppercase tracking-[0.2em] text-white/35">
+                      {b.titre}
+                    </p>
+                    {b.lignes.map((l) => (
+                      <p
+                        key={l}
+                        className="font-display text-[15px] font-bold leading-snug text-white"
+                      >
+                        {l}
+                      </p>
+                    ))}
+                  </div>
                 ))}
               </div>
 

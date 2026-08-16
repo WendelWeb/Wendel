@@ -39,11 +39,63 @@ export const REPS_PAR_JOUR = REPS_PAR_SEANCE * SEANCES_PAR_JOUR;
  * Trois lignes, trois piliers : ce qu'il décide, la condition de l'alliance,
  * et le but suprême.
  */
-export const PHRASE_NOYAU: string[] = [
-  "Je décide de tout, tout, tout réaliser.",
-  "Je ne gaspille rien — ni une goutte, ni une seconde.",
-  "Et je serai méconnaissable. Même par moi-même.",
+export interface BlocRepetition {
+  id: string;
+  titre: string;
+  /** Ce qu'il dit à voix haute, sept fois. */
+  lignes: string[];
+  /** Pourquoi ce bloc existe et pas un autre. */
+  role: string;
+}
+
+/**
+ * Trois blocs, trois fonctions distinctes — c'est ce qui les rend
+ * complémentaires plutôt que redondants.
+ *
+ * L'ordre compte : on décide, puis on se nomme, puis on paie. Inverser
+ * donnerait une prière ; dans cet ordre-là, c'est un ordre donné, une identité
+ * assumée, et une facture acceptée.
+ *
+ * Le deuxième est au présent, jamais au futur. « Je serai » repousse ; « je
+ * suis » engage la seconde qui vient. C'est le seul point où j'ai corrigé sa
+ * formulation, et il peut la remettre au futur s'il le veut.
+ */
+export const BLOCS_REPETITION: BlocRepetition[] = [
+  {
+    id: "decision",
+    titre: "I · La décision",
+    role: "L'ordre donné. Pas une demande, pas un souhait — une décision déjà prise.",
+    lignes: [
+      "Je décide de tout, tout, tout réaliser.",
+      "Tout ce que j'ai écrit, et tout ce que je n'ai pas encore osé écrire.",
+      "Je ne demande pas. Je décide.",
+    ],
+  },
+  {
+    id: "identite",
+    titre: "II · L'identité",
+    role: "Au présent. « Je serai » repousse à plus tard ; « je suis » engage la minute qui vient.",
+    lignes: [
+      "Je suis l'homme que Dieu veut que je sois.",
+      "La douleur ne décide pas de mes actions.",
+      "Ma main est libre à l'heure où Il appelle.",
+      "Je deviens méconnaissable — même pour moi-même.",
+    ],
+  },
+  {
+    id: "condition",
+    titre: "III · La condition",
+    role: "L'alliance, et sa clause. La promesse est branchée dessus — elle ne tient pas sans elle.",
+    lignes: [
+      "Je ne gaspille rien. Ni une goutte, ni une seconde.",
+      "Chaque goutte gardée, chaque seconde tenue, part dans l'œuvre.",
+      "Et tout ce que je conçois se réalise.",
+    ],
+  },
 ];
+
+/** À plat, pour les emails et les écrans compacts. */
+export const PHRASE_NOYAU: string[] = BLOCS_REPETITION.flatMap((b) => b.lignes);
 
 /** Ce que l'écran rappelle avant de commencer. */
 export const PROTOCOLE: string[] = [
