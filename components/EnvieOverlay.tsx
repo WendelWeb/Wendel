@@ -14,6 +14,7 @@ import {
 } from "@/lib/envie";
 import { DECLARATION_FINALE, DECLARATION_SCEAU } from "@/lib/declaration";
 import { LA_QUESTION, HOMME_DIEU, HOMME_REFUS } from "@/lib/homme";
+import { ECARTS } from "@/lib/ecart";
 import { RECHUTES, type Rechute } from "@/lib/serment";
 import { DESCENTE, MONTEE } from "@/lib/consequence";
 import ConsequencePanel from "./ConsequencePanel";
@@ -63,6 +64,14 @@ export default function EnvieOverlay({
     () => HOMME_REFUS[Math.floor(Math.random() * HOMME_REFUS.length)],
   );
   const [i, setI] = useState(0);
+  const [ecartsIci] = useState(() => {
+    const c = [...ECARTS];
+    for (let i = c.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      [c[i], c[j]] = [c[j], c[i]];
+    }
+    return c.slice(0, 5);
+  });
   const [aConfirmer, setAConfirmer] = useState<Rechute | null>(null);
   const [pending, start] = useTransition();
 
@@ -122,6 +131,28 @@ export default function EnvieOverlay({
                 </ul>
               </section>
             ))}
+
+            {/* L ecart : la cible et le reel sur la meme ligne. */}
+            <section className="mb-6">
+              <p className="mb-3 text-[10px] font-bold uppercase tracking-[0.22em] text-white/35">
+                Et ce qui doit être vrai avant 2027
+              </p>
+              <ul className="flex flex-col gap-2.5">
+                {ecartsIci.map((e) => (
+                  <li key={e.cible} className="grid grid-cols-2 gap-3">
+                    <span
+                      className="text-[12.5px] font-bold leading-snug"
+                      style={{ color: "var(--gold-border)" }}
+                    >
+                      {e.cible}
+                    </span>
+                    <span className="text-[12.5px] leading-snug text-white/55">
+                      {e.aujourdhui}
+                    </span>
+                  </li>
+                ))}
+              </ul>
+            </section>
 
             <p className="mb-6 border-l-[3px] border-red pl-4 text-[13.5px] leading-relaxed text-white/60">
               Voilà l&apos;homme qui ressent cette envie. Ce n&apos;est pas un

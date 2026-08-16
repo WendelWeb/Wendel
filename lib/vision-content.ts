@@ -53,7 +53,7 @@ Décret, pas souhait. Ce n'est pas une question de « possible » — c'est la d
 - **Peau saine, brillante, éclatante · beauté au sommet.** Plus un seul bouton. Les waves faites et tenues. Dents blanches, parfum tous les jours.
 - **20 000 $ minimum par jour** — soit 600 000 $ par mois, plus de 7 millions sur l'année. Pas de l'argent reçu : de l'argent produit par ce que j'ai bâti.
 - **Vivre seul. Quitter la maison de mes parents.** Mon toit, mes règles, mes heures.
-- Voitures fin 2026 : **GLE 63 Coupé · Escalade · Range Rover Sport**.
+- Voitures : **Range Rover Sport · Escalade · GLE 63 Coupé · X6 M** (millésime 2025), puis la **Range Rover SV Serenity** en cinquième.
 - Projets lancés en 2026 : agriculture, immobilier (achat de terrain), aider des gens, début de construction d'une école.
 - **Commencer à construire tout ce que j'ai planifié — surtout l'immobilier.** Pas des annonces : des chantiers que quelqu'un peut aller voir.
 - Je ne m'intéresse pas à ce qui est possible. Je m'intéresse à la discipline et à la foi qui rendent l'impossible possible.
@@ -261,13 +261,13 @@ Avant mes 30 ans (16 mai 2033) : une entreprise militaire privée **classée dan
 - Entreprise pivot de l'évolution humaine (IA + biologie + énergie).
 - Mon nom inscrit dans l'Histoire comme **l'architecte du futur**.
 
-# 🚗 VOITURES — 3 fin 2026, 2 en 2027
-## Fin 2026 — les trois premières
-- **Mercedes-AMG GLE 63 Coupé**
-- **Cadillac Escalade**
+# 🚗 VOITURES — 4, puis une 5e
+## Les quatre — millésime 2025
 - **Range Rover Sport**
-## 2027 — les deux suivantes
+- **Cadillac Escalade**
+- **Mercedes-AMG GLE 63 Coupé**
 - **BMW X6 M**
+## La cinquième
 - **Range Rover SV Serenity**
 - Elles ne s'achètent pas avec de l'argent : elles s'achètent avec des jours tenus. Chaque clé est une facture de discipline déjà payée.
 

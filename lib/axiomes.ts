@@ -150,4 +150,10 @@ export const AXIOMES_MARTEAU: string[] = [
   "Ne dis pas : je verrai demain qui je suis. Tu le sais déjà — regarde ce que tu tiens dans ta main à cette seconde.",
   "Tu veux une vie dont on parlera. Alors donne-lui aujourd'hui quelque chose à raconter, sinon il n'y aura rien à dire de ce jeudi.",
   "L'homme que tu veux devenir n'est pas devant toi, à distance. Il est derrière la seule chose que tu es en train d'éviter.",
+  "Une date sans discipline n'est pas un objectif : c'est un rendez-vous auquel tu ne viendras pas.",
+  "Qu'est-ce qu'un décret, chez toi ? — Un souhait auquel tu as ajouté une date pour te faire peur.",
+  "On appelle cela un objectif pour 2027. Moi je l'appelle une somme de matinées, et tu en as déjà dépensé plusieurs.",
+  "Tu ne rateras pas 2027 en décembre. Tu es en train de le rater ce matin, à la minute où tu choisis.",
+  "Ne te plains pas que l'échéance soit courte. Une échéance longue ne t'a jamais fait bouger — c'est bien le problème.",
+  "L'année ne demande pas si tu as commencé. Elle compte ce qui est debout au dernier jour.",
 ];

@@ -9,6 +9,7 @@ import PourquoiOverlay from "./PourquoiOverlay";
 import SerieuxOverlay from "./SerieuxOverlay";
 import { Flame, Target, ShieldCheck } from "lucide-react";
 import { LA_REPETITION } from "@/lib/inconfort";
+import { ECARTS, ECART_SORTIE } from "@/lib/ecart";
 
 export interface MiroirLangue {
   code: "en" | "fr" | "ht";
@@ -59,6 +60,15 @@ export default function MiroirView({
   const [envie, setEnvie] = useState(false);
   const [pourquoi, setPourquoi] = useState(false);
   const [serieux, setSerieux] = useState(false);
+  // L ordre des ecarts change a chaque ouverture, comme le reste.
+  const [ecarts] = useState(() => {
+    const c = [...ECARTS];
+    for (let i = c.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      [c[i], c[j]] = [c[j], c[i]];
+    }
+    return c;
+  });
   const [luJusquAuBout, setLu] = useState(false);
   const finRef = useRef<HTMLDivElement | null>(null);
 
@@ -156,6 +166,47 @@ export default function MiroirView({
             daysToJan={etat.daysToJan}
           />
         )}
+
+        {/* L'ÉCART — le seul endroit de l'app où la cible et le réel sont sur
+            la même ligne. Séparés, il peut croire aux deux ; collés, ils ne se
+            supportent plus. */}
+        <section
+          className="mb-7 rounded-2xl px-4 py-5"
+          style={{ background: "#0c0a06", border: "1.5px solid var(--gold-border)" }}
+        >
+          <div className="mb-4 flex items-baseline justify-between gap-3 px-1">
+            <h2 className="text-[10px] font-bold uppercase tracking-[0.22em] text-white/40">
+              L&apos;écart, ce matin
+            </h2>
+            <span className="tnum flex-shrink-0 text-[13px] font-bold text-white/70">
+              J−{etat.daysToJan}
+            </span>
+          </div>
+
+          <ul className="flex flex-col gap-3">
+            {ecarts.map((e) => (
+              <li key={e.cible} className="grid grid-cols-2 gap-3 px-1">
+                <span
+                  className="text-[12.5px] font-bold leading-snug"
+                  style={{ color: "var(--gold-border)" }}
+                >
+                  {e.cible}
+                </span>
+                <span className="text-[12.5px] leading-snug text-white/55">
+                  {e.aujourdhui}
+                </span>
+              </li>
+            ))}
+          </ul>
+
+          <div className="mt-4 flex flex-col gap-2 border-t border-white/12 px-1 pt-3.5">
+            {ECART_SORTIE.map((l) => (
+              <p key={l} className="text-[12px] leading-relaxed text-white/45">
+                {l}
+              </p>
+            ))}
+          </div>
+        </section>
 
         {/* Le mécanisme des 30 jours — avant le constat, parce que c'est la
             seule chose sur cet écran qui puisse changer une ligne du constat. */}

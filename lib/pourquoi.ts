@@ -75,6 +75,18 @@ export const POURQUOI_SIEN: PourquoiBloc[] = [
     ],
   },
   {
+    id: "avant-2027",
+    titre: "Parce que tout ça a une date",
+    lignes: [
+      "Avant le 1er janvier 2027 : 90 kg à 10 % de masse grasse, la peau saine et éclatante, les waves faites, un corps plus que parfait à mon goût.",
+      "20 000 $ minimum par jour. Pas de l'argent reçu : de l'argent produit par ce que j'ai bâti.",
+      "Vivre seul. Quitter la maison de mes parents. Mon toit, mes règles, mes heures.",
+      "Les chantiers commencés — surtout l'immobilier. Pas des annonces : des murs que quelqu'un peut aller toucher.",
+      "Les quatre voitures — Range Rover Sport, Escalade, GLE 63 Coupé, X6 M — puis la SV Serenity en cinquième. Elles ne s'achètent pas avec de l'argent : elles s'achètent avec des jours tenus.",
+      "Cette date arrivera que je sois prêt ou non. Elle ne se négocie pas, elle ne se reporte pas, et elle ne me demandera pas mes raisons.",
+    ],
+  },
+  {
     id: "comptes",
     titre: "Et je ne suis pas seul dans l'équation",
     lignes: [

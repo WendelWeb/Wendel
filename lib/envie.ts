@@ -168,6 +168,9 @@ export const LE_PRIX: string[] = [
   "La loi ne demande pas ta foi. Elle demande deux choses : conserver l'énergie, et la diriger. Ce geste casse la première.",
   "Et l'inconfort que tu ressens là n'est pas un obstacle sur la route : c'est la route. Aucun arbre ne touche le ciel sans que ses racines descendent jusqu'en enfer.",
   "Si c'était facile, tout le monde le ferait — et ça ne vaudrait rien. Ce que tu fuis en trois secondes est exactement ce qui t'aurait construit.",
+  "Et tout ça a une date : le 1er janvier 2027. 90 kg à 10 %, la peau nette, 20 000 $ par jour, ton propre toit, les chantiers commencés.",
+  "Cette date arrivera que tu sois prêt ou non. Ce geste-ci ne la repousse pas — il décide seulement de ce qui sera vrai ce jour-là.",
+  "Chaque jour rendu à ça est un jour retiré à la seule année qui te restait pour tout renverser.",
 ];
 
 /** Ce qu'on lui propose à la fin. Il n'y a pas de troisième porte. */

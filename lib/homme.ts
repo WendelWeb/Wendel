@@ -84,6 +84,12 @@ export const SI_SERIEUX: string[] = [
   "Si je suis vraiment sérieux, je stoppe la rêverie à voix haute dès qu'elle commence — pas dans dix minutes.",
   "Si je suis vraiment sérieux, je n'ouvre pas X avec des crédits Claude payés 200 $ qui m'attendent.",
   "Si je suis vraiment sérieux, ça se voit dans les cinq prochaines minutes. Pas dans mes intentions.",
+  "Si je suis vraiment sérieux, les 90 kg à 10 % se gagnent dans l'assiette de ce midi, pas en décembre.",
+  "Si je suis vraiment sérieux, je commence les waves aujourd'hui — pas quand j'aurai le temps.",
+  "Si je suis vraiment sérieux, je fais aujourd'hui le premier geste qui me sort de chez mes parents.",
+  "Si je suis vraiment sérieux, je fais aujourd'hui un pas vers le premier terrain. Un seul, mais daté.",
+  "Si je suis vraiment sérieux, 20 000 $ par jour commence par une heure de travail que personne ne m'a demandée.",
+  "Si je suis vraiment sérieux, je compte les jours qui restent avant 2027 — et j'arrête de faire comme s'il y en avait d'autres.",
 ];
 
 /**
@@ -111,6 +117,9 @@ export const HOMME_DIEU: string[] = [
   "L'homme que Dieu veut que je sois est déjà décrit en entier dans cette app. Il ne manque que celui qui l'incarne.",
   "L'homme que Dieu veut que je sois fait ce que je suis en train de repousser. Là. Maintenant.",
   "L'homme que Dieu veut que je sois, ce n'est pas encore moi. Et c'est exactement ça, le problème à régler aujourd'hui.",
+  "L'homme que Dieu veut que je sois vit seul, et son toit ne doit rien à personne.",
+  "L'homme que Dieu veut que je sois n'annonce pas ses chantiers : on les découvre commencés.",
+  "L'homme que Dieu veut que je sois a un corps qui prouve dix ans de discipline avant qu'il ouvre la bouche.",
 ];
 
 /**
@@ -136,4 +145,7 @@ export const HOMME_REFUS: string[] = [
   "L'homme que je ne veux pas être donnera sa force de jeunesse à ça — et elle ne reviendra jamais.",
   "L'homme que je ne veux pas être, je ne veux pas l'être demain. Ni dans un mois. Ni dans trois. Ni dans six. Ni dans un an. Ni dans cinq. Ni dans dix.",
   "L'homme que je ne veux pas être, c'est celui que je suis en train d'être à cette seconde si je ne bouge pas.",
+  "L'homme que je ne veux pas être arrivera au 1er janvier 2027 avec la même liste, et il dira que l'année a été dure.",
+  "L'homme que je ne veux pas être habite encore chez ses parents à trente ans, en parlant de cinquante hôpitaux.",
+  "L'homme que je ne veux pas être achète l'acide, la salle, les outils — et n'ouvre jamais rien.",
 ];

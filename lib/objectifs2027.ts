@@ -73,12 +73,15 @@ export const CIBLES_2027: CibleBloc[] = [
   },
   {
     id: "voitures",
-    titre: "Les trois voitures — fin 2026",
+    titre: "Les quatre voitures — puis une cinquième",
     lignes: [
-      "Mercedes-AMG GLE 63 Coupé.",
-      "Cadillac Escalade.",
       "Range Rover Sport.",
-      "Chaque clé est une facture de discipline déjà payée.",
+      "Cadillac Escalade.",
+      "Mercedes-AMG GLE 63 Coupé.",
+      "BMW X6 M.",
+      "Les quatre en millésime 2025.",
+      "Et une cinquième : Range Rover SV Serenity.",
+      "Elles ne s'achètent pas avec de l'argent. Elles s'achètent avec des jours tenus — et chaque clé est une facture de discipline déjà payée.",
     ],
   },
 
