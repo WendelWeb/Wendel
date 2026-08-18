@@ -107,4 +107,5 @@ export const QUESTIONS_COMPTES: string[] = [
   "Mes enfants hériteront soit de ce que j'aurai bâti, soit de mes excuses. Lequel des deux suis-je en train de préparer ?",
   "Il y a un vieillard qui s'éteint pendant que tu lis ça. Qu'est-ce que tu fais ?",
   "Si tous les hommes de ton pays faisaient de leur journée ce que tu fais de la tienne, dans quel état serait-il dans dix ans ?",
+  "Après Haïti, l'Afrique attend : quatre millions de kilomètres carrés. Qu'est-ce que tu as fait aujourd'hui qui t'en rapproche d'un seul mètre ?",
 ];

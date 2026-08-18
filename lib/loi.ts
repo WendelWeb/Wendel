@@ -35,6 +35,7 @@ export const LA_LOI: string[] = [
   "Mon corps est le seul territoire que je gouverne réellement aujourd'hui. Si je le perds, je ne gouverne rien du tout.",
   "La direction, c'est une seule chose tenue dix ans. Pas cinquante tenues zéro jour.",
   "Ce que je conçois se réalise à la vitesse à laquelle je me maîtrise. Pas plus vite. Jamais plus vite.",
+  "On ne court pas après la richesse : on se place là où elle doit passer. La première place à tenir est la chaise, à l'heure dite, chaque jour.",
 ];
 
 /**

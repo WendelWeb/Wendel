@@ -90,6 +90,7 @@ export const SI_SERIEUX: string[] = [
   "Si je suis vraiment sérieux, je fais aujourd'hui un pas vers le premier terrain. Un seul, mais daté.",
   "Si je suis vraiment sérieux, 20 000 $ par jour commence par une heure de travail que personne ne m'a demandée.",
   "Si je suis vraiment sérieux, je compte les jours qui restent avant 2027 — et j'arrête de faire comme s'il y en avait d'autres.",
+  "Si je suis vraiment sérieux, NOVA-AXE commence ce matin : on ne confie pas quatre millions de kilomètres carrés à un homme qui ne gouverne pas les quatre mètres carrés autour de son lit.",
 ];
 
 /**
@@ -149,4 +150,5 @@ export const HOMME_REFUS: string[] = [
   "L'homme que je ne veux pas être arrivera au 1er janvier 2027 avec la même liste, et il dira que l'année a été dure.",
   "L'homme que je ne veux pas être habite encore chez ses parents à trente ans, en parlant de cinquante hôpitaux.",
   "L'homme que je ne veux pas être achète l'acide, la salle, les outils — et n'ouvre jamais rien.",
+  "L'homme que je ne veux pas être parlera du corridor africain à quarante ans exactement comme il parle des cinquante hôpitaux à vingt-trois : au futur.",
 ];

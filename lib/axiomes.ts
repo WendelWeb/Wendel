@@ -58,6 +58,7 @@ export const AXIOMES: string[] = [
   "Tu écris pour être lu par toi-même plus tard. Plus tard est arrivé. C'est maintenant, et tu es en train de lire.",
   "Ta main a construit cette app en quelques jours. Elle est donc capable. Le problème n'a jamais été la capacité.",
   "Il n'y a rien à trouver, rien à comprendre de plus, rien à préparer. Tu sais déjà tout. Il ne reste que la partie qui fait mal.",
+  "Tu ne cours pas après la richesse : tu te places là où elle doit passer. Ta journée doit passer par une chaise à 4h30 — c'est le premier goulot d'étranglement de ton empire, et il est encore libre.",
 ];
 
 export const MARTEAU_TITRE = "Dans son registre — mais de moi, pas de lui";
@@ -158,4 +159,6 @@ export const AXIOMES_MARTEAU: string[] = [
   "L'année ne demande pas si tu as commencé. Elle compte ce qui est debout au dernier jour.",
   "Un homme est un homme seulement quand la douleur ne décide pas de ses actions. Tout le reste est une question de degré.",
   "Qu'est-ce qui décide, chez toi ? — La douleur. Et tant que c'est elle, personne d'autre ne commande.",
+  "Ô toi qui veux couper un continent en deux : commence par couper ta soirée en deux — tout avant 21h45, rien après.",
+  "On appelle cela un empire post-national. Moi je l'appelle ta chambre, agrandie : ce que tu gouvernes sur deux mètres, tu le gouverneras sur quatre mille kilomètres — et pas un mètre de plus.",
 ];

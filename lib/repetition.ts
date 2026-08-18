@@ -155,6 +155,8 @@ export const BLOCS_REPETITION: BlocRepetition[] = [
       "La société militaire.",
       "Tsevaot.",
       "Le sixième siège.",
+      "NOVA-AXE. Quatre millions de kilomètres carrés.",
+      "Axiom. Verdia. Forge.",
       "Le Nord-Ouest.",
       "Ma mère.",
       "Les vieillards qui souffrent.",

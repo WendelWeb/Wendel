@@ -171,6 +171,8 @@ export const LE_PRIX: string[] = [
   "Et tout ça a une date : le 1er janvier 2027. 90 kg à 10 %, la peau nette, 20 000 $ par jour, ton propre toit, les chantiers commencés.",
   "Cette date arrivera que tu sois prêt ou non. Ce geste-ci ne la repousse pas — il décide seulement de ce qui sera vrai ce jour-là.",
   "Chaque jour rendu à ça est un jour retiré à la seule année qui te restait pour tout renverser.",
+  "Et après Haïti, tu demandes l'Afrique : NOVA-AXE, un corridor souverain de quatre millions de kilomètres carrés, cent cinquante trillions, une monnaie qui remplace le dollar.",
+  "Des chefs d'État arriveront en suppliants chez l'homme que tu dis devenir. Personne ne se déplacera jamais pour celui que ce geste fabrique.",
 ];
 
 /** Ce qu'on lui propose à la fin. Il n'y a pas de troisième porte. */

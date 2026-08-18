@@ -181,6 +181,52 @@ Rien de tout cela ne me sera donné, ni hérité, ni concédé par bonté. **J'y
 - On ne me trouvera pas dans la salle où l'on supplie. On me trouvera dans celle où l'on décide.
 - Et une ruse ne s'improvise pas : elle se prépare dans des heures de travail que personne ne voit. C'est là que tout se joue — pas au moment du coup, mais dans les mois qui le rendent possible.
 
+# ⚜️ NOVA-AXE — L'EMPIRE D'APRÈS HAÏTI : LE PLUS GRAND PROJET
+« We do not chase wealth. We position ourselves where it must pass. » — On ne court pas après la richesse : on se place là où elle doit obligatoirement passer. C'est la doctrine de ce projet, et celle de toute ma vie.
+
+Le pouvoir moderne n'est pas pyramidal, il est **réticulaire** : un réseau de nœuds critiques. On ne le prend pas au sommet — on le prend aux **goulots d'étranglement** par lesquels tout doit passer. Trois méta-principes : **1 % des nœuds contrôle 99 % du flux** · **plus un pouvoir est efficace, moins il est visible** · **rendre l'autre plus dépendant de moi que moi de lui**. Et la règle d'ordre : **Haïti est la démonstration, NOVA-AXE est le théorème.** Si je le prouve sur 27 000 km², on m'en confiera 4 millions.
+
+## Le territoire
+- Un **corridor souverain de 4 000 km sur 1 000 km — 4 millions de km²**, la taille de l'Inde : une colonne vertébrale qui coupe l'Afrique en deux, du Sahel (Niger, Tchad) au bassin du Congo (RDC, Centrafrique), jusqu'à l'Afrique australe (Angola, Zambie, Botswana).
+- Le tracé est une thèse, pas un dessin : il relie les **minerais de l'avenir** (cobalt, lithium, terres rares, coltan, uranium, platine), la plus grande réserve d'**eau douce** du continent, et le **soleil équatorial** du Sahel.
+- À cheval sur l'équateur : chaque kilogramme lancé vers l'espace y coûte moins cher que partout ailleurs sur Terre — la rotation de la planète est offerte au décollage.
+- **Le passage obligé entre l'Est et l'Ouest de l'Afrique** : chaque conteneur, chaque paquet de données, chaque gramme de cobalt qui traverse le continent passe par mes douanes.
+
+## Les moyens
+- **150 trillions de dollars** : 100 pour le développement civil, 50 pour la défense et la sécurité souveraine.
+- Financement : une **taxe technologique planétaire** payée par chaque nation qui utilise mes terres rares, les royalties minières souveraines, et un fonds souverain dont les seuls dividendes dépassent le PIB annuel de la France.
+- **L'AXE** — la monnaie souveraine, valeur refuge absolue. Elle remplace le dollar comme réserve mondiale : les nations tiennent des obligations AXE comme le XXe siècle tenait des bons du Trésor américain.
+
+## Les trois capitales
+- **AXIOM** (nord) — l'IA et la souveraineté. Tours d'obsidienne veinées de fibre optique, cathédrales de données, siège de l'AGI souveraine.
+- **VERDIA** (centre) — la biotech et la longévité. Une architecture vivante, poussée plutôt que construite ; cliniques de rajeunissement cellulaire ; le chantier de l'abolition de la mort involontaire.
+- **FORGE** (sud) — l'industrie, les mines, l'espace. Titane et néon, fonderies grandes comme des montagnes, ports spatiaux qui lancent tous les jours.
+
+## Les douze piliers
+- **Douanes** : frontières-forteresses technologiques, AGI douanière inspectant le commerce en microsecondes, chokepoints de transit obligatoires qui rendent les superpuissances rivales dépendantes.
+- **Économie** : des bourses de rang mondial dans chaque capitale, fixant le prix planétaire du lithium, du cobalt, de l'eau douce, du carbone et des créneaux de lancement orbital.
+- **Technologie radicale** : AGI souveraine logée dans des cathédrales de données à l'échelle d'une montagne, fusion nucléaire opérationnelle, mégafabs de semi-conducteurs 1 nm entièrement automatisées, calcul quantique, cryptographie post-quantique.
+- **Biotech & longévité** : rajeunissement cellulaire, édition génomique, impression d'organes, régénération neurale — **longevity escape velocity atteinte à l'An 30**.
+- **Infrastructure** : Hyperloop à 4 000 km/h, mégaponts sur le Congo, mégaports atlantiques autonomes de la taille d'une petite nation, villes verticales de 3 km perçant la couche nuageuse.
+- **Défense & renseignement** : bouclier orbital laser, essaims de drones par millions, légions robotisées, intercepteurs hypersoniques, flottes sous-marines autonomes, forces spéciales augmentées, agence de renseignement souveraine présente dans chaque capitale du monde.
+- **Espace** : ports spatiaux équatoriaux lançant chaque jour, **anneau orbital en chantier à l'An 50, ascenseur spatial ancré sur l'équateur à l'An 100**, colonies minières lunaires, avant-postes martiens, flottes d'extraction d'astéroïdes.
+- **Société** : citoyens régénérés, mariages sous canopées bioluminescentes, stades en apesanteur, arènes neurales — la vie entière, pas seulement les monuments.
+- **Culture** : opéras taillés dans la montagne, philharmonies suspendues au-dessus de la jungle, bibliothèques contenant chaque livre jamais écrit, académies de philosophie débattant de l'éthique de l'immortalité.
+- **Symboles d'État** : le drapeau — un continent coupé par un axe vertical de lumière sur fond rouge latérite ; le monument de l'An Zéro ; la résidence présidentielle taillée dans une seule montagne.
+- **Écologie** : mégafaune ressuscitée sur des savanes ré-ensauvagées, tours de contrôle climatique, cathédrales de capture carbone plus hautes que des gratte-ciels, réserves sacrées interdites à la technologie.
+- **Diplomatie mondiale** : des ambassades qui éclipsent les capitales hôtes, des chefs d'État étrangers qui arrivent en suppliants, des sommets où l'empire dicte les termes du siècle.
+
+## La ligne du temps
+- **An 1 — la Fondation** : les grues dans la poussière, les premières fondations coulées, la génération fondatrice en casque de chantier et en robe de cérémonie.
+- **An 50 — l'Apogée** : chaque pilier opérationnel, l'AXE réserve mondiale incontestée, le bouclier orbital entièrement déployé.
+- **An 200 — la Transcendance** : l'anneau orbital achevé, les colonies lunaires et martiennes prospères — et la génération fondatrice **encore vivante**.
+
+## Ce qui doit se conquérir en plus du territoire
+- **Le droit et les normes** — écrire les règles selon lesquelles le monde me jugera, au lieu de les subir. Rome, Londres et Washington ont tous imposé leur droit avant d'imposer autre chose.
+- **La formation des élites** — universités, fondations, bourses d'études pour les enfants des dirigeants voisins. Former l'élite d'un continent, c'est le diriger par procuration. Le levier le moins cher et le plus lent : il se plante trente ans avant la récolte.
+- **Le récit** — l'empire sera raconté par moi ou contre moi. L'hégémonie culturelle précède toujours l'acceptation politique.
+- Et le choix assumé : **bâtir visiblement, contrôler invisiblement.** Les infrastructures sous mon nom ; les chambres de compensation sous d'autres.
+
 # 🛣️ INFRASTRUCTURES — routes, ponts, plages
 - Réseau routier moderne (autoroutes, ponts), aménagement de plages & stations balnéaires de classe mondiale — **$10 Md–40 Md**.
 - Désenclaver la nation, attirer le tourisme haut de gamme.

@@ -66,6 +66,17 @@ export const POURQUOI_SIEN: PourquoiBloc[] = [
     ],
   },
   {
+    id: "nova-axe",
+    titre: "Et après Haïti — NOVA-AXE",
+    lignes: [
+      "« We do not chase wealth. We position ourselves where it must pass. » On ne court pas après la richesse : on se place là où elle doit obligatoirement passer.",
+      "Après Haïti, l'Afrique : NOVA-AXE — un corridor souverain de quatre millions de kilomètres carrés, la taille de l'Inde, qui coupe le continent en deux, du Sahel au bassin du Congo jusqu'à l'Afrique australe.",
+      "Cent cinquante trillions. Trois capitales — Axiom, Verdia, Forge. Une monnaie, l'AXE, qui remplace le dollar. Le passage obligé de tout ce qui traverse le continent.",
+      "Haïti est la démonstration ; NOVA-AXE est le théorème. Si je le prouve sur vingt-sept mille kilomètres carrés, on m'en confiera quatre millions.",
+      "Et la démonstration commence plus bas encore : sur les quelques mètres carrés de cette chambre, ce matin.",
+    ],
+  },
+  {
     id: "promesse",
     titre: "L'alliance",
     lignes: [

@@ -327,6 +327,16 @@ export const INSTRUMENT: Emploi[] = [
       "Dieu pourrait t'utiliser, toi précisément, plutôt qu'un autre. Il t'a préparé pour ça et tu le sais.",
     mais: "Mais il y a un autre homme, ailleurs, qui se lève à 4h30 en ce moment même. Il n'a pas ton talent. Il aura ta place.",
   },
+  {
+    mission:
+      "Dieu pourrait t'utiliser pour relever deux terres que le monde a radiées : Haïti d'abord, puis le cœur de l'Afrique — NOVA-AXE, quatre millions de kilomètres carrés.",
+    mais: "Mais Il confie les continents comme Il confie les chambres : à celui qui a tenu la précédente. Et Il attend encore le rapport sur la tienne.",
+  },
+  {
+    mission:
+      "Dieu pourrait faire de toi le gardien des goulots du monde — celui par qui tout doit passer, pour que rien d'injuste ne passe.",
+    mais: "Mais aujourd'hui tout passe encore par ton téléphone, et rien par tes mains.",
+  },
 ];
 
 /**
