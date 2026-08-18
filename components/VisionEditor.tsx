@@ -332,16 +332,14 @@ export default function VisionEditor({
               ))}
             </p>
           )}
-          <div className="grid-objectives">
+          <div className="mosaique">
             {sections.map((s, i) => {
               const Icon = iconFor(s.title);
               const accent = ACCENTS[i % ACCENTS.length];
               return (
                 <section
                   key={i}
-                  className={`overflow-hidden rounded-2xl border border-border bg-surface${
-                    s.lines.length > 12 ? " pleine-largeur" : ""
-                  }`}
+                  className="overflow-hidden rounded-2xl border border-border bg-surface"
                 >
                   <div
                     className="flex items-center gap-3 px-4 py-3"

@@ -97,7 +97,7 @@ export default function CarnetView() {
         })}
       </div>
 
-      <div className="grid-objectives">
+      <div className="mosaique">
         {sections.map((s) => (
           <section
             key={s.id}

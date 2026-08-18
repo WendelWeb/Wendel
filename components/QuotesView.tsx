@@ -183,7 +183,7 @@ export default function QuotesView({ seed }: { seed: number }) {
           Aucune citation pour « {search} ».
         </p>
       ) : (
-        <div className="grid-objectives">
+        <div className="mosaique">
           {filtered.map((q, i) => (
             <QuoteCard key={`${q.t.slice(0, 24)}-${i}`} q={q} />
           ))}

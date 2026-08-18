@@ -89,10 +89,34 @@ input[type="number"] {
   align-items: start;
 }
 
-/* Les sections trop longues prennent toute la largeur au lieu de déséquilibrer
-   une rangée entière. */
-.grid-objectives > .pleine-largeur {
-  grid-column: 1 / -1;
+/* Une mosaïque, pas une grille.
+   Une grille aligne des rangées : la carte la plus haute d'une rangée impose
+   sa hauteur, et à côté d'elle les courtes laissent un vide. Pour éviter ce
+   déséquilibre, les sections longues devaient prendre toute la largeur — d'où
+   les bandes solitaires qui traversent un moniteur entier.
+   Le flux en colonnes n'a pas de rangées : chaque carte se pose sous la
+   précédente dans sa colonne, quelle que soit sa hauteur. Aucun vide, aucune
+   carte seule en travers de l'écran. */
+.mosaique {
+  columns: 1;
+  column-gap: 0.5rem;
+}
+.mosaique > * {
+  /* Sans ça une carte se coupe en deux : la fin en bas d'une colonne, la
+     suite en haut de la suivante. */
+  break-inside: avoid;
+  -webkit-column-break-inside: avoid;
+  page-break-inside: avoid;
+  margin-bottom: 0.5rem;
+}
+@media (min-width: 768px) {
+  .mosaique { columns: 2; }
+}
+@media (min-width: 1280px) {
+  .mosaique { columns: 3; }
+}
+@media (min-width: 1800px) {
+  .mosaique { columns: 4; }
 }
 @media (min-width: 768px) {
   .grid-objectives {
