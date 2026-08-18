@@ -57,7 +57,12 @@ export default function EmpireView() {
 
   return (
     <main className="min-h-[100dvh] bg-black px-4 pb-28 pt-6">
-      <div className="mx-auto max-w-3xl xl:max-w-7xl">
+      {/* Aucun plafond au-delà de xl : sur un 27 pouces, 1280px centrés
+          laissaient 640px de vide de chaque côté. Rien ne s'étire pour autant —
+          chaque paragraphe de cette page porte .mesure (68 caractères) et
+          chaque liste vit dans .colonnes-xl. C'est le nombre de colonnes qui
+          absorbe la largeur, jamais la longueur des lignes. */}
+      <div className="mx-auto max-w-3xl xl:max-w-none">
         {/* Le fronton — la doctrine et les faits, pas un slogan */}
         <header className="mb-7">
           <div className="mb-3 flex items-center gap-2">
