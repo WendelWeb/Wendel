@@ -24,7 +24,7 @@ export const dynamic = "force-dynamic";
  * change à chaque fois — même s'il ne lit que le premier.
  */
 function bandeaux(graine: number, placement: "top" | "bottom") {
-  return shuffled(
+  const cartes = shuffled(
     [
       <Mantra key="mantra" placement={placement} seed={graine} />,
       <Homme key="homme" placement={placement} seed={graine} />,
@@ -32,6 +32,20 @@ function bandeaux(graine: number, placement: "top" | "bottom") {
       <Loi key="loi" placement={placement} seed={graine} />,
     ],
     branch(graine, `ordre-${placement}`),
+  );
+
+  // Sur un moniteur, quatre bandes de trois lignes empilées traversent deux
+  // mille pixels chacune : illisible, et l'écran reste vide aux quatre
+  // cinquièmes. En grille, elles tiennent sur une à deux rangées et le texte
+  // garde une largeur lisible.
+  return (
+    <div
+      className={`colonnes-xl px-4 md:px-6 ${
+        placement === "top" ? "mb-6 mt-3" : "mb-6 mt-8"
+      }`}
+    >
+      {cartes}
+    </div>
   );
 }
 

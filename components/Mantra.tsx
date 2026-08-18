@@ -35,7 +35,8 @@ export default function Mantra({
   placement?: "top" | "bottom";
   seed?: number;
 }) {
-  const spacing = placement === "top" ? "mb-6 mt-3" : "mt-10 pb-2";
+  // Le conteneur porte l'espacement, comme pour les trois autres.
+  const spacing = "";
   const s = useSeed(seed ?? visitSeed());
 
   const cedes = sampled(SI_TU_CEDES, branch(s, "cedes"), 6);
@@ -729,8 +730,11 @@ export default function Mantra({
   ];
 
   return (
-    <aside className={`mx-auto max-w-3xl px-4 xl:max-w-6xl ${spacing}`}>
-      <p className="mb-2.5 text-center text-[10px] font-semibold uppercase tracking-[0.3em] text-text-muted">
+    // Le mantra n est pas une carte unique mais une pile de blocs. Dans la
+    // grille des bandeaux il occupe une cellule, et ses blocs internes se
+    // repartissent a leur tour sur les ecrans tres larges.
+    <aside className="h-full">
+      <p className="mb-2.5 text-[10px] font-semibold uppercase tracking-[0.3em] text-text-muted">
         Loi du vaisseau
       </p>
 

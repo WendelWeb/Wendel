@@ -31,11 +31,13 @@ export default function Loi({
   const preuves = sampled(LES_PREUVES, branch(s, "preuves"), 2);
   const contrat = picked(LE_CONTRAT, branch(s, "contrat"));
   const n = picked(NIETZSCHE_TOUT, branch(s, "nietzsche"));
-  const spacing = placement === "top" ? "mb-6 mt-3" : "mt-8 mb-4";
+  // Le conteneur porte l'espacement : dans une grille, une marge de
+  // carte double la gouttière au lieu de l'ajuster.
+  const spacing = "";
 
   return (
     <section
-      className={`${spacing} mx-4 rounded-2xl px-5 py-5 md:mx-6`}
+      className={`${spacing} h-full rounded-2xl px-5 py-5`}
       style={{ background: "#08090c", border: "1.5px solid #1e3a5f" }}
     >
       <p className="mb-3 text-[9.5px] font-bold uppercase tracking-[0.24em] text-white/35">

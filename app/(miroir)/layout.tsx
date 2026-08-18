@@ -16,13 +16,23 @@ import { visitSeed, shuffled, branch } from "@/lib/rotate";
  * entiere, donc c est l ordre qui doit bouger, pas seulement le contenu.
  */
 function bandeaux(graine: number, placement: "top" | "bottom") {
-  return shuffled(
+  const cartes = shuffled(
     [
       <Homme key="homme" placement={placement} seed={graine} />,
       <Depassement key="depassement" placement={placement} seed={graine} />,
       <Loi key="loi" placement={placement} seed={graine} />,
     ],
     branch(graine, `ordre-${placement}`),
+  );
+
+  return (
+    <div
+      className={`colonnes-xl px-4 md:px-6 ${
+        placement === "top" ? "mb-6 mt-3" : "mb-6 mt-8"
+      }`}
+    >
+      {cartes}
+    </div>
   );
 }
 

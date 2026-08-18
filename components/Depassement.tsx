@@ -42,11 +42,13 @@ export default function Depassement({
     2,
   );
   const emploi = picked(INSTRUMENT, branch(s, "instrument"));
-  const spacing = placement === "top" ? "mb-6 mt-3" : "mt-8 mb-4";
+  // Le conteneur porte l'espacement : dans une grille, une marge de
+  // carte double la gouttière au lieu de l'ajuster.
+  const spacing = "";
 
   return (
     <section
-      className={`${spacing} mx-4 rounded-2xl px-5 py-5 md:mx-6`}
+      className={`${spacing} h-full rounded-2xl px-5 py-5`}
       style={{ background: "#0c0a06", border: "1.5px solid var(--gold-border)" }}
     >
       <p className="mb-3.5 text-[9.5px] font-bold uppercase tracking-[0.24em] text-white/35">

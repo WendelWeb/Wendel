@@ -45,11 +45,13 @@ export default function Homme({
     branch(s, "demain"),
   );
   const compte = picked(QUESTIONS_COMPTES, branch(s, "compte"));
-  const spacing = placement === "top" ? "mb-6 mt-3" : "mt-8 mb-4";
+  // Le conteneur porte l'espacement : dans une grille, une marge de
+  // carte double la gouttière au lieu de l'ajuster.
+  const spacing = "";
 
   return (
     <section
-      className={`${spacing} mx-4 rounded-2xl px-5 py-5 md:mx-6`}
+      className={`${spacing} h-full rounded-2xl px-5 py-5`}
       style={{ background: "#0f0a0a", border: "1.5px solid #7f1d1d" }}
     >
       <p className="mb-4 font-display text-[15px] font-bold leading-snug text-white">
