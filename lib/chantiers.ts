@@ -6,9 +6,9 @@
 // pour développer mon pays comme je vais faire cadeau des hôpitaux et des
 // maisons à mes Haïtiens, là c'est plutôt empire, zéro émotion ».
 //
-// Haïti est sa nation : il y donne, et c'est personnel. Le corridor est un
-// empire : on y place du capital, et chaque dollar attend un retour. Aucune
-// ligne de ce fichier ne relève de la philanthropie. Si un chantier profite
+// Haïti relève d'un autre document et d'une autre logique. Ce fichier ne
+// traite que du corridor : on y place du capital, et chaque dollar attend un
+// retour. Aucune ligne ne relève de la philanthropie. Si un chantier profite
 // aux habitants, ce n'est jamais le but — c'est un moyen : main-d'œuvre,
 // stabilité, légitimité, rendement.
 //
@@ -73,7 +73,7 @@ export const FAMILLES_CHANTIERS: FamilleChantiers[] = [
         lignes: [
           "Cinq mille quatre cents milliards de dollars sont placés dans les fonderies de biologie : synthèse d'ADN, conception assistée par modèles, protéines de novo et usines cellulaires réparties entre VERDIA et FORGE.",
           "L'écriture de génomes est acquise : JCVI-syn1.0 en 2010 sur Mycoplasma mycoides, la cellule minimale syn3.0 réduite à 473 gènes en 2016, et le consortium Sc2.0 achevant en 2023 les seize chromosomes synthétiques de la levure.",
-          "Le laboratoire de Jason Chin a produit en 2019 une souche d'Escherichia coli dont quatre mégabases ont été réécrites pour n'employer que soixante et un codons : un organisme dont le code cesse d'être celui du vivant naturel, et que ses phages ne reconnaissent plus.",
+          "Le laboratoire de Jason Chin a produit en 2019 une souche d'Escherichia coli dont quatre mégabases ont été réécrites pour n'employer que soixante et un codons ; la délétion des ARNt correspondants a donné en 2021 une souche que ses phages ne reconnaissent plus.",
           "La base synthétique se paie aujourd'hui quelques centimes chez Twist Bioscience et Integrated DNA Technologies, la chimie du phosphoramidite plafonnant autour de deux cents bases ; DNA Script et Ansa Biotechnologies poussent la voie enzymatique pour lever ce plafond.",
           "La cible du corridor est le millième de dollar par base et cent mille milliards de bases écrites par an, adossés à trois cents millions de litres de cuves de fermentation de précision, plusieurs fois la capacité mondiale installée.",
           "La protéine se dessine avant d'exister : le laboratoire de David Baker et son procédé RFdiffusion, Nobel de chimie 2024 partagé avec Hassabis et Jumper, tandis qu'AlphaFold a publié plus de deux cents millions de structures prédites.",
@@ -141,7 +141,7 @@ export const FAMILLES_CHANTIERS: FamilleChantiers[] = [
         lignes: [
           "Trois mille milliards de dollars bâtissent les cliniques de VERDIA, leurs blocs, leurs biobanques cryogéniques et le registre unique où chaque protocole administré est horodaté.",
           "Le marché actuel de l'anti-âge pèse plusieurs dizaines de milliards de dollars par an et reste presque entièrement cosmétique : crèmes, compléments, bilans. Rien qui touche un mécanisme.",
-          "Fountain Life, Human Longevity, Biograph, Neko Health, la Clinique La Prairie vendent l'abonnement et l'imagerie corps entier à quelques dizaines de milliers de dollars l'année. Ils diagnostiquent, ils ne rajeunissent pas.",
+          "Fountain Life, Human Longevity, Biograph et la Clinique La Prairie vendent l'abonnement et l'imagerie corps entier à quelques dizaines de milliers de dollars l'année, quand Neko Health attaque par le bas à trois cents livres le scan. Ils diagnostiquent, ils ne rajeunissent pas.",
           "Bryan Johnson dépense environ deux millions de dollars par an sur son propre corps et a franchi une frontière pour recevoir une thérapie génique à la follistatine dans la zone hondurienne de Próspera.",
           "Quelques centaines de milliers de fortunes dépassent trente millions de dollars dans le monde. Dix ans de plus, pour un homme qui a déjà tout acheté, n'ont pas de prix plafond.",
           "Le flux médical va aujourd'hui d'Afrique vers l'Europe, l'Inde et le Golfe. Il s'inverse le jour où le seul lieu légal et industrialisé de la reprogrammation se trouve dans le corridor.",
@@ -178,7 +178,7 @@ export const FAMILLES_CHANTIERS: FamilleChantiers[] = [
           "L'organe entier reste la frontière : le cœur humain tient quatre à six heures en hypothermie simple, et en 2023 une équipe du Minnesota a greffé des reins de rat vitrifiés puis réchauffés par nanoparticules magnétiques.",
           "La science qui rendra ce stock exploitable mûrit : facteurs de Yamanaka en 2006, Nobel en 2012, vision restaurée chez la souris par reprogrammation partielle en 2020, Altos Labs capitalisée à trois milliards dès 2022.",
           "Ce qui est vitrifié aujourd'hui sera réparable dans trente ans : le stock est acheté une fois au prix d'hier et facturé indéfiniment au prix de demain.",
-          "L'entreposage se facture à l'année, par cuve et par échantillon, et ne se substitue pas : déplacer une collection, c'est la mettre en danger, donc sortir coûte toujours plus cher que rester.",
+          "L'entreposage se facture à l'année, par cuve et par échantillon, et ne se remplace pas : déplacer une collection, c'est la mettre en danger, donc sortir coûte toujours plus cher que rester.",
           "Le corridor est le seul site où une charge cryogénique qui ne s'interrompt jamais s'adosse à une base hydroélectrique continue, sur un craton stable, hors des réseaux sujets au délestage.",
           "Une juridiction unique sur sept nations fixe elle-même le statut de propriété du matériel déposé, sans demander à un régulateur étranger l'autorisation d'archiver le vivant.",
         ],
@@ -209,7 +209,7 @@ export const FAMILLES_CHANTIERS: FamilleChantiers[] = [
           "L'événement de 2020 a fait reculer le produit mondial d'environ trois pour cent en arrêtant ports, usines et marchés à la fois ; le FMI a chiffré la perte cumulée de production en dizaines de milliers de milliards.",
           "La vitesse est atteignable et déjà démontrée : séquence publiée le 11 janvier 2020, première injection humaine le 16 mars, autorisation en décembre ; la mission cent jours de la CEPI reste, elle, non tenue.",
           "Les positions actuelles sont identifiées : Illumina domine le séquençage face à MGI et Element, les CDC exploitent un réseau national d'eaux usées, et leur surveillance des voyageurs avec Ginkgo a détecté le variant BA.2.86 avant les systèmes nationaux.",
-          "Le continent importe la quasi-totalité de ses vaccins ; BioNTech a mis en service un module de production à Kigali fin 2023, Afrigen porte le transfert ARN messager de l'OMS au Cap, et un seul laboratoire de niveau quatre existe, en Afrique du Sud.",
+          "Le continent importe la quasi-totalité de ses vaccins ; BioNTech a mis en service un module de production à Kigali fin 2023, Afrigen porte le transfert ARN messager de l'OMS au Cap, et deux laboratoires de niveau quatre seulement existent sur le continent, en Afrique du Sud et au Gabon.",
           "Le corridor traverse le bassin du Congo, où plus de quinze épidémies d'Ebola se sont déclarées depuis Yambuku en 1976 et d'où le clade Ib du mpox est parti en 2024 : l'émergence s'y lit des semaines avant les marchés.",
           "Ce délai est la position : un signal précoce se monétise en fermeture de frontière, en couverture d'assurance et en arbitrage, bien avant de devenir une nouvelle publique.",
           "La biosurveillance, la filtration et le confinement des fabs et des salles blanches se financent sur la ligne de l'infrastructure, au même titre que le rail, jamais sur un budget sanitaire.",
@@ -249,11 +249,11 @@ export const FAMILLES_CHANTIERS: FamilleChantiers[] = [
           "Cible : quinze mille milliards placés dans le calcul — cent gigawatts installés à l’An 30, trois mille milliards dans les accélérateurs conçus sur place, trois mille dans les modèles, les corpus et le réseau.",
           "Nvidia détient l’essentiel du marché des accélérateurs d’entraînement, avec des marges brutes au-delà de soixante-dix pour cent. L’enfermement ne vient pas du silicium mais de CUDA, écrit et entretenu depuis près de vingt ans.",
           "Une baie GB200 dissipe environ cent vingt kilowatts. Les campus d’Abilene, de Memphis et de Pennsylvanie se comptent en centaines de mégawatts et visent le gigawatt : la contrainte est passée de la puce au poste électrique.",
-          "Le fleuve Congo débite quarante et un mille mètres cubes par seconde, presque sans saison puisqu’il coupe deux fois l’équateur. Un pour cent de ce débit réchauffé de trois degrés évacue cinq gigawatts thermiques.",
-          "Le site d’Inga porte un potentiel hydraulique de l’ordre de quarante gigawatts, à quelques centaines de kilomètres du pas de tir équatorial. L’électricité de base, et non la puce, est le premier intrant d’un centre de calcul.",
+          "Le fleuve coule presque sans saison puisqu’il coupe deux fois l’équateur, ce qu’aucun autre grand bassin ne fait. Un pour cent de ce débit réchauffé de trois degrés évacue cinq gigawatts thermiques.",
+          "Le site d’Inga porte le plus grand potentiel hydraulique jamais laissé inexploité, à quelques centaines de kilomètres du pas de tir équatorial. L’électricité de base, et non la puce, est le premier intrant d’un centre de calcul.",
           "AXIOM dessine ses propres puces d’entraînement et d’inférence. La conception d’un circuit en nœud avancé coûte de l’ordre du demi-milliard de dollars, montant négligeable devant la flotte qu’elle commande ensuite pendant dix ans.",
           "Les poids des modèles souverains restent détenus, jamais loués. Un empire qui appelle l’interface d’un tiers pour raisonner lui livre ses requêtes, accepte son plafond d’usage et paie son loyer : c’est un client.",
-          "La règle est déjà comprise ailleurs : les Émirats financent Falcon par G42, l’Arabie saoudite monte Humain, la France pousse Mistral, l’Inde sa mission nationale. Aucun ne possède la fonderie derrière le modèle.",
+          "La règle est déjà comprise ailleurs : les Émirats financent Falcon par le Technology Innovation Institute d’Abou Dhabi, l’Arabie saoudite monte Humain, la France pousse Mistral, l’Inde sa mission nationale. Aucun ne possède la fonderie derrière le modèle.",
           "La rente naît de la verticale complète : sable, plaquette, graveur, puce, baie, mégawatt, modèle, jeton. Qui tient toute la chaîne fixe le prix de l’inférence pour ceux qui n’en tiennent qu’un maillon.",
           "Un tel calcul ne s’installe ni sur un réseau saturé ni sur une eau disputée. Quatre millions de kilomètres carrés, une hydraulique constante et la maîtrise foncière lèvent les trois contraintes d’un seul coup.",
         ],
@@ -299,7 +299,7 @@ export const FAMILLES_CHANTIERS: FamilleChantiers[] = [
         lignes: [
           "Trois mille milliards de dollars placés dans l'interface cerveau-machine : électrodes en couche mince, implants endovasculaires, circuits de compression du signal, et les salles blanches de VERDIA qui les produisent en série.",
           "Neuralink a posé son premier implant humain en janvier 2024 : mille vingt-quatre électrodes portées par soixante-quatre fils, dont une partie s'est rétractée du cortex chez le premier patient dans les semaines qui ont suivi.",
-          "Blackrock Neurotech implante la matrice de l'Utah, une centaine d'électrodes, chez l'homme depuis 2004 ; Synchron évite la craniotomie en passant par la veine jugulaire ; Precision Neuroscience a obtenu une autorisation américaine limitée à trente jours.",
+          "La matrice de l'Utah, une centaine d'électrodes, est implantée chez l'homme depuis 2004 — BrainGate, puis Blackrock Neurotech qui en a repris les actifs en 2008 ; Synchron évite la craniotomie en passant par la veine jugulaire ; Precision Neuroscience a obtenu une autorisation américaine limitée à trente jours.",
           "La performance publiée reste étroite : décodage de parole de l'ordre de soixante à quatre-vingts mots par minute, marche restaurée chez un patient par un pont numérique entre cortex et moelle, et aucun implant en autorisation de marché pleine.",
           "L'ordre de grandeur dit tout : seize milliards de neurones dans le néocortex, un millier de canaux dans le meilleur implant, et un nombre de neurones enregistrés simultanément qui double environ tous les sept ans.",
           "L'obstacle n'est pas le décodage mais le matériau : la cicatrice gliale isole progressivement l'électrode, et la durée de vie utile d'un implant se compte encore en années là où il faudrait des décennies.",
@@ -318,7 +318,7 @@ export const FAMILLES_CHANTIERS: FamilleChantiers[] = [
           "Le A-Lab de Berkeley a annoncé quarante et un composés inorganiques inédits en dix-sept jours, chiffre contesté depuis par des cristallographes sur la caractérisation : la cadence est réelle, la validation reste le point faible.",
           "DeepMind a publié avec GNoME deux millions deux cent mille structures cristallines prédites, dont environ trois cent quatre-vingt mille candidates stables. Le catalogue existe déjà ; ce qui manque est la capacité physique de les fabriquer.",
           "À Liverpool, un robot mobile a mené six cent quatre-vingt-huit expériences en huit jours sur un photocatalyseur ; à Carnegie Mellon, Coscientist a fait exécuter des couplages de Suzuki par un modèle de langage.",
-          "Le marché a déjà tranché sur un point : les laboratoires en location, Emerald Cloud Lab et Strateos, ont fermé, tandis que l'automatisation intégrée tient chez Recursion et Isomorphic. La boucle ne se loue pas, elle se possède.",
+          "Le marché a déjà tranché sur un point : le laboratoire en location Strateos a fermé en 2023, tandis que l'automatisation intégrée tient chez Recursion et Isomorphic. La boucle ne se loue pas, elle se possède.",
           "La productivité de la recherche pharmaceutique baisse depuis soixante ans : le coût par molécule approuvée double environ tous les neuf ans, ce qu'on nomme la loi d'Eroom. Aucun budget n'a jamais renversé cette pente.",
           "Financer la recherche achète des tentatives, l'automatiser achète des tours de boucle. Une itération ramenée de six semaines à douze heures fait passer de neuf cycles par an à sept cent trente, à budget constant.",
           "Cible du corridor : six cents laboratoires autonomes en réseau, dix millions d'expériences physiques par an, et un dépôt de brevet adossé à chaque résultat reproduit deux fois sur deux sites distincts.",
@@ -373,12 +373,12 @@ export const FAMILLES_CHANTIERS: FamilleChantiers[] = [
         titre: "L'ÉNERGIE — L'ACTIF QUI OBLIGE LES AUTRES À VENIR",
         lignes: [
           "Vingt-deux mille milliards de dollars sont placés dans la production électrique et son réseau : deux mille gigawatts installés à l'An 50, détenus en propre et non concédés.",
-          "Le Congo débite en moyenne quarante mille mètres cubes par seconde ; le site d'Inga porte quarante-quatre gigawatts exploitables, étudiés depuis cinquante ans et jamais construits, les bailleurs internationaux s'étant retirés au stade des garanties.",
+          "Le Congo débite en moyenne quarante et un mille mètres cubes par seconde, deuxième débit du monde ; le site d'Inga porte quarante-quatre gigawatts exploitables, étudiés depuis cinquante ans et jamais construits, les bailleurs internationaux s'étant retirés au stade des garanties.",
           "L'irradiation du Sahel dépasse deux mille deux cents kilowattheures par mètre carré et par an, parmi les plus fortes mesurées ; le module photovoltaïque est passé sous dix cents par watt, et la Chine tient plus de quatre-vingts pour cent de chaque étage de sa fabrication.",
           "Une fonderie d'aluminium consomme environ treize mégawattheures par tonne. Elle ne s'installe jamais près du minerai, elle s'installe près du courant : Islande, Québec, Golfe. Le courant est l'appât, pas le service rendu.",
           "Le même mécanisme joue pour le calcul : en 2024, Microsoft a contracté le redémarrage de la centrale de Three Mile Island pour alimenter ses centres de données. La charge suit le mégawatt disponible.",
           "La fusion est franchie côté physique et pas côté machine : le NIF a dépassé l'ignition en décembre 2022, avec 3,15 mégajoules produits pour 2,05 mégajoules de laser, et JET a tenu soixante-neuf mégajoules en cinq secondes.",
-          "Deux mille milliards vont à la fusion sur cinquante ans, sans que rien n'en dépende : ITER a repoussé son premier plasma à 2034, Commonwealth Fusion vise plus tôt, et le privé mondial a levé un peu plus de sept milliards en tout.",
+          "Deux mille milliards vont à la fusion sur cinquante ans, sans que rien n'en dépende : ITER a repoussé son premier plasma à 2034, Commonwealth Fusion vise plus tôt, et le secteur a dépassé quatorze milliards levés, dont treize de capitaux privés.",
           "Le thorium sort déjà de nos propres usines : il est le sous-produit encombrant de la séparation des terres rares. La Chine a fait diverger son réacteur à sels fondus de Wuwei en 2023 ; le corridor a le combustible sans une extraction de plus.",
           "La ligne Inga-Kolwezi, mille sept cents kilomètres en courant continu, fut la plus longue du monde à sa mise en service. La Chine exploite du ±1 100 kilovolts sur plus de trois mille kilomètres : le corridor achète cette classe de matériel, puis la fabrique.",
           "L'électricité se vend au tarif interne aux usines du corridor et au tarif de marché à qui n'en produit pas : contrats de vingt ans, libellés en AXE, résiliables. Une aluminerie ou un centre de calcul raccordé ne se déplace plus.",
@@ -427,7 +427,7 @@ export const FAMILLES_CHANTIERS: FamilleChantiers[] = [
           "Les usines du monde rejettent environ cent quarante millions de mètres cubes de saumure par jour, davantage que l'eau douce produite : le gisement est déjà pompé, il est seulement jeté à la mer.",
           "Lithium, magnésium, brome, potasse : la saumure devient la deuxième ligne de revenu, et la Chine, qui tient l'essentiel du magnésium métal mondial, cesse d'être un passage obligé.",
           "Le débit se vend comme se vend le baril : contrat ferme au mètre cube, et prise ferme sur toute fab, tout réacteur et toute laverie de minerai raccordés à la conduite.",
-          "Le Congo verse quarante mille mètres cubes par seconde à l'Atlantique, deuxième débit du monde, et la même chute qui pompe l'eau vers l'intérieur sort des turbines installées sur ce fleuve.",
+          "Le Congo verse à l'Atlantique le deuxième débit du monde, et la même chute qui pompe l'eau vers l'intérieur sort des turbines installées sur ce fleuve.",
           "Le lac Tchad a perdu près de neuf dixièmes de sa surface depuis les années soixante : dans le Sahel, l'eau est le facteur limitant, donc l'actif qui commande le prix de tous les autres.",
           "Les mines d'uranium namibiennes tournent déjà à l'eau de mer dessalée acheminée depuis Erongo : le schéma est prouvé, il manque l'échelle et l'autorité qui l'impose sur quatre mille kilomètres.",
         ],
@@ -438,7 +438,7 @@ export const FAMILLES_CHANTIERS: FamilleChantiers[] = [
         titre: "GÉO-INGÉNIERIE ET REGISTRE DU CARBONE — LE THERMOSTAT ET LE LIVRE DE COMPTES",
         lignes: [
           "Quatre mille huit cents milliards de dollars : capture directe portée à l'échelle du gigatonne, minéralisation en basalte, flotte d'ensemencement océanique, et le registre qui certifie chaque tonne retirée.",
-          "Climeworks retire quelques dizaines de milliers de tonnes par an en Islande et Occidental construit Stratos au Texas pour cinq cent mille : le monde entier capture aujourd'hui moins qu'une cimenterie n'émet.",
+          "Climeworks affiche trente-six mille tonnes de capacité installée en Islande pour un retrait effectif de deux ordres de grandeur inférieur et Occidental construit Stratos au Texas pour cinq cent mille : le monde entier capture aujourd'hui moins qu'une cimenterie n'émet.",
           "La tonne captée coûte encore plusieurs centaines de dollars quand le crédit forestier s'échange à quelques-uns : l'écart est un marché à construire, pas une objection à la position.",
           "CarbFix a montré en Islande que le gaz injecté dans le basalte se minéralise en moins de deux ans ; les basaltes du Karoo offrent la même chimie sur une surface sans commune mesure.",
           "Le Pinatubo a injecté une vingtaine de mégatonnes de dioxyde de soufre en 1991 et refroidi la planète d'environ un demi-degré ; Harvard a renoncé à SCoPEx en 2024, le Mexique a interdit ces essais en 2023.",
@@ -538,7 +538,7 @@ export const FAMILLES_CHANTIERS: FamilleChantiers[] = [
           "Les brevets se déposent sur les tuyères réfractaires, les cathodes creuses, les matériaux de cœur et les optiques de faisceau ; privée de cela, l'extraction spatiale reste un calcul sur papier.",
           "Faire tourner un moteur nucléaire à l'air libre exige un espace inhabité et une souveraineté sans recours : le corridor a les deux, quand les puissances installées n'ont plus ni l'un ni l'autre.",
           "Le corridor tient la chaîne du combustible sous un seul drapeau, de l'uranium nigérien enrichi aux réacteurs à sels fondus au thorium, et alimente les phares laser depuis le fleuve.",
-          "L'équateur encaisse quatre cent soixante-cinq mètres par seconde de rotation terrestre et supprime le changement de plan vers la géostationnaire : le coût du delta-v baisse avant même qu'un moteur soit allumé.",
+          "L'équateur concède la vitesse de rotation la plus élevée de la planète et supprime le changement de plan vers la géostationnaire : le coût du delta-v baisse avant même qu'un moteur soit allumé.",
         ],
       },
       {
@@ -550,7 +550,7 @@ export const FAMILLES_CHANTIERS: FamilleChantiers[] = [
           "Plus de quarante mille géocroiseurs sont répertoriés ; au-dessus du kilomètre l'inventaire dépasse quatre-vingt-quinze pour cent, mais à cent quarante mètres il n'atteint pas la moitié, alors que la loi américaine de 2005 exigeait quatre-vingt-dix pour cent.",
           "La déviation n'est démontrée qu'une fois : DART a percuté Dimorphos le 26 septembre 2022 et raccourci sa période orbitale d'environ trente-deux minutes ; la sonde Hera, partie en octobre 2024, va mesurer le cratère.",
           "La capacité mondiale de radar planétaire a reculé depuis l'effondrement d'Arecibo en 2020 ; il reste Goldstone, tandis que la Chine assemble le réseau Fuyan, dont les antennes de trente mètres ont déjà imagé la Lune.",
-          "L'astéroïde 2024 YR4 est monté à trois virgule un pour cent de probabilité d'impact en février 2025, record de la série, avant de retomber à zéro pour la Terre et de rester à quelques pour cent pour la Lune en 2032.",
+          "L'astéroïde 2024 YR4 est monté à trois virgule un pour cent de probabilité d'impact en février 2025, record de la série, avant de retomber à zéro pour la Terre, puis à zéro également pour la Lune après les mesures de février 2026.",
           "Le référentiel du ciel est américain : le Minor Planet Center, le centre des géocroiseurs du JPL, et la force spatiale qui diffuse les conjonctions sans les facturer, donc qui fixe seule la règle.",
           "Détenir sa propre carte, c'est vendre la donnée de conjonction, le créneau de routage, l'assurance et le service de déviation à des États qui ne construiront jamais le réseau.",
           "Le marché de l'assurance spatiale reste minuscule, quelques centaines de millions de primes annuelles, et il a perdu en 2023 davantage qu'il n'a encaissé : la place est vacante pour un assureur qui possède la mesure.",
@@ -571,13 +571,13 @@ export const FAMILLES_CHANTIERS: FamilleChantiers[] = [
         titre: "L'AXE — L'INFRASTRUCTURE DE RÈGLEMENT",
         lignes: [
           "Huit mille milliards de dollars sont placés dans l'architecture monétaire : banque centrale de l'AXE à AXIOM, chambre de compensation, réseau de messagerie de paiement propre, et cinq mille milliards d'actifs de couverture — or, cuivre, uranium, énergie.",
-          "Le dollar représente près de 58 % des réserves de change allouées recensées par le FMI et figure d'un côté de près de 90 % des opérations de change, sur un marché de près de dix mille milliards par jour.",
+          "Le dollar représente environ 57 % des réserves de change allouées recensées par le FMI et figure d'un côté de près de 90 % des opérations de change, sur un marché de près de dix mille milliards par jour.",
           "SWIFT, coopérative de droit belge, relie plus de onze mille institutions dans plus de deux cents pays. Son concurrent chinois CIPS traite une fraction du même volume. Le point d'étranglement est la messagerie, pas la monnaie.",
           "Une monnaie de réserve n'est pas un symbole : c'est une demande structurelle et permanente pour la dette de son émetteur. Les non-résidents détiennent environ neuf mille milliards de titres du Trésor américain.",
           "Cible : vingt mille milliards de dette souveraine libellée en AXE, dont la moitié détenue hors corridor à l'An 50, et 35 % des réserves de change mondiales basculées.",
           "Ce que rapporte la position : seigneuriage, coût d'emprunt écrasé, droit de regard sur les transactions d'autrui. Chaque point de base économisé sur vingt mille milliards vaut deux milliards par an.",
           "Le règlement est une arme : environ trois cents milliards de réserves de la banque centrale russe ont été immobilisés en 2022, et l'Iran a été coupé de SWIFT en 2012 puis en 2018.",
-          "La demande de sortie existe déjà : les banques centrales achètent plus de mille tonnes d'or par an depuis 2022, et la BRI s'est retirée du projet mBridge en 2024. La position est vacante.",
+          "La demande de sortie existe déjà : les banques centrales ont acheté plus de mille tonnes d'or par an de 2022 à 2024, et huit cent soixante en 2025, et la BRI s'est retirée du projet mBridge en 2024. La position est vacante.",
           "Le corridor la prend parce qu'il tient la marchandise : cobalt, cuivre, uranium, lithium et terres rares sortent facturés exclusivement en AXE. La facturation suit le rare, et la demande de monnaie suit la facturation.",
           "Chaque tonne quittant les quatre millions de kilomètres carrés est compensée à AXIOM. Les sept nations traversées sont actionnaires de la chambre, indexées au volume : un contrat de passage, rien d'autre.",
         ],
@@ -593,7 +593,7 @@ export const FAMILLES_CHANTIERS: FamilleChantiers[] = [
           "En mars 2022, le London Metal Exchange, propriété du groupe hongkongais HKEX, a suspendu le nickel et annulé des transactions déjà conclues. Le propriétaire d'une bourse récrit la règle en séance.",
           "Le marché européen de quotas carbone est le plus vaste du monde et son ajustement aux frontières entre en régime définitif en 2026 : un prix du carbone est désormais un droit de douane.",
           "L'eau douce n'a pas de marché mondial ; le seul contrat à terme, lancé fin 2020 sur un indice californien, est resté marginal. Le fleuve Congo porte le deuxième débit de la planète.",
-          "Les créneaux orbitaux s'attribuent à l'UIT au premier arrivé ; Starlink exploite plus de huit mille satellites, environ deux tiers des engins actifs. Un tir équatorial récupère 465 mètres par seconde de rotation terrestre.",
+          "Les créneaux orbitaux s'attribuent à l'UIT au premier arrivé ; Starlink exploite plus de dix mille satellites, la majeure partie des engins actifs en orbite. Un tir équatorial récupère 465 mètres par seconde de rotation terrestre.",
           "Une bourse ne tient que si elle peut livrer : le corridor extrait ce qu'il cote, et trois cents entrepôts agréés, du Sahel à l'Atlantique angolais, émettent les warrants qui font foi.",
           "Trois maisons privées — S&P, Moody's et Fitch — couvrent environ 95 % de la notation mondiale et fixent le coût du capital des États. Le corridor en installe une quatrième, libellée en AXE.",
           "Cible : quatre mille milliards de stocks physiques, assez profonds pour acheter un plancher et vendre un plafond. La Chine détient près de la moitié du blé stocké au monde ; Washington a garanti en 2025 un prix plancher aux terres rares de MP Materials.",
@@ -605,7 +605,7 @@ export const FAMILLES_CHANTIERS: FamilleChantiers[] = [
         titre: "LE FONDS SOUVERAIN — LA RENTE COMPOSÉE SUR DEUX SIÈCLES",
         lignes: [
           "Douze mille milliards de dollars dotent le fonds à l'An Zéro 2033, alimentés ensuite par les royalties du corridor. Gestion à AXIOM, mandat de deux cents ans, aucun retrait discrétionnaire.",
-          "Le premier fonds souverain du monde, celui de la Norvège, pèse environ mille huit cents milliards de dollars et détient en moyenne 1,5 % de chaque société cotée de la planète ; le PIF saoudien approche mille milliards.",
+          "Le plus gros fonds souverain du monde, celui de la Norvège, pèse environ deux mille trois cents milliards de dollars et détient en moyenne 1,5 % de chaque société cotée de la planète ; le PIF saoudien dépasse mille deux cents milliards.",
           "À 7 % réel, un capital double tous les dix ans : douze mille milliards deviennent environ trois cent cinquante mille milliards en cinquante ans, et le facteur dépasse sept cent cinquante mille sur deux cents ans.",
           "Cible de distribution à l'An 50 : deux mille milliards de dividendes par an, davantage que le produit intérieur brut annuel de l'Espagne, sans céder une seule ligne du portefeuille.",
           "Taxe technologique planétaire : 3 % de la valeur sortie d'usine de tout aimant, moteur, turbine ou puce contenant une terre rare du corridor, perçue au règlement en AXE. Cible : quatre cents milliards par an.",
@@ -641,8 +641,8 @@ export const FAMILLES_CHANTIERS: FamilleChantiers[] = [
           "L'Afrique centrale et australe roule aujourd'hui en écartement du Cap, mille soixante-sept millimètres, quand le Nigeria et l'Éthiopie construisent en écartement standard : le continent paie une rupture de charge à chaque frontière.",
           "Le corridor est posé à mille quatre cent trente-cinq millimètres et quarante tonnes par essieu, la charge des lignes minières australiennes du Pilbara ; la référence africaine, Sishen-Saldanha, plafonne à vingt-six tonnes.",
           "La route revient à cinq ou dix fois le rail lourd à la tonne-kilomètre. Sortir le Copperbelt par le fer capture cet écart, et l'écart reste chez le propriétaire de la voie.",
-          "Le tube sous vide n'a encore aucune exploitation commerciale : Virgin Hyperloop a fermé en 2022 après un essai habité à cent soixante-douze kilomètres-heure, et le centre européen de Veendam ne mesure que quatre cent vingt mètres.",
-          "Le maglev japonais détient le record ferroviaire à six cent trois kilomètres-heure, le Transrapid de Shanghai exploite à quatre cent trente et un. Le corridor prend la technologie là où elle s'arrête, faute d'emprise disponible ailleurs.",
+          "Le tube sous vide n'a encore aucune exploitation commerciale : Hyperloop One, ex-Virgin Hyperloop, a fermé fin 2023 après un essai habité à cent soixante-douze kilomètres-heure, et le centre européen de Veendam ne mesure que quatre cent vingt mètres.",
+          "Le maglev japonais détient le record ferroviaire à six cent trois kilomètres-heure, le Transrapid de Shanghai, conçu pour quatre cent trente et un, roule aujourd’hui à trois cents. Le corridor prend la technologie là où elle s'arrête, faute d'emprise disponible ailleurs.",
           "Un porte-conteneurs de vingt-quatre mille boîtes, classe MSC Irina, mesure quatre cents mètres sur soixante et un et exige seize mètres de tirant d'eau : bassins dragués à dix-huit, portiques de vingt-six rangées.",
           "Yangshan phase quatre, à Shanghai, opère ses quais sans personnel ; Qingdao dépasse soixante mouvements par heure et par portique. Le port de Shanghai a franchi cinquante millions d'EVP en 2024.",
           "Cible : trois cents millions d'EVP par an sur quatre terminaux entièrement automatisés, six fois Shanghai, avec un droit de quai indexé sur le tonnage manutentionné et non sur l'escale.",
@@ -663,7 +663,7 @@ export const FAMILLES_CHANTIERS: FamilleChantiers[] = [
           "La licence d'atterrage se paie en droits : miroir optique intégral, journalisation, résidence obligatoire des données, retrait sans recours en cas de manquement. Tous les États qui hébergent un câble imposent l'interception ; ici elle est posée dès la construction.",
           "Cible : deux mille térabits par seconde de capacité propriétaire, plus de dix fois le 2Africa, et un point d'échange à AXIOM qui rapatrie le trafic intra-africain aujourd'hui exporté.",
           "La lumière parcourt la fibre à deux cent mille kilomètres par seconde, cinq microsecondes par kilomètre : la position équatoriale place le corridor sur la corde la plus courte entre l'Amérique du Sud, l'Europe et l'Inde.",
-          "Le calcul suit l'énergie : le Congo débite quarante et un mille mètres cubes par seconde et le site d'Inga porte un potentiel supérieur à quarante gigawatts, de quoi héberger la donnée au lieu de la louer ailleurs.",
+          "Le calcul suit l'énergie : le débit du fleuve et le potentiel d'Inga font du corridor le seul lieu où la puissance ne se négocie pas. Le potentiel est supérieur à quarante gigawatts, de quoi héberger la donnée au lieu de la louer ailleurs.",
         ],
       },
     ],
@@ -678,7 +678,7 @@ export const FAMILLES_CHANTIERS: FamilleChantiers[] = [
         emoji: "🛡",
         titre: "LA DISSUASION — RENDRE L'ENTRÉE PLUS CHÈRE QUE LE BUTIN",
         lignes: [
-          "Vingt-deux mille milliards de dollars sont placés dans le refus d'accès : le corridor ne cherche à conquérir personne, il rend l'approche, le survol et l'accostage plus coûteux que tout ce qu'ils rapporteraient.",
+          "Vingt-deux mille milliards de dollars sont placés dans le refus d'accès : le corridor rend l'approche, le survol et l'accostage plus coûteux que tout ce qu'ils rapporteraient.",
           "En mer Rouge, la marine américaine a détruit des drones houthis à quelques dizaines de milliers de dollars pièce avec des missiles SM-2 à plus de deux millions : l'attaquant gagnait à chaque échange.",
           "Le rapport coût-échange est renversé par l'énergie dirigée : quatre cents batteries laser et micro-ondes de forte puissance, adossées à douze gigawatts réservés, dont le tir se paie au prix du courant consommé.",
           "Rafael a livré ses premiers systèmes Iron Beam à l'armée israélienne en 2025 et Londres finance DragonFire : l'interception laser est sortie du laboratoire, à quelques dollars annoncés par tir.",
