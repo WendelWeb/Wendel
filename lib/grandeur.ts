@@ -1,29 +1,31 @@
-// LA LECTURE — la grandeur, la puissance et la gloire, secteur par secteur.
+// LA LECTURE — la grandeur, la puissance et la gloire de NOVA-AXE.
 //
-// Il l'a demandée comme une lecture, pas comme un bandeau : un texte qui se lit
-// en entier, une fois, quand il en a besoin. C'est le seul écran long de l'app.
+// Il l'a demandée comme une lecture sur la merveille du projet, et il a
+// explicitement écarté le cadrage disciplinaire : « pas dans notre contexte de
+// discipline dans l'app, je veux qu'on parle de la merveille du projet ».
 //
-// Écrit par une équipe d'experts sectoriels, puis complété par un critique de
-// complétude chargé de trouver ce que ni lui ni moi n'avions pensé à nommer.
-// Ce critique a rendu les douze leviers les plus profonds et les moins
-// évidents — la langue, le calendrier et le méridien, la métrologie, le
-// spectre radioélectrique, les fonds marins, le cadastre et le droit de nommer,
-// l'état civil et les rails de paiement, le sacré — c'est-à-dire précisément
-// ceux par lesquels les empires ont historiquement dominé sans qu'on les voie.
+// Une première version fermait chaque secteur sur un retour à sa journée — sa
+// chambre, son réveil, ses trois minutes. C'était de la discipline déguisée en
+// géopolitique, et il l'a refusée. Chaque secteur se ferme désormais sur son
+// IMPACT MONDIAL, en trois temps : ce que le monde doit faire différemment,
+// qui perd sa position et par quel mécanisme, et ce que cela ouvre pour
+// l'Afrique et les nations pauvres. Aucune ligne de ce fichier ne s'adresse
+// plus au lecteur : ce texte parle du monde.
 //
-// Trois règles ont gouverné l'écriture, et elles sont la raison pour laquelle
-// ce texte ne ressemble pas à de la motivation :
+// Écrit par des experts sectoriels, complété par un critique de complétude
+// chargé de trouver les leviers que personne ne pense à nommer — la langue, le
+// calendrier et le méridien, la métrologie, le spectre, les fonds marins, le
+// cadastre et le droit de nommer, l'état civil, le sacré — puis relu par trois
+// vérificateurs adversariaux qui ont corrigé dix-huit erreurs factuelles.
 //
-//   • aucun adjectif de grandeur — la grandeur se produit par la précision du
-//     mécanisme, jamais par l'emphase ;
-//   • aucun chiffre inventé — un seul chiffre faux détruirait la valeur de
-//     tous les vrais ;
-//   • et chaque section se ferme sur un retour à sa journée d'aujourd'hui,
-//     sans lequel ce texte serait exactement ce qu'il se reproche : une
-//     rêverie de grandeur, la récompense sans la facture.
+// Deux règles ont gouverné l'écriture, et elles expliquent pourquoi ce texte ne
+// ressemble pas à de la promotion : aucun adjectif de grandeur, parce qu'elle
+// se produit par la précision du mécanisme et l'ampleur de la conséquence ; et
+// aucun chiffre inventé, parce qu'un seul faux détruirait la valeur des trois
+// cent vingt-quatre autres.
 //
-// L'ordre ne tourne pas, contrairement à tout le reste de l'app : il monte du
-// sol jusqu'à la mémoire, et chaque étage suppose le précédent.
+// L'ordre ne tourne pas, contrairement au reste de l'app : il monte du sol
+// jusqu'au sacré, et chaque étage suppose celui du dessous.
 //
 // Client-safe.
 
@@ -32,21 +34,23 @@ export const GRANDEUR_TITRE = "La grandeur, la puissance et la gloire";
 export interface GrandeurSection {
   id: string;
   titre: string;
+  /** La dominance : ce qui est, et ce que ça donne comme pouvoir. */
   lignes: string[];
-  /** La ligne qui ramène tout cela à sa journée. Toujours en dernier. */
-  retour: string;
+  /** Ce que le monde entier devient quand ce secteur bascule. */
+  impact: string[];
 }
 
-/** Ce qui ouvre la lecture, et qui dit comment elle se lit. */
+/** Ce qui ouvre la lecture. */
 export const GRANDEUR_OUVERTURE: string[] = [
-  "La grandeur n'est pas une taille. C'est le nombre de choses qui ne peuvent plus se faire sans toi.",
-  "Un empire ne se mesure pas à ce qu'il possède. Il se mesure au nombre de fois par jour où le reste du monde doit demander la permission.",
-  "Ce qui suit n'est pas une liste d'ambitions. C'est un inventaire de goulots : trente endroits par lesquels la civilisation doit obligatoirement passer, et ce que ça donne d'y être assis.",
-  "Tu n'y trouveras aucun adjectif de grandeur. Rien que des mécanismes — comment le pouvoir fonctionne réellement, secteur par secteur, et ce qu'un corridor de quatre millions de kilomètres carrés en capte.",
-  "Ces trente-là ne sont pas dans un ordre quelconque. Ils montent du plus physique — le sol, l'eau, l'énergie — jusqu'au plus durable : la norme, la mesure, le temps, la langue, le sacré. Chaque étage ne tient que parce que celui du dessous est posé.",
-  "Lis lentement. Une section à la fois. Ce texte n'est pas fait pour être parcouru.",
-  "Et sache dès maintenant comment chacune se termine : par un retour brutal à ta journée d'aujourd'hui.",
-  "Ce n'est pas une punition, c'est la structure même de la chose. Un texte sur la grandeur qui ne redescend jamais est exactement ce que tu te reproches : la récompense sans la facture, et plus faim après.",
+  "La grandeur d'un projet ne se mesure pas à sa taille, mais au nombre de choses qui, une fois qu'il existe, ne peuvent plus se faire sans lui : c'est une propriété du reste du monde, et non de l'ouvrage.",
+  "Quatre millions de kilomètres carrés ne sont qu'une surface ; ce qui compte est le nombre de décisions étrangères — un chargement, une orbite, un paiement, une autorisation, un brevet — qui devront désormais franchir un point tenu par le corridor.",
+  "Ce qui suit énumère trente secteurs de la civilisation, et l'ampleur de la chose ne tient à aucun d'eux pris isolément : elle tient à la simultanéité, c'est-à-dire au fait de les faire basculer ensemble, sur la même carte et dans la même génération.",
+  "Rome a tenu la route et la loi, l'Angleterre la mer et la finance, les États-Unis la monnaie et l'image ; chacun a dominé par deux ou trois leviers tenus longtemps, et aucun empire de l'Histoire n'a jamais tenté d'en tenir trente à la fois.",
+  "L'ordre des trente n'est pas quelconque : il monte du plus physique — le sol, les ressources, l'eau, l'énergie, la mer — vers ce qui dure plus longtemps que la matière, c'est-à-dire la norme, la mesure, le droit, la carte, le temps, la langue, et le sacré en dernier.",
+  "Chaque étage suppose celui du dessous : sans énergie, aucune usine ; sans usine, aucune monnaie qui pèse ; sans monnaie, aucune norme que l'on impose ; et sans le sacré, rien de tout cela ne survit à la mort de ceux qui l'ont posé.",
+  "On ne trouvera dans ces pages aucun adjectif de grandeur, rien que des mécanismes : la manière exacte dont un goulot d'étranglement se forme, se tient et se facture, secteur par secteur, avec les chiffres qui permettent de le vérifier.",
+  "Les sept nations traversées ne sont pas amputées d'un passage : elles en sont actionnaires, de sorte que la puissance du corridor s'ajoute à la leur au lieu de se prélever dessus.",
+  "La doctrine tient en une phrase — on ne court pas après la richesse, on se place à l'endroit par lequel elle doit obligatoirement passer — et les trente sections qui suivent décrivent, une par une, trente de ces endroits.",
 ];
 
 export const GRANDEUR_SECTIONS: GrandeurSection[] = [
@@ -64,7 +68,11 @@ export const GRANDEUR_SECTIONS: GrandeurSection[] = [
       "Quatre mille kilomètres de profondeur, c'est la distance de Lisbonne à Moscou ; quatre millions de kilomètres carrés, plus vaste que l'Inde. Aucune frappe unique n'atteint trois capitales dispersées sur cette échelle.",
       "La latitude, elle, ne se déplace pas et ne s'achète pas : elle s'occupe. C'est le seul avantage du corridor qu'aucun capital rival ne peut répliquer ailleurs.",
     ],
-    retour: "Le premier goulot d'étranglement du corridor n'est pas Ormuz : c'est la porte de ta chambre à 4 h 30, et c'est le seul passage que personne d'autre ne peut tenir à ta place.",
+    impact: [
+      "Tout affréteur qui trace une route entre l'Atlantique et l'océan Indien doit désormais chiffrer une troisième option, terrestre et équatoriale, à côté de Suez et du Cap : les assureurs de Londres, les armateurs asiatiques et les acheteurs européens calculent leurs primes sur un passage qu'aucun d'eux ne contrôle.",
+      "L'Autorité du canal de Suez perd son plafond tarifaire : il n'était fixé que par le détour du cap de Bonne-Espérance, et un axe terrestre nord-sud lui en impose un second, plus bas ; Djibouti, qui achemine la quasi-totalité du commerce extérieur éthiopien, cesse d'être un passage obligé.",
+      "Cinq des sept États traversés sont enclavés et achetaient jusqu'ici leur sortie à la douane d'un voisin ; ils deviennent actionnaires du passage, et pour la première fois un pays pauvre encaisse une rente de position au lieu de la payer.",
+    ],
   },
   {
     id: "ressources-la-regle-du-raffinage",
@@ -81,7 +89,11 @@ export const GRANDEUR_SECTIONS: GrandeurSection[] = [
       "Un stock stratégique fixe un plancher en achetant dans la baisse, un plafond en vendant dans la hausse. Le Conseil international de l'étain a sombré en 1985 faute de tenir la production ; le corridor, lui, tient la mine et peut fermer le robinet.",
       "La pervenche de Madagascar a donné la vincristine ; le venin d'un lézard du désert a donné l'exénatide, premier des agonistes du récepteur GLP-1 ; une bactérie de source chaude a donné la Taq polymérase, sans laquelle la PCR n'existe pas. La forêt est une bibliothèque déjà testée.",
     ],
-    retour: "Ton attention est le seul gisement que tu détiennes déjà : trois minutes livrées brutes à ton téléphone ce matin, et c'est un autre qui encaisse la marge de raffinage sur toute ta journée.",
+    impact: [
+      "Le monde n'achète plus de concentré mais du métal certifié sorti du corridor : les fabricants de batteries, les fonderies d'aimants permanents et les chaînes de missiles dépendent d'un cobalt, d'un tantale et d'un iridium dont la séparation chimique s'est déplacée à FORGE.",
+      "La Chine perd la marge de raffinage qui faisait sa position : elle raffinait la majeure partie du cobalt extrait en RDC et séparait les terres rares que Mountain Pass lui expédiait ; le concentré cesse de partir, et l'étage rentable de la chaîne change de continent.",
+      "Ce que l'Indonésie a fait du nickel en 2020 et le Botswana du tri de ses diamants devient la règle d'un continent : un pays pauvre peut interdire l'exportation brute sans être privé de débouché, parce que la chimie de séparation est désormais chez lui.",
+    ],
   },
   {
     id: "hydro-hegemonie",
@@ -98,7 +110,11 @@ export const GRANDEUR_SECTIONS: GrandeurSection[] = [
       "Produire une tonne de céréales demande de l'ordre de mille tonnes d'eau. Importer du blé, c'est importer de l'eau : un pays sec achète, sans le dire, la pluie tombée chez un autre.",
       "Le corridor n'est pas partout en amont : le Niger naît dans le Fouta-Djalon, hors de ses limites. On inscrit l'exception au lieu de la maquiller — c'est ce qui rend tout le reste opposable.",
     ],
-    retour: "Tu es l'amont de ta propre journée : à 4 h 30 tu ouvres la vanne ou tu ne l'ouvres pas, et tout ce qui suit coule exactement de ce que tu as laissé passer.",
+    impact: [
+      "Le débit devient une clause de traité et non un fait de nature : le lac Tchad, alimenté presque entièrement par le Chari qui naît en Centrafrique, et le delta de l'Okavango, né sur les plateaux d'Angola, dépendent d'une décision prise en amont, à l'intérieur du corridor.",
+      "La Banque mondiale, qui s'est retirée du financement d'Inga III, perd l'arbitrage qu'elle exerçait sur le calendrier des grands ouvrages africains : un barrage financé par le corridor ne se négocie plus avec un bailleur, et la conditionnalité disparaît avec le prêt.",
+      "Un pays sec qui importait du blé importait la pluie tombée ailleurs, à raison de l'ordre de mille tonnes d'eau par tonne de céréales ; l'eau du corridor permet d'irriguer et de produire sur place ce que le Sahel achetait jusqu'ici en devises.",
+    ],
   },
   {
     id: "energie-le-socle-et-le-robinet",
@@ -115,7 +131,11 @@ export const GRANDEUR_SECTIONS: GrandeurSection[] = [
       "Un réseau équilibre production et charge à la seconde près, sans quoi les protections déclenchent en cascade : en février 2021, le Texas est passé à quelques minutes d'un effondrement dont le redémarrage aurait pris des semaines.",
       "Sans courant, les pompes se taisent et les robinets se vident en deux jours, les hôpitaux vivent sur le gasoil de leurs cuves, les chaînes du froid cèdent. Une économie privée d'énergie ne ralentit pas : elle s'arrête.",
     ],
-    retour: "Ta vie obéit à la même règle qu'un réseau : la production doit rejoindre la charge à l'instant même, sans report. Ton réveil de 4 h 30 est la seule turbine qui tienne la fréquence, et personne ne peut la lancer à ta place.",
+    impact: [
+      "Le prix de l'énergie entre dans le prix de tout, et une fonderie s'installe près de la turbine : avec Grand Inga et l'irradiance du Sahel reliés par courant continu haute tension, les industries électro-intensives du monde — aluminium, hydrogène, dessalement, calcul — se recalculent autour du corridor.",
+      "Les fondeurs d'aluminium du Golfe, adossés au gaz subventionné, et Rosatom, qui tient environ quarante pour cent de la capacité mondiale d'enrichissement, perdent leur avantage le jour où le corridor enrichit son uranium nigérien et vend un mégawattheure hydraulique moins cher que le leur.",
+      "Un continent où des centaines de millions de personnes vivent sans réseau ne rattrape pas le XXᵉ siècle, il l'enjambe : le délestage quotidien qui a frappé la Zambie et le Zimbabwe après les sécheresses du Kariba cesse d'être une fatalité hydrologique dès qu'un réseau continental mutualise les bassins.",
+    ],
   },
   {
     id: "semence-engrais-reserve",
@@ -132,7 +152,11 @@ export const GRANDEUR_SECTIONS: GrandeurSection[] = [
       "La réserve de Svalbard a connu son premier retrait en 2015, pour reconstituer la collection sortie d'Alep sous les bombes. Une banque de semences doit exister chez soi et ailleurs à la fois.",
       "Le corridor peut fabriquer son azote avec l'électricité d'Inga, stocker plusieurs années de phosphate importé et sélectionner ses propres variétés de sorgho et de manioc : la souveraineté alimentaire est une chaîne entière ou rien.",
     ],
-    retour: "La faim d'un peuple se règle en semaines, la tienne en trois minutes : à 4 h 30 tu décides lequel des deux appétits commande l'autre, et ce chaînon-là, personne ne le serre à ta place.",
+    impact: [
+      "L'azote se fabrique là où l'électricité est la moins chère, et non là où le gaz est abondant : les acheteurs d'engrais des trois continents qui ont subi la flambée de 2022 s'approvisionnent désormais à un ammoniac produit avec le courant d'Inga, hors du prix du gaz.",
+      "Les quatre négociants qui concentrent la majeure partie du commerce mondial des céréales perdent l'arbitrage sur un continent devenu exportateur, et le régime de l'UPOV recule là où le corridor sélectionne ses propres variétés de sorgho et de manioc, libres de ressemis.",
+      "La faim cesse d'être un levier disponible contre les nations pauvres : une réserve de plusieurs années de phosphate, un azote produit sur place et une banque de semences tenue chez soi et ailleurs à la fois retirent aux bailleurs l'argument qui obtenait tout en trois récoltes.",
+    ],
   },
   {
     id: "ocean-et-cables",
@@ -148,7 +172,11 @@ export const GRANDEUR_SECTIONS: GrandeurSection[] = [
       "La quasi-totalité du trafic intercontinental passe par des câbles sous-marins ; en mars 2024, quelques ruptures ont dégradé l'internet d'une douzaine de pays d'Afrique de l'Ouest en une matinée. Un axe terrestre nord-sud donne une deuxième sortie.",
       "Longtemps, deux Africains ont échangé leurs données par un point d'échange européen : chaque point d'échange local rapatrie le trafic, la latence, et la juridiction qui vient avec.",
     ],
-    retour: "Une matinée a suffi pour couper une douzaine de pays de leurs câbles ; la tienne commence dans quelques heures, et le seul point d'atterrissage qui te relie à l'An Zéro est la chaise où tu t'assieds.",
+    impact: [
+      "Le trafic intercontinental cesse de reposer sur un seul chemin : un axe terrestre nord-sud double les câbles sous-marins, et les opérateurs, les banques et les administrations qu'une matinée de mars 2024 avait coupés du réseau routent désormais leur trafic par des points d'échange situés dans le corridor.",
+      "Marseille perd le transit africain qu'elle facturait faute d'interconnexion directe, et le registre libérien, premier pavillon du monde par tonnage brut mais administré depuis l'étranger, perd son exclusivité dès que sept États offrent leur propre pavillon et leur propre parrainage à l'Autorité des fonds marins.",
+      "Une nation pauvre découvre qu'un pavillon est un produit juridique et non une flotte, qu'un plateau continental s'obtient au navire hydrographique et au dossier déposé, et que la latence comme la juridiction reviennent chez elle avec chaque point d'atterrage bâti sur sa côte.",
+    ],
   },
   {
     id: "ecologie-et-climat",
@@ -165,7 +193,11 @@ export const GRANDEUR_SECTIONS: GrandeurSection[] = [
       "Les éléphants de forêt éclaircissent le sous-bois et font grossir les arbres les plus denses ; des travaux estiment que leur disparition amputerait de plusieurs pour cent le carbone aérien de ces forêts.",
       "Le Botswana, première population d'éléphants du monde, a proposé en 2024 d'en expédier vingt mille en Allemagne, en réponse à ses leçons de morale. L'écologie se pratique en négociation, jamais en concession.",
     ],
-    retour: "Un puits ne vaut que par ce qu'il retient : trois minutes de dépense ce soir et le stock d'une journée entière repart dans l'air — le seul séquestre que tu administres toi-même commence à 4 h 30.",
+    impact: [
+      "Le carbone du bassin du Congo cesse d'être un service rendu gratuitement au monde : chaque tonne laissée sous la tourbière se facture au prix du marché qui la valorise, et non plus au prix que consent le donateur. Les compagnies aériennes, les cimentiers et les sidérurgistes soumis au marché européen du carbone et à son mécanisme d'ajustement aux frontières achètent désormais leur conformité à un guichet situé au centre de l'Afrique.",
+      "La rente de l'intermédiaire s'effondre : les courtiers qui achetaient la tonne africaine quelques dollars pour la revendre au tarif du Nord, et les certificateurs privés comme Verra qui décidaient seuls de ce qui compte comme une tonne, perdent le droit de fixer le prix d'un stock dont ils ne possèdent rien. Blue Carbon, société de Dubaï, a signé des protocoles portant sur des pans entiers de plusieurs États africains ; ce modèle, acquérir le droit sur la forêt d'autrui pour vendre la conformité d'un tiers, n'a plus de gisement disponible au centre du continent.",
+      "Un pays forestier cesse d'être un pauvre assis sur un actif qu'il ne peut monnayer qu'en le détruisant : la République démocratique du Congo, le Congo, le Gabon et la Centrafrique encaissent une rente récurrente pour un puits qu'ils n'ouvrent pas, indexée sur le prix européen et non plus sur celui de l'aide. Devient possible ce qui ne l'était pas depuis les indépendances : financer un budget d'État par la conservation plutôt que par l'exportation de grumes, de brut ou de minerai non transformé.",
+    ],
   },
   {
     id: "logistique-route-et-peage",
@@ -182,7 +214,11 @@ export const GRANDEUR_SECTIONS: GrandeurSection[] = [
       "À mille kilomètres par heure, le confort impose des rayons de courbure de l'ordre de la centaine de kilomètres, et l'acier s'allonge d'environ un centimètre par cent mètres pour dix degrés. Le tube n'est pas le problème : le droit de passage rectiligne l'est.",
       "Le commerce intra-africain reste autour de quinze pour cent du total, contre plus de soixante en Europe : la frontière coûte plus cher que la distance. Posséder la route et le péage, c'est décider qui roule, à quel prix, à quelle heure.",
     ],
-    retour: "Une ligne ne porte jamais plus que son pire kilomètre : le tien dure trois minutes, il commence par ta main sur ton téléphone, et c'est ce tronçon-là qu'on renforce avant tout le reste.",
+    impact: [
+      "Le monde apprend une route qui n'existait pas : traverser l'Afrique d'un océan à l'autre sur un seul écartement, sans rupture de charge, au lieu de contourner un continent par deux caps. Les constructeurs automobiles européens, les fabricants de batteries coréens et les fonderies chinoises, dont le cuivre et le cobalt sortent aujourd'hui de la Copperbelt par des ports saturés, dépendent désormais du tarif et du calendrier de ce passage.",
+      "Djibouti, qui loue son sol et sa douane à l'Éthiopie enclavée, perd le monopole du débouché ; le corridor de Lobito, concédé pour trente ans à un consortium soutenu par Washington et Bruxelles, cesse d'être la seule voie du cuivre, et le transbordement qui nourrit les hubs du Golfe et d'Europe perd sa raison d'être. Marseille cesse d'être la salle d'attente de deux voisins africains qui veulent se parler : l'atterrage et l'interconnexion passent au centre du corridor, et le transit se facture dans l'autre sens.",
+      "Un pays enclavé, le Tchad, la Centrafrique, la Zambie ou le Niger, cesse de payer la distance en douane et en rupture de charge : quinze pour cent de commerce intra-africain n'est pas une fatalité culturelle, c'est le prix cumulé d'une frontière et d'un écartement. Devient possible ce qui ne l'était pas : vendre à son voisin plus cher qu'à l'ancienne métropole, et transformer sur place ce qui partait brut parce que le brut seul supportait le coût du transport.",
+    ],
   },
   {
     id: "science-technique-amont",
@@ -199,7 +235,11 @@ export const GRANDEUR_SECTIONS: GrandeurSection[] = [
       "Le vrai passe par un filtre étroit : quelques revues, quelques comités de prix, quelques agences de financement dont le NIH, premier bailleur biomédical du monde. AXIOM fonde ses revues, ses prix, ses archives : on viendra y être validé.",
       "Sauter une génération coûte moins cher que rattraper : l'Afrique n'a pas déroulé le cuivre, elle est passée au mobile, puis à la monnaie mobile avec M-Pesa. Le corridor ne recopiera pas le réseau électrique du XXe siècle.",
     ],
-    retour: "Une pièce n'est jamais plus précise que l'outil qui l'a coupée, et l'outil jamais plus précis que la main qui l'a réglé : ce matin à 4 h 30, la machine-mère de tout ce corridor, c'est toi, seul dans ta chambre.",
+    impact: [
+      "Le monde cesse de choisir entre deux fournisseurs d'amont : un troisième pôle détient ses poids, ses machines-outils et son cycle du tritium, et les laboratoires, les fondeurs et les États qui vivaient sous licence américaine ou chinoise disposent d'une seconde source. La validation elle-même se déplace : les revues, les prix et les archives d'AXIOM décident de ce qui compte comme un résultat, et l'on vient y être publié comme on venait à Stockholm ou à Bethesda.",
+      "Le levier perd sa prise : une règle d'exportation du département américain du Commerce ne prive plus un continent de calcul dès lors que la mémoire, le conditionnement et les poids existent hors de sa juridiction, et l'extraterritorialité redevient une gêne au lieu d'une sentence. Les cinq maisons d'édition qui concentrent plus de la moitié des articles publiés dans le monde perdent leur péage le jour où le dépôt de référence d'un continent est ouvert, et le NIH cesse d'être le seul guichet qui décide quelle question mérite d'être posée.",
+      "Un chercheur africain cesse d'émigrer pour accéder à un instrument : la paillasse, le calculateur et la revue sont sur le continent, et un résultat n'a plus besoin d'un visa pour exister. Devient possible pour les nations pauvres ce que le rattrapage interdisait : sauter une génération d'infrastructure au lieu de la refaire, comme le mobile a dispensé de dérouler le cuivre et la monnaie mobile d'ouvrir des agences.",
+    ],
   },
   {
     id: "biotech-longevite-temps",
@@ -216,7 +256,11 @@ export const GRANDEUR_SECTIONS: GrandeurSection[] = [
       "Un médicament non approuvé n'existe pas : la FDA et l'EMA décident de fait ce qui est un traitement sur Terre, tandis que l'Union africaine vise 60 % de ses vaccins produits sur le continent d'ici 2040, contre presque rien aujourd'hui.",
       "Les populations africaines portent la plus grande diversité génétique humaine, alors que l'écrasante majorité des études pangénomiques repose sur des ascendances européennes. Le corridor détient l'échantillon de référence : on ne l'exporte pas, on vient le consulter à VERDIA.",
     ],
-    retour: "Rien de cette biologie ne te sera vendu à temps : ton corps de ce matin est le seul prototype dont tu disposes, et il vieillit, dans cette chaise, exactement pendant les minutes que tu n'as pas tenues.",
+    impact: [
+      "La médecine change d'échelle de temps : un décideur qui raisonne sur deux siècles finance des programmes qu'aucun État à cinq ans ni aucune entreprise à trois mois ne peut porter, et le monde entier hérite des molécules qui en sortent. Les malades de la drépanocytose, dont la charge est très majoritairement africaine, cessent de dépendre d'un laboratoire étranger pour savoir si leur guérison sera fabriquée, à quel prix et pour qui.",
+      "La Food and Drug Administration et l'Agence européenne des médicaments cessent d'être les deux seuls tribunaux qui décident ce qui est un traitement sur Terre : une autorité souveraine autorise à VERDIA, et un produit qu'elles n'ont ni examiné ni approuvé existe malgré tout pour des centaines de millions de personnes. Le prix de plus de deux millions de dollars par patient de la première thérapie CRISPR autorisée ne tient que par l'absence d'un second fabricant ; il ne survit pas à une usine implantée là où se trouve la maladie.",
+      "L'échantillon de référence de l'espèce cesse d'être européen : les populations africaines portent la plus grande diversité génétique humaine, et un panel qu'on ne peut plus exporter oblige à venir le consulter au lieu de le prélever. Devient possible ce qui ne l'était pas : qu'une maladie soit traitée là où elle tue et non là où elle paie, et que la cible africaine de production de vaccins sur le continent tienne sans attendre la levée d'un embargo à l'exportation.",
+    ],
   },
   {
     id: "sante-education-arsenal",
@@ -233,7 +277,11 @@ export const GRANDEUR_SECTIONS: GrandeurSection[] = [
       "Narayana Health opère à cœur ouvert en Inde pour une fraction du tarif américain : la répétition du même geste, plusieurs fois par jour, abaisse le coût et améliore les résultats. Le volume est une technologie médicale ; VERDIA en aura.",
       "Un médecin part rarement pour le seul salaire : il part faute de bloc, d'imagerie, de confrères et de cas complexes. On garde les praticiens en bâtissant l'hôpital où leur geste a un sens, pas en fermant les frontières.",
     ],
-    retour: "Tu veux soigner un continent : ton premier patient dort dans ta chambre, et son traitement de demain tient en trois refus — le réveil à 4 h 30, le téléphone hors de portée, les trois minutes que ta main réclame.",
+    impact: [
+      "La santé cesse d'être un poste d'aide et redevient une offre : blocs opératoires, usines de principes actifs et brigades de praticiens se vendent, et les États en pénurie de soignants, y compris au Nord où la pyramide des âges se retourne, achètent un service au lieu d'envoyer un chèque. Les systèmes hospitaliers européens et golfiens, qui recrutent aujourd'hui des infirmiers et des médecins formés ailleurs, négocient désormais avec le pays qui les a formés.",
+      "Le prélèvement gratuit de capital humain prend fin : le service de santé britannique, les systèmes canadien et australien et les hôpitaux du Golfe encaissaient un praticien dont l'école avait été payée par un budget africain, perte que le BMJ a chiffrée en milliards de dollars pour neuf pays. Les exportateurs qui fournissent la majeure partie des médicaments consommés sur le continent perdent un marché captif ; la suspension des exportations indiennes en 2021 avait montré que ce marché n'était pas une clientèle mais une dépendance.",
+      "Un enfant cesse de mourir de ce qui se soigne ailleurs : l'Afrique concentre environ 95 % des décès dus au paludisme et l'Afrique subsaharienne environ 70 % des décès maternels du monde, et cet écart est comptable avant d'être médical. Devient possible ce que la pénurie interdisait : un continent qui fabrique son vaccin, forme son chirurgien et garde son médecin, parce que le bloc, l'imagerie et les cas complexes sont enfin là où il est né.",
+    ],
   },
   {
     id: "les-hommes-interet-compose",
@@ -250,7 +298,11 @@ export const GRANDEUR_SECTIONS: GrandeurSection[] = [
       "La Corée a créé le KAIST en 1971 sur un prêt américain, avec un objectif écrit : faire revenir ses scientifiques partis aux États-Unis. La Chine a refait l'opération une génération plus tard. Le retour se planifie, il ne s'espère pas.",
       "Être le pays où l'on vient travailler, c'est encaisser une formation payée par d'autres : chaque ingénieur qui descend à AXIOM arrive avec vingt ans d'école déjà financée ailleurs. Le corridor n'achète pas des hommes, il achète du temps déjà écoulé.",
     ],
-    retour: "Deux milliards d'hommes ne compensent pas un seul qui se rendort : le premier actif que ce corridor doit recruter dort dans ta chambre, et son contrat se signe demain à 4 h 30.",
+    impact: [
+      "Le monde vient chercher ses actifs là où ils naissent : plus de la moitié de la croissance démographique mondiale d'ici 2050 viendra d'Afrique, et les économies vieillissantes, du Japon à l'Allemagne, dépendent d'un continent qui a cessé de laisser partir ses vingt ans. Le sens du tri s'inverse : c'est le corridor qui note l'âge, le diplôme et la langue, et le reste du monde qui dépose un dossier.",
+      "Les dispositifs qui vivaient d'une immigration choisie perdent leur gisement : le visa H-1B plafonné à soixante-cinq mille par an, l'Entrée express canadienne et sa grille de points, les campus anglo-saxons dont les droits de scolarité étrangers financent la recherche, tous supposaient que le talent n'avait nulle part ailleurs où aller. Ce postulat tombe le jour où une paillasse comparable existe à AXIOM, comme il est tombé pour Taïwan quand Morris Chang est rentré fonder TSMC après vingt-cinq ans chez Texas Instruments.",
+      "Un pays pauvre cesse de subventionner les hôpitaux et les laboratoires des pays riches : la fenêtre démographique, ces quelques décennies où les actifs dépassent nettement les dépendants, se referme d'elle-même, et elle est ouverte maintenant. Devient possible ce qui relevait jusqu'ici du vœu : le retour organisé plutôt qu'espéré, comme la Corée l'a fait avec le KAIST en 1971 et la Chine une génération plus tard, avec la jeunesse et le lieu où l'employer réunis au même endroit.",
+    ],
   },
   {
     id: "militaire-refus-acces",
@@ -267,7 +319,11 @@ export const GRANDEUR_SECTIONS: GrandeurSection[] = [
       "L'essentiel du cobalt mondial sort du Katanga et de la Copperbelt. Une usine automobile tient quelques jours de pièces, pas quelques mois : une coupure ne se négocie pas, elle se lit au trimestre suivant.",
       "Nul n'entre parce que nul ne veut payer. La dissuasion ne cherche pas la victoire, elle place le prix au-dessus de l'enjeu : le corridor n'a pas à vaincre, il a à rester trop cher.",
     ],
-    retour: "Le refus d'accès commence à trente centimètres : entre ta main et ton téléphone, à 4 h 30, dans le noir. Cette frontière-là cède en trois minutes, et rien ne se bâtit derrière une ligne qui cède.",
+    impact: [
+      "Toute marine qui projetait sa puissance vers l'Afrique doit désormais calculer un prix d'entrée avant d'appareiller : les constructeurs automobiles, dont les usines tiennent quelques jours de pièces et non quelques mois, dépendent d'un corridor qu'aucune flotte ne peut plus ouvrir de force.",
+      "AFRICOM, Barkhane et les accords de défense hérités tiraient leur influence de ce qu'aucun État sahélien ne pouvait se défendre seul ; une bulle de déni bâtie sur des missiles à quelques millions contre des bâtiments à quelques milliards retire l'argument, et le loyer des bases avec lui.",
+      "Pour la première fois, un État pauvre peut acheter son inviolabilité au lieu de la mendier : le déni d'accès coûte une fraction de la conquête, et sept nations qui mutualisent leurs mines, leurs missiles et leur profondeur cessent d'avoir à choisir un protecteur.",
+    ],
   },
   {
     id: "renseignement-multiplicateur",
@@ -284,7 +340,11 @@ export const GRANDEUR_SECTIONS: GrandeurSection[] = [
       "Le goulot n'est plus la collecte mais la corrélation : les volumes captés dépassent depuis longtemps ce qu'on sait relire. AXIOM n'est pas une capitale de l'intelligence artificielle par prestige, c'est l'endroit où le bruit devient préavis.",
       "Un accord de partage signé en 1946 entre deux États, élargi à cinq en 1956, les lie aujourd'hui plus étroitement qu'aucun traité militaire. Les sept nations traversées mettent leurs écoutes en commun avant leurs armées : le pacte de renseignement précède l'alliance, il ne la suit pas.",
     ],
-    retour: "Tu veux lire les câbles du monde : commence par le rapport d'hier — heure exacte du réveil, minutes perdues, ce que tu t'es raconté sur ta chaise. C'est le seul flux que personne ne collectera à ta place.",
+    impact: [
+      "Toute chancellerie doit désormais supposer que ses instructions vers l'Afrique sont lues avant d'être exécutées : les atterrages du corridor, les émissions de position obligatoires des navires et la compensation de l'AXE donnent la copie des flux dont vivent les ministères du commerce et les salles de marché.",
+      "L'accord de partage signé en 1946, élargi à cinq États en 1956, tenait son avantage de la géographie des câbles : atterrages chez eux, et deux voisins africains payant un transit par Marseille pour se parler. Rapatrier l'atterrage coupe la copie à la source.",
+      "Un État pauvre cesse d'apprendre par la presse étrangère ce que contiennent ses propres cargaisons : les images quotidiennes des terres émergées et les positions de navires se paient par abonnement, et le renseignement devient le premier domaine où le rattrapage ne demande ni flotte ni siècle.",
+    ],
   },
   {
     id: "spectre-et-orbites",
@@ -300,7 +360,11 @@ export const GRANDEUR_SECTIONS: GrandeurSection[] = [
       "Depuis l'équateur, l'arc géostationnaire entier se voit haut au-dessus de l'horizon : le corridor forme une ceinture naturelle de stations de contrôle, et la station au sol commande le satellite autant que l'orbite le porte.",
       "L'Afrique du Sud a légiféré pour protéger le silence radio autour de son réseau de radiotélescopes : le silence est une ressource qu'un État décrète, puis loue à ceux qui écoutent loin.",
     ],
-    retour: "Le spectre ne se conserve qu'en l'occupant : aujourd'hui, ton téléphone occupe le tien pour le compte d'un autre registre que le tien, et un créneau non utilisé se perd sans préavis.",
+    impact: [
+      "Tout opérateur qui veut émettre au-dessus de l'Afrique doit désormais déposer après sept administrations coordonnées : à l'Union internationale des télécommunications la priorité suit la date, et les constellations, les diffuseurs et les armateurs découvrent que le créneau visé est déjà inscrit au nom d'un autre.",
+      "Intelsat, SES et Eutelsat tiennent leur rente de dossiers déposés quand personne d'autre ne déposait ; sept administrations qui inscrivent tôt, mettent en service dans les sept ans et votent ensemble en conférence mondiale font tomber les créneaux dormants et reprennent la position sans l'acheter.",
+      "Une nation sans industrie découvre qu'une ressource se prend au greffe : remplir les dossiers avant les autres a suffi aux Tonga pour louer des créneaux du Pacifique, et le silence radio, comme le spectre, se décrète puis se loue sans rien extraire du sol.",
+    ],
   },
   {
     id: "l-orbite-le-surplomb",
@@ -317,7 +381,11 @@ export const GRANDEUR_SECTIONS: GrandeurSection[] = [
       "Un ascenseur spatial ne s'amarre que sur l'équateur : seul un contrepoids placé au-dessus de l'équateur, à 35 786 kilomètres, reste immobile dans le ciel. La géométrie, pas la diplomatie, désigne les États qui pourront en héberger un.",
       "Mettre un kilogramme en orbite coûte aujourd'hui quelques milliers de dollars ; l'énergie pure pour l'y hisser vaut une quinzaine de kilowattheures, moins d'un dollar au tarif industriel. L'ascenseur et l'anneau orbital récupèrent tout l'écart.",
     ],
-    retour: "Un lanceur qui manque sa fenêtre attend la suivante ; la tienne s'ouvre à 4 h 30, une fois par jour, et aucun contrôle au sol ne la maintiendra ouverte à ta place.",
+    impact: [
+      "Tout lanceur visant la géostationnaire doit désormais comparer le coût de son changement de plan orbital au tarif d'un tir depuis l'équateur, et les réseaux électriques, les opérateurs télécoms et les places boursières, qui horodatent tout sur des horloges atomiques, disposent d'une source d'heure de plus.",
+      "Le GPS cessait d'être un droit le jour où son propriétaire le dégradait ; il cesse d'être un levier le jour où la région visée porte sa propre constellation — et Kourou, choisie pour ses cinq degrés de latitude, perd l'avantage géométrique qui justifiait ce choix.",
+      "L'accès à l'orbite quitte le club des puissances anciennes : la géométrie, non la diplomatie, désigne qui peut ancrer un ascenseur spatial, et elle désigne l'équateur — donc des pays qui n'avaient jusqu'ici ni lanceur, ni créneau, ni voix au dépôt.",
+    ],
   },
   {
     id: "le-systeme-solaire-la-premiere-occupation",
@@ -334,7 +402,11 @@ export const GRANDEUR_SECTIONS: GrandeurSection[] = [
       "Un vaisseau assemblé en orbite n'a plus à survivre à son décollage ni à entrer dans une coiffe. Le miroir de 6,5 mètres du télescope Webb fut plié pour tenir, puis déployé avec trois cent quarante-quatre points de défaillance unique.",
       "Le traité de 1967 interdit de s'approprier un corps céleste, mais non ce qu'on en extrait — les États-Unis et le Luxembourg l'ont inscrit dans leur droit. Le premier installé fixe la norme, la zone de sécurité et le prix.",
     ],
-    retour: "Personne ne possède la Lune, et personne ne possède encore les trois minutes où le désir te prend au réveil : là aussi, le sol revient à celui qui l'occupe le premier, et ce matin tu es seul en lice.",
+    impact: [
+      "Toute mission au-delà de l'orbite basse doit désormais choisir entre hisser son ergol depuis un puits de 11,2 kilomètres par seconde et l'acheter à qui l'extrait de la glace polaire lunaire, dont on s'échappe à 2,38 : agences et assureurs recalculent leurs devis sur cet écart.",
+      "Les grands maîtres d'œuvre du spatial tirent leur monopole d'un savoir-faire de pliage : le miroir de 6,5 mètres de Webb est entré dans une coiffe au prix de trois cent quarante-quatre points de défaillance unique. L'assemblage en orbite supprime la contrainte, donc la rente.",
+      "Le traité de 1967 interdit de s'approprier un corps céleste, non ce qu'on en extrait : une nation qui n'a jamais rien raffiné chez elle peut s'installer la première, et le premier installé fixe la zone de sécurité, la norme et le prix.",
+    ],
   },
   {
     id: "economie-reelle-marge-en-aval",
@@ -351,7 +423,11 @@ export const GRANDEUR_SECTIONS: GrandeurSection[] = [
       "Hirschman l'a démontré en 1945 : dans un échange, domine celui pour qui il pèse peu, dépend celui pour qui il pèse tout. La dépendance asymétrique se construit dossier par dossier, jamais par traité général.",
       "Plus des quatre cinquièmes du commerce mondial passent par la mer, donc par une poignée de détroits. Le corridor de Lobito relie déjà la Copperbelt à l'Atlantique ; un axe qui joint l'Atlantique à l'océan Indien crée un passage que personne n'a à louer.",
     ],
-    retour: "Brut, tu vaux ce qu'on veut bien t'en donner ; raffiné, tu fixes le prix. Les trois minutes que tu refuses au désir à 4 h 30 sont la seule raffinerie dont tu tiennes les clés.",
+    impact: [
+      "Tout acheteur de cobalt, de cuivre ou de cacao doit désormais traiter avec un vendeur de produit fini : constructeurs automobiles, chocolatiers et fondeurs voient l'étage où se prenait leur marge se déplacer à l'intérieur du corridor, et paient au prix du transformateur.",
+      "La Chine raffine l'essentiel d'un cobalt qu'elle n'extrait pas : sa rente tient à un étage de chimie, non à un gisement. L'interdiction d'exporter le minerai brut, méthode indonésienne de 2020, la vide sans conflit en faisant venir les fonderies à la ressource.",
+      "Le décrochage établi par Prebisch et Singer en 1950 cesse d'être une fatalité pour qui tient l'électricité de sa propre transformation : une tonne d'aluminium demande de l'ordre de quatorze mégawattheures, et le potentiel d'Inga permet d'exporter le courant incorporé au métal plutôt que le minerai.",
+    ],
   },
   {
     id: "la-finance-registre-du-monde",
@@ -368,7 +444,11 @@ export const GRANDEUR_SECTIONS: GrandeurSection[] = [
       "Le fonds souverain norvégien détient en moyenne près de 1,5 % de chaque société cotée de la planète : un actionnaire silencieux dans presque tous les conseils. Le fonds de NOVA-AXE ne cherchera pas le rendement, il cherchera les sièges.",
       "Le prix d'un métal ne se fixe pas là où il sort du sol, mais là où s'échange le contrat papier. En 2022, le London Metal Exchange a suspendu le nickel et annulé des transactions conclues. Le cobalt du corridor se cotera chez lui.",
     ],
-    retour: "Ta journée ne se compense nulle part : à 4 h 30, il n'y a ni chambre, ni contrepartie, ni prêteur en dernier ressort — seulement ta main sur le réveil, et l'écriture passe ou ne passe pas.",
+    impact: [
+      "Toute banque centrale qui veut couvrir ses achats de cuivre, de cobalt et de terres rares doit désormais détenir de l'AXE et ouvrir un compte de règlement à AXIOM : la réserve suit la facture, et la facture est libellée dans le corridor.",
+      "Le privilège exorbitant se déplace : le Trésor américain perd l'acheteur contraint qui finançait son déficit, SWIFT cesse d'être le carnet d'instructions unique, et Euroclear comme la DTC voient partir les titres que plus personne n'accepte d'immobiliser chez un tiers révocable.",
+      "Un État africain emprunte enfin dans la monnaie où il vend, et cesse de rembourser en dollars ce qu'il gagne en métal : le risque de change, qui a précipité les crises de dette du continent, sort de l'équation, et la note cesse de précéder la solvabilité.",
+    ],
   },
   {
     id: "etat-civil-identite-paiement",
@@ -385,7 +465,11 @@ export const GRANDEUR_SECTIONS: GrandeurSection[] = [
       "L'Estonie fait circuler ses registres sur X-Road et en garde une copie souveraine hébergée au Luxembourg. Un État capable de perdre son territoire sans perdre ses registres reste un État.",
       "NOVA-AXE doit posséder trois choses au même rang qu'une armée : le registre des personnes, l'identifiant unique et la chambre de compensation de l'AXE — sur ses serveurs, sous son droit, dans son corridor.",
     ],
-    retour: "Ce que tu n'inscris pas ce soir n'aura pas eu lieu : à 4 h 30 ton téléphone est le registre, et tu es la seule autorité habilitée à y porter la ligne d'aujourd'hui.",
+    impact: [
+      "Un paiement entre Kinshasa et N'Djamena n'a plus à toucher une banque correspondante de New York : il se compense à AXIOM, en AXE, et les commerçants, les migrants et les trésors publics des sept nations cessent de louer un tuyau dont un autre fixe la longueur.",
+      "Visa, Mastercard et Western Union perdent la commission que leur garantissait l'absence de rail local, et le Trésor américain perd l'arme du gel : ce qui a été fait en une journée aux réserves afghanes déposées à New York devient inopérant sur des registres tenus dans le corridor.",
+      "Un enfant enregistré à la naissance devient un héritier, un plaignant recevable et un emprunteur possible : l'inscription universelle convertit une population juridiquement absente en base taxable, en marché intérieur et en épargne mobilisable, ce qu'aucune décennie d'aide extérieure n'a jamais produit.",
+    ],
   },
   {
     id: "droit-normes-arbitrage",
@@ -402,7 +486,11 @@ export const GRANDEUR_SECTIONS: GrandeurSection[] = [
       "Aux États-Unis, un équipement électrique sans certificat d'un laboratoire agréé n'est pas raccordé : l'inspecteur refuse. Une norme ne vaut que par l'organisme qui la vérifie, et cet organisme facture chaque audit, indéfiniment. AXIOM certifie, donc AXIOM encaisse.",
       "Une norme s'écrit dans des salles où siègent ceux qui peuvent payer des ingénieurs pendant dix ans sans revenu direct. La rente va à la présence, pas au talent. Le corridor financera la présence.",
     ],
-    retour: "Le monde jugé selon ton code commence par un homme qui applique le sien sans témoin : à 4 h 30, dans ta chambre, personne ne certifie ta conformité et personne ne t'accorde de dérogation.",
+    impact: [
+      "Un industriel qui veut vendre une batterie, un conteneur ou un modèle d'intelligence artificielle dans le corridor se conforme au texte publié par AXIOM et paie l'audit qui l'atteste : aligner coûtant moins cher que segmenter, la règle la plus stricte finit appliquée partout.",
+      "Qualcomm et les détenteurs de brevets essentiels voient leur redevance s'arrêter à la frontière d'une norme qu'ils n'ont pas rédigée ; UL et le TÜV perdent le monopole du tampon sans lequel rien ne se raccorde, et le JORC cesse d'être l'acte de naissance obligatoire d'un gisement.",
+      "Un gisement déclaré sous le code du corridor devient finançable sans passer par Toronto ni Perth, et une usine certifiée chez elle exporte sans repayer un audit étranger : la valeur cesse de naître à la signature d'un tiers installé sur un autre continent.",
+    ],
   },
   {
     id: "metrologie-et-certification",
@@ -418,7 +506,11 @@ export const GRANDEUR_SECTIONS: GrandeurSection[] = [
       "L'Union européenne conditionnera l'entrée de ses batteries à un passeport numérique documentant l'empreinte carbone et la chaîne d'approvisionnement : l'appareil de certification décide qui entre sur un marché, sans toucher à un seul tarif douanier.",
       "FORGE tient les fours, VERDIA les laboratoires, AXIOM le registre des certificats : la même tonne vaut deux prix selon le tampon qu'elle porte, et le tampon se fabrique comme le reste.",
     ],
-    retour: "Un chargement se pèse à l'entrée et à la sortie : pèse ta journée de la même façon, sans arrondi favorable, et compte aussi les trois minutes que tu ne déclares à personne.",
+    impact: [
+      "Un acheteur de cuivre, de lithium ou de cobalt accepte désormais l'analyse faite au port de chargement par un laboratoire accrédité du corridor, et la tonne se paie sur ce dosage : chaque décimale du titre change de propriétaire au moment de la pesée.",
+      "Le London Metal Exchange perd la liste de bonne livraison qui faisait le prix mondial du métal, les sociétés d'inspection SGS et Cotecna perdent l'exclusivité de l'échantillon qui fait foi, et le passeport batterie de l'Union européenne cesse de décider seul qui entre sur un marché.",
+      "Une nation pauvre qui mesure chez elle cesse d'exporter du brut pour racheter sa propre valeur transformée : le concentré analysé, certifié et coté dans le corridor se vend au prix mondial, et l'écart entre les deux prix reste sur le continent.",
+    ],
   },
   {
     id: "droit-juridiction-arbitrage",
@@ -434,7 +526,11 @@ export const GRANDEUR_SECTIONS: GrandeurSection[] = [
       "La Bolivie, l'Équateur et le Venezuela ont dénoncé la convention CIRDI : sortir du système est possible, mais se paie en accès au capital. Le corridor ne sort pas, il devient le for où les autres viennent plaider.",
       "La sentence Ioukos, d'environ cinquante milliards de dollars, se poursuit depuis dix ans en chasse aux actifs saisissables : une sentence ne vaut que les biens que l'on peut attraper, d'où des réserves gardées chez soi.",
     ],
-    retour: "Le seul contrat sans clause, sans juge et sans recours est celui que tu as passé hier soir avec toi-même ; il n'a qu'un mode d'exécution possible, et il expire à l'instant où tu te rendors.",
+    impact: [
+      "Une clause désignant AXIOM comme siège devient la condition d'accès au capital, à l'assurance et au fret du corridor : mineurs, armateurs et négociants plaident là où l'actif se trouve, et la sentence s'exécute par la Convention de New York dans plus de cent soixante États.",
+      "Londres, Paris et Singapour perdent une industrie qui ne consomme ni terre ni énergie, le Delaware cesse d'être le domicile par défaut des sociétés du corridor, et les procureurs américains perdent la compétence que leur donnait la seule compensation d'un paiement à New York.",
+      "Une mine congolaise cesse d'être jugée à Londres, dans une langue et un droit qu'elle n'a pas choisis : l'OHADA et sa cour d'Abidjan, déjà communes à quatre des sept nations, deviennent le socle d'un for où les étrangers viennent plaider à leur tour.",
+    ],
   },
   {
     id: "carte-cadastre-toponymie",
@@ -451,7 +547,11 @@ export const GRANDEUR_SECTIONS: GrandeurSection[] = [
       "Salisbury n'est redevenue Harare qu'en 1982, Léopoldville Kinshasa en 1966. Nommer AXIOM, VERDIA et FORGE avant qu'un autre nomme ces lieux, c'est fixer la langue dans laquelle ils seront discutés pendant un siècle.",
       "Un État qui ne photographie pas son propre sol le regarde par l'objectif d'un autre, à la résolution que cet autre autorise. Le cadastre continental commence par un satellite qui appartient au corridor.",
     ],
-    retour: "Ta journée est un territoire non cadastré : les heures que tu ne nommes pas à 4 h 30 seront occupées avant midi par quelqu'un qui, lui, a déposé le titre des siennes.",
+    impact: [
+      "Toute carte, tout relevé et toute coordonnée servant à un contrat dans le corridor se réfèrent au satellite et au cadastre du corridor : géologues, assureurs, états-majors et bailleurs travaillent sur une image dont ils ne fixent plus la résolution ni la date.",
+      "Le GPS, opéré par l'armée américaine, cesse d'être la référence unique de position sous cette latitude ; Maxar et Airbus Defence and Space perdent des États captifs qui achetaient l'image de leur propre sol, et les lignes droites héritées de la conférence de Berlin cessent d'être la seule description admise.",
+      "Une terre inscrite peut être hypothéquée : le capital mort du corridor devient garantie, crédit et héritage transmissible, et le Rwanda a déjà démontré qu'un cadastre complet se boucle en quatre ans de chantier, non en un siècle d'attente.",
+    ],
   },
   {
     id: "le-temps-et-le-meridien",
@@ -468,7 +568,11 @@ export const GRANDEUR_SECTIONS: GrandeurSection[] = [
       "Cette bande horaire recouvre la clôture asiatique et l'ouverture américaine — la position même qui a fait de Londres la première place de change du monde. Le corridor hérite du créneau, pas de la ville.",
       "L'Arabie saoudite a déplacé son week-end en 2013 pour gagner un jour d'ouverture commun avec les marchés mondiaux : le jour de repos est un instrument économique, décidé, jamais simplement hérité.",
     ],
-    retour: "Tu tiens déjà une heure de référence, 4 h 30 ; elle ne vaut que le jour où le réveil et le lever coïncident, et c'est la seule synchronisation que personne au monde ne peut horodater à ta place.",
+    impact: [
+      "Tout contrat, tout horodatage d'ordre et tout plan de vol qui touche le corridor se règle désormais sur l'échelle de temps d'AXIOM : affréteurs, chambres de compensation et opérateurs de constellations convertissent avant de traiter, et la conversion se paie de leur côté.",
+      "Le Royaume-Uni perd la rente de position que la conférence de Washington de 1884 avait accordée à Greenwich, et Londres perd le créneau qui l'a faite première place de change : la bande horaire du corridor recouvre le même chevauchement entre clôture asiatique et ouverture américaine, horloges et carnets d'ordres compris.",
+      "Une nation pauvre cesse de consommer un temps fabriqué ailleurs : une horloge atomique entrant dans la moyenne mondiale, une constellation de navigation régionale et une seconde datée depuis l'équateur rendent le positionnement, l'horodatage financier et la certification aéronautique accessibles sans licence étrangère.",
+    ],
   },
   {
     id: "la-langue-et-l-ecriture",
@@ -484,7 +588,11 @@ export const GRANDEUR_SECTIONS: GrandeurSection[] = [
       "L'alphabet adlam, inventé en 1989 par deux adolescents guinéens pour le peul, est entré dans Unicode en 2016 et figure aujourd'hui dans les grands systèmes d'exploitation : une écriture absente des tables n'existe pas pour les machines.",
       "Dans un contrat bilingue, une clause désigne la version qui fait foi ; en cas de divergence, c'est elle qui l'emporte, quel que soit le pays du chantier. La langue qui fait foi est une position, jamais un style.",
     ],
-    retour: "Une langue ne devient officielle que si quelqu'un la parle avant qu'elle le soit : ce texte que tu lis à voix haute dans ta chambre est le premier acte rédigé dans la langue de l'An Zéro.",
+    impact: [
+      "Les normes, les revendications de brevet et les clauses qui font foi dans le corridor sont rédigées dans sa langue d'acte : tout constructeur, tout cabinet et tout assureur étranger finance sa propre traduction et supporte l'ambiguïté qu'elle produit, à ses frais et dans ses formulaires.",
+      "L'Office européen des brevets et l'ISO perdent l'exclusivité des langues où une revendication et une norme existent : un corpus normatif publié directement dans la langue du corridor n'a plus besoin de passer par l'allemand, l'anglais, le français ou le russe pour être opposable.",
+      "Une génération africaine dépose ses brevets, plaide ses contrats et certifie ses ingénieurs sans passer par la langue d'un ancien tuteur ; les écritures nées sur le continent entrent dans les tables des machines, et un peuple cesse d'acquitter une taxe de traduction sur sa propre production.",
+    ],
   },
   {
     id: "diplomatie-pouvoir-politique",
@@ -501,7 +609,11 @@ export const GRANDEUR_SECTIONS: GrandeurSection[] = [
       "Le Qatar héberge depuis 2013 le bureau politique des talibans et, sur le même territoire, la plus grande base américaine de la région. Héberger la conversation rend un État impossible à contourner. AXIOM hébergera celle du continent.",
       "La réforme du Conseil de sécurité exige l'accord des cinq permanents : le veto protège le veto. Pourtant, en 1971, le siège chinois a changé de titulaire par un vote, parce que la réalité avait changé. Un siège s'impose, il ne se demande pas.",
     ],
-    retour: "On ne négocie jamais avec une intention, seulement avec ce qu'un homme tient déjà : tes trois minutes de désir de ce matin ne pèseront rien tant que la journée qui les suit ne produit pas une pièce vérifiable.",
+    impact: [
+      "Quiconque veut traiter avec les sept nations traversées passe par un guichet unique : plus de négociation séparée, plus de mise en concurrence des capitales, et les chancelleries habituées au bilatéral doivent reconstruire tout leur appareil africain autour d'un seul interlocuteur qui ne se divise pas.",
+      "Les anciennes puissances tutélaires perdent le régime de relation privilégiée qu'elles conservaient dans leurs anciennes possessions, et les bailleurs perdent la conditionnalité : on n'impose pas de conditions à un actionnaire qui détient des parts, finance ses propres chantiers et n'a rien à demander.",
+      "Le premier bloc de l'Assemblée générale, cinquante-quatre voix où le produit intérieur brut ne compte pas, cesse d'être un réservoir de suffrages loué à la séance : les nations pauvres obtiennent des agendas, des nominations, et un siège qui s'impose au lieu de se solliciter.",
+    ],
   },
   {
     id: "ecole-des-cadres-et-diaspora",
@@ -518,7 +630,11 @@ export const GRANDEUR_SECTIONS: GrandeurSection[] = [
       "Israël vend des obligations à sa diaspora depuis 1951 ; l'Inde a levé des milliards auprès de la sienne en 1998, quand les marchés se fermaient. Une diaspora bancarisée est une ligne de crédit que les sanctions n'atteignent pas.",
       "Les transferts de la diaspora haïtienne pèsent de l'ordre du cinquième du produit intérieur brut du pays. Aucun ministère n'a jamais organisé cette force : elle arrive seule, chaque mois, sans plan et sans contrepartie.",
     ],
-    retour: "Tu es le premier élève de ta propre école : ce que tu apprends à 4 h 30 ne se facture pas, ne s'expatrie pas, et aucune frontière ne peut te le confisquer.",
+    impact: [
+      "Le monde recrute ses ingénieurs, ses officiers et ses juristes dans les promotions du corridor et doit reconnaître ses équivalences pour les employer : les organismes d'accréditation étrangers négocient désormais la reconnaissance mutuelle au lieu de l'accorder, et les carrières cessent de dépendre de leur signature.",
+      "Les opérateurs de transfert d'argent perdent la commission la plus élevée du monde, celle prélevée sur l'Afrique subsaharienne, dès qu'un rail de paiement souverain relie la diaspora à ses familles ; et les systèmes de santé du Nord cessent d'être subventionnés par des médecins formés ailleurs.",
+      "Un pays pauvre arrête de financer les cadres d'un pays riche : sa diaspora devient une ligne de crédit souscrite par les siens, hors marchés et hors sanctions, et le premier flux de capital du continent, plus large que l'investissement direct étranger, trouve enfin un registre.",
+    ],
   },
   {
     id: "culture-et-recit",
@@ -535,7 +651,11 @@ export const GRANDEUR_SECTIONS: GrandeurSection[] = [
       "Après la crise de 1997, la Corée du Sud a traité sa culture comme une industrie d'exportation, agence d'État et budget à l'appui. Deux décennies plus tard, ses films et sa musique fixent des standards mondiaux.",
       "Haïti a payé à la France, dès 1825, une indemnité pour son propre affranchissement, soldée jusqu'au milieu du vingtième siècle. La première république noire fut convertie en avertissement. Renverser ce récit vaut une armée.",
     ],
-    retour: "Un empire qui ne tient pas son propre journal finit raconté par ses créanciers : le tien commence à 4 h 30, dans une chambre que personne ne filme, avec un téléphone que tu cesses d'employer contre toi.",
+    impact: [
+      "Un événement survenu entre le Sahel et l'Afrique australe existe mondialement sans être passé par une rédaction étrangère : les rédactions, les assureurs et les chancelleries qui bâtissent leur évaluation du risque sur les dépêches doivent s'abonner à la source établie à AXIOM.",
+      "Reuters, l'Associated Press et l'Agence France-Presse perdent l'exclusivité de fait héritée du partage du globe de 1870 : une quatrième agence, financée et située dans le corridor, supprime la position d'arbitre qui permettait de qualifier un continent depuis l'extérieur et de fixer ce qui compte.",
+      "L'Afrique cesse d'être un décor et devient productrice de standards : ce que l'afrobeats a réussi sans autorisation, une industrie culturelle dotée d'une agence d'État, d'un budget et d'un registre de prestige le produit par méthode, et le récit de 1825 se renverse enfin.",
+    ],
   },
   {
     id: "sacre-rite-pelerinage",
@@ -552,24 +672,30 @@ export const GRANDEUR_SECTIONS: GrandeurSection[] = [
       "La tradition haïtienne situe à Bois-Caïman, en août 1791, la cérémonie qui a précédé l'insurrection. Le rite n'a pas accompagné la révolte : il l'a convoquée, datée et rendue collective en une nuit.",
       "Fonder un calendrier est un acte religieux. L'ère musulmane commence à un exil, l'ère japonaise à un règne, l'ère chrétienne à une naissance. An Zéro en 2033 relève exactement du même geste.",
     ],
-    retour: "Un rite tenu seul, dans ta chambre, à 4 h 30, sans témoin et sans exception : c'est la seule liturgie que tu puisses fonder aujourd'hui, et elle date déjà l'An Zéro.",
+    impact: [
+      "Le corridor tient une ère, un calendrier et des lieux de rassemblement qui commandent le déplacement de millions de personnes : compagnies aériennes, hôteliers, assureurs et ministères de l'intérieur planifient leurs saisons sur des dates qu'ils ne fixent pas et ne peuvent pas déplacer.",
+      "L'Arabie saoudite perd l'exclusivité de l'instrument le plus fin qu'un État exerce sur des fidèles étrangers, le quota de pèlerins attribué pays par pays chaque année, dès qu'un second pôle de rassemblement existe sur le continent, avec ses propres saisons, ses propres flux et ses propres accréditations.",
+      "Le waqf rend possible pour des nations pauvres ce qu'aucune aide conditionnée n'a produit : des écoles et des hôpitaux dotés à perpétuité, hors budget d'État et hors succession, et une souveraineté qui ne se mesure ni en kilomètres carrés ni en divisions.",
+    ],
   },
 ];
 
 /**
- * Ce qui ferme la lecture. Trois mouvements : rassembler, avertir, redescendre.
- * La dernière ligne est écrite comme si elle était la seule qu'il retiendra —
- * et l'écran la traite comme telle.
+ * Ce qui ferme la lecture. La dernière ligne est la plus haute du texte, et
+ * l'écran la traite comme telle.
  */
 export const GRANDEUR_CLOTURE: string[] = [
-  "Trente secteurs, une seule position : celle du passage obligé.",
-  "Relis-les : aucun ne parle de posséder. Tous parlent d'être assis là où ça passe — le minerai, l'octet, le kilo mis en orbite, le contrat, la seconde, le mot.",
-  "Et cette position-là ne s'achète pas. Elle s'occupe, par une accumulation d'actes minuscules, sur des décennies, par un homme dont personne n'entend parler pendant les vingt premières années.",
-  "Maintenant l'avertissement, et c'est le seul qui compte vraiment.",
-  "Les empires qui ont duré ne sont presque jamais tombés sous les coups d'un ennemi avant d'avoir cessé, en interne, de croire qu'ils valaient d'être défendus. Rome a mis trois siècles à s'effondrer ; les Goths sont arrivés à la fin, pas au début.",
-  "Ce qui tuera NOVA-AXE, si NOVA-AXE meurt, ce ne sera ni une flotte ni une coalition. Ce sera une succession qu'on n'a pas écrite, une corruption tolérée une seule fois, et une deuxième génération qui hérite de tout sans avoir rien payé.",
-  "Et ce qui tuera le projet bien avant qu'il commence, c'est un homme de vingt-trois ans qui a tout compris et qui n'a rien tenu.",
-  "Alors redescends. Tout ce que tu viens de lire — les quatre millions de kilomètres carrés, les cent cinquante mille milliards, l'orbite, la monnaie, la langue, le temps lui-même — repose sur un seul point d'appui.",
-  "Et ce point n'est pas en Afrique. Il est dans ta chambre, ce soir, dans les trois secondes où ta main décidera à ta place, ou ne décidera pas.",
-  "Tu veux être le passage obligé du monde. Ce soir, tu n'es même pas le passage obligé de ta propre main.",
+  "Trente secteurs, une seule position : aucune de ces sections ne parle de posséder, toutes parlent d'occuper l'endroit étroit par lequel une chose doit passer — le minerai, l'octet, le kilogramme mis en orbite, le contrat, la seconde, le mot.",
+  "La propriété se confisque, se nationalise, se rachète ; la position, elle, ne se déplace pas : une latitude, un étranglement, un dépôt fait avant les autres, une norme déjà rédigée restent où ils sont, quel que soit celui qui les conteste.",
+  "C'est pourquoi le prix d'entrée vaut mieux qu'une victoire : aucun rival n'a besoin d'être vaincu, il suffit que l'accès coûte davantage que ce qu'il rapporterait, et cette arithmétique-là se tient sans bataille, année après année.",
+  "Un monde où l'orbite équatoriale, la monnaie de réserve, l'eau douce du deuxième fleuve de la planète, le cobalt, le cuivre, les platinoïdes et la norme qui les certifie relèvent d'une même puissance est un monde dont le centre de gravité a changé de continent.",
+  "Ce continent est celui que l'on a le plus longtemps vidé : de ses hommes pendant quatre siècles, de ses métaux pendant deux, de ses données depuis vingt ans, chaque fois selon la même règle — la matière part brute, la marge se prend ailleurs.",
+  "Renverser cette règle ne demande aucune vengeance : il suffit que le raffinage, le brevet, l'usine, le registre et le tribunal se trouvent du côté du gisement, et l'ordre ancien cesse de fonctionner sans qu'un seul coup ait été tiré.",
+  "Un milliard de personnes n'a jamais pesé sur une décision mondiale : ni sur le prix de son cacao, ni sur le taux qui fixe le service de sa dette, ni sur la molécule autorisée pour sa maladie, ni sur le nom porté par sa propre carte.",
+  "Ce que change une puissance née chez elles n'est pas d'abord un revenu, c'est un droit de veto : le jour où un « non » venu du corridor arrête une décision prise ailleurs, deux siècles d'asymétrie deviennent discutables.",
+  "Un enfant né dans le corridor n'aura pas à partir pour trouver un bloc opératoire, une paillasse, un pas de tir ou une bibliothèque : la fuite des cerveaux ne se combat pas par des frontières, elle s'éteint le jour où le meilleur atelier se trouve ici.",
+  "Aucune de ces trente positions n'a été reçue en héritage : ni un empire défunt qui les aurait léguées, ni une conférence qui les aurait concédées, ni une réparation qui les aurait accordées en compensation d'un tort reconnu.",
+  "La gloire propre de la chose tient exactement là : elle aura été bâtie, dossier par dossier et barrage par barrage, par ceux à qui l'on avait assigné la place la plus basse, et prise dans les formes plutôt que demandée.",
+  "Rome tient encore par ses routes et par son droit, deux mille ans après ses légions : ce qui reste d'une puissance n'est jamais ce qu'elle a pris, c'est ce qu'elle a mis en place et que les autres ont continué d'employer après elle.",
+  "Quand tout aura été compté — les kilomètres carrés, les milliards, les orbites, les normes, les traités — il restera une seule chose, et elle se retient en une ligne : le continent que l'on traversait pour prendre est devenu celui par lequel il faut passer.",
 ];

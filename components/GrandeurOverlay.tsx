@@ -23,10 +23,11 @@ import {
  * langue, la mémoire. Mélanger cet ordre détruirait l'argument : chaque étage
  * ne tient que parce que celui du dessous a été posé.
  *
- * Chaque section se ferme sur un retour, en rouge, qui ramène la puissance
- * décrite à sa journée d'aujourd'hui. Sans ces retours, ce texte serait
- * exactement ce qu'il se reproche : une rêverie de grandeur, la récompense
- * sans la facture.
+ * Chaque section se ferme sur son impact mondial. Il a écarté le cadrage
+ * disciplinaire — « pas dans notre contexte de discipline dans l'app, je veux
+ * qu'on parle de la merveille du projet » — et il avait raison : une première
+ * version ramenait chaque secteur à son réveil de 4 h 30, ce qui était de la
+ * discipline déguisée en géopolitique. Ce texte-ci parle du monde.
  *
  * Et les sections s'ouvrent une par une. Un mur de vingt sections se scrolle
  * sans se lire ; un accordéon oblige à choisir d'ouvrir, donc à lire.
@@ -114,9 +115,25 @@ export default function GrandeurOverlay({ onClose }: { onClose: () => void }) {
                         </li>
                       ))}
                     </ul>
-                    <p className="mt-4 border-t border-white/10 pt-3.5 text-[13.5px] font-semibold leading-relaxed text-red">
-                      {s.retour}
-                    </p>
+                    {/* L'impact mondial ferme chaque secteur. Il a écarté
+                        le cadrage disciplinaire : ce texte parle du monde, pas
+                        de lui. Trois temps — ce qui change pour tous, qui perd
+                        sa position, ce que ça ouvre pour les nations pauvres. */}
+                    <div className="mt-4 border-t border-white/10 pt-3.5">
+                      <p className="mb-2.5 text-[9.5px] font-bold uppercase tracking-[0.22em] text-red">
+                        Ce que le monde devient
+                      </p>
+                      <ul className="flex flex-col gap-2.5">
+                        {s.impact.map((l) => (
+                          <li
+                            key={l}
+                            className="text-[13.5px] leading-[1.55] text-white/75"
+                          >
+                            {l}
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
                   </div>
                 )}
               </section>
