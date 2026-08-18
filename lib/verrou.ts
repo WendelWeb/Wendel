@@ -7,18 +7,27 @@ import { visionAccess } from "./schema";
 import { getSerment } from "./serments";
 
 /**
- * LE VERROU DES 30 JOURS.
+ * LE VERROU DES 30 JOURS — levé.
  *
- * Tant que les trente jours ne sont pas tenus, l'app n'a qu'un seul écran : le
- * miroir. Il l'a demandé après avoir écrit lui-même que les outils qu'il
- * fabrique lui servent surtout à ne pas s'en servir — ouvrir la page du jour,
- * les citations ou le programme de muscu, c'était encore une façon d'éviter.
+ * Il avait demandé que l'app n'ait qu'un seul écran tant que les trente jours
+ * n'étaient pas tenus : le miroir, et rien d'autre. La raison était juste —
+ * il avait écrit lui-même que les outils qu'il fabrique lui servent surtout à
+ * ne pas s'en servir, et ouvrir la page du jour ou les citations était encore
+ * une façon d'éviter.
  *
- * Aucune exception. Il a demandé que l'urgence soit fermée elle aussi.
+ * Il a demandé la levée en annonçant le changement de régime : plus de
+ * rêverie, plus de pensée positive, action massive, des blocs de six à huit
+ * heures devant ses deux moniteurs. C'est cohérent : un verrou qui empêche
+ * d'éviter n'a plus d'objet quand l'homme travaille, et il gênerait ce qu'il
+ * vient chercher — cocher ses objectifs, ouvrir son livre, suivre sa
+ * progression, régler son plan.
+ *
+ * Ce qui ne bouge pas : le compteur des trente jours court toujours, la
+ * rechute remet toujours à zéro, et l'audit reste exigé à chaque créneau. Le
+ * verrou tombe, la preuve reste.
  */
-export async function verrouille(userId: string): Promise<boolean> {
-  const s = await getSerment(userId);
-  return !s.debloque;
+export async function verrouille(_userId: string): Promise<boolean> {
+  return false;
 }
 
 /** À appeler en tête de chaque page verrouillée. */

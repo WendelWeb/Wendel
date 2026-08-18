@@ -12,6 +12,7 @@ import {
   Ship,
   Flame,
   Landmark,
+  Crown,
   Siren,
   Quote,
   ScrollText,
@@ -71,6 +72,13 @@ const MORE_GROUPS: { group: string; items: MoreItem[] }[] = [
   {
     group: "Le feu",
     items: [
+      {
+        href: "/empire",
+        label: "NOVA-AXE",
+        desc: "L'empire d'après Haïti, secteur par secteur",
+        Icon: Crown,
+        color: "#A8401A",
+      },
       {
         href: "/vision",
         label: "Ma Vision",
