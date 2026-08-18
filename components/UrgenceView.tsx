@@ -33,36 +33,38 @@ export default function UrgenceView({
           Urgence
         </h1>
       </div>
-      <p className="mb-5 text-[13.5px] leading-relaxed text-text-secondary">
+      <p className="mesure mb-5 text-[13.5px] leading-relaxed text-text-secondary">
         Tu es tenté. Respire. C&apos;est exactement l&apos;instant du «&nbsp;presque&nbsp;»
         qui t&apos;a coûté 10 ans. Pas cette fois. Choisis la vérité, pas le
         mensonge de «&nbsp;juste une fois&nbsp;».
       </p>
 
-      <WhiteStaircase days={retentionDays} />
+      <div className="colonnes-xl">
+        <WhiteStaircase days={retentionDays} />
 
-      {/* Affirmation / phrase choc */}
-      <button
-        type="button"
-        onClick={() => setI((x) => (x + 1) % lignes.length)}
-        className="mb-5 flex w-full items-center gap-3 rounded-2xl p-5 text-left transition active:scale-[0.99]"
-        style={{ background: "var(--black)" }}
-      >
-        <Flame size={20} className="flex-shrink-0 text-red" fill="var(--red)" />
-        <span className="flex-1 font-display text-lg font-bold uppercase leading-tight tracking-tight text-white">
-          {lignes[i]}
-        </span>
-        <RefreshCw size={16} className="flex-shrink-0 text-white/40" />
-      </button>
+        {/* Affirmation / phrase choc */}
+        <button
+          type="button"
+          onClick={() => setI((x) => (x + 1) % lignes.length)}
+          className="mb-5 flex w-full items-center gap-3 rounded-2xl p-5 text-left transition active:scale-[0.99]"
+          style={{ background: "var(--black)" }}
+        >
+          <Flame size={20} className="flex-shrink-0 text-red" fill="var(--red)" />
+          <span className="flex-1 font-display text-lg font-bold uppercase leading-tight tracking-tight text-white">
+            {lignes[i]}
+          </span>
+          <RefreshCw size={16} className="flex-shrink-0 text-white/40" />
+        </button>
 
-      {/* Coach CTA */}
-      <Link
-        href="/coach"
-        className="mb-6 flex items-center justify-center gap-2 rounded-xl px-4 py-3 text-[14px] font-bold uppercase tracking-wide text-white transition active:scale-[0.99]"
-        style={{ background: "var(--navy)" }}
-      >
-        <Flame size={16} /> Parle au Coach maintenant
-      </Link>
+        {/* Coach CTA */}
+        <Link
+          href="/coach"
+          className="mb-6 flex items-center justify-center gap-2 rounded-xl px-4 py-3 text-[14px] font-bold uppercase tracking-wide text-white transition active:scale-[0.99]"
+          style={{ background: "var(--navy)" }}
+        >
+          <Flame size={16} /> Parle au Coach maintenant
+        </Link>
+      </div>
 
       {/* Quand je pense à… */}
       <h2 className="mb-2 font-display text-base font-bold uppercase tracking-wide text-text-primary">

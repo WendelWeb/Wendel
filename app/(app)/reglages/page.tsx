@@ -21,7 +21,7 @@ export default async function ReglagesPage() {
           Réglages
         </h1>
       </div>
-      <p className="mb-6 text-[13.5px] leading-relaxed text-text-secondary">
+      <p className="mesure mb-6 text-[13.5px] leading-relaxed text-text-secondary">
         Ton plan journalier. Ce que tu écris ici commande la page du jour, le
         score, le noyau, la série — et les emails.{" "}
         {defaut && (

@@ -30,7 +30,7 @@ export default function AnalyticsPanel({
   const maxFail = failures.length ? failures[0].count : 0;
 
   return (
-    <div className="mt-6 flex flex-col gap-4">
+    <div className="mt-6 flex flex-col gap-4 xl:mt-0">
       {/* ——— Ce qu'il rate le plus ——— */}
       <section className="rounded-2xl border border-border bg-surface p-4">
         <div className="mb-3 flex items-center gap-2">

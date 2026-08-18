@@ -82,7 +82,7 @@ export default function ProgramEditor({ initial }: { initial: Program }) {
   const weekly = weeklyVolume(program);
 
   return (
-    <main className="px-4 pb-10 pt-5 md:mx-auto md:max-w-3xl">
+    <main className="px-4 pb-10 pt-5 md:mx-auto md:max-w-3xl xl:max-w-none">
       <div className="mb-4 flex items-center justify-between">
         <Link
           href="/muscu"
@@ -106,7 +106,7 @@ export default function ProgramEditor({ initial }: { initial: Program }) {
       </div>
 
       <h1 className="mb-1 text-2xl font-bold text-text-primary">Mon programme</h1>
-      <p className="mb-5 text-[12px] text-text-secondary">
+      <p className="mesure mb-5 text-[12px] text-text-secondary">
         Modifie-le comme tu veux : séries, muscles, jours. Un jour sans muscle =
         repos.
       </p>
@@ -131,7 +131,7 @@ export default function ProgramEditor({ initial }: { initial: Program }) {
         </div>
       </div>
 
-      <div className="flex flex-col gap-3">
+      <div className="flex flex-col gap-3 lg:grid lg:grid-cols-2 lg:items-start xl:grid-cols-3 min-[1800px]:grid-cols-4">
         {DAY_ORDER.map((wd) => {
           const day = program[String(wd)];
           const muscles = orderedMuscles(day);
@@ -244,7 +244,7 @@ export default function ProgramEditor({ initial }: { initial: Program }) {
         type="button"
         onClick={save}
         disabled={pending}
-        className="mt-6 flex h-12 w-full items-center justify-center gap-2 rounded-xl text-[15px] font-semibold uppercase tracking-wide text-white transition active:scale-[0.99] disabled:opacity-70"
+        className="mt-6 flex h-12 w-full items-center justify-center gap-2 rounded-xl text-[15px] font-semibold uppercase tracking-wide text-white transition active:scale-[0.99] disabled:opacity-70 xl:max-w-sm"
         style={{ background: saved ? "var(--green)" : "var(--navy)" }}
       >
         {pending && <Loader2 size={18} className="animate-spin" />}

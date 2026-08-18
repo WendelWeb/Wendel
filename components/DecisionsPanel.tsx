@@ -22,7 +22,7 @@ export default function DecisionsPanel() {
         pourrait la voir se produire, elle n&apos;a rien à faire ici.
       </p>
 
-      <ul className="flex flex-col gap-2.5">
+      <ul className="mesure flex flex-col gap-2.5">
         {DECISIONS_SIENNES.map((l) => (
           <li
             key={l}
@@ -33,7 +33,7 @@ export default function DecisionsPanel() {
         ))}
       </ul>
 
-      <ul className="mt-3.5 flex flex-col gap-2.5 border-t border-white/12 pt-3.5">
+      <ul className="mt-3.5 grid items-start gap-2.5 border-t border-white/12 pt-3.5 xl:grid-cols-2">
         {DECISIONS_AJOUTEES.map((l) => (
           <li
             key={l}

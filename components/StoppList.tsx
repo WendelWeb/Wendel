@@ -27,7 +27,7 @@ export default function StoppList({ onClose }: { onClose: () => void }) {
     >
       <div
         onClick={(e) => e.stopPropagation()}
-        className="flex max-h-[85dvh] w-full max-w-lg flex-col overflow-hidden rounded-t-2xl bg-surface md:rounded-2xl"
+        className="flex max-h-[85dvh] w-full max-w-lg flex-col overflow-hidden rounded-t-2xl bg-surface md:rounded-2xl xl:max-w-4xl"
       >
         <div className="flex items-center justify-between border-b border-border px-5 py-4">
           <div>
@@ -49,7 +49,7 @@ export default function StoppList({ onClose }: { onClose: () => void }) {
           </button>
         </div>
 
-        <ol className="flex flex-col gap-2 overflow-y-auto p-4">
+        <ol className="grid grid-cols-1 items-start gap-2 overflow-y-auto p-4 xl:grid-cols-2">
           {phrases.map((phrase, i) => (
             <li
               key={i}

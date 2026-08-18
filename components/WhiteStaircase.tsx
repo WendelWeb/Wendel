@@ -14,7 +14,7 @@ export default function WhiteStaircase({ days }: { days: number }) {
 
   return (
     <section
-      className="mb-5 overflow-hidden rounded-2xl border"
+      className="mesure mb-5 overflow-hidden rounded-2xl border"
       style={{ borderColor: "var(--gold-border)", background: "var(--gold-soft)" }}
     >
       <div className="px-5 pt-4">

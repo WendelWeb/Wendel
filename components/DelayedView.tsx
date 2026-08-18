@@ -66,7 +66,7 @@ export default function DelayedView({
       <DecisionButton etat={etat} />
 
       {/* Le compte à rebours, en tête : c'est lui qui rend la liste urgente. */}
-      <div className="mb-5 grid gap-2.5 sm:grid-cols-2">
+      <div className="mb-5 grid gap-2.5 sm:grid-cols-2 xl:max-w-3xl">
         <div
           className="flex items-center justify-between rounded-2xl px-5 py-4"
           style={{
@@ -108,7 +108,7 @@ export default function DelayedView({
         </div>
       </div>
 
-      <div className="mb-3 flex items-center gap-2">
+      <div className="mb-3 flex items-center gap-2 xl:max-w-3xl">
         <div className="relative flex-1">
           <Search
             size={16}
@@ -192,7 +192,7 @@ export default function DelayedView({
         </p>
       ) : (
         <>
-          <div className="flex flex-col gap-1.5">
+          <div className="grid-objectives">
             {shown.map((d, i) => {
               const m = delayedCategoryMeta(d.c);
               return (

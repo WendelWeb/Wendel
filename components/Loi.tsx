@@ -37,7 +37,7 @@ export default function Loi({
 
   return (
     <section
-      className={`${spacing} h-full rounded-2xl px-5 py-5`}
+      className={`${spacing} rounded-2xl px-5 py-5`}
       style={{ background: "#08090c", border: "1.5px solid #1e3a5f" }}
     >
       <p className="mb-3 text-[9.5px] font-bold uppercase tracking-[0.24em] text-white/35">

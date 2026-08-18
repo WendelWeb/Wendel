@@ -122,53 +122,55 @@ export default function MiroirView({
         {/* Le bouton de l'envie — en premier, avant tout le reste. Quand ça
             monte, il ne doit pas avoir à chercher. Il remplace la page Urgence
             qu'il a fermée avec les autres. */}
-        <button
-          type="button"
-          onClick={() => setEnvie(true)}
-          className="mb-5 flex w-full items-center justify-center gap-2.5 rounded-2xl px-4 py-4 text-[15px] font-bold uppercase tracking-wide text-white transition active:scale-[0.99]"
-          style={{ background: "var(--red)" }}
-        >
-          <Flame size={18} />
-          Je ressens l&apos;envie
-        </button>
+        <div className="mb-5 grid gap-5 md:grid-cols-2 xl:grid-cols-4">
+          <button
+            type="button"
+            onClick={() => setEnvie(true)}
+            className="flex w-full items-center justify-center gap-2.5 rounded-2xl px-4 py-4 text-[15px] font-bold uppercase tracking-wide text-white transition active:scale-[0.99]"
+            style={{ background: "var(--red)" }}
+          >
+            <Flame size={18} />
+            Je ressens l&apos;envie
+          </button>
 
-        {/* Le POURQUOI reste ouvert pendant les 30 jours, contrairement à la
-            Vision. La Vision dit ce qu'il veut obtenir — elle se mérite. Le
-            POURQUOI est ce qui le fait tenir quand il n'a plus envie : le
-            fermer serait retirer le carburant en pleine côte. */}
-        <button
-          type="button"
-          onClick={() => setPourquoi(true)}
-          className="mb-5 flex w-full items-center justify-center gap-2.5 rounded-2xl px-4 py-3.5 text-[14px] font-bold uppercase tracking-wide text-black transition active:scale-[0.99]"
-          style={{ background: "var(--gold-border)" }}
-        >
-          <Target size={17} />
-          Pourquoi je fais tout ça
-        </button>
+          {/* Le POURQUOI reste ouvert pendant les 30 jours, contrairement à la
+              Vision. La Vision dit ce qu'il veut obtenir — elle se mérite. Le
+              POURQUOI est ce qui le fait tenir quand il n'a plus envie : le
+              fermer serait retirer le carburant en pleine côte. */}
+          <button
+            type="button"
+            onClick={() => setPourquoi(true)}
+            className="flex w-full items-center justify-center gap-2.5 rounded-2xl px-4 py-3.5 text-[14px] font-bold uppercase tracking-wide text-black transition active:scale-[0.99]"
+            style={{ background: "var(--gold-border)" }}
+          >
+            <Target size={17} />
+            Pourquoi je fais tout ça
+          </button>
 
-        {/* La liste entière, quand c'est lui qui la demande. Les bandeaux des
-            pages n'en montrent que six à la fois — ici, tout, d'un coup. */}
-        <button
-          type="button"
-          onClick={() => setSerieux(true)}
-          className="mb-5 flex w-full items-center justify-center gap-2.5 rounded-2xl px-4 py-3.5 text-[14px] font-bold uppercase tracking-wide text-white transition active:scale-[0.99]"
-          style={{ background: "#0f0a0a", border: "1.5px solid #7f1d1d" }}
-        >
-          <ShieldCheck size={17} className="text-red" />
-          Je suis sérieux
-        </button>
+          {/* La liste entière, quand c'est lui qui la demande. Les bandeaux des
+              pages n'en montrent que six à la fois — ici, tout, d'un coup. */}
+          <button
+            type="button"
+            onClick={() => setSerieux(true)}
+            className="flex w-full items-center justify-center gap-2.5 rounded-2xl px-4 py-3.5 text-[14px] font-bold uppercase tracking-wide text-white transition active:scale-[0.99]"
+            style={{ background: "#0f0a0a", border: "1.5px solid #7f1d1d" }}
+          >
+            <ShieldCheck size={17} className="text-red" />
+            Je suis sérieux
+          </button>
 
-        {/* La lecture — le seul ecran long de l app, et le seul dont l ordre
-            ne tourne pas : il monte du sol jusqu a la memoire. */}
-        <button
-          type="button"
-          onClick={() => setGrandeur(true)}
-          className="mb-5 flex w-full items-center justify-center gap-2.5 rounded-2xl px-4 py-3.5 text-[14px] font-bold uppercase tracking-wide transition active:scale-[0.99]"
-          style={{ background: "#0c0a06", border: "1.5px solid var(--gold-border)", color: "var(--gold-border)" }}
-        >
-          <Crown size={17} />
-          La grandeur — la lecture
-        </button>
+          {/* La lecture — le seul ecran long de l app, et le seul dont l ordre
+              ne tourne pas : il monte du sol jusqu a la memoire. */}
+          <button
+            type="button"
+            onClick={() => setGrandeur(true)}
+            className="flex w-full items-center justify-center gap-2.5 rounded-2xl px-4 py-3.5 text-[14px] font-bold uppercase tracking-wide transition active:scale-[0.99]"
+            style={{ background: "#0c0a06", border: "1.5px solid var(--gold-border)", color: "var(--gold-border)" }}
+          >
+            <Crown size={17} />
+            La grandeur — la lecture
+          </button>
+        </div>
 
         {grandeur && <GrandeurOverlay onClose={() => setGrandeur(false)} />}
 
@@ -203,7 +205,7 @@ export default function MiroirView({
             </span>
           </div>
 
-          <ul className="flex flex-col gap-3">
+          <ul className="grid items-start gap-3 xl:grid-cols-2 xl:gap-x-10">
             {ecarts.map((e) => (
               <li key={e.cible} className="grid grid-cols-2 gap-3 px-1">
                 <span
@@ -221,7 +223,7 @@ export default function MiroirView({
 
           <div className="mt-4 flex flex-col gap-2 border-t border-white/12 px-1 pt-3.5">
             {ECART_SORTIE.map((l) => (
-              <p key={l} className="text-[12px] leading-relaxed text-white/45">
+              <p key={l} className="mesure text-[12px] leading-relaxed text-white/45">
                 {l}
               </p>
             ))}
@@ -284,7 +286,7 @@ export default function MiroirView({
         </div>
 
         <div
-          className="mt-10 rounded-2xl px-5 py-6"
+          className="mesure mt-10 rounded-2xl px-5 py-6"
           style={{ background: "#141414", border: "1.5px solid #3f3f46" }}
         >
           <p className="mb-3 text-[10px] font-bold uppercase tracking-[0.22em] text-white/40">

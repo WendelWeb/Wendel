@@ -85,7 +85,7 @@ export default function PourquoiOverlay({ onClose }: { onClose: () => void }) {
             quelque chose qui existe déjà — un chapitre de ton livre, une ligne
             de ta Vision, une consigne de l&apos;alliance.
           </p>
-          <ol className="flex flex-col gap-3.5">
+          <ol className="grid grid-cols-1 items-start gap-3.5 xl:grid-cols-3">
             {vingt.map((l, i) => (
               <li key={l} className="flex gap-3">
                 <span className="tnum mt-[3px] flex-shrink-0 text-[11px] font-bold text-white/25">

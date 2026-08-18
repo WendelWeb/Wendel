@@ -169,7 +169,7 @@ export default function MuscuView({
         <h2 className="mb-2 font-display text-sm font-semibold uppercase tracking-[0.15em] text-text-secondary">
           Volume hebdomadaire
         </h2>
-        <div className="grid grid-cols-2 gap-2">
+        <div className="grid grid-cols-2 gap-2 lg:grid-cols-3">
           {weekly.map(({ muscle, sets: v }) => (
             <div
               key={muscle}

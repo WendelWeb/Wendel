@@ -254,7 +254,7 @@ export default function SermentPanel({
                 <p className="mb-3.5 text-[10px] font-bold uppercase tracking-[0.22em] text-white/40">
                   Maintenant, dis ça à voix haute
                 </p>
-                <ul className="flex flex-col gap-2.5">
+                <ul className="mesure flex flex-col gap-2.5">
                   {DECLARATION_FINALE.map((l) => (
                     <li
                       key={l}
@@ -336,7 +336,7 @@ export default function SermentPanel({
             <p className="mb-3 text-[12px] font-semibold leading-relaxed text-white/70">
               Coche ce qui est vrai. Toutes, ou rien.
             </p>
-            <ul className="flex flex-col gap-2">
+            <ul className="grid-objectives">
               {mesCases.map((c) => {
                 const on = conf[c.id];
                 // La case de lecture reste fermée tant qu'il n'est pas

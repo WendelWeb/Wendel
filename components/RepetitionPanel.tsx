@@ -147,7 +147,7 @@ export default function RepetitionPanel({
                   </p>
 
                   <div
-                    className="mb-4 rounded-xl px-4 py-4"
+                    className="mesure mb-4 rounded-xl px-4 py-4"
                     style={{ background: "#111", border: "1px solid var(--gold-border)" }}
                   >
                     {bloc.enumere ? (
@@ -251,7 +251,7 @@ export default function RepetitionPanel({
               </button>
 
               {science && (
-                <ul className="mt-2.5 flex flex-col gap-2">
+                <ul className="mt-2.5 grid items-start gap-2 xl:grid-cols-2 xl:gap-x-10">
                   {CE_QUE_DIT_LA_SCIENCE.map((l) => (
                     <li key={l} className="text-[12px] leading-relaxed text-white/50">
                       {l}

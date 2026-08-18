@@ -73,7 +73,7 @@ export default async function VaisseauPage() {
       </div>
 
       {/* Titre + rétention + lecture du jour + urgence — déplacés en bas. */}
-      <div className="mt-10 md:mx-auto md:max-w-3xl">
+      <div className="mt-10">
         <h1 className="font-display text-4xl font-bold tracking-tight text-navy">
           LE VAISSEAU
         </h1>
@@ -81,41 +81,43 @@ export default async function VaisseauPage() {
           Livre de l&apos;énergie, de la grâce, et du décret
         </p>
 
-        <RetentionPanel
-          days={ret.days}
-          startDate={ret.startDate}
-          daysUntilStart={Math.max(1, daysBetween(todayHaiti(), ret.startDate))}
-          seed={visitSeed()}
-        />
+        <div className="colonnes-xl">
+          <RetentionPanel
+            days={ret.days}
+            startDate={ret.startDate}
+            daysUntilStart={Math.max(1, daysBetween(todayHaiti(), ret.startDate))}
+            seed={visitSeed()}
+          />
 
-        <MountainPanel
-          daysSince={mtn.daysSince}
-          lastVisit={mtn.lastVisit}
-          due={mtn.due}
-        />
+          <MountainPanel
+            daysSince={mtn.daysSince}
+            lastVisit={mtn.lastVisit}
+            due={mtn.due}
+          />
 
-        <LectureDuJour
-          chapters={chapters}
-          readMap={lectureRead}
-          readCount={readCount}
-        />
+          <LectureDuJour
+            chapters={chapters}
+            readMap={lectureRead}
+            readCount={readCount}
+          />
 
-        <Link
-          href="/urgence"
-          className="flex items-center gap-3 rounded-2xl border p-4 transition hover:opacity-90"
-          style={{ borderColor: "var(--red)", background: "var(--red-soft)" }}
-        >
-          <Siren size={22} className="flex-shrink-0 text-red" />
-          <span className="min-w-0 flex-1">
-            <span className="block font-display text-base font-bold uppercase tracking-wide text-red">
-              Urgence — quand je suis tenté
+          <Link
+            href="/urgence"
+            className="flex items-center gap-3 rounded-2xl border p-4 transition hover:opacity-90"
+            style={{ borderColor: "var(--red)", background: "var(--red-soft)" }}
+          >
+            <Siren size={22} className="flex-shrink-0 text-red" />
+            <span className="min-w-0 flex-1">
+              <span className="block font-display text-base font-bold uppercase tracking-wide text-red">
+                Urgence — quand je suis tenté
+              </span>
+              <span className="block text-[12px] text-text-secondary">
+                «&nbsp;Quand je pense à…&nbsp;» + affirmations + Coach, en un tap.
+              </span>
             </span>
-            <span className="block text-[12px] text-text-secondary">
-              «&nbsp;Quand je pense à…&nbsp;» + affirmations + Coach, en un tap.
-            </span>
-          </span>
-          <ChevronRight size={18} className="flex-shrink-0 text-red" />
-        </Link>
+            <ChevronRight size={18} className="flex-shrink-0 text-red" />
+          </Link>
+        </div>
       </div>
     </main>
   );

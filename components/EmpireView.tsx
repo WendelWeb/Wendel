@@ -5,6 +5,7 @@ import { Crown } from "lucide-react";
 import {
   EMPIRE_NOM,
   EMPIRE_DOCTRINE,
+  EMPIRE_AN_ZERO,
   EMPIRE_FAITS,
   EMPIRE_ORDRE,
   REGISTRES,
@@ -74,6 +75,29 @@ export default function EmpireView() {
           <p className="mesure mt-3.5 border-l-[3px] border-red pl-4 text-[14px] font-semibold leading-relaxed text-white">
             {EMPIRE_DOCTRINE}
           </p>
+
+          {/* L an zero. La table des faits en dessous le datait de 2033 ; il a
+              corrige lui-meme. L empire ne commence pas a la premiere pierre,
+              il commence la ou il prend forme — et il se nourrit de ce qu il
+              ne dilapide pas. C est la jonction du pacte et du projet. */}
+          <div
+            className="mesure mt-4 rounded-xl px-4 py-3.5"
+            style={{ background: "#0c0a06", border: "1px solid #3f3520" }}
+          >
+            {EMPIRE_AN_ZERO.map((l, i) => (
+              <p
+                key={l}
+                className={
+                  i === 0
+                    ? "font-display text-[19px] font-bold uppercase leading-none tracking-tight"
+                    : "mt-2 text-[13px] leading-relaxed text-white/70"
+                }
+                style={i === 0 ? { color: "var(--gold-border)" } : undefined}
+              >
+                {l}
+              </p>
+            ))}
+          </div>
         </header>
 
         <div className="mb-7 grid grid-cols-2 items-start gap-2 sm:grid-cols-3">
@@ -122,7 +146,7 @@ export default function EmpireView() {
           className="mb-8 rounded-2xl px-5 py-5"
           style={{ background: "#0c0a06", border: "1.5px solid var(--gold-border)" }}
         >
-          <p className="mb-4 text-[12px] leading-relaxed text-white/45">
+          <p className="mesure mb-4 text-[12px] leading-relaxed text-white/45">
             {R.note}
           </p>
           <ul className="colonnes-xl">
@@ -149,7 +173,7 @@ export default function EmpireView() {
         <h2 className="mb-1 text-[10.5px] font-bold uppercase tracking-[0.22em] text-red">
           {CHANTIERS_TITRE}
         </h2>
-        <p className="mb-4 text-[12px] leading-relaxed text-white/40">
+        <p className="mesure mb-4 text-[12px] leading-relaxed text-white/40">
           {CHANTIERS_INTRO}
         </p>
 
@@ -180,7 +204,7 @@ export default function EmpireView() {
 
         {FAMILLES_CHANTIERS.filter((f) => f.id === famille).map((f) => (
           <div key={f.id} className="mb-9">
-            <p className="mb-3.5 text-[12px] leading-relaxed text-white/45">
+            <p className="mesure mb-3.5 text-[12px] leading-relaxed text-white/45">
               {f.note}
             </p>
             <div className="colonnes-xl">
@@ -247,7 +271,7 @@ export default function EmpireView() {
         <h2 className="mb-1 text-[10.5px] font-bold uppercase tracking-[0.22em] text-red">
           {ECHELLE_TITRE}
         </h2>
-        <p className="mb-4 text-[12px] leading-relaxed text-white/40">
+        <p className="mesure mb-4 text-[12px] leading-relaxed text-white/40">
           {ECHELLE_INTRO}
         </p>
 
@@ -335,7 +359,7 @@ export default function EmpireView() {
           {ECHELLE_SORTIE.map((l, i) => (
             <p
               key={l}
-              className="mb-2 leading-relaxed last:mb-0"
+              className="mesure mb-2 leading-relaxed last:mb-0"
               style={{
                 fontSize: i === ECHELLE_SORTIE.length - 1 ? "15px" : "13px",
                 fontWeight: i === ECHELLE_SORTIE.length - 1 ? 700 : 500,
@@ -354,7 +378,7 @@ export default function EmpireView() {
         <h2 className="mb-1 text-[10.5px] font-bold uppercase tracking-[0.22em] text-red">
           La lecture — trente secteurs de dominance
         </h2>
-        <p className="mb-5 text-[12px] leading-relaxed text-white/40">
+        <p className="mesure mb-5 text-[12px] leading-relaxed text-white/40">
           {EMPIRE_ORDRE}
         </p>
 
@@ -362,7 +386,7 @@ export default function EmpireView() {
           {GRANDEUR_OUVERTURE.map((l) => (
             <p
               key={l}
-              className="mb-3 border-l-[3px] pl-4 text-[14px] leading-[1.6] text-white/85"
+              className="mesure mb-3 border-l-[3px] pl-4 text-[14px] leading-[1.6] text-white/85"
               style={{ borderColor: "#3f3520" }}
             >
               {l}
@@ -443,7 +467,7 @@ export default function EmpireView() {
           {GRANDEUR_CLOTURE.map((l, i) => (
             <p
               key={l}
-              className="mb-3 leading-[1.6] last:mb-0"
+              className="mesure mb-3 leading-[1.6] last:mb-0"
               style={{
                 fontSize: i === GRANDEUR_CLOTURE.length - 1 ? "16px" : "14px",
                 fontWeight: i === GRANDEUR_CLOTURE.length - 1 ? 700 : 500,

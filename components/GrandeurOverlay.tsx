@@ -67,7 +67,7 @@ export default function GrandeurOverlay({ onClose }: { onClose: () => void }) {
           {GRANDEUR_OUVERTURE.map((l) => (
             <p
               key={l}
-              className="mb-3 border-l-[3px] pl-4 text-[14.5px] font-medium leading-[1.6] text-white/90"
+              className="mesure mb-3 border-l-[3px] pl-4 text-[14.5px] font-medium leading-[1.6] text-white/90"
               style={{ borderColor: "var(--gold-border)" }}
             >
               {l}
@@ -148,7 +148,7 @@ export default function GrandeurOverlay({ onClose }: { onClose: () => void }) {
           {GRANDEUR_CLOTURE.map((l, i) => (
             <p
               key={l}
-              className="mb-3 leading-[1.6] last:mb-0"
+              className="mesure mb-3 leading-[1.6] last:mb-0"
               style={{
                 // La dernière ligne est la seule qu'il retiendra : elle est
                 // traitée comme telle.

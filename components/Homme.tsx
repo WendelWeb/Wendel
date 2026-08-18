@@ -51,7 +51,7 @@ export default function Homme({
 
   return (
     <section
-      className={`${spacing} h-full rounded-2xl px-5 py-5`}
+      className={`${spacing} rounded-2xl px-5 py-5`}
       style={{ background: "#0f0a0a", border: "1.5px solid #7f1d1d" }}
     >
       <p className="mb-4 font-display text-[15px] font-bold leading-snug text-white">

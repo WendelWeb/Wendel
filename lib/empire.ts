@@ -19,6 +19,24 @@ export const EMPIRE_NOM = "NOVA-AXE";
 export const EMPIRE_DOCTRINE =
   "On ne court pas après la richesse : on se place à l'endroit par lequel elle doit obligatoirement passer.";
 
+/**
+ * L an zéro.
+ *
+ * La table des faits datait l an zéro de 2033. Il a corrigé lui-même : l an
+ * zéro, c est maintenant. Ce n est pas une figure de style et ce n est pas
+ * avancer une date — c est dire où l empire existe aujourd hui. Il ne commence
+ * pas le jour de la première pierre : il commence le jour où il prend forme
+ * dans une tête, et il se nourrit d une seule chose, l énergie qu il garde.
+ *
+ * C est aussi la jonction avec le pacte : ce qu il retient n est pas mis de
+ * côté, c est déjà dépensé — dans ça.
+ */
+export const EMPIRE_AN_ZERO = [
+  "L'an zéro, c'est maintenant.",
+  "L'empire commence à prendre forme dans mon esprit — alimenté par mon énergie, conservée par ma discipline.",
+  "2033 n'est pas sa naissance : c'est sa première pierre. Il existe déjà, et il se nourrit de ce que je ne dilapide pas.",
+];
+
 export const EMPIRE_ORDRE =
   "L'ordre des trente ne change jamais : il monte du plus physique — le sol, l'eau, l'énergie, la mer — vers ce qui dure plus longtemps que la matière : la norme, la mesure, le droit, la carte, le temps, la langue, et le sacré en dernier. Chaque étage suppose celui du dessous.";
 
@@ -26,7 +44,8 @@ export const EMPIRE_FAITS: { cle: string; valeur: string }[] = [
   { cle: "Corridor", valeur: "4 000 × 1 000 km" },
   { cle: "Superficie", valeur: "4 000 000 km²" },
   { cle: "Capital", valeur: "150 000 Md $" },
-  { cle: "An Zéro", valeur: "2033" },
+  { cle: "An Zéro", valeur: "Maintenant" },
+  { cle: "Première pierre", valeur: "2033" },
   { cle: "Capitales", valeur: "Axiom · Verdia · Forge" },
   { cle: "Monnaie", valeur: "AXE" },
 ];

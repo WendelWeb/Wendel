@@ -176,7 +176,7 @@ export default function PlanEditor({ initial }: { initial: Plan }) {
             Le noyau — {noyau} case{noyau > 1 ? "s" : ""}
           </p>
         </div>
-        <p className="mt-2 text-[13px] leading-relaxed text-text-secondary">
+        <p className="mesure mt-2 text-[13px] leading-relaxed text-text-secondary">
           Une journée n&apos;entre dans ta série que si <strong>toutes</strong> les
           cases du noyau sont cochées. Un rituel secondaire raté ne casse rien ;
           une case du noyau ratée casse tout. Choisis-les comme si tu devais les
@@ -184,7 +184,7 @@ export default function PlanEditor({ initial }: { initial: Plan }) {
         </p>
       </div>
 
-      <div className="mb-2 flex items-center justify-between">
+      <div className="mb-2 flex items-center justify-between md:justify-start md:gap-4">
         <h2 className="font-display text-lg font-bold uppercase tracking-tight text-navy">
           Objectifs du jour
         </h2>
@@ -196,17 +196,17 @@ export default function PlanEditor({ initial }: { initial: Plan }) {
           <Plus size={14} /> Ajouter
         </button>
       </div>
-      <p className="mb-3 text-[12px] leading-relaxed text-text-muted">
+      <p className="mesure mb-3 text-[12px] leading-relaxed text-text-muted">
         L&apos;heure range la journée du matin au soir. Écris <code>jour</code> ou{" "}
         <code>permanent</code> pour ce qui n&apos;a pas d&apos;horaire fixe.
       </p>
-      <ul className="mb-7 flex flex-col gap-2">
+      <ul className="grid-objectives mb-7">
         {objectifs.map(({ it, idx }) => (
           <Ligne key={it.id} it={it} idx={idx} />
         ))}
       </ul>
 
-      <div className="mb-2 flex items-center justify-between">
+      <div className="mb-2 flex items-center justify-between md:justify-start md:gap-4">
         <h2 className="flex items-center gap-2 font-display text-lg font-bold uppercase tracking-tight text-red">
           <ShieldBan size={18} /> Règles absolues
         </h2>
@@ -219,18 +219,18 @@ export default function PlanEditor({ initial }: { initial: Plan }) {
           <Plus size={14} /> Ajouter
         </button>
       </div>
-      <p className="mb-3 text-[12px] leading-relaxed text-text-muted">
+      <p className="mesure mb-3 text-[12px] leading-relaxed text-text-muted">
         Des interdits, pas des tâches. Cocher une règle veut dire « je confirme
         l&apos;avoir tenue aujourd&apos;hui ».
       </p>
-      <ul className="mb-7 flex flex-col gap-2">
+      <ul className="grid-objectives mb-7">
         {regles.map(({ it, idx }) => (
           <Ligne key={it.id} it={it} idx={idx} />
         ))}
       </ul>
 
       {/* Barre d'enregistrement — collée en bas, toujours atteignable */}
-      <div className="sticky bottom-20 z-10 flex items-center gap-2 rounded-2xl border border-border bg-surface p-3 shadow-lg md:bottom-4">
+      <div className="sticky bottom-20 z-10 flex items-center gap-2 rounded-2xl border border-border bg-surface p-3 shadow-lg md:bottom-4 md:mx-auto md:max-w-2xl">
         <button
           type="button"
           onClick={enregistrer}

@@ -21,7 +21,7 @@ export default function StoppOverlay({
       role="alertdialog"
       aria-label="STOPP"
     >
-      <p className="animate-phrase-in text-center font-display text-4xl font-bold uppercase leading-tight tracking-tight text-white sm:text-5xl">
+      <p className="animate-phrase-in mesure text-center font-display text-4xl font-bold uppercase leading-tight tracking-tight text-white sm:text-5xl">
         {phrase}
       </p>
     </div>

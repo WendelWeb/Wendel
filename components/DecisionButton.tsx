@@ -96,7 +96,7 @@ export default function DecisionButton({ etat }: { etat: EtatReel }) {
       <button
         type="button"
         onClick={start}
-        className="mb-5 flex w-full items-center justify-center gap-2.5 rounded-2xl px-5 py-4 text-white shadow-lg transition active:scale-[0.99]"
+        className="mb-5 flex w-full items-center justify-center gap-2.5 rounded-2xl px-5 py-4 text-white shadow-lg transition active:scale-[0.99] xl:max-w-3xl"
         style={{
           background: "linear-gradient(135deg, #0F172A 0%, #7F1D1D 100%)",
         }}

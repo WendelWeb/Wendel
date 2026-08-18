@@ -94,7 +94,7 @@ export default function CoachChat() {
 
       <div className="flex-1 overflow-y-auto px-4 py-4">
         {messages.length === 0 && (
-          <div className="mx-auto max-w-md">
+          <div className="mx-auto max-w-md md:max-w-2xl">
             <p className="mb-3 text-center text-[13px] text-text-secondary">
               Parle-lui de ta journée, ta semaine, ton mois, ou d&apos;une
               tentation. Il te dira la vérité.
@@ -128,7 +128,7 @@ export default function CoachChat() {
               </span>
             </button>
 
-            <div className="flex flex-col gap-2">
+            <div className="grid grid-cols-1 items-start gap-2 lg:grid-cols-2">
               {STARTERS.map((s) => (
                 <button
                   key={s}

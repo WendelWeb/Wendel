@@ -48,7 +48,7 @@ export default function Depassement({
 
   return (
     <section
-      className={`${spacing} h-full rounded-2xl px-5 py-5`}
+      className={`${spacing} rounded-2xl px-5 py-5`}
       style={{ background: "#0c0a06", border: "1.5px solid var(--gold-border)" }}
     >
       <p className="mb-3.5 text-[9.5px] font-bold uppercase tracking-[0.24em] text-white/35">

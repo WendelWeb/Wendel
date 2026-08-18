@@ -565,9 +565,11 @@ export default function SerieuxOverlay({
           {LA_QUESTION}
         </p>
 
-        {ordre.map((k) => (
-          <div key={k}>{sections[k]}</div>
-        ))}
+        <div className="mosaique">
+          {ordre.map((k) => (
+            <div key={k}>{sections[k]}</div>
+          ))}
+        </div>
 
         <p className="mb-4 text-center text-[13px] leading-relaxed text-white/55">
           Il n&apos;y a rien à cocher ici. La seule réponse à cette question,

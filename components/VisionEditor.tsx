@@ -225,7 +225,7 @@ export default function VisionEditor({
 
       {/* Les deux échéances : la transformation, puis le défi ultime. */}
       {!editing && (
-        <div className="mb-5 grid gap-2.5 sm:grid-cols-2">
+        <div className="mb-5 grid gap-2.5 sm:grid-cols-2 xl:max-w-4xl">
           <div
             className="flex items-center justify-between rounded-2xl px-5 py-4"
             style={{
@@ -273,7 +273,7 @@ export default function VisionEditor({
 
       {/* HERO — credo */}
       <div
-        className="mb-6 overflow-hidden rounded-2xl p-5"
+        className="mb-6 overflow-hidden rounded-2xl p-5 xl:max-w-4xl"
         style={{
           background:
             "linear-gradient(135deg, var(--navy) 0%, var(--navy-light) 100%)",
@@ -317,7 +317,7 @@ export default function VisionEditor({
         <textarea
           value={content}
           onChange={(e) => setContent(e.target.value)}
-          className="min-h-[60vh] w-full resize-y rounded-xl border border-border bg-surface p-4 font-mono text-[13px] leading-relaxed text-text-primary outline-none focus:border-navy"
+          className="min-h-[60vh] w-full resize-y rounded-xl border border-border bg-surface p-4 font-mono text-[13px] leading-relaxed text-text-primary outline-none focus:border-navy xl:max-w-5xl"
           placeholder="Markdown simple : # Titre de chantier · ## Sous-titre · - puce · **gras**"
         />
       ) : (

@@ -39,7 +39,7 @@ export default function GlobalStatsPanel({
     : 0;
 
   return (
-    <section className="mt-8">
+    <section className="mt-8 xl:mt-0">
       <h2 className="mb-3 font-display text-sm font-semibold uppercase tracking-[0.15em] text-text-secondary">
         Global — depuis le début
       </h2>

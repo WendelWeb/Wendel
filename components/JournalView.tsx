@@ -110,7 +110,7 @@ export default function JournalView({
       <h2 className="mb-2 mt-7 text-[12px] font-semibold uppercase tracking-wider text-text-muted">
         7 derniers jours
       </h2>
-      <div className="flex flex-col gap-2">
+      <div className="grid grid-cols-1 items-start gap-2 lg:grid-cols-2">
         {recent.map((date) => {
           const entry = (map[date] ?? "").trim();
           const isSel = date === selected;

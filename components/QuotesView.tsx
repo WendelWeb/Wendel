@@ -110,7 +110,7 @@ export default function QuotesView({ seed }: { seed: number }) {
       </div>
 
       {/* Recherche + aléatoire */}
-      <div className="mb-3 flex items-center gap-2">
+      <div className="mb-3 flex items-center gap-2 xl:max-w-2xl">
         <div className="relative flex-1">
           <Search
             size={16}

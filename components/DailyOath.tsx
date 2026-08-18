@@ -77,7 +77,7 @@ export default function DailyOath({
       </div>
 
       {/* La ligne du moment */}
-      <div className="flex flex-1 flex-col justify-center px-7">
+      <div className="mx-auto flex w-full max-w-2xl flex-1 flex-col justify-center px-7">
         <p className="mb-4 text-[10px] font-bold uppercase tracking-[0.28em] text-white/45">
           {step.label}
         </p>
@@ -96,7 +96,7 @@ export default function DailyOath({
 
       {/* Avancer */}
       <div
-        className="px-5 pb-5"
+        className="mx-auto w-full max-w-2xl px-5 pb-5"
         style={{ paddingBottom: "max(1.25rem, env(safe-area-inset-bottom))" }}
       >
         <p className="mb-3 text-center text-[11px] text-white/40">

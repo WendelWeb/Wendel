@@ -303,51 +303,53 @@ export default function TodayView({
       </p>
 
       <div className="flex flex-col gap-6 px-4 pt-2">
-        {verdict && <Verdict verdict={verdict} chapterRead={chapterRead} />}
+        <div className="colonnes-xl">
+          {verdict && <Verdict verdict={verdict} chapterRead={chapterRead} />}
 
-        {/* Noyau du jour — la série ne tient QUE si le noyau est complet. */}
-        <div
-          className="rounded-2xl border p-4"
-          style={
-            core.complete
-              ? {
-                  background: "var(--green-soft)",
-                  borderColor: "rgba(22,163,74,0.4)",
-                }
-              : { background: "var(--red-soft)", borderColor: "var(--red)" }
-          }
-        >
-          <div className="flex items-center justify-between">
-            <span
-              className="flex items-center gap-1.5 font-display text-sm font-bold uppercase tracking-wide"
-              style={{ color: core.complete ? "var(--green)" : "var(--red)" }}
-            >
-              🔑 Noyau du jour
-            </span>
-            <span
-              className="tnum font-display text-lg font-bold"
-              style={{ color: core.complete ? "var(--green)" : "var(--red)" }}
-            >
-              {core.done}/{core.total}
-            </span>
-          </div>
-          {core.complete ? (
-            <p className="mt-1 text-[12.5px] font-semibold text-green">
-              Streak sécurisée ✓ — tu as tenu l&apos;essentiel. Le reste est du
-              bonus.
-            </p>
-          ) : (
-            <p className="mt-1 text-[12px] leading-snug text-text-secondary">
-              Manque pour sécuriser la série :{" "}
-              <span className="font-semibold text-red">
-                {core.missing.slice(0, 4).map(labelFor).join(" · ")}
-                {core.missing.length > 4 ? ` +${core.missing.length - 4}` : ""}
+          {/* Noyau du jour — la série ne tient QUE si le noyau est complet. */}
+          <div
+            className="rounded-2xl border p-4"
+            style={
+              core.complete
+                ? {
+                    background: "var(--green-soft)",
+                    borderColor: "rgba(22,163,74,0.4)",
+                  }
+                : { background: "var(--red-soft)", borderColor: "var(--red)" }
+            }
+          >
+            <div className="flex items-center justify-between">
+              <span
+                className="flex items-center gap-1.5 font-display text-sm font-bold uppercase tracking-wide"
+                style={{ color: core.complete ? "var(--green)" : "var(--red)" }}
+              >
+                🔑 Noyau du jour
               </span>
-            </p>
-          )}
-        </div>
+              <span
+                className="tnum font-display text-lg font-bold"
+                style={{ color: core.complete ? "var(--green)" : "var(--red)" }}
+              >
+                {core.done}/{core.total}
+              </span>
+            </div>
+            {core.complete ? (
+              <p className="mt-1 text-[12.5px] font-semibold text-green">
+                Streak sécurisée ✓ — tu as tenu l&apos;essentiel. Le reste est du
+                bonus.
+              </p>
+            ) : (
+              <p className="mt-1 text-[12px] leading-snug text-text-secondary">
+                Manque pour sécuriser la série :{" "}
+                <span className="font-semibold text-red">
+                  {core.missing.slice(0, 4).map(labelFor).join(" · ")}
+                  {core.missing.length > 4 ? ` +${core.missing.length - 4}` : ""}
+                </span>
+              </p>
+            )}
+          </div>
 
-        <NowNext items={items} states={states} gymLabel={gymLabel} />
+          <NowNext items={items} states={states} gymLabel={gymLabel} />
+        </div>
 
         {/* One chronological flow — du début de la journée à sa fin, sans
             libellés matin/après-midi/soir. Ordre par heure. */}
@@ -441,7 +443,7 @@ export default function TodayView({
           <button
             type="button"
             onClick={onValidateClick}
-            className="flex h-12 w-full items-center justify-center gap-2 rounded-xl text-[15px] font-semibold uppercase tracking-wide text-white transition active:scale-[0.99]"
+            className="flex h-12 w-full items-center justify-center gap-2 rounded-xl text-[15px] font-semibold uppercase tracking-wide text-white transition active:scale-[0.99] md:mx-auto md:max-w-md"
             style={{ background: validated ? "var(--green)" : "var(--navy)" }}
           >
             {validated ? <Check size={18} /> : <ClipboardCheck size={18} />}
