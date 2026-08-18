@@ -123,7 +123,7 @@ export default function MuscuView({
           </div>
           <ProgressBar percent={percent} className="mb-5" />
 
-          <div className="grid grid-cols-2 gap-2.5 md:grid-cols-3">
+          <div className="grid grid-cols-2 items-start gap-2.5 md:grid-cols-3">
             {muscles.map((name) => (
               <MuscleCard
                 key={name}

@@ -339,7 +339,9 @@ export default function VisionEditor({
               return (
                 <section
                   key={i}
-                  className="overflow-hidden rounded-2xl border border-border bg-surface"
+                  className={`overflow-hidden rounded-2xl border border-border bg-surface${
+                    s.lines.length > 12 ? " pleine-largeur" : ""
+                  }`}
                 >
                   <div
                     className="flex items-center gap-3 px-4 py-3"

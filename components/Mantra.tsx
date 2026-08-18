@@ -251,7 +251,7 @@ export default function Mantra({
 
   // LA MAIN · LES YEUX
   const mainYeux = (
-    <div className="grid gap-3 sm:grid-cols-2">
+    <div className="grid items-start gap-3 sm:grid-cols-2">
       <section
         className="rounded-2xl border px-5 py-4"
         style={{ borderColor: "var(--red)", background: "var(--red-soft)" }}

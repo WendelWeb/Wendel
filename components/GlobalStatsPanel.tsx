@@ -43,7 +43,7 @@ export default function GlobalStatsPanel({
       <h2 className="mb-3 font-display text-sm font-semibold uppercase tracking-[0.15em] text-text-secondary">
         Global — depuis le début
       </h2>
-      <div className="grid grid-cols-2 gap-2 sm:grid-cols-3 lg:grid-cols-4">
+      <div className="grid grid-cols-2 items-start gap-2 sm:grid-cols-3 lg:grid-cols-4">
         <Tile
           icon={<Flame size={18} fill="var(--red)" />}
           accent="var(--red)"

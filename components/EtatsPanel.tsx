@@ -15,7 +15,7 @@ export default function EtatsPanel() {
         Une tentation, un coup de mou ? Ouvre le chapitre qui la tue — tout de
         suite.
       </p>
-      <div className="grid grid-cols-1 gap-2 md:grid-cols-2">
+      <div className="grid grid-cols-1 items-start gap-2 md:grid-cols-2">
         {STATES.map((s) => (
           <Link
             key={s.id}

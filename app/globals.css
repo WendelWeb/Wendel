@@ -63,6 +63,15 @@ input[type="number"] {
   display: grid;
   gap: 0.5rem;
   grid-template-columns: 1fr;
+  /* Chaque carte garde sa hauteur propre : sans ça, la plus longue de la
+     rangée impose sa taille aux autres et creuse du vide sous leur texte. */
+  align-items: start;
+}
+
+/* Les sections trop longues prennent toute la largeur au lieu de déséquilibrer
+   une rangée entière. */
+.grid-objectives > .pleine-largeur {
+  grid-column: 1 / -1;
 }
 @media (min-width: 768px) {
   .grid-objectives {

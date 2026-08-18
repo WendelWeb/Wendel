@@ -10,6 +10,13 @@ import {
   REGISTRES,
 } from "@/lib/empire";
 import {
+  ECHELLE_TITRE,
+  ECHELLE_INTRO,
+  MESURES,
+  SAUTS,
+  ECHELLE_SORTIE,
+} from "@/lib/echelle";
+import {
   GRANDEUR_OUVERTURE,
   GRANDEUR_SECTIONS,
   GRANDEUR_CLOTURE,
@@ -61,7 +68,7 @@ export default function EmpireView() {
           </p>
         </header>
 
-        <div className="mb-7 grid grid-cols-2 gap-2 sm:grid-cols-3">
+        <div className="mb-7 grid grid-cols-2 items-start gap-2 sm:grid-cols-3">
           {EMPIRE_FAITS.map((f) => (
             <div
               key={f.cle}
@@ -122,6 +129,122 @@ export default function EmpireView() {
             ))}
           </ul>
         </section>
+
+        {/* L'ÉCHELLE — Haïti posée à côté du corridor.
+
+            Il a demandé que sa Vision pour Haïti ait l'air d'une fourmi devant
+            celle-ci. C'était déjà vrai dans les chiffres, mais nulle part
+            visible : les deux vivaient dans deux sections séparées, et on ne
+            compare pas ce qu'on ne voit pas ensemble.
+
+            Les rapports sont calculés entre ses propres chiffres et ses
+            propres chiffres — jamais entre les siens et une estimation
+            complaisante. Sinon le tableau ne prouverait rien. */}
+        <h2 className="mb-1 text-[10.5px] font-bold uppercase tracking-[0.22em] text-red">
+          {ECHELLE_TITRE}
+        </h2>
+        <p className="mb-4 text-[12px] leading-relaxed text-white/40">
+          {ECHELLE_INTRO}
+        </p>
+
+        <div
+          className="mb-4 overflow-hidden rounded-2xl"
+          style={{ border: "1.5px solid #292524" }}
+        >
+          <div
+            className="grid grid-cols-[1fr_auto] items-center gap-3 px-4 py-2.5 sm:grid-cols-[1.1fr_1fr_1fr_auto]"
+            style={{ background: "#141414" }}
+          >
+            <span className="text-[9px] font-bold uppercase tracking-[0.16em] text-white/35">
+              Mesure
+            </span>
+            <span className="hidden text-[9px] font-bold uppercase tracking-[0.16em] text-white/35 sm:block">
+              Haïti
+            </span>
+            <span
+              className="hidden text-[9px] font-bold uppercase tracking-[0.16em] sm:block"
+              style={{ color: "var(--gold-border)" }}
+            >
+              NOVA-AXE
+            </span>
+            <span className="text-right text-[9px] font-bold uppercase tracking-[0.16em] text-red">
+              Rapport
+            </span>
+          </div>
+
+          {MESURES.map((m) => (
+            <div
+              key={m.quoi}
+              className="grid grid-cols-[1fr_auto] items-baseline gap-x-3 gap-y-1 border-t border-white/10 px-4 py-3 sm:grid-cols-[1.1fr_1fr_1fr_auto]"
+            >
+              <span className="text-[12.5px] font-semibold text-white/85">
+                {m.quoi}
+              </span>
+              <span className="tnum order-3 text-[12px] leading-snug text-white/45 sm:order-none">
+                {m.haiti}
+              </span>
+              <span
+                className="tnum order-4 text-[12.5px] font-bold leading-snug sm:order-none"
+                style={{ color: "var(--gold-border)" }}
+              >
+                {m.nova}
+              </span>
+              <span className="tnum text-right text-[12.5px] font-bold text-red">
+                {m.rapport}
+              </span>
+            </div>
+          ))}
+        </div>
+
+        {/* Les lignes où le rapport ne se calcule plus : la chose change de
+            nature, et c'est là que la fourmi devient une autre espèce. */}
+        <p className="mb-3 text-[10px] font-bold uppercase tracking-[0.22em] text-white/35">
+          Et là où ça cesse d&apos;être une question de taille
+        </p>
+        <div className="mb-4 grid items-start gap-2.5 sm:grid-cols-2">
+          {SAUTS.map((s) => (
+            <div
+              key={s.quoi}
+              className="rounded-2xl px-4 py-4"
+              style={{ background: "#0c0c0c", border: "1px solid #292524" }}
+            >
+              <p className="mb-2.5 text-[11px] font-bold uppercase tracking-[0.16em] text-white/40">
+                {s.quoi}
+              </p>
+              <p className="mb-2 text-[12.5px] leading-snug text-white/45">
+                {s.haiti}
+              </p>
+              <p
+                className="border-l-2 pl-3 text-[13px] font-semibold leading-snug"
+                style={{ borderColor: "var(--gold-border)", color: "var(--gold-border)" }}
+              >
+                {s.nova}
+              </p>
+            </div>
+          ))}
+        </div>
+
+        <div
+          className="mb-9 rounded-2xl px-5 py-4"
+          style={{ background: "#0c0a06", border: "1.5px solid var(--gold-border)" }}
+        >
+          {ECHELLE_SORTIE.map((l, i) => (
+            <p
+              key={l}
+              className="mb-2 leading-relaxed last:mb-0"
+              style={{
+                fontSize: i === ECHELLE_SORTIE.length - 1 ? "15px" : "13px",
+                fontWeight: i === ECHELLE_SORTIE.length - 1 ? 700 : 500,
+                color:
+                  i === ECHELLE_SORTIE.length - 1
+                    ? "var(--gold-border)"
+                    : "rgba(255,255,255,.8)",
+              }}
+            >
+              {l}
+            </p>
+          ))}
+        </div>
 
         {/* La lecture — trente secteurs */}
         <h2 className="mb-1 text-[10.5px] font-bold uppercase tracking-[0.22em] text-red">
