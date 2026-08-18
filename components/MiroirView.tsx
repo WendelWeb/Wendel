@@ -8,7 +8,8 @@ import RepetitionPanel from "./RepetitionPanel";
 import EnvieOverlay from "./EnvieOverlay";
 import PourquoiOverlay from "./PourquoiOverlay";
 import SerieuxOverlay from "./SerieuxOverlay";
-import { Flame, Target, ShieldCheck } from "lucide-react";
+import GrandeurOverlay from "./GrandeurOverlay";
+import { Flame, Target, ShieldCheck, Crown } from "lucide-react";
 import { LA_REPETITION } from "@/lib/inconfort";
 import { ECARTS, ECART_SORTIE } from "@/lib/ecart";
 
@@ -64,6 +65,7 @@ export default function MiroirView({
   const [envie, setEnvie] = useState(false);
   const [pourquoi, setPourquoi] = useState(false);
   const [serieux, setSerieux] = useState(false);
+  const [grandeur, setGrandeur] = useState(false);
   // L ordre des ecarts change a chaque ouverture, comme le reste.
   const [ecarts] = useState(() => {
     const c = [...ECARTS];
@@ -155,6 +157,20 @@ export default function MiroirView({
           <ShieldCheck size={17} className="text-red" />
           Je suis sérieux
         </button>
+
+        {/* La lecture — le seul ecran long de l app, et le seul dont l ordre
+            ne tourne pas : il monte du sol jusqu a la memoire. */}
+        <button
+          type="button"
+          onClick={() => setGrandeur(true)}
+          className="mb-5 flex w-full items-center justify-center gap-2.5 rounded-2xl px-4 py-3.5 text-[14px] font-bold uppercase tracking-wide transition active:scale-[0.99]"
+          style={{ background: "#0c0a06", border: "1.5px solid var(--gold-border)", color: "var(--gold-border)" }}
+        >
+          <Crown size={17} />
+          La grandeur — la lecture
+        </button>
+
+        {grandeur && <GrandeurOverlay onClose={() => setGrandeur(false)} />}
 
         {envie && (
           <EnvieOverlay
