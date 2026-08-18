@@ -364,7 +364,9 @@ export default function EmpireView() {
           {ECHELLE_SORTIE.map((l, i) => (
             <p
               key={l}
-              className="mesure mb-2 leading-relaxed last:mb-0"
+              className={`mb-2 leading-relaxed last:mb-0${
+                i === ECHELLE_SORTIE.length - 1 ? " [column-span:all]" : ""
+              }`}
               style={{
                 fontSize: i === ECHELLE_SORTIE.length - 1 ? "15px" : "13px",
                 fontWeight: i === ECHELLE_SORTIE.length - 1 ? 700 : 500,
@@ -387,11 +389,16 @@ export default function EmpireView() {
           {EMPIRE_ORDRE}
         </p>
 
-        <section className="mb-8">
+        {/* Neuf paragraphes autonomes. Chacun se tenait seul sur une colonne
+            de 68 caracteres dans un conteneur devenu large : la mesure de
+            lecture etait juste, les mille pixels a droite etaient vides. En
+            colonnes, c'est la COLONNE qui donne la mesure et non plus un
+            plafond — meme longueur de ligne, ecran rempli. */}
+        <section className="mb-8 columns-[26rem] gap-x-8 [&>p]:break-inside-avoid">
           {GRANDEUR_OUVERTURE.map((l) => (
             <p
               key={l}
-              className="mesure mb-3 border-l-[3px] pl-4 text-[14px] leading-[1.6] text-white/85"
+              className="mb-3 border-l-[3px] pl-4 text-[14px] leading-[1.6] text-white/85"
               style={{ borderColor: "#3f3520" }}
             >
               {l}
@@ -465,14 +472,20 @@ export default function EmpireView() {
           })}
         </div>
 
+        {/* La cloture passe en colonnes comme le reste, a une exception : sa
+            derniere ligne est la chute. column-span:all interrompt le flux et
+            la pose en travers de toute la largeur. Dans une colonne, la seule
+            ligne qu'il retiendra se serait perdue au milieu de l'ecran. */}
         <section
-          className="rounded-2xl px-5 py-5"
+          className="columns-[26rem] gap-x-8 rounded-2xl px-5 py-5 [&>p]:break-inside-avoid"
           style={{ background: "#0c0a06", border: "1.5px solid var(--gold-border)" }}
         >
           {GRANDEUR_CLOTURE.map((l, i) => (
             <p
               key={l}
-              className="mesure mb-3 leading-[1.6] last:mb-0"
+              className={`mb-3 leading-[1.6] last:mb-0${
+                i === GRANDEUR_CLOTURE.length - 1 ? " [column-span:all]" : ""
+              }`}
               style={{
                 fontSize: i === GRANDEUR_CLOTURE.length - 1 ? "16px" : "14px",
                 fontWeight: i === GRANDEUR_CLOTURE.length - 1 ? 700 : 500,

@@ -63,11 +63,11 @@ export default function GrandeurOverlay({ onClose }: { onClose: () => void }) {
           </button>
         </div>
 
-        <section className="mb-8">
+        <section className="mb-8 columns-[26rem] gap-x-8 [&>p]:break-inside-avoid">
           {GRANDEUR_OUVERTURE.map((l) => (
             <p
               key={l}
-              className="mesure mb-3 border-l-[3px] pl-4 text-[14.5px] font-medium leading-[1.6] text-white/90"
+              className="mb-3 border-l-[3px] pl-4 text-[14.5px] font-medium leading-[1.6] text-white/90"
               style={{ borderColor: "var(--gold-border)" }}
             >
               {l}
@@ -146,13 +146,15 @@ export default function GrandeurOverlay({ onClose }: { onClose: () => void }) {
         </div>
 
         <section
-          className="mb-6 rounded-2xl px-5 py-5"
+          className="mb-6 columns-[26rem] gap-x-8 rounded-2xl px-5 py-5 [&>p]:break-inside-avoid"
           style={{ background: "#0c0a06", border: "1.5px solid var(--gold-border)" }}
         >
           {GRANDEUR_CLOTURE.map((l, i) => (
             <p
               key={l}
-              className="mesure mb-3 leading-[1.6] last:mb-0"
+              className={`mb-3 leading-[1.6] last:mb-0${
+                i === GRANDEUR_CLOTURE.length - 1 ? " [column-span:all]" : ""
+              }`}
               style={{
                 // La dernière ligne est la seule qu'il retiendra : elle est
                 // traitée comme telle.
