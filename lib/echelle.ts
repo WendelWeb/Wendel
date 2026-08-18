@@ -1,36 +1,36 @@
-// L'ÉCHELLE — Haïti posée à côté de NOVA-AXE.
+// L'ÉCHELLE — et surtout, le changement de nature.
 //
-// Il a demandé que sa Vision pour Haïti ait l'air d'une fourmi devant celle du
-// corridor. C'était déjà vrai dans les chiffres, mais nulle part visible : les
-// deux vivaient dans deux sections différentes, et on ne compare pas ce qu'on
-// ne voit pas ensemble. Ce tableau les met sur la même ligne.
+// Première version : j'avais aligné les chiffres d'Haïti face à ceux du
+// corridor, ligne par ligne — cinquante hôpitaux contre cinq cents, cinquante
+// mille maisons contre cinq millions. Il l'a refusée, et il a eu raison.
 //
-// Deux précautions, et elles ne sont pas rhétoriques.
+// C'était copier sa Vision d'Haïti, la multiplier par cent et l'offrir à
+// l'Afrique. Or ce n'est pas du tout ce qu'est NOVA-AXE. Haïti est son pays :
+// il y donne des hôpitaux et des maisons à son peuple, et cette partie-là est
+// personnelle. Le corridor est un empire. On n'y fait pas de cadeau, on y
+// place du capital — dans la recherche génétique, dans l'anti-vieillissement,
+// dans les puces, dans l'orbite. Zéro émotion.
 //
-// Les chiffres d'Haïti sont ceux de sa propre Vision, repris tels quels — 50
-// hôpitaux, 50 000 maisons, 100 écoles, 500 000 emplois, un gigawatt. Ceux du
-// corridor sont des cibles posées à l'échelle de cent cinquante mille
-// milliards. Les rapports sont donc calculés entre ses chiffres et ses
-// chiffres, pas entre les siens et une estimation flatteuse.
-//
-// Et les faits du monde réel qui servent de repère — la superficie d'Haïti,
-// celle du corridor, la population des sept nations traversées — sont exacts.
+// Ce fichier compare donc deux choses qui ne sont pas du même ordre, et il le
+// dit. Les rapports chiffrés ne portent que sur ce qui se mesure des deux
+// côtés — le sol, le capital, l'horizon. Tout le reste est une différence de
+// nature, pas de taille.
 //
 // Client-safe.
 
-export const ECHELLE_TITRE = "L'échelle — la fourmi et le corridor";
+export const ECHELLE_TITRE = "L'échelle — et le changement de nature";
 
 export const ECHELLE_INTRO =
-  "Les mêmes lignes, dans les deux Visions. À gauche ce qui refonde une nation ; à droite ce qui déplace le centre de gravité d'un siècle. Le rapport est calculé entre ses propres chiffres, jamais entre les siens et une estimation complaisante.";
+  "Haïti et NOVA-AXE ne sont pas deux tailles du même projet. Haïti est une nation à refonder : on y donne, et c'est personnel. Le corridor est un empire : on y investit, et c'est froid. Ce qui suit compare d'abord ce qui se mesure — le sol, le capital, le temps — puis dit où les deux cessent d'être comparables.";
 
 export interface Mesure {
   quoi: string;
   haiti: string;
   nova: string;
-  /** Le rapport, quand il se calcule. Sinon, ce qui change de nature. */
   rapport: string;
 }
 
+/** Ce qui se mesure des deux côtés, et rien d'autre. */
 export const MESURES: Mesure[] = [
   {
     quoi: "Territoire",
@@ -45,113 +45,79 @@ export const MESURES: Mesure[] = [
     rapport: "× 150",
   },
   {
-    quoi: "Population concernée",
-    haiti: "12 millions",
-    nova: "plus de 200 millions",
-    rapport: "× 17",
-  },
-  {
-    quoi: "Hôpitaux de rang mondial",
-    haiti: "50",
-    nova: "500",
-    rapport: "× 10",
-  },
-  {
-    quoi: "Maisons données",
-    haiti: "50 000",
-    nova: "5 000 000",
-    rapport: "× 100",
-  },
-  {
-    quoi: "Écoles premium",
-    haiti: "100",
-    nova: "2 000",
-    rapport: "× 20",
-  },
-  {
-    quoi: "Universités de rang mondial",
-    haiti: "1",
-    nova: "20",
-    rapport: "× 20",
-  },
-  {
-    quoi: "Puissance électrique",
-    haiti: "1 GW solaire",
-    nova: "plus de 100 GW — Inga, fusion, thorium, Sahel",
-    rapport: "× 100",
-  },
-  {
-    quoi: "Emplois formels",
-    haiti: "500 000",
-    nova: "50 000 000",
-    rapport: "× 100",
-  },
-  {
-    quoi: "Ports en eau profonde",
-    haiti: "2 à 4",
-    nova: "12, dont des mégaports autonomes",
-    rapport: "× 4",
-  },
-  {
-    quoi: "Aéroports internationaux",
-    haiti: "3 à 5",
-    nova: "30, plus le spatioport équatorial",
-    rapport: "× 8",
-  },
-  {
     quoi: "Horizon",
     haiti: "2033 — mes trente ans",
-    nova: "An 200 — la génération fondatrice encore vivante",
+    nova: "An 200",
     rapport: "× 6 générations",
+  },
+  {
+    quoi: "Nations concernées",
+    haiti: "1",
+    nova: "7 traversées, un continent irrigué",
+    rapport: "× 7",
   },
 ];
 
 /**
- * Les lignes où le rapport ne se calcule pas, parce que ce n'est plus une
- * question de taille : la chose change de nature. C'est ici que la fourmi
- * cesse d'être une petite chose et devient une autre espèce.
+ * Là où la comparaison s'arrête. Ce ne sont pas des tailles différentes : ce
+ * sont deux natures, et les confondre était l'erreur de la première version.
  */
-export const SAUTS: { quoi: string; haiti: string; nova: string }[] = [
+export const NATURES: { axe: string; haiti: string; nova: string }[] = [
   {
-    quoi: "La monnaie",
-    haiti: "Une monnaie nationale forte, qui cesse d'être dévaluée par d'autres.",
-    nova: "L'AXE, valeur refuge mondiale : les nations détiennent des obligations AXE comme le XXᵉ siècle détenait des bons du Trésor américain.",
+    axe: "Ce que c'est",
+    haiti: "Une nation à refonder. La mienne.",
+    nova: "Un empire à bâtir. Une position à tenir sur la carte du monde.",
   },
   {
-    quoi: "La force",
+    axe: "Le mobile",
+    haiti: "Une dette. Le Nord-Ouest, les miens, ceux qui meurent de ce qui se soigne ailleurs.",
+    nova: "Le rendement et la puissance. Aucune dette, aucun devoir, aucune émotion.",
+  },
+  {
+    axe: "L'argent",
+    haiti: "Une dépense assumée : hôpitaux, maisons, écoles données au peuple.",
+    nova: "Du capital placé : recherche génétique, anti-vieillissement, semi-conducteurs, orbite, raffinage. Chaque dollar attend un retour.",
+  },
+  {
+    axe: "Les habitants",
+    haiti: "Mon peuple. Je leur dois quelque chose.",
+    nova: "Sept nations actionnaires du passage. Un contrat, pas une charité — et un contrat vaut mieux qu'un don, parce qu'il ne s'interrompt pas.",
+  },
+  {
+    axe: "La mesure du succès",
+    haiti: "La mortalité infantile qui s'effondre. Un pays qui cesse d'être une note en bas de page.",
+    nova: "Le nombre de décisions étrangères qui doivent franchir un point que je tiens.",
+  },
+  {
+    axe: "La monnaie",
+    haiti: "Une monnaie nationale forte, que personne ne dévalue plus.",
+    nova: "L'AXE, valeur refuge mondiale : les nations en détiennent comme le XXᵉ siècle détenait des bons du Trésor américain.",
+  },
+  {
+    axe: "La force",
     haiti: "Une société militaire privée dans le top 5 mondial, alors même qu'elle est privée.",
     nova: "La même, devenue armée souveraine : bouclier orbital, légions robotisées, capacité de refuser le ciel à quiconque.",
   },
   {
-    quoi: "La table",
+    axe: "La table",
     haiti: "Le sixième siège permanent au Conseil de sécurité, avec droit de veto.",
-    nova: "L'empire n'occupe plus un siège à la table : il fixe l'ordre du jour, et une décision mondiale prise sans lui ne tient pas.",
+    nova: "Plus un siège : l'ordre du jour. Une décision mondiale prise sans le corridor ne tient pas.",
   },
   {
-    quoi: "Le haut",
-    haiti: "Des satellites d'observation et de communication souverains.",
-    nova: "Le spatioport équatorial, l'anneau orbital à l'An 50, l'ascenseur spatial à l'An 100, la Lune, Mars, les astéroïdes.",
-  },
-  {
-    quoi: "Le temps",
+    axe: "Le temps",
     haiti: "Porter la vie humaine à cent vingt, cent cinquante ans.",
-    nova: "La longevity escape velocity à l'An 30 : chaque année vécue rend plus d'un an d'espérance, et la limite cesse d'exister.",
-  },
-  {
-    quoi: "La règle",
-    haiti: "Zéro export brut : la valeur se transforme sur le sol national.",
-    nova: "La même règle imposée à un continent — et avec elle, la norme, la mesure, le droit, la carte, l'heure et la langue selon lesquels le monde se juge.",
+    nova: "La longevity escape velocity : chaque année vécue rend plus d'un an d'espérance, et la limite cesse d'exister.",
   },
 ];
 
 /**
- * Ce qui empêche le tableau de devenir un mépris. Il a demandé la fourmi, et
- * la fourmi est juste — en taille. Elle ne l'est pas en fonction : c'est
- * elle qui rend l'autre possible, et c'est elle qui contient le motif.
+ * Ce qui empêche le tableau de devenir un mépris — et ce qui protège la
+ * distinction elle-même. La froideur du second est légitime précisément
+ * parce que le premier porte le motif.
  */
 export const ECHELLE_SORTIE: string[] = [
-  "Oui, Haïti est la fourmi. Cent quarante-quatre fois plus petite en sol, cent cinquante fois en capital.",
-  "Mais la fourmi est première, et l'ordre ne s'inverse pas : rien ne commence au centre de l'Afrique avant que vingt-sept mille kilomètres carrés aient prouvé qu'un homme tient ce qu'il écrit.",
-  "Et elle garde ce que le corridor ne contient pas : le Nord-Ouest, ceux qui meurent aujourd'hui de ce qui se soigne ailleurs, et la réponse à la seule question qui protège un homme du pouvoir — pour faire quoi.",
-  "La fourmi est petite. Elle n'est pas facultative.",
+  "Cent quarante-quatre fois plus petite en sol, cent cinquante fois en capital : à côté du corridor, Haïti est une fourmi.",
+  "Mais ce n'est pas le même travail. Haïti se donne — c'est une dette que je paie. Le corridor se prend — c'est un placement qui rapporte.",
+  "Et l'ordre ne s'inverse pas : rien ne commence au centre de l'Afrique avant que vingt-sept mille kilomètres carrés aient prouvé qu'un homme tient ce qu'il écrit.",
+  "La fourmi est petite. Elle n'est pas facultative — c'est elle qui contient la réponse à la seule question qui protège un homme du pouvoir.",
 ];

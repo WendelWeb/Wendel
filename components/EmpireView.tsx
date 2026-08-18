@@ -10,10 +10,16 @@ import {
   REGISTRES,
 } from "@/lib/empire";
 import {
+  CHANTIERS_TITRE,
+  CHANTIERS_INTRO,
+  FAMILLES_CHANTIERS,
+  CHANTIERS,
+} from "@/lib/chantiers";
+import {
   ECHELLE_TITRE,
   ECHELLE_INTRO,
   MESURES,
-  SAUTS,
+  NATURES,
   ECHELLE_SORTIE,
 } from "@/lib/echelle";
 import {
@@ -43,6 +49,8 @@ import {
 export default function EmpireView() {
   const [registre, setRegistre] = useState(REGISTRES[0].id);
   const [section, setSection] = useState<string | null>(null);
+  const [famille, setFamille] = useState(FAMILLES_CHANTIERS[0].id);
+  const [chantier, setChantier] = useState<string | null>(null);
 
   const R = REGISTRES.find((r) => r.id === registre) ?? REGISTRES[0];
 
@@ -69,7 +77,7 @@ export default function EmpireView() {
         </header>
 
         <div className="mb-7 grid grid-cols-2 items-start gap-2 sm:grid-cols-3">
-          {EMPIRE_FAITS.map((f) => (
+          {[...EMPIRE_FAITS, { cle: "Chantiers", valeur: `${CHANTIERS.length}` }].map((f) => (
             <div
               key={f.cle}
               className="rounded-xl px-3 py-2.5"
@@ -129,6 +137,102 @@ export default function EmpireView() {
             ))}
           </ul>
         </section>
+
+        {/* LES CHANTIERS — où va le capital.
+
+            Quarante-deux chantiers, six familles. L'ordre des familles suit
+            celui des deux domaines qu'il a nommés en premier : le vivant, puis
+            le calcul, avant la matière, l'orbite, les flux et la règle.
+
+            Une famille à la fois, un chantier à la fois : quatre cent quatorze
+            lignes affichées d'un coup ne se lisent pas, elles se scrollent. */}
+        <h2 className="mb-1 text-[10.5px] font-bold uppercase tracking-[0.22em] text-red">
+          {CHANTIERS_TITRE}
+        </h2>
+        <p className="mb-4 text-[12px] leading-relaxed text-white/40">
+          {CHANTIERS_INTRO}
+        </p>
+
+        <div className="mb-4 flex flex-wrap gap-2">
+          {FAMILLES_CHANTIERS.map((f) => {
+            const on = f.id === famille;
+            return (
+              <button
+                key={f.id}
+                type="button"
+                onClick={() => {
+                  setFamille(f.id);
+                  setChantier(null);
+                }}
+                className="rounded-xl px-3.5 py-2.5 text-[12px] font-bold uppercase tracking-wide transition active:scale-[0.98]"
+                style={
+                  on
+                    ? { background: "var(--gold-border)", color: "#000" }
+                    : { background: "#141414", color: "rgba(255,255,255,.5)" }
+                }
+              >
+                {f.titre}
+                <span className="ml-2 opacity-60">{f.chantiers.length}</span>
+              </button>
+            );
+          })}
+        </div>
+
+        {FAMILLES_CHANTIERS.filter((f) => f.id === famille).map((f) => (
+          <div key={f.id} className="mb-9">
+            <p className="mb-3.5 text-[12px] leading-relaxed text-white/45">
+              {f.note}
+            </p>
+            <div className="flex flex-col gap-2.5">
+              {f.chantiers.map((c) => {
+                const on = chantier === c.id;
+                return (
+                  <section
+                    key={c.id}
+                    className="overflow-hidden rounded-2xl"
+                    style={{
+                      background: "#0c0c0c",
+                      border: on
+                        ? "1.5px solid var(--gold-border)"
+                        : "1.5px solid #292524",
+                    }}
+                  >
+                    <button
+                      type="button"
+                      onClick={() => setChantier(on ? null : c.id)}
+                      className="flex w-full items-center gap-3 px-4 py-3.5 text-left"
+                    >
+                      <span className="flex-shrink-0 text-[15px]">{c.emoji}</span>
+                      <span
+                        className="font-display text-[13.5px] font-bold uppercase leading-snug tracking-wide"
+                        style={{
+                          color: on
+                            ? "var(--gold-border)"
+                            : "rgba(255,255,255,.85)",
+                        }}
+                      >
+                        {c.titre}
+                      </span>
+                    </button>
+
+                    {on && (
+                      <ul className="flex flex-col gap-3 border-t border-white/10 px-4 py-4">
+                        {c.lignes.map((l) => (
+                          <li
+                            key={l}
+                            className="text-[13.5px] leading-[1.55] text-white/85"
+                          >
+                            {l}
+                          </li>
+                        ))}
+                      </ul>
+                    )}
+                  </section>
+                );
+              })}
+            </div>
+          </div>
+        ))}
 
         {/* L'ÉCHELLE — Haïti posée à côté du corridor.
 
@@ -202,14 +306,14 @@ export default function EmpireView() {
           Et là où ça cesse d&apos;être une question de taille
         </p>
         <div className="mb-4 grid items-start gap-2.5 sm:grid-cols-2">
-          {SAUTS.map((s) => (
+          {NATURES.map((s: (typeof NATURES)[number]) => (
             <div
-              key={s.quoi}
+              key={s.axe}
               className="rounded-2xl px-4 py-4"
               style={{ background: "#0c0c0c", border: "1px solid #292524" }}
             >
               <p className="mb-2.5 text-[11px] font-bold uppercase tracking-[0.16em] text-white/40">
-                {s.quoi}
+                {s.axe}
               </p>
               <p className="mb-2 text-[12.5px] leading-snug text-white/45">
                 {s.haiti}
