@@ -337,6 +337,16 @@ export const INSTRUMENT: Emploi[] = [
       "Dieu pourrait faire de toi le gardien des goulots du monde — celui par qui tout doit passer, pour que rien d'injuste ne passe.",
     mais: "Mais aujourd'hui tout passe encore par ton téléphone, et rien par tes mains.",
   },
+  {
+    mission:
+      "Dieu pourrait t'utiliser pour que plus un gramme de minerai africain ne parte brut — que la valeur reste enfin sur la terre qui la porte.",
+    mais: "Mais Il regarde d'abord ce que tu fais de ta propre matière première, et tu la dépenses brute, chaque soir, sans rien en tirer.",
+  },
+  {
+    mission:
+      "Dieu pourrait te donner cent mille ingénieurs et un million d'ouvriers, et faire de toi celui qu'ils suivent.",
+    mais: "Mais on ne suit pas un homme qui ne se suit pas lui-même. Ils le sentiraient au premier jour.",
+  },
 ];
 
 /**

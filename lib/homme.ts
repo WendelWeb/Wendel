@@ -91,6 +91,8 @@ export const SI_SERIEUX: string[] = [
   "Si je suis vraiment sérieux, 20 000 $ par jour commence par une heure de travail que personne ne m'a demandée.",
   "Si je suis vraiment sérieux, je compte les jours qui restent avant 2027 — et j'arrête de faire comme s'il y en avait d'autres.",
   "Si je suis vraiment sérieux, NOVA-AXE commence ce matin : on ne confie pas quatre millions de kilomètres carrés à un homme qui ne gouverne pas les quatre mètres carrés autour de son lit.",
+  "Si je suis vraiment sérieux, je travaille aujourd'hui la seule compétence qui décide de tout : reconnaître et tenir des hommes meilleurs que moi.",
+  "Si je suis vraiment sérieux, j'accepte les vingt années obscures — celles sans rien à montrer, qui éliminent tout le monde bien avant la difficulté finale.",
 ];
 
 /**

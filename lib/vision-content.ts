@@ -184,10 +184,15 @@ Rien de tout cela ne me sera donné, ni hérité, ni concédé par bonté. **J'y
 # ⚜️ NOVA-AXE — L'EMPIRE D'APRÈS HAÏTI : LE PLUS GRAND PROJET
 « We do not chase wealth. We position ourselves where it must pass. » — On ne court pas après la richesse : on se place là où elle doit obligatoirement passer. C'est la doctrine de ce projet, et celle de toute ma vie.
 
-Le pouvoir moderne n'est pas pyramidal, il est **réticulaire** : un réseau de nœuds critiques. On ne le prend pas au sommet — on le prend aux **goulots d'étranglement** par lesquels tout doit passer. Trois méta-principes : **1 % des nœuds contrôle 99 % du flux** · **plus un pouvoir est efficace, moins il est visible** · **rendre l'autre plus dépendant de moi que moi de lui**. Et la règle d'ordre : **Haïti est la démonstration, NOVA-AXE est le théorème.** Si je le prouve sur 27 000 km², on m'en confiera 4 millions.
+Le pouvoir moderne n'est pas pyramidal, il est **réticulaire** : un réseau de nœuds critiques. On ne le prend pas au sommet — on le prend aux **goulots d'étranglement** par lesquels tout doit passer. Trois méta-principes : **1 % des nœuds contrôle 99 % du flux** · **plus un pouvoir est efficace, moins il est visible** · **rendre l'autre plus dépendant de moi que moi de lui**. Et la règle d'ordre : **Haïti est la démonstration, NOVA-AXE est le théorème.** Rien ne me sera confié — je ne demande aucune permission et je n'en attends aucune. Mais un homme qui n'a pas tenu 27 000 km² n'a aucune prise sur 4 millions : la démonstration ne me donne pas le droit, elle me donne la **capacité**. Le corridor ne s'obtient pas, il se rend inévitable — par l'indispensabilité, la ruse, la négociation et les coups de maître, exactement comme le siège à la table.
+
+## L'arbitrage — qui commande à qui
+- **Haïti est la maison. NOVA-AXE est la portée.** Il n'y a pas deux souverainetés rivales : il y a un homme, une origine, et un bras qui va plus loin que l'origine.
+- Le corridor **n'ampute aucun État** : il ne se taille pas dans des territoires arrachés, il se construit par traité, concession de long bail, coentreprise souveraine et participation au capital — les sept nations traversées deviennent **actionnaires du passage**, pas dépossédées de leur sol. C'est ce qui rend le projet possible ; le contraire en ferait une invasion, donc une coalition contre moi dès le premier jour.
+- Et c'est ce qui protège la voie du sixième siège au lieu de la saboter : Haïti n'arrive pas à la table en prédateur du continent, mais en **architecte du corridor qui enrichit sept pays** — avec sept voix qui lui doivent quelque chose.
 
 ## Le territoire
-- Un **corridor souverain de 4 000 km sur 1 000 km — 4 millions de km²**, la taille de l'Inde : une colonne vertébrale qui coupe l'Afrique en deux, du Sahel (Niger, Tchad) au bassin du Congo (RDC, Centrafrique), jusqu'à l'Afrique australe (Angola, Zambie, Botswana).
+- Un **corridor souverain de 4 000 km sur 1 000 km — 4 millions de km²**, plus vaste que l'Inde et que l'Union européenne réunies au tiers près : une colonne vertébrale qui coupe l'Afrique en deux, du Sahel (Niger, Tchad) au bassin du Congo (RDC, Centrafrique), jusqu'à l'Afrique australe (Angola, Zambie, Botswana).
 - Le tracé est une thèse, pas un dessin : il relie les **minerais de l'avenir** (cobalt, lithium, terres rares, coltan, uranium, platine), la plus grande réserve d'**eau douce** du continent, et le **soleil équatorial** du Sahel.
 - À cheval sur l'équateur : chaque kilogramme lancé vers l'espace y coûte moins cher que partout ailleurs sur Terre — la rotation de la planète est offerte au décollage.
 - **Le passage obligé entre l'Est et l'Ouest de l'Afrique** : chaque conteneur, chaque paquet de données, chaque gramme de cobalt qui traverse le continent passe par mes douanes.
@@ -200,7 +205,8 @@ Le pouvoir moderne n'est pas pyramidal, il est **réticulaire** : un réseau de 
 ## Les trois capitales
 - **AXIOM** (nord) — l'IA et la souveraineté. Tours d'obsidienne veinées de fibre optique, cathédrales de données, siège de l'AGI souveraine.
 - **VERDIA** (centre) — la biotech et la longévité. Une architecture vivante, poussée plutôt que construite ; cliniques de rajeunissement cellulaire ; le chantier de l'abolition de la mort involontaire.
-- **FORGE** (sud) — l'industrie, les mines, l'espace. Titane et néon, fonderies grandes comme des montagnes, ports spatiaux qui lancent tous les jours.
+- **FORGE** (sud) — l'industrie, les mines et la construction spatiale. Titane et néon, fonderies grandes comme des montagnes, chantiers d'assemblage des lanceurs et des charges utiles.
+- **Et le pas de tir n'est pas à Forge : il est sur l'équateur**, au centre du corridor, à la latitude zéro — l'avantage de 465 m/s offert par la rotation terrestre ne s'obtient qu'à cet endroit précis. Forge construit, l'équateur lance, une ligne Hyperloop de 2 000 km relie les deux en une demi-heure. C'est le seul empire du monde à posséder les deux bouts de la chaîne spatiale sur son propre sol.
 
 ## Les douze piliers
 - **Douanes** : frontières-forteresses technologiques, AGI douanière inspectant le commerce en microsecondes, chokepoints de transit obligatoires qui rendent les superpuissances rivales dépendantes.
@@ -208,7 +214,7 @@ Le pouvoir moderne n'est pas pyramidal, il est **réticulaire** : un réseau de 
 - **Technologie radicale** : AGI souveraine logée dans des cathédrales de données à l'échelle d'une montagne, fusion nucléaire opérationnelle, mégafabs de semi-conducteurs 1 nm entièrement automatisées, calcul quantique, cryptographie post-quantique.
 - **Biotech & longévité** : rajeunissement cellulaire, édition génomique, impression d'organes, régénération neurale — **longevity escape velocity atteinte à l'An 30**.
 - **Infrastructure** : Hyperloop à 4 000 km/h, mégaponts sur le Congo, mégaports atlantiques autonomes de la taille d'une petite nation, villes verticales de 3 km perçant la couche nuageuse.
-- **Défense & renseignement** : bouclier orbital laser, essaims de drones par millions, légions robotisées, intercepteurs hypersoniques, flottes sous-marines autonomes, forces spéciales augmentées, agence de renseignement souveraine présente dans chaque capitale du monde.
+- **Défense & renseignement** : bouclier orbital laser, essaims de drones par millions, légions robotisées, intercepteurs hypersoniques, flottes sous-marines autonomes, forces spéciales augmentées à exosquelettes neuronaux. **C'est ma société militaire privée devenue armée souveraine** — pas une seconde force : la même, arrivée à maturité, qui passe du statut de la plus crainte du monde à celui de la seule capable de refuser le ciel à quiconque. Et le renseignement reste **TSEVAOT**, présent dans chaque capitale : le corridor lui donne un territoire, il ne le remplace pas.
 - **Espace** : ports spatiaux équatoriaux lançant chaque jour, **anneau orbital en chantier à l'An 50, ascenseur spatial ancré sur l'équateur à l'An 100**, colonies minières lunaires, avant-postes martiens, flottes d'extraction d'astéroïdes.
 - **Société** : citoyens régénérés, mariages sous canopées bioluminescentes, stades en apesanteur, arènes neurales — la vie entière, pas seulement les monuments.
 - **Culture** : opéras taillés dans la montagne, philharmonies suspendues au-dessus de la jungle, bibliothèques contenant chaque livre jamais écrit, académies de philosophie débattant de l'éthique de l'immortalité.
@@ -217,9 +223,75 @@ Le pouvoir moderne n'est pas pyramidal, il est **réticulaire** : un réseau de 
 - **Diplomatie mondiale** : des ambassades qui éclipsent les capitales hôtes, des chefs d'État étrangers qui arrivent en suppliants, des sommets où l'empire dicte les termes du siècle.
 
 ## La ligne du temps
+- **L'An Zéro est daté : 2033.** Le 16 mai 2033 j'ai trente ans et tout ce que cette app contient pour Haïti est accompli — c'est ce qui me qualifie pour poser la première pierre du corridor. Haïti se compte en années ; NOVA-AXE se compte en siècles. Les deux horloges ne sont pas en concurrence : la seconde ne démarre que quand la première a sonné.
 - **An 1 — la Fondation** : les grues dans la poussière, les premières fondations coulées, la génération fondatrice en casque de chantier et en robe de cérémonie.
 - **An 50 — l'Apogée** : chaque pilier opérationnel, l'AXE réserve mondiale incontestée, le bouclier orbital entièrement déployé.
 - **An 200 — la Transcendance** : l'anneau orbital achevé, les colonies lunaires et martiennes prospères — et la génération fondatrice **encore vivante**.
+
+## La science et l'innovation — ce qui ne s'achète pas, se découvre
+- **Une AGI souveraine**, entraînée sur mes propres puces, dans mes propres centres de calcul, refroidie par mon propre fleuve. Aucun interrupteur dans la main de quelqu'un d'autre. C'est la condition non négociable : un empire qui loue son intelligence à un autre n'est pas un empire, c'est un client.
+- **La fusion nucléaire opérationnelle** — tokamaks et confinement inertiel — plus des réacteurs à sels fondus au thorium. L'énergie cesse d'être un coût pour devenir un fait, comme l'air.
+- **Des mégafabs 1 nm entièrement automatisées** : lithographie EUV maîtrisée de bout en bout, et surtout **les machines qui fabriquent les machines** — car celui qui dépend d'un unique fournisseur de graveurs dépend de lui pour tout.
+- **Calcul quantique** et **cryptographie post-quantique** déployée avant tout le monde : le jour où les chiffrements du monde tomberont, ils tomberont pour les autres, pas pour moi.
+- **Prix scientifiques, revues, académies** : celui qui valide ce qui est vrai oriente ce qui se fait. Une revue de rang mondial publiée depuis Axiom vaut trois porte-avions.
+- Et le principe qui régit tout le reste : **je ne rattrape pas les technologies, j'en saute une génération.** On ne dépasse jamais un empire en le suivant sur sa propre route.
+
+## Les ressources — la profondeur sous le sol
+- **Cobalt, lithium, terres rares, coltan, uranium, platinoïdes, cuivre, diamants, or, manganèse** : le corridor tient ce dont les cent prochaines années ont besoin.
+- Mais la règle est absolue : **plus un gramme de minerai brut ne sort du corridor.** Raffinage, cathodes, batteries, aimants permanents, alliages, produits finis — la valeur se prend en aval, jamais en amont. C'est exactement l'erreur qui a saigné l'Afrique pendant cent ans, et je ne la referai pas.
+- **L'eau douce** du bassin du Congo, deuxième réserve du monde : au siècle qui vient, l'eau sera plus disputée que le pétrole, et j'en tiendrai la source.
+- **Le soleil du Sahel**, la plus forte irradiance habitée de la planète, plus l'hydroélectricité du fleuve : l'énergie exportée devient un instrument diplomatique — on ne bombarde pas celui qui vous éclaire.
+- **Les stocks stratégiques et les tampons de prix** : constituer des réserves assez profondes pour fixer un plancher et un plafond sur les marchés mondiaux. Ce n'est pas de la spéculation, c'est de la souveraineté.
+- **Et la biodiversité comme actif** : le génome du bassin du Congo est une bibliothèque pharmaceutique que personne n'a encore lue. La protéger n'est pas de l'écologie sentimentale, c'est de la stratégie.
+
+## L'espace — le seul territoire encore vacant
+- **Un accès à l'orbite à un coût que personne ne peut égaler**, par la latitude et par la cadence : des lancements quotidiens, pas mensuels.
+- **Constellations souveraines** : positionnement, communication, observation. Ne plus jamais dépendre du GPS d'un autre — car le jour où l'on coupe le signal, une armée devient aveugle et une économie s'arrête.
+- **L'anneau orbital à l'An 50, l'ascenseur spatial équatorial à l'An 100.** Ce ne sont pas des ornements : ils font tomber le coût de la mise en orbite d'un facteur mille, et celui qui les possède tient la porte du système solaire.
+- **Extraction lunaire** — hélium-3, régolithe, eau des cratères polaires — et **capture d'astéroïdes** : un seul astéroïde métallique de classe M contient plus de nickel et de platine que toute la croûte terrestre exploitable.
+- **Industrie orbitale** : fibres optiques, alliages et organes imprimés en microgravité, impossibles à produire au sol.
+- **Le haut est le nouveau haut.** Celui qui tient l'orbite tient le sol : toute puissance terrestre est désormais à portée de vue et de frappe depuis l'espace, et le premier qui l'occupe le refuse aux autres.
+
+## La politique — la forme du pouvoir intérieur
+- **La question du régime doit être tranchée, pas éludée** : c'est une **autorité fondatrice unifiée** — je décide, et j'en réponds — adossée à une **magistrature indépendante** et à des **conseils techniques élus par compétence**. La vitesse d'exécution est mon avantage absolu sur les démocraties ; la corruption est mon risque absolu.
+- **Le mérite comme seule aristocratie.** Aucun poste hérité, aucun poste acheté. La corruption est le seul crime que je punis sans clémence, parce que c'est le seul qui tue l'empire de l'intérieur.
+- **La citoyenneté est un contrat, pas un accident de naissance** : elle donne l'éducation, la santé, la longévité et la sécurité — elle exige la contribution et la loyauté.
+- **Une succession écrite dès l'An 1.** Tous les empires meurent de leur succession, pas de leurs ennemis. Rome, Alexandre, les Ottomans : la même cause, trois fois.
+- **Le dissident n'est pas un ennemi.** Une opposition légale, une presse qui mord, des contre-pouvoirs réels — non par vertu, mais parce qu'un souverain que personne ne contredit devient aveugle, et qu'un empire aveugle tombe.
+
+## Le droit et les normes — écrire les règles au lieu de les subir
+- **Un code souverain** : commercial, minier, spatial, numérique. Écrit avant qu'on ait besoin de l'invoquer.
+- **Une cour d'arbitrage** qui devienne le forum obligé des contrats sur les ressources — comme Londres et Singapour le sont aujourd'hui pour le reste.
+- **Des normes techniques** : format des batteries, protocoles de données, standards de pureté des métaux, règles de trafic orbital. Celui qui écrit la norme perçoit une rente éternelle sans jamais rien produire.
+- **L'extraterritorialité** : mon droit s'applique à quiconque utilise ma monnaie, mes minerais ou mes orbites. C'est l'arme la plus silencieuse et la plus totale du monde moderne.
+
+## La diplomatie — la puissance sans la guerre
+- **Trois cercles** : les sept nations du corridor, actionnaires et associées ; l'Afrique entière, que le corridor irrigue ; et le reste du monde, qui négocie.
+- **Le levier de l'énergie et des minerais** : on ne menace personne. On rappelle simplement ce qui traverse le corridor chaque jour, et l'autre fait le calcul lui-même.
+- **La dépendance asymétrique, méthodiquement construite** : rendre l'autre plus dépendant de moi que moi de lui, dossier par dossier, année après année.
+- **Les élites formées chez moi** : bourses, universités, académies militaires ouvertes aux enfants des nations voisines. Dans trente ans, les ministres du continent auront tous eu le même professeur.
+- **La diaspora comme réseau** : haïtienne et africaine, sur tous les continents — un empire qui a des yeux et des mains partout sans avoir à y planter un drapeau.
+- **Le récit, tenu de bout en bout** : agence de presse, studios, jeux, musique, mode. Un empire est raconté par lui-même ou contre lui-même — il n'y a pas de troisième cas.
+- **Et la générosité comme instrument** : hôpitaux, écoles, vaccins, secours donnés là où personne ne va. Ce qu'aucune armée n'obtient, une génération soignée l'accorde.
+
+## La guerre — la penser pour ne pas la faire
+- **La doctrine est le refus d'accès, pas la conquête.** Rendre l'entrée si coûteuse que la question ne se pose plus. Personne n'attaque ce qu'il ne peut pas prendre.
+- **La dissuasion se tient sur trois jambes** : le bouclier orbital, la profondeur souterraine — commandement, industrie et données enfouis, insensibles à la première frappe — et la **capacité de représailles économiques** : couper le cobalt, c'est arrêter une industrie automobile entière en un trimestre.
+- **La guerre moderne commence avant le premier coup de feu** : cyber, câbles sous-marins, brouillage des satellites, sabotage logistique, manipulation des prix, corruption des élites. Je dois être imprenable sur ces six fronts avant de posséder un seul char.
+- **Le renseignement décide de tout.** Savoir avant. Tsevaot n'est pas un accessoire de l'armée : c'est l'armée qui est un accessoire de Tsevaot.
+- **Ce que je ne ferai pas** : pas de guerre d'agression, pas d'occupation, pas de frappe sur des civils. Non par faiblesse — parce qu'un empire qui se fait haïr paie sa haine pendant deux siècles, et que le mien doit durer plus longtemps que ça.
+- **Et l'ennemi intérieur reste le premier** : la corruption, la succession, la mollesse de la deuxième génération. Aucun empire de l'Histoire n'est mort d'une invasion avant d'être mort de l'intérieur.
+
+## Ce qu'un tel accomplissement implique vraiment — et que personne ne dit
+- **Le nombre.** Un projet pareil demande cent mille ingénieurs, un million d'ouvriers, dix mille cadres et quelques centaines d'hommes de confiance. **Je ne bâtirai rien seul.** La compétence qui me manque le plus n'est pas technique : c'est savoir reconnaître, attirer et tenir des hommes meilleurs que moi dans leur domaine.
+- **La durée.** Deux siècles, ce n'est pas une vie de travail — c'est une institution qui travaille. Je ne construis pas un empire : je construis la **machine** qui le construira, et qui continuera quand je dormirai.
+- **La légitimité.** Aucun pouvoir ne tient par la force seule. Il tient parce que ceux qui vivent dessous préfèrent qu'il tienne. Le jour où le corridor cesse d'être meilleur pour eux que l'alternative, il tombe — bouclier orbital ou pas.
+- **L'obscurité des vingt premières années.** Rien de visible, rien de racontable, aucune reconnaissance. Des contrats, des relations, des permis, des levées, des échecs. C'est cette période-là qui élimine tout le monde, pas la difficulté finale.
+- **Les ennemis.** Un projet qui déplace le dollar et fixe le prix du cobalt aura contre lui des États, des banques, des services et des groupes qui existaient avant ma naissance et qui existeront après ma mort. **Il faut être imprenable avant d'être visible.**
+- **Le coût humain.** Ma santé, mon sommeil, mes amitiés, ma famille, ma paix. Ce sont des actifs, pas des variables d'ajustement : les brûler ne fait pas gagner du temps, ça fait perdre l'homme qui devait tenir la durée.
+- **Le risque de devenir ce que je méprise.** Le pouvoir déforme celui qui le porte — c'est le sort le plus commun de l'Histoire, pas l'exception. Ma seule protection est écrite, et elle doit rester lisible : les hôpitaux, les 50 000 maisons, le Nord-Ouest, ceux qui meurent de ce qui se soigne ailleurs. **Le jour où la réponse à « pour faire quoi ? » devient « pour avoir plus de pouvoir », je suis entré dans la boucle et j'ai déjà perdu.**
+- **La possibilité de l'échec.** Ça peut ne pas marcher. Et même alors, l'homme qui aura tenu vingt ans de discipline pour tenter ça aura une vie que quatre-vingt-dix-neuf pour cent des hommes n'auront jamais approchée. **Le prix se paie d'avance, et il vaut le coup même si le sommet se dérobe.**
+- **Et le premier verrou de toute la chaîne** : rien de ce qui est écrit au-dessus n'a la moindre chance de commencer si je ne me lève pas demain matin à 4h30. C'est le seul maillon dont dépendent les cent cinquante trillions, et c'est le seul que personne ne peut serrer à ma place.
 
 ## Ce qui doit se conquérir en plus du territoire
 - **Le droit et les normes** — écrire les règles selon lesquelles le monde me jugera, au lieu de les subir. Rome, Londres et Washington ont tous imposé leur droit avant d'imposer autre chose.
@@ -301,7 +373,7 @@ Avant mes 30 ans (16 mai 2033) : une entreprise militaire privée **classée dan
 - Neurobiologie : amélioration cognitive, interfaces cerveau–IA, fin des maladies neurodégénératives.
 - Médecine préventive **100% IA** : surveillance 24/7, détection avant les symptômes, nanorobots réparateurs.
 - Chaîne mondiale de cliniques anti-âge **7★**, traitements exclusifs à mon empire.
-- **Objectif final : repousser la mort, porter la vie humaine à 120–150+ ans.**
+- **Objectif final : repousser la mort, porter la vie humaine à 120–150+ ans** — premier palier, atteint depuis Haïti. Le second est la **longevity escape velocity** : le point où chaque année vécue rend plus d'un an d'espérance de vie, et où la limite cesse d'exister. C'est ce que NOVA-AXE atteint à son An 30, et c'est ce qui rend la génération fondatrice encore vivante à l'An 200.
 
 # 🧠 ÉVOLUTION HUMAINE & HÉRITAGE
 - Fusion homme–IA : augmentation cognitive et physique.
@@ -321,11 +393,14 @@ Avant mes 30 ans (16 mai 2033) : une entreprise militaire privée **classée dan
 # 🏆 VIE PERSONNELLE & LÉGENDE
 - Glow-up complet : corps, peau, cheveux, style ; corps athlétique & santé optimale.
 - Discipline militaire & focus extrême.
-- Vision 2028 : empire mondial achevé.
+- Vision 2028 : les fondations de l'empire posées — structures, capitaux, premiers chantiers debout. L'achèvement d'Haïti se juge en 2033 ; NOVA-AXE commence après.
 - Héritage historique : mon nom dans l'Histoire.
 
 # ♾️ ET BEAUCOUP D'AUTRES
 - Bien d'autres chantiers, non encore listés. La liste grandit avec l'ambition. (Détails à venir.)
 
-# 💰 ENVERGURE TOTALE
-- Ordre de grandeur : **$500 Md–1 000 Md+** d'investissement — contrôle et refondation TOTALE de la nation. C'est le prix : il exige un vaisseau plein, une rétention totale, une discipline sans faille.`;
+# 💰 ENVERGURE — LES DEUX ÉCHELLES
+- **Haïti — $500 Md–1 000 Md+** d'investissement : contrôle et refondation TOTALE de la nation. C'est l'échelle de la démonstration.
+- **NOVA-AXE — $150 000 Md**, soit cent cinquante à trois cents fois plus. C'est l'échelle du théorème.
+- L'écart entre les deux chiffres n'est pas un saut de moyens : c'est un saut de nature. On ne finance pas le second avec les méthodes du premier — on le finance parce que le premier a prouvé qu'on tient une promesse.
+- Et les deux exigent exactement le même prix, au même endroit : un vaisseau plein, une rétention totale, une discipline sans faille.`;

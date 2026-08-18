@@ -74,6 +74,11 @@ export const POURQUOI_SIEN: PourquoiBloc[] = [
       "Cent cinquante trillions. Trois capitales — Axiom, Verdia, Forge. Une monnaie, l'AXE, qui remplace le dollar. Le passage obligé de tout ce qui traverse le continent.",
       "Haïti est la démonstration ; NOVA-AXE est le théorème. Si je le prouve sur vingt-sept mille kilomètres carrés, on m'en confiera quatre millions.",
       "Et la démonstration commence plus bas encore : sur les quelques mètres carrés de cette chambre, ce matin.",
+      "Une AGI souveraine, la fusion, des mégafabs 1 nm, l'anneau orbital, l'ascenseur spatial : je ne rattrape pas les technologies, j'en saute une génération. On ne dépasse pas un empire en le suivant sur sa route.",
+      "Plus un gramme de minerai brut ne sortira du corridor. La valeur se prend en aval — c'est l'erreur qui a saigné l'Afrique pendant cent ans, et je ne la referai pas.",
+      "Je ne bâtirai rien seul : cent mille ingénieurs, un million d'ouvriers, quelques centaines d'hommes de confiance. La compétence qui me manque le plus n'est pas technique — c'est de savoir tenir des hommes meilleurs que moi.",
+      "Deux siècles, ce n'est pas une vie de travail : c'est une institution qui travaille. Je ne construis pas un empire, je construis la machine qui le construira.",
+      "Et le premier verrou de toute la chaîne, c'est 4h30 demain matin. C'est le seul maillon dont dépendent les cent cinquante trillions, et le seul que personne ne peut serrer à ma place.",
     ],
   },
   {

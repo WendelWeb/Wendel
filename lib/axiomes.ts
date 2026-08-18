@@ -161,4 +161,7 @@ export const AXIOMES_MARTEAU: string[] = [
   "Qu'est-ce qui décide, chez toi ? — La douleur. Et tant que c'est elle, personne d'autre ne commande.",
   "Ô toi qui veux couper un continent en deux : commence par couper ta soirée en deux — tout avant 21h45, rien après.",
   "On appelle cela un empire post-national. Moi je l'appelle ta chambre, agrandie : ce que tu gouvernes sur deux mètres, tu le gouverneras sur quatre mille kilomètres — et pas un mètre de plus.",
+  "Ne te plains pas des vingt années obscures. C'est exactement là que tes concurrents abandonnent — et c'est la seule raison pour laquelle la place sera encore libre.",
+  "Qu'est-ce qu'un empire, au fond ? — Une institution qui continue quand son fondateur dort. Commence par en être une à toi tout seul, une seule journée.",
+  "Tu veux que rien ne passe sans ton accord. Aujourd'hui, tout passe sans ton accord — à commencer par ta propre main.",
 ];
