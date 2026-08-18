@@ -39,9 +39,15 @@ export default function UrgenceView({
         mensonge de «&nbsp;juste une fois&nbsp;».
       </p>
 
-      <div className="colonnes-xl">
-        <WhiteStaircase days={retentionDays} />
+      {/* L'escalier fait ~305px, le bouton ~84px et le lien ~44px : dans une
+          même rangée, `align-items: start` laisse ~257px de vide sous le lien
+          et ~221px sous le bouton. Il sort donc du conteneur et prend sa propre
+          ligne ; la grille ne garde que deux enfants de hauteur voisine.
+          Sur iPhone rien ne bouge : `.colonnes-xl` y est déjà à une colonne,
+          et l'escalier reste le premier élément du flux. */}
+      <WhiteStaircase days={retentionDays} />
 
+      <div className="colonnes-xl">
         {/* Affirmation / phrase choc */}
         <button
           type="button"

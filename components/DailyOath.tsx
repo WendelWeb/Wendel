@@ -1,14 +1,29 @@
 "use client";
 
 import { useState, useTransition } from "react";
-import { ChevronRight, Check, X } from "lucide-react";
-import { OATH_STEPS, OATH_ITEM_ID } from "@/lib/oath";
+import { Check, X } from "lucide-react";
+import { OATH_ITEM_ID } from "@/lib/oath";
+import { VOIX_HAUTE, VOIX_HAUTE_TOTAL } from "@/lib/voix";
+import { picked, visitSeed } from "@/lib/rotate";
 import { setItemStateAction } from "@/app/actions";
 
-// Fullscreen daily ritual. He advances one law at a time — reading in diagonal
-// isn't possible when only one line is on screen and a tap is required to move
-// on. Completing it checks the `serment` objective, which sits in the noyau,
-// so skipping it costs him the streak.
+// UNE phrase, pas un diaporama.
+//
+// C'était une suite d'écrans à faire défiler avant d'atteindre sa journée. Il
+// l'a supprimée lui-même, et il a raison : un rituel qu'on traverse en tapant
+// six fois devient un péage, et un péage se paie sans lire. Ce qui reste est la
+// seule chose qui comptait — une phrase, tirée au sort dans tout ce que l'app
+// contient, à dire à voix haute.
+//
+// À voix haute, et c'est le point. Lue en silence, une phrase se survole ;
+// prononcée, elle se parcourt en entier au rythme de la parole, et il s'entend
+// la dire. Rien d'autre ne distingue relire un texte de le déclarer.
+//
+// Le tirage se fait sur le client au premier rendu et ne rejoue pas : la
+// phrase du jour ne doit pas changer sous ses yeux pendant qu'il la lit.
+//
+// Déclarer coche l'objectif `serment`, qui est dans le noyau — passer outre
+// lui coûte la série, exactement comme avant.
 export default function DailyOath({
   done,
   onDone,
@@ -17,19 +32,12 @@ export default function DailyOath({
   onDone: () => void;
 }) {
   const [open, setOpen] = useState(!done);
-  const [i, setI] = useState(0);
+  const [phrase] = useState(() => picked(VOIX_HAUTE, visitSeed()));
   const [, start] = useTransition();
 
   if (!open) return null;
 
-  const step = OATH_STEPS[i];
-  const last = i === OATH_STEPS.length - 1;
-
-  function next() {
-    if (!last) {
-      setI((n) => n + 1);
-      return;
-    }
+  function declarer() {
     onDone();
     setOpen(false);
     start(async () => {
@@ -41,31 +49,26 @@ export default function DailyOath({
     });
   }
 
+  // Une phrase courte tient en grand ; une longue doit rétrécir, sinon elle
+  // déborde de l'écran sur un téléphone.
+  const taille =
+    phrase.length > 190
+      ? "text-[19px] leading-[1.35]"
+      : phrase.length > 110
+        ? "text-[23px] leading-[1.25]"
+        : "text-[29px] leading-[1.15]";
+
   return (
     <div
-      className="fixed inset-0 z-[100] flex flex-col"
-      style={{ background: step.accent }}
+      className="fixed inset-0 z-[100] flex flex-col bg-black"
       role="dialog"
       aria-modal="true"
-      aria-label="Serment du jour"
+      aria-label="La phrase du jour, à lire à voix haute"
     >
-      {/* Progression + sortie */}
       <div
-        className="flex items-center gap-3 px-5 pt-5"
+        className="flex items-center justify-end px-5 pt-5"
         style={{ paddingTop: "max(1.25rem, env(safe-area-inset-top))" }}
       >
-        <div className="flex flex-1 gap-1">
-          {OATH_STEPS.map((s, n) => (
-            <span
-              key={s.id}
-              className="h-[3px] flex-1 rounded-full transition-opacity"
-              style={{
-                background: "#fff",
-                opacity: n <= i ? 0.9 : 0.22,
-              }}
-            />
-          ))}
-        </div>
         <button
           type="button"
           onClick={() => setOpen(false)}
@@ -76,47 +79,31 @@ export default function DailyOath({
         </button>
       </div>
 
-      {/* La ligne du moment */}
-      <div className="mx-auto flex w-full max-w-2xl flex-1 flex-col justify-center px-7">
-        <p className="mb-4 text-[10px] font-bold uppercase tracking-[0.28em] text-white/45">
-          {step.label}
-        </p>
+      <div className="mx-auto flex w-full max-w-3xl flex-1 flex-col justify-center px-7">
         <p
-          className="font-display text-[26px] font-bold uppercase leading-[1.15]"
-          style={{ color: step.gold ? "var(--gold-border)" : "#fff" }}
+          className="mb-5 text-[10px] font-bold uppercase tracking-[0.28em]"
+          style={{ color: "var(--gold-border)" }}
         >
-          {step.main}
+          À voix haute
         </p>
-        {step.sub && (
-          <p className="mt-4 text-[14px] leading-relaxed text-white/70">
-            {step.sub}
-          </p>
-        )}
+        <p className={`font-display font-bold text-white ${taille}`}>
+          {phrase}
+        </p>
       </div>
 
-      {/* Avancer */}
       <div
-        className="mx-auto w-full max-w-2xl px-5 pb-5"
+        className="mx-auto w-full max-w-3xl px-5 pb-5"
         style={{ paddingBottom: "max(1.25rem, env(safe-area-inset-bottom))" }}
       >
-        <p className="mb-3 text-center text-[11px] text-white/40">
-          Lis-le à voix haute · {i + 1} / {OATH_STEPS.length}
+        <p className="mb-3 text-center text-[11px] text-white/35">
+          Une sur {VOIX_HAUTE_TOTAL.toLocaleString("fr-FR")} — tirée au sort
         </p>
         <button
           type="button"
-          onClick={next}
-          className="flex h-14 w-full items-center justify-center gap-2 rounded-2xl bg-white text-[15px] font-bold uppercase tracking-wide transition active:scale-[0.99]"
-          style={{ color: step.accent }}
+          onClick={declarer}
+          className="flex h-14 w-full items-center justify-center gap-2 rounded-2xl bg-white text-[15px] font-bold uppercase tracking-wide text-black transition active:scale-[0.99]"
         >
-          {last ? (
-            <>
-              <Check size={19} /> Je le déclare
-            </>
-          ) : (
-            <>
-              Suivant <ChevronRight size={19} />
-            </>
-          )}
+          <Check size={19} /> Je l&apos;ai dite
         </button>
       </div>
     </div>

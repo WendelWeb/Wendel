@@ -102,7 +102,7 @@ export default function EnvieOverlay({
   return (
     <div className="fixed inset-0 z-[95] overflow-y-auto bg-black">
       <div
-        className="mx-auto max-w-lg px-5 pb-8"
+        className="mx-auto max-w-lg px-5 pb-8 xl:max-w-4xl"
         style={{ paddingTop: "calc(env(safe-area-inset-top) + 2rem)" }}
       >
         {etape === "etat" && (

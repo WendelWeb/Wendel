@@ -207,7 +207,7 @@ export default function EmpireView() {
             <p className="mesure mb-3.5 text-[12px] leading-relaxed text-white/45">
               {f.note}
             </p>
-            <div className="colonnes-xl">
+            <div className="grid items-start gap-2.5">
               {f.chantiers.map((c) => {
                 const on = chantier === c.id;
                 return (
@@ -394,7 +394,7 @@ export default function EmpireView() {
           ))}
         </section>
 
-        <div className="colonnes-xl mb-8">
+        <div className="mb-8 grid items-start gap-2.5">
           {GRANDEUR_SECTIONS.map((s, i) => {
             const on = section === s.id;
             return (

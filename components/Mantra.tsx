@@ -738,7 +738,7 @@ export default function Mantra({
         Loi du vaisseau
       </p>
 
-      <div className="columns-[22rem] gap-3 [&>*]:mb-3 [&>*]:break-inside-avoid [&>*:last-child]:mb-0">
+      <div className="columns-[26rem] gap-3 [&>*]:mb-3 [&>*]:break-inside-avoid [&>*:last-child]:mb-0">
         {promesse}
         {shuffled(mobiles, branch(s, "ordre")).map((b) => (
           <div key={b.id}>{b.node}</div>

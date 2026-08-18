@@ -40,7 +40,7 @@ export default function GrandeurOverlay({ onClose }: { onClose: () => void }) {
   return (
     <div className="fixed inset-0 z-[95] overflow-y-auto bg-black">
       <div
-        className="mx-auto max-w-2xl px-5 pb-8 xl:max-w-6xl"
+        className="mx-auto max-w-2xl px-5 pb-8 xl:max-w-none"
         style={{ paddingTop: "calc(env(safe-area-inset-top) + 2rem)" }}
       >
         <div className="mb-6 flex items-start justify-between gap-4">
@@ -81,7 +81,11 @@ export default function GrandeurOverlay({ onClose }: { onClose: () => void }) {
             return (
               <section
                 key={s.id}
-                className="overflow-hidden rounded-2xl"
+                className={
+                  on
+                    ? "overflow-hidden rounded-2xl xl:col-span-full"
+                    : "overflow-hidden rounded-2xl"
+                }
                 style={{
                   background: "#0c0c0c",
                   border: on ? "1.5px solid var(--gold-border)" : "1.5px solid #292524",
@@ -104,12 +108,12 @@ export default function GrandeurOverlay({ onClose }: { onClose: () => void }) {
                 </button>
 
                 {on && (
-                  <div className="border-t border-white/10 px-4 py-4">
-                    <ul className="flex flex-col gap-3">
+                  <div className="border-t border-white/10 px-4 py-4 xl:columns-[24rem] xl:gap-8">
+                    <ul className="flex flex-col gap-3 xl:block xl:space-y-3">
                       {s.lignes.map((l) => (
                         <li
                           key={l}
-                          className="text-[14px] leading-[1.55] text-white/85"
+                          className="text-[14px] leading-[1.55] text-white/85 xl:break-inside-avoid"
                         >
                           {l}
                         </li>
@@ -119,7 +123,7 @@ export default function GrandeurOverlay({ onClose }: { onClose: () => void }) {
                         le cadrage disciplinaire : ce texte parle du monde, pas
                         de lui. Trois temps — ce qui change pour tous, qui perd
                         sa position, ce que ça ouvre pour les nations pauvres. */}
-                    <div className="mt-4 border-t border-white/10 pt-3.5">
+                    <div className="mt-4 border-t border-white/10 pt-3.5 xl:break-inside-avoid">
                       <p className="mb-2.5 text-[9.5px] font-bold uppercase tracking-[0.22em] text-red">
                         Ce que le monde devient
                       </p>
@@ -168,7 +172,7 @@ export default function GrandeurOverlay({ onClose }: { onClose: () => void }) {
         <button
           type="button"
           onClick={onClose}
-          className="w-full rounded-xl px-4 py-4 text-[15px] font-bold uppercase tracking-wide text-white transition active:scale-[0.99]"
+          className="mx-auto w-full max-w-3xl rounded-xl px-4 py-4 text-[15px] font-bold uppercase tracking-wide text-white transition active:scale-[0.99]"
           style={{ background: "#15803d" }}
         >
           Je ferme, et je vais le mériter

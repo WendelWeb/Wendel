@@ -7,7 +7,7 @@ import Mantra from "@/components/Mantra";
 import Depassement from "@/components/Depassement";
 import Homme from "@/components/Homme";
 import Loi from "@/components/Loi";
-import { visitSeed, shuffled, branch } from "@/lib/rotate";
+import { visitSeed, shuffled, branch, picked } from "@/lib/rotate";
 import { requireUserId } from "@/lib/auth";
 import { verrouille } from "@/lib/verrou";
 
@@ -24,9 +24,18 @@ export const dynamic = "force-dynamic";
  * change à chaque fois — même s'il ne lit que le premier.
  */
 function bandeaux(graine: number, placement: "top" | "bottom") {
-  const cartes = shuffled(
+  // Le mantra ne joue pas dans la même catégorie que les trois autres : il
+  // empile dix-sept blocs quand eux en alignent six ou sept. Mis dans la même
+  // grille, il imposait sa hauteur à la rangée et les trois courts se
+  // retrouvaient posés en haut d'une colonne de mille pixels de vide — le
+  // vide n'avait pas disparu, il était passé du dedans des cartes au dessous.
+  //
+  // Il occupe donc sa propre bande, sur toute la largeur, et ce sont ses blocs
+  // internes qui se répartissent en colonnes : sa hauteur s'effondre au lieu
+  // de s'imposer. Les trois courts gardent la grille entre eux, où leurs
+  // hauteurs sont voisines et où le vide reste négligeable.
+  const courts = shuffled(
     [
-      <Mantra key="mantra" placement={placement} seed={graine} />,
       <Homme key="homme" placement={placement} seed={graine} />,
       <Depassement key="depassement" placement={placement} seed={graine} />,
       <Loi key="loi" placement={placement} seed={graine} />,
@@ -34,17 +43,30 @@ function bandeaux(graine: number, placement: "top" | "bottom") {
     branch(graine, `ordre-${placement}`),
   );
 
-  // Sur un moniteur, quatre bandes de trois lignes empilées traversent deux
-  // mille pixels chacune : illisible, et l'écran reste vide aux quatre
-  // cinquièmes. En grille, elles tiennent sur une à deux rangées et le texte
-  // garde une largeur lisible.
+  // L'ordre reste tiré au sort — c'est le point de tout le dispositif : il ne
+  // lit presque jamais une page entière, donc ce qu'il lit en premier doit
+  // changer. Ici le tirage décide si le mantra ouvre ou ferme la bande.
+  const mantraDAbord = picked([true, false], branch(graine, `mantra-${placement}`));
+
+  const mantra = (
+    <div key="mantra" className="mb-2.5">
+      <Mantra placement={placement} seed={graine} />
+    </div>
+  );
+
+  const grille = (
+    <div key="courts" className="colonnes-xl">
+      {courts}
+    </div>
+  );
+
   return (
     <div
-      className={`colonnes-xl px-4 md:px-6 ${
+      className={`px-4 md:px-6 ${
         placement === "top" ? "mb-6 mt-3" : "mb-6 mt-8"
       }`}
     >
-      {cartes}
+      {mantraDAbord ? [mantra, grille] : [grille, mantra]}
     </div>
   );
 }

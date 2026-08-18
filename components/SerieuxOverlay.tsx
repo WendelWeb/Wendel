@@ -541,7 +541,7 @@ export default function SerieuxOverlay({
   return (
     <div className="fixed inset-0 z-[95] overflow-y-auto bg-black">
       <div
-        className="mx-auto max-w-2xl px-5 pb-8 xl:max-w-6xl"
+        className="mx-auto max-w-2xl px-5 pb-8 xl:max-w-none"
         style={{ paddingTop: "calc(env(safe-area-inset-top) + 2rem)" }}
       >
         <div className="mb-6 flex items-start justify-between gap-4">
@@ -579,7 +579,7 @@ export default function SerieuxOverlay({
         <button
           type="button"
           onClick={onClose}
-          className="w-full rounded-xl px-4 py-4 text-[15px] font-bold uppercase tracking-wide text-white transition active:scale-[0.99]"
+          className="mx-auto w-full max-w-3xl rounded-xl px-4 py-4 text-[15px] font-bold uppercase tracking-wide text-white transition active:scale-[0.99]"
           style={{ background: "#15803d" }}
         >
           Je ferme, et je le fais maintenant

@@ -265,9 +265,9 @@ export default function MiroirView({
           {L.these}
         </p>
 
-        <div className="colonnes-xl mb-9">
+        <div className="mosaique mb-[26px] xl:mb-9">
         {L.blocs.map((b) => (
-          <section key={b.id} className="mb-9 xl:mb-0">
+          <section key={b.id} className="pb-[38px] xl:pb-0">
             <h2 className="mb-3 text-[10.5px] font-bold uppercase tracking-[0.22em] text-red">
               {b.titre}
             </h2>

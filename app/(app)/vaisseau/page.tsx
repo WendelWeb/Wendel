@@ -39,7 +39,7 @@ export default async function VaisseauPage() {
   return (
     <main className="px-4 pt-6">
       {/* Les livres — en haut, disposés de gauche à droite (ordre de lecture). */}
-      <div className="grid grid-cols-1 items-start gap-6 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
+      <div className="columns-1 gap-6 md:columns-2 lg:columns-3 xl:columns-4 [&>*]:mb-6 [&>*]:break-inside-avoid [&>*:last-child]:mb-0">
         {groups.map((g) => (
           <section key={g.book}>
             <h2 className="mb-2 font-display text-[13px] font-semibold uppercase tracking-[0.12em] text-text-secondary">

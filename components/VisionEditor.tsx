@@ -336,10 +336,22 @@ export default function VisionEditor({
             {sections.map((s, i) => {
               const Icon = iconFor(s.title);
               const accent = ACCENTS[i % ACCENTS.length];
+              // Une section démesurée dépasse à elle seule la hauteur
+              // équilibrée d'une colonne de la mosaïque : le flux ne peut plus
+              // équilibrer, une colonne se termine des milliers de pixels trop
+              // tôt et laisse le vide. On la sort du flux en colonnes pour lui
+              // donner toute la largeur, et son corps coule lui-même en
+              // colonnes : sa hauteur s'effondre. Tout est en `md:` — sur
+              // iPhone la mosaïque est à une colonne et rien ne change.
+              const geante = s.lines.filter((l) => l.trim()).length >= 40;
               return (
                 <section
                   key={i}
-                  className="overflow-hidden rounded-2xl border border-border bg-surface"
+                  className={`overflow-hidden rounded-2xl border border-border bg-surface${
+                    geante
+                      ? " md:[column-span:all] md:[&>div:last-child]:columns-[22rem] md:[&>div:last-child]:gap-6 md:[&>div:last-child>div]:block md:[&>div:last-child>div>*]:mb-1.5 md:[&>div:last-child>div>*]:break-inside-avoid"
+                      : ""
+                  }`}
                 >
                   <div
                     className="flex items-center gap-3 px-4 py-3"

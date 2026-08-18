@@ -33,7 +33,7 @@ export default function PourquoiOverlay({ onClose }: { onClose: () => void }) {
   return (
     <div className="fixed inset-0 z-[95] overflow-y-auto bg-black">
       <div
-        className="mx-auto max-w-2xl px-5 pb-8 xl:max-w-6xl"
+        className="mx-auto max-w-2xl px-5 pb-8 xl:max-w-none"
         style={{ paddingTop: "calc(env(safe-area-inset-top) + 2rem)" }}
       >
         <div className="mb-7 flex items-start justify-between gap-4">
@@ -56,9 +56,10 @@ export default function PourquoiOverlay({ onClose }: { onClose: () => void }) {
           </button>
         </div>
 
-        <div className="colonnes-xl mb-8">
+        <div className="mosaique mb-8">
         {blocs.map((b) => (
-          <section key={b.id} className="mb-8 xl:mb-0">
+          <div key={b.id}>
+          <section className="mb-[42px] xl:mb-0">
             <h2 className="mb-3 text-[10.5px] font-bold uppercase tracking-[0.22em] text-red">
               {b.titre}
             </h2>
@@ -73,6 +74,7 @@ export default function PourquoiOverlay({ onClose }: { onClose: () => void }) {
               ))}
             </ul>
           </section>
+          </div>
         ))}
         </div>
 
@@ -135,7 +137,7 @@ export default function PourquoiOverlay({ onClose }: { onClose: () => void }) {
         <button
           type="button"
           onClick={onClose}
-          className="w-full rounded-xl px-4 py-3.5 text-[14px] font-bold uppercase tracking-wide text-white transition active:scale-[0.99]"
+          className="mx-auto w-full max-w-3xl rounded-xl px-4 py-3.5 text-[14px] font-bold uppercase tracking-wide text-white transition active:scale-[0.99]"
           style={{ background: "#1a1a1a" }}
         >
           Fermer
