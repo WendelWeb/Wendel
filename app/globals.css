@@ -59,6 +59,27 @@ input[type="number"] {
 
 /* Today objectives grid: 1 column on mobile, then as many columns as fit
    with each card at least 340px wide (so long labels don't wrap awkwardly). */
+/* GRAND ÉCRAN — l'espace horizontal pose des colonnes, il n'allonge pas
+   les lignes. Au-delà d'environ 75 caractères, l'œil perd le début de la
+   ligne suivante : une colonne large est pire qu'une colonne étroite. */
+.colonnes-xl {
+  display: grid;
+  gap: 0.625rem;
+  /* Chaque carte garde sa hauteur propre, sinon la plus longue impose la
+     sienne aux autres et creuse du vide sous leur texte. */
+  align-items: start;
+}
+@media (min-width: 1280px) {
+  .colonnes-xl { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+@media (min-width: 1800px) {
+  .colonnes-xl { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+}
+
+/* La mesure de lecture : à appliquer aux paragraphes qui vivent dans un
+   conteneur large, pour qu'ils ne s'étirent pas avec lui. */
+.mesure { max-width: 68ch; }
+
 .grid-objectives {
   display: grid;
   gap: 0.5rem;

@@ -33,7 +33,7 @@ export default function PourquoiOverlay({ onClose }: { onClose: () => void }) {
   return (
     <div className="fixed inset-0 z-[95] overflow-y-auto bg-black">
       <div
-        className="mx-auto max-w-2xl px-5 pb-8"
+        className="mx-auto max-w-2xl px-5 pb-8 xl:max-w-6xl"
         style={{ paddingTop: "calc(env(safe-area-inset-top) + 2rem)" }}
       >
         <div className="mb-7 flex items-start justify-between gap-4">
@@ -56,8 +56,9 @@ export default function PourquoiOverlay({ onClose }: { onClose: () => void }) {
           </button>
         </div>
 
+        <div className="colonnes-xl mb-8">
         {blocs.map((b) => (
-          <section key={b.id} className="mb-8">
+          <section key={b.id} className="mb-8 xl:mb-0">
             <h2 className="mb-3 text-[10.5px] font-bold uppercase tracking-[0.22em] text-red">
               {b.titre}
             </h2>
@@ -73,6 +74,7 @@ export default function PourquoiOverlay({ onClose }: { onClose: () => void }) {
             </ul>
           </section>
         ))}
+        </div>
 
         <section className="mb-8">
           <h2 className="mb-1 text-[10.5px] font-bold uppercase tracking-[0.22em] text-red">

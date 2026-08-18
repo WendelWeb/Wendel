@@ -95,7 +95,7 @@ export default function MiroirView({
 
   return (
     <main className="min-h-[100dvh] bg-black px-4 pb-28 pt-6">
-      <div className="mx-auto max-w-3xl">
+      <div className="mx-auto max-w-3xl xl:max-w-7xl">
         {/* Ses chiffres — le seul contexte, et il est factuel */}
         <div className="mb-5 grid grid-cols-4 gap-2">
           {[
@@ -259,12 +259,13 @@ export default function MiroirView({
           ))}
         </div>
 
-        <p className="mb-8 border-l-[3px] border-red pl-4 text-[15px] font-bold leading-relaxed text-white">
+        <p className="mesure mb-8 border-l-[3px] border-red pl-4 text-[15px] font-bold leading-relaxed text-white">
           {L.these}
         </p>
 
+        <div className="colonnes-xl mb-9">
         {L.blocs.map((b) => (
-          <section key={b.id} className="mb-9">
+          <section key={b.id} className="mb-9 xl:mb-0">
             <h2 className="mb-3 text-[10.5px] font-bold uppercase tracking-[0.22em] text-red">
               {b.titre}
             </h2>
@@ -280,6 +281,7 @@ export default function MiroirView({
             </ul>
           </section>
         ))}
+        </div>
 
         <div
           className="mt-10 rounded-2xl px-5 py-6"

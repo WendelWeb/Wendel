@@ -729,7 +729,7 @@ export default function Mantra({
   ];
 
   return (
-    <aside className={`mx-auto max-w-3xl px-4 ${spacing}`}>
+    <aside className={`mx-auto max-w-3xl px-4 xl:max-w-6xl ${spacing}`}>
       <p className="mb-2.5 text-center text-[10px] font-semibold uppercase tracking-[0.3em] text-text-muted">
         Loi du vaisseau
       </p>

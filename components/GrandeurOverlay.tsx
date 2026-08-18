@@ -40,7 +40,7 @@ export default function GrandeurOverlay({ onClose }: { onClose: () => void }) {
   return (
     <div className="fixed inset-0 z-[95] overflow-y-auto bg-black">
       <div
-        className="mx-auto max-w-2xl px-5 pb-8"
+        className="mx-auto max-w-2xl px-5 pb-8 xl:max-w-6xl"
         style={{ paddingTop: "calc(env(safe-area-inset-top) + 2rem)" }}
       >
         <div className="mb-6 flex items-start justify-between gap-4">
@@ -75,7 +75,7 @@ export default function GrandeurOverlay({ onClose }: { onClose: () => void }) {
           ))}
         </section>
 
-        <div className="mb-8 flex flex-col gap-2.5">
+        <div className="colonnes-xl mb-8">
           {GRANDEUR_SECTIONS.map((s, i) => {
             const on = ouverte === s.id;
             return (

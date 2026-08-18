@@ -56,7 +56,7 @@ export default function EmpireView() {
 
   return (
     <main className="min-h-[100dvh] bg-black px-4 pb-28 pt-6">
-      <div className="mx-auto max-w-3xl">
+      <div className="mx-auto max-w-3xl xl:max-w-7xl">
         {/* Le fronton — la doctrine et les faits, pas un slogan */}
         <header className="mb-7">
           <div className="mb-3 flex items-center gap-2">
@@ -71,7 +71,7 @@ export default function EmpireView() {
           >
             {EMPIRE_NOM}
           </h1>
-          <p className="mt-3.5 border-l-[3px] border-red pl-4 text-[14px] font-semibold leading-relaxed text-white">
+          <p className="mesure mt-3.5 border-l-[3px] border-red pl-4 text-[14px] font-semibold leading-relaxed text-white">
             {EMPIRE_DOCTRINE}
           </p>
         </header>
@@ -125,7 +125,7 @@ export default function EmpireView() {
           <p className="mb-4 text-[12px] leading-relaxed text-white/45">
             {R.note}
           </p>
-          <ul className="flex flex-col gap-3">
+          <ul className="colonnes-xl">
             {R.lignes.map((l) => (
               <li
                 key={l}
@@ -183,7 +183,7 @@ export default function EmpireView() {
             <p className="mb-3.5 text-[12px] leading-relaxed text-white/45">
               {f.note}
             </p>
-            <div className="flex flex-col gap-2.5">
+            <div className="colonnes-xl">
               {f.chantiers.map((c) => {
                 const on = chantier === c.id;
                 return (
@@ -305,7 +305,7 @@ export default function EmpireView() {
         <p className="mb-3 text-[10px] font-bold uppercase tracking-[0.22em] text-white/35">
           Et là où ça cesse d&apos;être une question de taille
         </p>
-        <div className="mb-4 grid items-start gap-2.5 sm:grid-cols-2">
+        <div className="colonnes-xl mb-4">
           {NATURES.map((s: (typeof NATURES)[number]) => (
             <div
               key={s.axe}
@@ -370,7 +370,7 @@ export default function EmpireView() {
           ))}
         </section>
 
-        <div className="mb-8 flex flex-col gap-2.5">
+        <div className="colonnes-xl mb-8">
           {GRANDEUR_SECTIONS.map((s, i) => {
             const on = section === s.id;
             return (
