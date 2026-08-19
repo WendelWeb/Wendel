@@ -22,7 +22,7 @@ import {
   type Langue,
 } from "./liturgy";
 import { getSerment } from "./serments";
-import { citationDu, estHeureDeRappel, rendreRappel } from "./rappel";
+import { citationsDu, estHeureDeRappel, rendreRappel } from "./rappel";
 import { renderLiturgy, type Rendered } from "./email-render";
 import { sendWhatsAppTwo } from "./whatsapp";
 
@@ -75,9 +75,9 @@ export async function buildRappel(
     liturgyContext(userId, hour),
     getSerment(userId),
   ]);
-  const c = citationDu(todayHaiti(), hour);
+  const cs = citationsDu(todayHaiti(), hour);
   return rendreRappel(
-    c,
+    cs,
     {
       jour: serment.jourActuel,
       retention: ctx.retentionDays,

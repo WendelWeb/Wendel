@@ -1,4 +1,4 @@
-// LE RAPPEL DE DEUX HEURES — un mail, une citation, dix minutes.
+// LE RAPPEL DE DEUX HEURES — un mail, trois citations, dix minutes.
 //
 // Ce qui partait avant : l'office complet, dans les trois langues, toutes les
 // heures de 5h à 21h. Cinquante et un mails par jour. Il l'a dit lui-même dans
@@ -6,8 +6,9 @@
 // pas ». Cinquante et un mails qu'on n'ouvre pas valent moins que neuf qu'on
 // ouvre : ce n'est pas le volume qui manquait.
 //
-// Donc un seul mail, en français, toutes les deux heures. Une citation tirée
-// au sort, et une seule consigne : dix minutes dans l'app, maintenant.
+// Donc un seul mail, en français, toutes les deux heures. Trois citations tirées
+// au sort dans la page des citations, et une seule consigne : dix minutes dans
+// l'app, maintenant.
 //
 // Dix minutes est un chiffre choisi, pas arrondi au hasard. C'est assez court
 // pour qu'aucune excuse ne tienne, et c'est la seule durée qu'il n'a jamais
@@ -16,9 +17,7 @@
 // L'office reste dans le code : c'est la messe de 5h, 12h et 21h qui le porte
 // encore. Ce module ne remplace que les heures ordinaires.
 
-import { QUOTES } from "./quotes";
-import { NIETZSCHE_TOUT } from "./nietzsche";
-import { VOIX_HAUTE } from "./voix";
+import { QUOTES, categoryMeta } from "./quotes";
 import { rng } from "./rotate";
 
 /** L'heure de lever et l'heure de coucher, à Port-au-Prince. */
@@ -37,30 +36,60 @@ export interface Citation {
 }
 
 /**
- * Tout ce qui peut être cité : les citations de l'app, Nietzsche avec sa
- * source, et ses propres phrases. Les siennes comptent — c'est souvent la
- * ligne qu'il a écrite lui-même qui porte le plus dur.
+ * Exactement le corpus de la page /quotes, et rien d'autre.
+ *
+ * Le tirage puisait aussi dans Nietzsche et dans ses propres phrases. Il a
+ * tranché : les citations viennent de la page des citations. C'est la bonne
+ * règle — un mail qui cite une ligne qu'il ne retrouve nulle part dans l'app
+ * arrive de nulle part, alors qu'une citation de la page renvoie à un endroit
+ * qu'il peut ouvrir.
+ *
+ * La source affichée est la catégorie de la citation quand elle n'a pas de
+ * source propre : c'est le libellé du filtre sous lequel il la retrouvera.
  */
-export const CITATIONS: Citation[] = [
-  ...QUOTES.map((q) => ({ texte: q.t, source: q.s ?? null })),
-  ...NIETZSCHE_TOUT.map((n) => ({ texte: n.t, source: n.source })),
-  ...VOIX_HAUTE.map((l) => ({ texte: l, source: null })),
-];
+export const CITATIONS: Citation[] = QUOTES.map((q) => ({
+  texte: q.t,
+  source: q.s ?? categoryMeta(q.c).label,
+}));
 
 export const CITATIONS_TOTAL = CITATIONS.length;
 
 /**
- * La citation de ce créneau-là.
+ * Combien de citations par mail.
+ *
+ * Trois : assez pour qu'un mail n'ait pas l'air d'un fortune cookie, assez peu
+ * pour que les trois soient lues. À dix, il en lit une et ferme.
+ */
+export const CITATIONS_PAR_MAIL = 3;
+
+/**
+ * Les citations de ce créneau-là.
  *
  * Le tirage est déterministe sur (jour, heure) : si le planificateur double un
- * appel — GitHub Actions le fait — il reçoit deux fois la même, pas deux
+ * appel — GitHub Actions le fait — il reçoit deux fois les mêmes, pas trois
  * citations différentes. Deux mails identiques se voient et s'ignorent ; deux
  * mails différents donnent l'impression que le système déraille.
+ *
+ * Les trois sont distinctes : on retire jusqu'à en trouver une nouvelle, avec
+ * une borne d'essais pour ne jamais boucler si le corpus était minuscule.
  */
-export function citationDu(date: string, hour: number): Citation {
-  const graine = Number(date.replace(/-/g, "")) * 31 + hour;
-  const i = Math.floor(rng(graine >>> 0)() * CITATIONS.length);
-  return CITATIONS[i] ?? { texte: "", source: null };
+export function citationsDu(
+  date: string,
+  hour: number,
+  combien: number = CITATIONS_PAR_MAIL,
+): Citation[] {
+  const graine = (Number(date.replace(/-/g, "")) * 31 + hour) >>> 0;
+  const r = rng(graine);
+  const vues = new Set<string>();
+  const out: Citation[] = [];
+  const max = Math.min(combien, CITATIONS.length);
+  for (let essais = 0; out.length < max && essais < max * 40; essais++) {
+    const c = CITATIONS[Math.floor(r() * CITATIONS.length)];
+    if (!c || vues.has(c.texte)) continue;
+    vues.add(c.texte);
+    out.push(c);
+  }
+  return out;
 }
 
 export interface RappelContexte {
@@ -89,23 +118,45 @@ export interface RappelRendu {
 }
 
 /**
- * Le mail. Une citation, une consigne, un bouton, et ses chiffres en pied.
+ * Le mail. Trois citations, une consigne, un bouton, et ses chiffres en pied.
  *
  * Les chiffres sont en dernier et en petit : ils ne sont pas le message, ils
  * sont la preuve que le mail sait de qui il parle. C'est ce qui distingue un
  * rappel d'une carte de motivation.
  */
 export function rendreRappel(
-  c: Citation,
+  cs: Citation[],
   ctx: RappelContexte,
   hour: number,
   url: string | null,
 ): RappelRendu {
-  const lien = url ? `${url.replace(/\/$/, "")}/miroir` : null;
+  // Le bouton mène à la page des citations, puisque c'est de là qu'elles
+  // viennent : il retrouve les trois qu'il vient de lire, et les 2 000 autres.
+  const lien = url ? `${url.replace(/\/$/, "")}/quotes` : null;
   const heure = `${String(hour).padStart(2, "0")} h`;
-  const source = c.source ? ` — ${c.source}` : "";
 
-  const subject = `${heure} · 10 minutes`;
+  // La première citation sert de sujet, tronquée. C'est la seule ligne qu'il
+  // voit sans ouvrir : autant qu'elle porte quelque chose plutôt qu'une heure.
+  const tete = cs[0]?.texte ?? "";
+  const court = tete.length > 62 ? `${tete.slice(0, 60).trimEnd()}…` : tete;
+  const subject = court ? `${court} · 10 min` : `${heure} · 10 minutes`;
+
+  // La première en pleine taille, les deux autres en retrait : elles se lisent
+  // dans l'ordre au lieu de se concurrencer.
+  const cartes = cs
+    .map((c, i) => {
+      const taille = i === 0 ? 19 : 16;
+      const teinte = i === 0 ? "#fff" : "rgba(255,255,255,.82)";
+      const src = c.source
+        ? `<div style="margin-top:12px;font-size:10px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:rgba(255,255,255,.28)">${esc(c.source)}</div>`
+        : "";
+      return `<tr><td style="background:#141414;border:1px solid #3f3520;border-radius:16px;padding:24px">
+  <div style="font-size:${taille}px;line-height:1.5;font-weight:600;color:${teinte}">« ${esc(c.texte)} »</div>
+  ${src}
+</td></tr>
+<tr><td style="height:10px;line-height:10px;font-size:10px">&nbsp;</td></tr>`;
+    })
+    .join("\n");
 
   const bouton = lien
     ? `<a href="${lien}" style="display:inline-block;background:#f59e0b;color:#000;font-weight:700;font-size:15px;text-decoration:none;padding:14px 28px;border-radius:12px;letter-spacing:.04em;text-transform:uppercase">Ouvrir · 10 minutes</a>`
@@ -120,16 +171,13 @@ export function rendreRappel(
 <tr><td align="center" style="padding:32px 16px">
 <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="max-width:560px">
 
-<tr><td style="padding-bottom:22px">
+<tr><td style="padding-bottom:20px">
   <span style="font-size:10px;font-weight:700;letter-spacing:.24em;text-transform:uppercase;color:rgba(255,255,255,.3)">FORGED · ${esc(heure)}</span>
 </td></tr>
 
-<tr><td style="background:#141414;border:1px solid #3f3520;border-radius:16px;padding:28px 26px">
-  <div style="font-size:19px;line-height:1.5;font-weight:600;color:#fff">« ${esc(c.texte)} »</div>
-  ${c.source ? `<div style="margin-top:14px;font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:rgba(255,255,255,.3)">${esc(c.source)}</div>` : ""}
-</td></tr>
+${cartes}
 
-<tr><td style="padding:26px 2px 22px">
+<tr><td style="padding:16px 2px 22px">
   <div style="font-size:15px;line-height:1.6;color:rgba(255,255,255,.8)">
     Dix minutes dans l'app, maintenant. Pas ce soir.
   </div>
@@ -149,8 +197,10 @@ export function rendreRappel(
   const text = [
     `FORGED · ${heure}`,
     "",
-    `« ${c.texte} »${source}`,
-    "",
+    ...cs.flatMap((c) => [
+      `« ${c.texte} »${c.source ? ` — ${c.source}` : ""}`,
+      "",
+    ]),
     "Dix minutes dans l'app, maintenant. Pas ce soir.",
     lien ? `\n${lien}` : "",
     "",
