@@ -15,11 +15,14 @@ import {
   buildLiturgy,
   deadlines,
   isLiturgyHour,
+  isMesse,
   type Liturgy,
   type LiturgyContext,
   LANGUES,
   type Langue,
 } from "./liturgy";
+import { getSerment } from "./serments";
+import { citationDu, estHeureDeRappel, rendreRappel } from "./rappel";
 import { renderLiturgy, type Rendered } from "./email-render";
 import { sendWhatsAppTwo } from "./whatsapp";
 
@@ -55,6 +58,36 @@ export function appUrl(): string | null {
     if (v) return v.startsWith("http") ? v : `https://${v}`;
   }
   return null;
+}
+
+/**
+ * Le rappel de deux heures, prêt à partir.
+ *
+ * Il tire son contexte du même endroit que l'office : les mêmes chiffres,
+ * lus une seule fois. Ce qui change est ce qu'on en fait — l'office les
+ * développe, le rappel les met en pied de page.
+ */
+export async function buildRappel(
+  userId: string,
+  hour: number,
+): Promise<Brief> {
+  const [ctx, serment] = await Promise.all([
+    liturgyContext(userId, hour),
+    getSerment(userId),
+  ]);
+  const c = citationDu(todayHaiti(), hour);
+  return rendreRappel(
+    c,
+    {
+      jour: serment.jourActuel,
+      retention: ctx.retentionDays,
+      noyauFait: ctx.coreDone,
+      noyauTotal: ctx.coreTotal,
+      joursAvant2027: ctx.daysToJan,
+    },
+    hour,
+    appUrl(),
+  );
 }
 
 export interface Brief {
@@ -154,6 +187,14 @@ export async function sendHourlyBrief(opts?: {
     return { ok: true, sent: 0, to: [], hour, skipped: "hors heures de réveil" };
   }
 
+  // Une heure sur deux, pas toutes les heures. Il a coupé le rythme lui-même :
+  // cinquante et un mails par jour qu'on n'ouvre pas valent moins que neuf
+  // qu'on ouvre. La messe de 5h, 12h et 21h passe outre — c'est l'office
+  // complet, pas un rappel.
+  if (!opts?.force && !isMesse(hour) && !estHeureDeRappel(hour)) {
+    return { ok: true, sent: 0, to: [], hour, skipped: "heure creuse" };
+  }
+
   const key = process.env.RESEND_API_KEY;
   const from =
     process.env.MORNING_EMAIL_FROM ??
@@ -177,12 +218,23 @@ export async function sendHourlyBrief(opts?: {
 
   const ctx = await liturgyContext(userId, hour);
 
-  // Trois offices par créneau, dans l'ordre de son manifeste quotidien :
-  // anglais, français, créole. La même chose trois fois, dans trois langues.
-  const langues = opts?.langues ?? LANGUES;
-  const briefs = await Promise.all(
-    langues.map((l) => buildHourlyBrief(userId, hour, l)),
-  );
+  // Aux heures ordinaires : UN rappel, en français. Aux trois messes : l'office
+  // complet, dans les trois langues.
+  //
+  // C'était trois langues à chaque heure — cinquante et un mails par jour. Il a
+  // coupé lui-même, et le miroir dit pourquoi : « j'ai mis un système de mails
+  // automatiques, je ne les ouvre pas ». Neuf mails ouverts battent cinquante
+  // et un ignorés.
+  const messe = isMesse(hour);
+  const langues = opts?.langues ?? (messe ? LANGUES : (["fr"] as Langue[]));
+  const briefs = messe
+    ? await Promise.all(langues.map((l) => buildHourlyBrief(userId, hour, l)))
+    : [
+        {
+          ...(await buildRappel(userId, hour)),
+          liturgy: buildLiturgy(ctx, "fr"),
+        },
+      ];
 
   // Le français part sur WhatsApp — deux messages, jamais plus. Trois langues
   // en messages téléphone feraient six notifications par créneau.

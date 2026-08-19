@@ -4,6 +4,7 @@ import {
   sendHourlyBrief,
   recipients,
   buildHourlyBrief,
+  buildRappel,
   liturgyContext,
 } from "@/lib/email";
 import { buildOffice, whatsappConfigured } from "@/lib/whatsapp";
@@ -56,6 +57,24 @@ async function handle(req: Request) {
       return NextResponse.json({ error: "utilisateur introuvable" }, { status: 500 });
 
     const h = hour ?? haitiHour();
+
+    // `&kind=rappel` montre le mail des heures ordinaires — une citation et dix
+    // minutes — plutôt que l'office complet des trois messes.
+    if (url.searchParams.get("kind") === "rappel") {
+      const r = await buildRappel(userId, h);
+      const enHtml = url.searchParams.get("html") === "1";
+      return new Response(enHtml ? r.html : `${r.subject}
+
+${r.text}`, {
+        status: 200,
+        headers: {
+          "content-type": enHtml
+            ? "text/html; charset=utf-8"
+            : "text/plain; charset=utf-8",
+        },
+      });
+    }
+
     const lg = url.searchParams.get("lang");
     const langue: Langue = lg === "en" || lg === "ht" ? lg : "fr";
     const brief = await buildHourlyBrief(userId, h, langue);

@@ -1,8 +1,13 @@
-name: Rappel horaire FORGED
+name: Rappel FORGED
 
-# Toutes les heures. L'endpoint décide lui-même s'il envoie : il n'envoie que
-# pendant les heures de réveil (5h–21h à Port-au-Prince), donc taper 24h/24 est
-# sans risque. Cela évite d'avoir à gérer l'heure d'été côté cron.
+# Toutes les heures — mais c'est l'ENDPOINT qui décide s'il envoie, et il
+# n'envoie qu'une heure sur deux entre 5h et 21h à Port-au-Prince : 5, 7, 9 …
+# 21, soit neuf par jour.
+#
+# Le filtre est côté endpoint et non côté cron, à dessein. Un cron toutes les
+# deux heures est en UTC : le décalage d'Haïti le ferait tomber sur les heures
+# impaires locales une partie de l'année. L'endpoint, lui, lit l'heure de
+# Port-au-Prince et ne se trompe jamais.
 on:
   schedule:
     - cron: "0 * * * *"
