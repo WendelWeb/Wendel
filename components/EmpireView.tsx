@@ -212,13 +212,18 @@ export default function EmpireView() {
             <p className="mesure mb-3.5 text-[12px] leading-relaxed text-white/45">
               {f.note}
             </p>
-            <div className="grid items-start gap-2.5">
+            {/* Meme regle que pour les trente secteurs : ferme, un chantier
+                n'est qu'un emoji et trois mots, donc l'index est dense ;
+                ouvert, il devient une lecture et prend toute la largeur. */}
+            <div className="grid-objectives">
               {f.chantiers.map((c) => {
                 const on = chantier === c.id;
                 return (
                   <section
                     key={c.id}
-                    className="overflow-hidden rounded-2xl"
+                    className={`overflow-hidden rounded-2xl${
+                      on ? " [grid-column:1/-1]" : ""
+                    }`}
                     style={{
                       background: "#0c0c0c",
                       border: on
@@ -245,7 +250,7 @@ export default function EmpireView() {
                     </button>
 
                     {on && (
-                      <ul className="flex flex-col gap-3 border-t border-white/10 px-4 py-4">
+                      <ul className="flex flex-col gap-3 border-t border-white/10 px-4 py-4 xl:columns-[28rem] xl:gap-x-8 xl:[&>li]:mb-3 xl:[&>li]:break-inside-avoid">
                         {c.lignes.map((l) => (
                           <li
                             key={l}
@@ -406,13 +411,25 @@ export default function EmpireView() {
           ))}
         </section>
 
-        <div className="mb-8 grid items-start gap-2.5">
+        {/* Trente titres fermes, un seul ouvert a la fois.
+            Ferme, chaque titre tient en trois mots : les empiler sur une
+            colonne pleine largeur laissait tout l'ecran vide a leur droite.
+            La grille dense en pose six de front sur un 27 pouces, deux sur un
+            portable, un sur telephone — c'est un index, il doit s'embrasser
+            d'un coup d'oeil.
+            Ouverte, en revanche, une section n'est plus un titre mais une
+            lecture : elle prend alors toute la largeur (grid-column 1/-1) et
+            son texte se repartit en colonnes. L'index reste dense, la lecture
+            reste lisible. */}
+        <div className="grid-objectives mb-8">
           {GRANDEUR_SECTIONS.map((s, i) => {
             const on = section === s.id;
             return (
               <section
                 key={s.id}
-                className="overflow-hidden rounded-2xl"
+                className={`overflow-hidden rounded-2xl${
+                  on ? " [grid-column:1/-1]" : ""
+                }`}
                 style={{
                   background: "#0c0c0c",
                   border: on
@@ -440,7 +457,7 @@ export default function EmpireView() {
 
                 {on && (
                   <div className="border-t border-white/10 px-4 py-4">
-                    <ul className="flex flex-col gap-3">
+                    <ul className="flex flex-col gap-3 xl:columns-[28rem] xl:gap-x-8 xl:[&>li]:mb-3 xl:[&>li]:break-inside-avoid">
                       {s.lignes.map((l) => (
                         <li
                           key={l}
@@ -454,7 +471,7 @@ export default function EmpireView() {
                       <p className="mb-2.5 text-[9.5px] font-bold uppercase tracking-[0.22em] text-red">
                         Ce que le monde devient
                       </p>
-                      <ul className="flex flex-col gap-2.5">
+                      <ul className="flex flex-col gap-2.5 xl:columns-[28rem] xl:gap-x-8 xl:[&>li]:mb-2.5 xl:[&>li]:break-inside-avoid">
                         {s.impact.map((l) => (
                           <li
                             key={l}
