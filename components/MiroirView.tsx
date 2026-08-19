@@ -95,7 +95,7 @@ export default function MiroirView({
 
   return (
     <main className="min-h-[100dvh] bg-black px-4 pb-28 pt-6">
-      <div className="mx-auto max-w-3xl xl:max-w-7xl">
+      <div className="mx-auto max-w-3xl xl:max-w-none">
         {/* Ses chiffres — le seul contexte, et il est factuel */}
         <div className="mb-5 grid grid-cols-4 gap-2">
           {[
@@ -205,7 +205,7 @@ export default function MiroirView({
             </span>
           </div>
 
-          <ul className="grid items-start gap-3 xl:grid-cols-2 xl:gap-x-10">
+          <ul className="grid items-start gap-3 xl:grid-cols-2 xl:gap-x-10 2xl:grid-cols-3">
             {ecarts.map((e) => (
               <li key={e.cible} className="grid grid-cols-2 gap-3 px-1">
                 <span
@@ -221,9 +221,9 @@ export default function MiroirView({
             ))}
           </ul>
 
-          <div className="mt-4 flex flex-col gap-2 border-t border-white/12 px-1 pt-3.5">
+          <div className="mt-4 border-t border-white/12 px-1 pt-3.5 xl:columns-[30rem] xl:gap-x-8 xl:[&>p]:break-inside-avoid">
             {ECART_SORTIE.map((l) => (
-              <p key={l} className="mesure text-[12px] leading-relaxed text-white/45">
+              <p key={l} className="mb-2 text-[12px] leading-relaxed text-white/45 last:mb-0">
                 {l}
               </p>
             ))}
@@ -286,7 +286,7 @@ export default function MiroirView({
         </div>
 
         <div
-          className="mesure mt-10 rounded-2xl px-5 py-6"
+          className="mesure mx-auto mt-10 rounded-2xl px-5 py-6"
           style={{ background: "#141414", border: "1.5px solid #3f3f46" }}
         >
           <p className="mb-3 text-[10px] font-bold uppercase tracking-[0.22em] text-white/40">

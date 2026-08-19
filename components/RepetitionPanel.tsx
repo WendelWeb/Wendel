@@ -147,7 +147,7 @@ export default function RepetitionPanel({
                   </p>
 
                   <div
-                    className="mesure mb-4 rounded-xl px-4 py-4"
+                    className="mesure mx-auto mb-4 rounded-xl px-4 py-4"
                     style={{ background: "#111", border: "1px solid var(--gold-border)" }}
                   >
                     {bloc.enumere ? (

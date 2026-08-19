@@ -254,7 +254,7 @@ export default function SermentPanel({
                 <p className="mb-3.5 text-[10px] font-bold uppercase tracking-[0.22em] text-white/40">
                   Maintenant, dis ça à voix haute
                 </p>
-                <ul className="mesure flex flex-col gap-2.5">
+                <ul className="mesure mx-auto flex flex-col gap-2.5">
                   {DECLARATION_FINALE.map((l) => (
                     <li
                       key={l}

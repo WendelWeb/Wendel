@@ -22,11 +22,11 @@ export default function DecisionsPanel() {
         pourrait la voir se produire, elle n&apos;a rien à faire ici.
       </p>
 
-      <ul className="mesure flex flex-col gap-2.5">
+      <ul className="xl:columns-[26rem] xl:gap-x-8 xl:[&>li]:break-inside-avoid">
         {DECISIONS_SIENNES.map((l) => (
           <li
             key={l}
-            className="font-display text-[14.5px] font-bold leading-snug text-white"
+            className="mb-2.5 font-display text-[14.5px] font-bold leading-snug text-white last:mb-0"
           >
             {l}
           </li>

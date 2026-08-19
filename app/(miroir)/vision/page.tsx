@@ -34,7 +34,7 @@ export default async function VisionPage() {
     return (
       <>
         <FenetreVision jusqua={acces.jusqua.toISOString()} />
-        <div className="mx-auto max-w-3xl px-4 pb-2 xl:max-w-6xl">
+        <div className="mx-auto max-w-3xl px-4 pb-2 xl:max-w-none">
           <ConsequencePanel c={MONTEE} sens="montee" />
         </div>
         <VisionEditor

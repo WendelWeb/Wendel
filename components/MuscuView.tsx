@@ -66,7 +66,7 @@ export default function MuscuView({
   }
 
   return (
-    <main className="px-4 pt-6 md:mx-auto md:max-w-3xl">
+    <main className="px-4 pt-6 md:mx-auto md:max-w-3xl xl:max-w-none">
       <div className="mb-1 flex items-baseline justify-between">
         <h1 className="text-2xl font-bold text-text-primary">Muscu</h1>
         <Link
@@ -123,7 +123,7 @@ export default function MuscuView({
           </div>
           <ProgressBar percent={percent} className="mb-5" />
 
-          <div className="grid grid-cols-2 items-start gap-2.5 md:grid-cols-3">
+          <div className="grid grid-cols-2 items-start gap-2.5 md:grid-cols-3 xl:grid-cols-5 2xl:grid-cols-6">
             {muscles.map((name) => (
               <MuscleCard
                 key={name}
@@ -169,7 +169,7 @@ export default function MuscuView({
         <h2 className="mb-2 font-display text-sm font-semibold uppercase tracking-[0.15em] text-text-secondary">
           Volume hebdomadaire
         </h2>
-        <div className="grid grid-cols-2 gap-2 lg:grid-cols-3">
+        <div className="grid grid-cols-2 items-start gap-2 lg:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-6">
           {weekly.map(({ muscle, sets: v }) => (
             <div
               key={muscle}

@@ -57,7 +57,7 @@ export default function JournalView({
   const recent = lastNDates(today, 7).reverse(); // newest first
 
   return (
-    <main className="px-4 pt-6 md:mx-auto md:max-w-2xl">
+    <main className="px-4 pt-6 md:mx-auto md:max-w-2xl xl:max-w-none">
       <h1 className="mb-4 text-2xl font-bold text-text-primary">Journal</h1>
 
       {/* Date selector */}
@@ -110,7 +110,7 @@ export default function JournalView({
       <h2 className="mb-2 mt-7 text-[12px] font-semibold uppercase tracking-wider text-text-muted">
         7 derniers jours
       </h2>
-      <div className="grid grid-cols-1 items-start gap-2 lg:grid-cols-2">
+      <div className="grid grid-cols-1 items-start gap-2 lg:grid-cols-2 2xl:grid-cols-3">
         {recent.map((date) => {
           const entry = (map[date] ?? "").trim();
           const isSel = date === selected;
