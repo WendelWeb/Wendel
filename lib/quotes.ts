@@ -49,6 +49,7 @@ import { SIX_MOIS } from "./six-mois";
 import { PROMESSES_MORTES } from "./promesses-mortes";
 import { SEPT_ANS } from "./sept-ans";
 import { PAS_LE_BONHEUR } from "./pas-le-bonheur";
+import { LA_THEORIE } from "./la-theorie";
 import { RETENTION_AFFIRMATIONS } from "./affirmations";
 
 export type CategoryId =
@@ -83,7 +84,8 @@ export type CategoryId =
   | "sixmois"
   | "precedent"
   | "septans"
-  | "pasbonheur";
+  | "pasbonheur"
+  | "theorie";
 
 export interface Quote {
   t: string; // le texte de la citation
@@ -131,6 +133,7 @@ export const CATEGORIES: CategoryMeta[] = [
   { id: "precedent", label: "Le précédent", color: "#4C1D95" },
   { id: "septans", label: "Les sept ans", color: "#57430F" },
   { id: "pasbonheur", label: "Pas le bonheur", color: "#1F2937" },
+  { id: "theorie", label: "La théorie", color: "#111827" },
 ];
 
 const CAT_MAP = new Map(CATEGORIES.map((c) => [c.id, c]));
@@ -178,6 +181,10 @@ const BONHEUR: Quote[] = PAS_LE_BONHEUR.map((t) => ({
   c: "pasbonheur" as const,
 }));
 
+// La théorie : qu'ils y restent — et le retour de miroir qui l'empêche d'y
+// rester lui-même.
+const THEO: Quote[] = LA_THEORIE.map((t) => ({ t, c: "theorie" as const }));
+
 // Les affirmations de rétention existantes (page Vaisseau / Urgence).
 const AFFIRMATIONS: Quote[] = RETENTION_AFFIRMATIONS.map((t) => ({
   t,
@@ -199,6 +206,7 @@ export const QUOTES: Quote[] = (() => {
     ...PRECED,
     ...SEPT,
     ...BONHEUR,
+    ...THEO,
     ...AFFIRMATIONS,
     ...WAVES.flat(),
   ];

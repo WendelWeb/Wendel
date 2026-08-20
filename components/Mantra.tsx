@@ -8,6 +8,15 @@ import { QUOTES, categoryMeta } from "@/lib/quotes";
 import { DELAYED } from "@/lib/delayed";
 import { MANTRA_LINES } from "@/lib/mantra-lines";
 import { RAPPEL_COURT } from "@/lib/pas-le-bonheur";
+import {
+  LA_THEORIE_TITRE,
+  QU_ILS_Y_RESTENT,
+  L_ASYMETRIE,
+  LA_PREUVE,
+  LE_SILENCE,
+  LE_MIROIR_DE_LA_THEORIE,
+  SERMENT_20_AOUT,
+} from "@/lib/la-theorie";
 import { sampled, picked, shuffled, branch, visitSeed } from "@/lib/rotate";
 import { useSeed } from "./useSeed";
 
@@ -714,6 +723,61 @@ export default function Mantra({
   // visites de suite ne présentent jamais la même succession.
   const rappelCourt = picked(RAPPEL_COURT, branch(s, "rappelcourt"));
 
+  // QU'ILS RESTENT DANS LA THÉORIE.
+  //
+  // Le retour de miroir ferme toujours le bloc, et ce n'est pas une nuance :
+  // mépriser ceux qui théorisent est précisément ce qu'on fait quand on
+  // théorise. Ses propres textes condamnent cette posture — « je méprise le
+  // faux vertueux qui critique d'une supériorité morale qui ne coûte rien ».
+  // Sans la dernière ligne, ce bloc lui offrirait un plaisir gratuit au lieu
+  // d'un ordre.
+  const theorieHaut = picked(QU_ILS_Y_RESTENT, branch(s, "theoriehaut"));
+  const theorieCorps = sampled(
+    [...L_ASYMETRIE, ...LA_PREUVE, ...LE_SILENCE],
+    branch(s, "theoriecorps"),
+    2,
+  );
+  const serment20 = picked(SERMENT_20_AOUT, branch(s, "serment20"));
+  const theorieMiroir = picked(
+    LE_MIROIR_DE_LA_THEORIE,
+    branch(s, "theoriemiroir"),
+  );
+
+  const theorie = (
+    <div
+      className="overflow-hidden rounded-2xl px-5 py-4"
+      style={{ background: "#111827" }}
+    >
+      <p className="mb-2.5 text-[10px] font-semibold uppercase tracking-[0.26em] text-white/40">
+        {LA_THEORIE_TITRE}
+      </p>
+      <p className="font-display text-[15px] font-bold leading-snug text-white">
+        {theorieHaut}
+      </p>
+
+      {/* Le serment du 20 aout, 10 h 41 : la seule de ses echeances qui
+          porte une heure de DEBUT et non une date de fin. */}
+      <p className="mt-2.5 text-[12px] font-semibold leading-snug text-white/80">
+        {serment20}
+      </p>
+      <ul className="mt-2.5 flex flex-col gap-2">
+        {theorieCorps.map((l) => (
+          <li key={l} className="text-[12.5px] leading-snug text-white/70">
+            {l}
+          </li>
+        ))}
+      </ul>
+      {/* Le retour de miroir : la ligne entre eux et lui n'est pas le savoir,
+          c'est le registre des actes — et le sien est vide aussi. */}
+      <p
+        className="mt-3.5 border-t border-white/15 pt-3 text-[12.5px] font-semibold leading-snug"
+        style={{ color: "var(--gold-border)" }}
+      >
+        {theorieMiroir}
+      </p>
+    </div>
+  );
+
   const mobiles: { id: string; node: ReactNode }[] = [
     { id: "rotation", node: rotation },
     { id: "testFoi", node: testFoi },
@@ -730,6 +794,7 @@ export default function Mantra({
     { id: "responsabilite", node: responsabilite },
     { id: "binaire", node: binaireBloc },
     { id: "fire", node: fire },
+    { id: "theorie", node: theorie },
   ];
 
   return (

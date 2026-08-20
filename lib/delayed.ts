@@ -6,6 +6,7 @@ import { SIX_MOIS } from "./six-mois";
 import { PROMESSES_MORTES } from "./promesses-mortes";
 import { SEPT_ANS } from "./sept-ans";
 import { PAS_LE_BONHEUR } from "./pas-le-bonheur";
+import { LA_THEORIE } from "./la-theorie";
 
 export type DelayedCategory =
   | "defi"
@@ -19,7 +20,8 @@ export type DelayedCategory =
   | "sixmois"
   | "precedent"
   | "septans"
-  | "pasbonheur";
+  | "pasbonheur"
+  | "theorie";
 
 export interface DelayedItem {
   t: string;
@@ -43,6 +45,7 @@ export const DELAYED_CATEGORIES: {
   { id: "precedent", label: "Le précédent", color: "#4C1D95" },
   { id: "septans", label: "Les sept ans", color: "#57430F" },
   { id: "pasbonheur", label: "Pas le bonheur", color: "#1F2937" },
+  { id: "theorie", label: "La théorie", color: "#111827" },
 ];
 
 const DEFI = [
@@ -447,6 +450,7 @@ export const DELAYED: DelayedItem[] = (() => {
     [PROMESSES_MORTES, "precedent"],
     [SEPT_ANS, "septans"],
     [PAS_LE_BONHEUR, "pasbonheur"],
+    [LA_THEORIE, "theorie"],
   ];
   const seen = new Set<string>();
   const out: DelayedItem[] = [];

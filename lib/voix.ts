@@ -60,6 +60,7 @@ import { PAS_LE_BONHEUR } from "./pas-le-bonheur";
 import { SIX_MOIS } from "./six-mois";
 import { PROMESSES_MORTES } from "./promesses-mortes";
 import { SEPT_ANS } from "./sept-ans";
+import { LA_THEORIE } from "./la-theorie";
 
 /**
  * Tout ce qui se prononce, en une seule liste.
@@ -115,6 +116,7 @@ const TOUT: string[] = [
   ...SIX_MOIS,
   ...PROMESSES_MORTES,
   ...SEPT_ANS,
+  ...LA_THEORIE,
   // Le sacrifice ne se tient pas debout tout seul : « pour l'homme que je jure
   // de devenir » n'est une phrase qu'avec son ouverture.
   ...SACRIFICE_POUR.map((d) => `${SACRIFICE_OUVERTURE} ${d}`),
