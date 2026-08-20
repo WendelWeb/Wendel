@@ -2,6 +2,8 @@
 // Pas de génération combinatoire : chaque ligne a son propre angle, sinon la
 // répétition tue la frappe. Client-safe.
 
+import { SIX_MOIS } from "./six-mois";
+
 export type DelayedCategory =
   | "defi"
   | "armee"
@@ -10,7 +12,8 @@ export type DelayedCategory =
   | "corps"
   | "livre"
   | "temps"
-  | "alliance";
+  | "alliance"
+  | "sixmois";
 
 export interface DelayedItem {
   t: string;
@@ -30,6 +33,7 @@ export const DELAYED_CATEGORIES: {
   { id: "livre", label: "Le Vaisseau", color: "#0F766E" },
   { id: "temps", label: "Le temps", color: "#DC2626" },
   { id: "alliance", label: "L'alliance", color: "#4C1D95" },
+  { id: "sixmois", label: "Six mois", color: "#9333EA" },
 ];
 
 const DEFI = [
@@ -430,6 +434,7 @@ export const DELAYED: DelayedItem[] = (() => {
     [LIVRE, "livre"],
     [TEMPS, "temps"],
     [ALLIANCE, "alliance"],
+    [SIX_MOIS, "sixmois"],
   ];
   const seen = new Set<string>();
   const out: DelayedItem[] = [];

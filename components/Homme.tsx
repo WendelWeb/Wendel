@@ -9,6 +9,15 @@ import {
 } from "@/lib/homme";
 import { LE_TEMPS_PASSERA } from "@/lib/inconfort";
 import { QUESTIONS_COMPTES } from "@/lib/comptes";
+import {
+  SIX_MOIS_TITRE,
+  SIX_MOIS_UN_POURCENT,
+  SIX_MOIS_CALCUL,
+  SIX_MOIS_REEL,
+  SIX_MOIS_ABONDANCE,
+  SIX_MOIS_HOMME,
+  SIX_MOIS_QUESTION,
+} from "@/lib/six-mois";
 import { sampled, picked, branch, visitSeed } from "@/lib/rotate";
 import { useSeed } from "./useSeed";
 
@@ -45,6 +54,21 @@ export default function Homme({
     branch(s, "demain"),
   );
   const compte = picked(QUESTIONS_COMPTES, branch(s, "compte"));
+  // Six mois — le seul endroit de l'app qui lui dise ce qu'il ACHÈTE, et non
+  // ce qu'il perd. La ligne du un pour cent ouvre toujours : c'est la seule
+  // qui n'ait besoin d'aucune promesse extérieure pour tenir.
+  const unPourCent = picked(SIX_MOIS_UN_POURCENT, branch(s, "unpourcent"));
+  const sixMois = sampled(
+    [
+      ...SIX_MOIS_CALCUL,
+      ...SIX_MOIS_REEL,
+      ...SIX_MOIS_ABONDANCE,
+      ...SIX_MOIS_HOMME,
+    ],
+    branch(s, "sixmois"),
+    2,
+  );
+  const question = picked(SIX_MOIS_QUESTION, branch(s, "sixquestion"));
   // Le conteneur porte l'espacement : dans une grille, une marge de
   // carte double la gouttière au lieu de l'ajuster.
   const spacing = "";
@@ -90,6 +114,28 @@ export default function Homme({
           </li>
         ))}
       </ul>
+
+      {/* SIX MOIS — ce qu'il achète, pas ce qu'il perd. Tout le reste du
+          bandeau lui montre la facture ; ce bloc-ci lui montre le prix de
+          l'autre côté, et il est ridicule. */}
+      <div className="mt-4 border-t border-white/10 pt-3.5">
+        <p className="mb-2.5 text-[9.5px] font-bold uppercase tracking-[0.24em] text-white/35">
+          {SIX_MOIS_TITRE}
+        </p>
+        <p className="font-display text-[14px] font-bold leading-snug text-white">
+          {unPourCent}
+        </p>
+        <ul className="mt-2.5 flex flex-col gap-2">
+          {sixMois.map((l) => (
+            <li key={l} className="text-[12.5px] leading-snug text-white/70">
+              {l}
+            </li>
+          ))}
+        </ul>
+        <p className="mt-2.5 text-[12.5px] font-semibold leading-snug text-red">
+          {question}
+        </p>
+      </div>
 
       {/* Une question de créancier par chargement. Le reste du bandeau parle
           de lui ; celle-ci rappelle qu'il n'est pas seul dans l'équation. */}

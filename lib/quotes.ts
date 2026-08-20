@@ -45,6 +45,7 @@ import w44 from "@/content/quotes/wave44.json";
 import w45 from "@/content/quotes/wave45.json";
 import w46 from "@/content/quotes/wave46.json";
 import w47 from "@/content/quotes/wave47.json";
+import { SIX_MOIS } from "./six-mois";
 import { RETENTION_AFFIRMATIONS } from "./affirmations";
 
 export type CategoryId =
@@ -75,7 +76,8 @@ export type CategoryId =
   | "puissance"
   | "nietzsche"
   | "pouvoirnu"
-  | "machiavel";
+  | "machiavel"
+  | "sixmois";
 
 export interface Quote {
   t: string; // le texte de la citation
@@ -119,6 +121,7 @@ export const CATEGORIES: CategoryMeta[] = [
   { id: "pouvoirnu", label: "Le pouvoir nu", color: "#0C0A09" },
   { id: "nietzsche", label: "Nietzsche", color: "#581C87" },
   { id: "machiavel", label: "Machiavel", color: "#7F1D1D" },
+  { id: "sixmois", label: "Six mois", color: "#9333EA" },
 ];
 
 const CAT_MAP = new Map(CATEGORIES.map((c) => [c.id, c]));
@@ -145,6 +148,10 @@ const MANTRA: Quote[] = [
   { t: "Si tu veux vraiment les voir, respecte tes yeux.", c: "mantra" },
 ];
 
+// Six mois : le calcul qu'il n'avait jamais posé. Le seul angle de l'app qui
+// lui dise ce qu'il ACHÈTE plutôt que ce qu'il perd.
+const SIX: Quote[] = SIX_MOIS.map((t) => ({ t, c: "sixmois" as const }));
+
 // Les affirmations de rétention existantes (page Vaisseau / Urgence).
 const AFFIRMATIONS: Quote[] = RETENTION_AFFIRMATIONS.map((t) => ({
   t,
@@ -160,7 +167,7 @@ const WAVES = [
 
 // Concatène tout et dédoublonne par texte.
 export const QUOTES: Quote[] = (() => {
-  const all = [...MANTRA, ...AFFIRMATIONS, ...WAVES.flat()];
+  const all = [...MANTRA, ...SIX, ...AFFIRMATIONS, ...WAVES.flat()];
   const seen = new Set<string>();
   const out: Quote[] = [];
   for (const q of all) {
