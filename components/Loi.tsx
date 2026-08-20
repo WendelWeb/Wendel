@@ -2,6 +2,14 @@
 
 import { LOI_TITRE, LA_LOI, LES_PREUVES, LE_CONTRAT } from "@/lib/loi";
 import { NIETZSCHE_TOUT } from "@/lib/nietzsche";
+import {
+  PROMESSES_TITRE,
+  PRECEDENT,
+  HELICOPTERE,
+  LA_DATE_NE_TRAVAILLE_PAS,
+  PREMIER_JANVIER,
+  PREMIER_GESTE,
+} from "@/lib/promesses-mortes";
 import { sampled, picked, branch, visitSeed } from "@/lib/rotate";
 import { useSeed } from "./useSeed";
 
@@ -31,6 +39,18 @@ export default function Loi({
   const preuves = sampled(LES_PREUVES, branch(s, "preuves"), 2);
   const contrat = picked(LE_CONTRAT, branch(s, "contrat"));
   const n = picked(NIETZSCHE_TOUT, branch(s, "nietzsche"));
+  // LE PRÉCÉDENT — il a sa place ici et nulle part ailleurs.
+  //
+  // La loi de ce bandeau dit : ce n'est pas la promesse qui décide, c'est la
+  // maîtrise. Janvier 2026 en est la preuve écrite de sa main — une promesse
+  // datée, jurée, et arrivée à échéance sans lui. Le reste de l'app prédit ce
+  // qui arrivera s'il ne change pas ; ceci le mesure sur un cas déjà clos.
+  const precedent = picked(PRECEDENT, branch(s, "precedent"));
+  const constat = picked(
+    [...HELICOPTERE, ...LA_DATE_NE_TRAVAILLE_PAS, ...PREMIER_JANVIER],
+    branch(s, "constat"),
+  );
+  const geste = picked(PREMIER_GESTE, branch(s, "geste"));
   // Le conteneur porte l'espacement : dans une grille, une marge de
   // carte double la gouttière au lieu de l'ajuster.
   const spacing = "";
@@ -55,6 +75,28 @@ export default function Loi({
           </li>
         ))}
       </ul>
+
+      {/* LE PRÉCÉDENT — le seul bloc de l'app qui ne prédit rien. Il relève un
+          fait déjà clos : une échéance qu'il s'était fixée, arrivée, repartie
+          sans lui. Un reproche se discute, un relevé ne se discute pas. */}
+      <div
+        className="mt-3.5 rounded-xl px-3.5 py-3"
+        style={{ background: "#0d0b12", border: "1px solid #4C1D95" }}
+      >
+        <p className="mb-2 text-[9px] font-bold uppercase tracking-[0.22em] text-white/30">
+          {PROMESSES_TITRE}
+        </p>
+        <p className="font-display text-[13.5px] font-bold leading-snug text-white">
+          {precedent}
+        </p>
+        <p className="mt-2 text-[12px] leading-snug text-white/60">{constat}</p>
+        <p
+          className="mt-2.5 text-[12px] font-semibold leading-snug"
+          style={{ color: "var(--gold-border)" }}
+        >
+          {geste}
+        </p>
+      </div>
 
       <p
         className="mt-3.5 border-t border-white/10 pt-3.5 text-[12.5px] font-semibold leading-relaxed"

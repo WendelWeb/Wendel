@@ -150,4 +150,10 @@ export const RAPPEL_2027: string[] = [
   "Aucune de ces lignes ne s'obtient en décembre. Elles s'obtiennent aujourd'hui, ou elles ne s'obtiennent pas.",
   "Le 1er janvier 2027 arrivera de toute façon. La seule question est de savoir ce qui sera vrai ce jour-là.",
   "Ce n'est pas une liste de souhaits. C'est un décret avec une date — et une date, ça se rate.",
+  // Le précédent, posé là où il fait le plus mal : au-dessus de la liste
+  // suivante. Il a fixé janvier 2026 depuis 2025, et janvier 2026 est passé.
+  "J'ai déjà fait ça une fois : en 2025, pour janvier 2026. Janvier 2026 est arrivé, puis reparti. Rien.",
+  "La seule différence entre cette liste et la précédente, c'est le chiffre de l'année.",
+  "Une date ne fait aucun travail. Elle passe — c'est tout ce qu'elle sait faire.",
+  "Chaque ligne qui n'a pas de date de DÉBUT est une décoration. Les autres sont des objectifs.",
 ];

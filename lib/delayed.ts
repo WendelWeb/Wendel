@@ -3,6 +3,7 @@
 // répétition tue la frappe. Client-safe.
 
 import { SIX_MOIS } from "./six-mois";
+import { PROMESSES_MORTES } from "./promesses-mortes";
 
 export type DelayedCategory =
   | "defi"
@@ -13,7 +14,8 @@ export type DelayedCategory =
   | "livre"
   | "temps"
   | "alliance"
-  | "sixmois";
+  | "sixmois"
+  | "precedent";
 
 export interface DelayedItem {
   t: string;
@@ -34,6 +36,7 @@ export const DELAYED_CATEGORIES: {
   { id: "temps", label: "Le temps", color: "#DC2626" },
   { id: "alliance", label: "L'alliance", color: "#4C1D95" },
   { id: "sixmois", label: "Six mois", color: "#9333EA" },
+  { id: "precedent", label: "Le précédent", color: "#4C1D95" },
 ];
 
 const DEFI = [
@@ -435,6 +438,7 @@ export const DELAYED: DelayedItem[] = (() => {
     [TEMPS, "temps"],
     [ALLIANCE, "alliance"],
     [SIX_MOIS, "sixmois"],
+    [PROMESSES_MORTES, "precedent"],
   ];
   const seen = new Set<string>();
   const out: DelayedItem[] = [];

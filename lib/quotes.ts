@@ -46,6 +46,7 @@ import w45 from "@/content/quotes/wave45.json";
 import w46 from "@/content/quotes/wave46.json";
 import w47 from "@/content/quotes/wave47.json";
 import { SIX_MOIS } from "./six-mois";
+import { PROMESSES_MORTES } from "./promesses-mortes";
 import { RETENTION_AFFIRMATIONS } from "./affirmations";
 
 export type CategoryId =
@@ -77,7 +78,8 @@ export type CategoryId =
   | "nietzsche"
   | "pouvoirnu"
   | "machiavel"
-  | "sixmois";
+  | "sixmois"
+  | "precedent";
 
 export interface Quote {
   t: string; // le texte de la citation
@@ -122,6 +124,7 @@ export const CATEGORIES: CategoryMeta[] = [
   { id: "nietzsche", label: "Nietzsche", color: "#581C87" },
   { id: "machiavel", label: "Machiavel", color: "#7F1D1D" },
   { id: "sixmois", label: "Six mois", color: "#9333EA" },
+  { id: "precedent", label: "Le précédent", color: "#4C1D95" },
 ];
 
 const CAT_MAP = new Map(CATEGORIES.map((c) => [c.id, c]));
@@ -152,6 +155,13 @@ const MANTRA: Quote[] = [
 // lui dise ce qu'il ACHÈTE plutôt que ce qu'il perd.
 const SIX: Quote[] = SIX_MOIS.map((t) => ({ t, c: "sixmois" as const }));
 
+// Le précédent : janvier 2026, fixé en 2025, arrivé et reparti sans lui. Le
+// seul bloc de l'app qui ne prédit rien — il relève un cas déjà clos.
+const PRECED: Quote[] = PROMESSES_MORTES.map((t) => ({
+  t,
+  c: "precedent" as const,
+}));
+
 // Les affirmations de rétention existantes (page Vaisseau / Urgence).
 const AFFIRMATIONS: Quote[] = RETENTION_AFFIRMATIONS.map((t) => ({
   t,
@@ -167,7 +177,7 @@ const WAVES = [
 
 // Concatène tout et dédoublonne par texte.
 export const QUOTES: Quote[] = (() => {
-  const all = [...MANTRA, ...SIX, ...AFFIRMATIONS, ...WAVES.flat()];
+  const all = [...MANTRA, ...SIX, ...PRECED, ...AFFIRMATIONS, ...WAVES.flat()];
   const seen = new Set<string>();
   const out: Quote[] = [];
   for (const q of all) {
