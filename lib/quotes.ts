@@ -48,6 +48,7 @@ import w47 from "@/content/quotes/wave47.json";
 import { SIX_MOIS } from "./six-mois";
 import { PROMESSES_MORTES } from "./promesses-mortes";
 import { SEPT_ANS } from "./sept-ans";
+import { PAS_LE_BONHEUR } from "./pas-le-bonheur";
 import { RETENTION_AFFIRMATIONS } from "./affirmations";
 
 export type CategoryId =
@@ -81,7 +82,8 @@ export type CategoryId =
   | "machiavel"
   | "sixmois"
   | "precedent"
-  | "septans";
+  | "septans"
+  | "pasbonheur";
 
 export interface Quote {
   t: string; // le texte de la citation
@@ -128,6 +130,7 @@ export const CATEGORIES: CategoryMeta[] = [
   { id: "sixmois", label: "Six mois", color: "#9333EA" },
   { id: "precedent", label: "Le précédent", color: "#4C1D95" },
   { id: "septans", label: "Les sept ans", color: "#57430F" },
+  { id: "pasbonheur", label: "Pas le bonheur", color: "#1F2937" },
 ];
 
 const CAT_MAP = new Map(CATEGORIES.map((c) => [c.id, c]));
@@ -168,6 +171,13 @@ const PRECED: Quote[] = PROMESSES_MORTES.map((t) => ({
 // Les sept ans : le sacrifice qu'il a décidé jusqu'en 2033, et son prix exact.
 const SEPT: Quote[] = SEPT_ANS.map((t) => ({ t, c: "septans" as const }));
 
+// Pas le bonheur : la cible n'a jamais ete un etat. Il a demande que ce
+// rappel-la soit partout, plus que tous les autres.
+const BONHEUR: Quote[] = PAS_LE_BONHEUR.map((t) => ({
+  t,
+  c: "pasbonheur" as const,
+}));
+
 // Les affirmations de rétention existantes (page Vaisseau / Urgence).
 const AFFIRMATIONS: Quote[] = RETENTION_AFFIRMATIONS.map((t) => ({
   t,
@@ -188,6 +198,7 @@ export const QUOTES: Quote[] = (() => {
     ...SIX,
     ...PRECED,
     ...SEPT,
+    ...BONHEUR,
     ...AFFIRMATIONS,
     ...WAVES.flat(),
   ];

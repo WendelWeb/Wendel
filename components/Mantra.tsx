@@ -7,6 +7,7 @@ import { BINARY, BINARY_FRAME_EN } from "@/lib/binary";
 import { QUOTES, categoryMeta } from "@/lib/quotes";
 import { DELAYED } from "@/lib/delayed";
 import { MANTRA_LINES } from "@/lib/mantra-lines";
+import { RAPPEL_COURT } from "@/lib/pas-le-bonheur";
 import { sampled, picked, shuffled, branch, visitSeed } from "@/lib/rotate";
 import { useSeed } from "./useSeed";
 
@@ -711,6 +712,8 @@ export default function Mantra({
 
   // Les blocs qui bougent. L'ordre est retiré au sort à chaque requête ; deux
   // visites de suite ne présentent jamais la même succession.
+  const rappelCourt = picked(RAPPEL_COURT, branch(s, "rappelcourt"));
+
   const mobiles: { id: string; node: ReactNode }[] = [
     { id: "rotation", node: rotation },
     { id: "testFoi", node: testFoi },
@@ -759,6 +762,14 @@ export default function Mantra({
       </p>
       <p className="mt-1 text-center text-[11.5px] italic leading-snug text-text-secondary">
         Cette victoire entrera par la main de Dieu.
+      </p>
+
+      {/* LE PIED — la meme ligne qu'au bas des trois autres bandeaux.
+          Quatre bandeaux, en haut et en bas de chaque page : jusqu'a huit
+          passages par ecran. C'est la surface la plus frequente de l'app, et
+          c'est pour ca qu'il l'a demandee la. */}
+      <p className="mt-4 border-t border-border pt-3 text-center text-[11px] font-semibold uppercase tracking-[0.08em] text-text-muted">
+        {rappelCourt}
       </p>
     </aside>
   );

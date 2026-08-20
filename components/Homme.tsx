@@ -18,6 +18,7 @@ import {
   SIX_MOIS_HOMME,
   SIX_MOIS_QUESTION,
 } from "@/lib/six-mois";
+import { RAPPEL_COURT } from "@/lib/pas-le-bonheur";
 import { sampled, picked, branch, visitSeed } from "@/lib/rotate";
 import { useSeed } from "./useSeed";
 
@@ -69,6 +70,7 @@ export default function Homme({
     2,
   );
   const question = picked(SIX_MOIS_QUESTION, branch(s, "sixquestion"));
+  const rappelCourt = picked(RAPPEL_COURT, branch(s, "rappelcourt"));
   // Le conteneur porte l'espacement : dans une grille, une marge de
   // carte double la gouttière au lieu de l'ajuster.
   const spacing = "";
@@ -148,6 +150,15 @@ export default function Homme({
 
       <p className="mt-3 text-[12.5px] font-semibold leading-relaxed text-red">
         {demain}
+      </p>
+
+      {/* LE PIED — la meme ligne au bas des quatre bandeaux, tiree au sort.
+          Il a demande qu'on le lui rappelle tellement de fois qu'il ne puisse
+          pas ne pas s'en souvenir : quatre bandeaux en haut et en bas font
+          jusqu'a huit passages par ecran, c'est la surface la plus frequente
+          de l'app. Courte exprès — longue, elle deviendrait un decor. */}
+      <p className="mt-4 border-t border-white/10 pt-3 text-[11px] font-semibold uppercase tracking-[0.08em] text-white/30">
+        {rappelCourt}
       </p>
     </section>
   );

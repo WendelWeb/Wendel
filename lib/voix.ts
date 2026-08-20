@@ -56,6 +56,10 @@ import { RETENTION_AFFIRMATIONS } from "./affirmations";
 import { SACRIFICE_POUR, SACRIFICE_OUVERTURE } from "./repetition";
 import { INSTRUMENT } from "./instrument";
 import { NIETZSCHE_TOUT } from "./nietzsche";
+import { PAS_LE_BONHEUR } from "./pas-le-bonheur";
+import { SIX_MOIS } from "./six-mois";
+import { PROMESSES_MORTES } from "./promesses-mortes";
+import { SEPT_ANS } from "./sept-ans";
 
 /**
  * Tout ce qui se prononce, en une seule liste.
@@ -107,6 +111,10 @@ const TOUT: string[] = [
   ...DECISIONS_SIENNES,
   ...DECISIONS_AJOUTEES,
   ...RETENTION_AFFIRMATIONS,
+  ...PAS_LE_BONHEUR,
+  ...SIX_MOIS,
+  ...PROMESSES_MORTES,
+  ...SEPT_ANS,
   // Le sacrifice ne se tient pas debout tout seul : « pour l'homme que je jure
   // de devenir » n'est une phrase qu'avec son ouverture.
   ...SACRIFICE_POUR.map((d) => `${SACRIFICE_OUVERTURE} ${d}`),

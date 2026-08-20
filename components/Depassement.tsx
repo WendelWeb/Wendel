@@ -15,6 +15,7 @@ import {
   SEPT_ANS_PRIX,
   SEPT_ANS_2033,
 } from "@/lib/sept-ans";
+import { RAPPEL_COURT } from "@/lib/pas-le-bonheur";
 import { sampled, picked, branch, visitSeed } from "@/lib/rotate";
 import { useSeed } from "./useSeed";
 
@@ -67,6 +68,7 @@ export default function Depassement({
     2,
   );
   const decoupe = picked(SEPT_ANS_DECOUPE, branch(s, "decoupe7"));
+  const rappelCourt = picked(RAPPEL_COURT, branch(s, "rappelcourt"));
   // Le conteneur porte l'espacement : dans une grille, une marge de
   // carte double la gouttière au lieu de l'ajuster.
   const spacing = "";
@@ -135,6 +137,15 @@ export default function Depassement({
           </p>
         ))}
       </div>
+
+      {/* LE PIED — la meme ligne au bas des quatre bandeaux, tiree au sort.
+          Il a demande qu'on le lui rappelle tellement de fois qu'il ne puisse
+          pas ne pas s'en souvenir : quatre bandeaux en haut et en bas font
+          jusqu'a huit passages par ecran, c'est la surface la plus frequente
+          de l'app. Courte exprès — longue, elle deviendrait un decor. */}
+      <p className="mt-4 border-t border-white/10 pt-3 text-[11px] font-semibold uppercase tracking-[0.08em] text-white/30">
+        {rappelCourt}
+      </p>
     </section>
   );
 }
