@@ -47,6 +47,7 @@ import w46 from "@/content/quotes/wave46.json";
 import w47 from "@/content/quotes/wave47.json";
 import { SIX_MOIS } from "./six-mois";
 import { PROMESSES_MORTES } from "./promesses-mortes";
+import { SEPT_ANS } from "./sept-ans";
 import { RETENTION_AFFIRMATIONS } from "./affirmations";
 
 export type CategoryId =
@@ -79,7 +80,8 @@ export type CategoryId =
   | "pouvoirnu"
   | "machiavel"
   | "sixmois"
-  | "precedent";
+  | "precedent"
+  | "septans";
 
 export interface Quote {
   t: string; // le texte de la citation
@@ -125,6 +127,7 @@ export const CATEGORIES: CategoryMeta[] = [
   { id: "machiavel", label: "Machiavel", color: "#7F1D1D" },
   { id: "sixmois", label: "Six mois", color: "#9333EA" },
   { id: "precedent", label: "Le précédent", color: "#4C1D95" },
+  { id: "septans", label: "Les sept ans", color: "#57430F" },
 ];
 
 const CAT_MAP = new Map(CATEGORIES.map((c) => [c.id, c]));
@@ -162,6 +165,9 @@ const PRECED: Quote[] = PROMESSES_MORTES.map((t) => ({
   c: "precedent" as const,
 }));
 
+// Les sept ans : le sacrifice qu'il a décidé jusqu'en 2033, et son prix exact.
+const SEPT: Quote[] = SEPT_ANS.map((t) => ({ t, c: "septans" as const }));
+
 // Les affirmations de rétention existantes (page Vaisseau / Urgence).
 const AFFIRMATIONS: Quote[] = RETENTION_AFFIRMATIONS.map((t) => ({
   t,
@@ -177,7 +183,14 @@ const WAVES = [
 
 // Concatène tout et dédoublonne par texte.
 export const QUOTES: Quote[] = (() => {
-  const all = [...MANTRA, ...SIX, ...PRECED, ...AFFIRMATIONS, ...WAVES.flat()];
+  const all = [
+    ...MANTRA,
+    ...SIX,
+    ...PRECED,
+    ...SEPT,
+    ...AFFIRMATIONS,
+    ...WAVES.flat(),
+  ];
   const seen = new Set<string>();
   const out: Quote[] = [];
   for (const q of all) {

@@ -6,6 +6,15 @@ import {
   DEPASSEMENT,
 } from "@/lib/declaration";
 import { INSTRUMENT } from "@/lib/instrument";
+import {
+  SEPT_ANS_TITRE,
+  SEPT_ANS_SERMENT,
+  SEPT_ANS_RENONCE,
+  SEPT_ANS_GARDE,
+  SEPT_ANS_DECOUPE,
+  SEPT_ANS_PRIX,
+  SEPT_ANS_2033,
+} from "@/lib/sept-ans";
 import { sampled, picked, branch, visitSeed } from "@/lib/rotate";
 import { useSeed } from "./useSeed";
 
@@ -42,6 +51,22 @@ export default function Depassement({
     2,
   );
   const emploi = picked(INSTRUMENT, branch(s, "instrument"));
+  // LES SEPT ANS — leur place est ici, et c'est la seule qui tienne.
+  //
+  // Ce bandeau dit que le plafond écrit est un plancher. Les sept ans en sont
+  // la facture : ce que ce dépassement coûte, en jours, à partir d'aujourd'hui.
+  // Une portée sans son prix n'est qu'une rêverie de plus.
+  //
+  // Le serment ouvre, le découpage ferme. Cet ordre n'est pas décoratif : sans
+  // le découpage en dessous, l'app lui offrirait la même chose que janvier
+  // 2026 — une promesse large qui dispense du geste étroit.
+  const serment = picked(SEPT_ANS_SERMENT, branch(s, "serment7"));
+  const sacrifice = sampled(
+    [...SEPT_ANS_RENONCE, ...SEPT_ANS_GARDE, ...SEPT_ANS_PRIX, ...SEPT_ANS_2033],
+    branch(s, "sacrifice7"),
+    2,
+  );
+  const decoupe = picked(SEPT_ANS_DECOUPE, branch(s, "decoupe7"));
   // Le conteneur porte l'espacement : dans une grille, une marge de
   // carte double la gouttière au lieu de l'ajuster.
   const spacing = "";
@@ -66,6 +91,32 @@ export default function Depassement({
           </li>
         ))}
       </ul>
+
+      {/* LES SEPT ANS — la facture du dépassement, en jours.
+          Le serment ouvre, le découpage ferme, et le découpage n'est pas une
+          nuance : sans lui ce bloc offrirait exactement ce qu'a offert janvier
+          2026, une promesse large qui dispense du geste étroit. */}
+      <div
+        className="mt-4 rounded-xl px-3.5 py-3"
+        style={{ background: "#0a0906", border: "1px solid #57430f" }}
+      >
+        <p className="mb-2 text-[9px] font-bold uppercase tracking-[0.22em] text-white/30">
+          {SEPT_ANS_TITRE}
+        </p>
+        <p className="font-display text-[13.5px] font-bold leading-snug text-white">
+          {serment}
+        </p>
+        <ul className="mt-2 flex flex-col gap-1.5">
+          {sacrifice.map((l) => (
+            <li key={l} className="text-[12px] leading-snug text-white/60">
+              {l}
+            </li>
+          ))}
+        </ul>
+        <p className="mt-2.5 text-[12px] font-semibold leading-snug text-red">
+          {decoupe}
+        </p>
+      </div>
 
       {/* Ce que Dieu pourrait faire de lui, et ce qu Il trouve. */}
       <div className="mt-4 border-t border-white/12 pt-3.5">
