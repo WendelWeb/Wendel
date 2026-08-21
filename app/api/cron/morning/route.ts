@@ -108,12 +108,7 @@ ${r.text}`, {
     });
   }
 
-  // `?channel=whatsapp` pour ne tester que le coup court, `=email` que l'office.
-  const c = url.searchParams.get("channel");
-  const channel =
-    c === "email" || c === "whatsapp" || c === "both" ? c : undefined;
-
-  const result = await sendHourlyBrief({ force, hour, channel });
+  const result = await sendHourlyBrief({ force, hour });
   return NextResponse.json(result, { status: result.ok ? 200 : 500 });
 }
 

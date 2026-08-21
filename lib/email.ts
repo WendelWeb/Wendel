@@ -158,54 +158,54 @@ export interface SendResult {
   sent: number;
   to: string[];
   hour?: number;
-  kind?: "messe" | "heure";
-  name?: string;
-  minutes?: number;
   skipped?: string;
   error?: string;
-  /** Le coup court parti sur WhatsApp, quand Twilio est configuré. */
-  whatsapp?: { sent: number; to: string[]; skipped?: string; error?: string };
+  /** Le détail par destinataire : c'est ce qui permet de voir lequel échoue. */
+  detail?: { to: string; ok: boolean; id?: string; error?: string }[];
 }
 
 /**
- * Envoie l'office de l'heure. Hors des heures de réveil, ne fait rien — le
- * planificateur peut donc taper toutes les heures sans risque.
+ * LE RAPPEL DE DEUX HEURES. Un seul format, un seul envoi possible.
+ *
+ * Tout le reste est parti : l'office complet, les trois langues, les trois
+ * messes, le coup court WhatsApp. Il a tranché — il ne veut que ça, et il a
+ * raison : il n'ouvrait aucun des autres.
+ *
+ * Un envoi PAR DESTINATAIRE, jamais un envoi groupé. Deux raisons, et la
+ * seconde est celle qui compte pour lui. La première : si une adresse est
+ * refusée, l'autre part quand même. La seconde : deux messages distincts
+ * déclenchent deux notifications sur deux appareils, alors qu'un seul message
+ * à deux destinataires n'en déclenche qu'une par boîte — et son problème est
+ * précisément qu'il ne remarque pas les mails.
+ *
+ * Le détail par adresse est renvoyé pour qu'un échec soit visible et nommé,
+ * au lieu de se perdre dans un total.
  */
 export async function sendHourlyBrief(opts?: {
   force?: boolean;
   hour?: number;
-  /** Par défaut les deux : l'office par email, le coup court sur WhatsApp. */
-  channel?: "email" | "whatsapp" | "both";
-  /** Les langues a envoyer. Par defaut les trois. */
-  langues?: Langue[];
 }): Promise<SendResult> {
   const hour = opts?.hour ?? haitiHour();
   const to = recipients();
-  const canal = opts?.channel ?? "both";
 
   if (!opts?.force && !isLiturgyHour(hour)) {
     return { ok: true, sent: 0, to: [], hour, skipped: "hors heures de réveil" };
   }
-
-  // Une heure sur deux, pas toutes les heures. Il a coupé le rythme lui-même :
-  // cinquante et un mails par jour qu'on n'ouvre pas valent moins que neuf
-  // qu'on ouvre. La messe de 5h, 12h et 21h passe outre — c'est l'office
-  // complet, pas un rappel.
-  if (!opts?.force && !isMesse(hour) && !estHeureDeRappel(hour)) {
+  // Une heure sur deux : 5, 7, 9 … 21. Neuf par jour.
+  if (!opts?.force && !estHeureDeRappel(hour)) {
     return { ok: true, sent: 0, to: [], hour, skipped: "heure creuse" };
   }
 
   const key = process.env.RESEND_API_KEY;
+  if (!key)
+    return { ok: false, sent: 0, to, hour, error: "RESEND_API_KEY manquante" };
+  if (to.length === 0)
+    return { ok: false, sent: 0, to, hour, error: "MORNING_EMAIL_TO manquante" };
+
   const from =
     process.env.MORNING_EMAIL_FROM ??
     process.env.RESEND_FROM ??
     "FORGED <onboarding@resend.dev>";
-
-  const veutEmail = canal !== "whatsapp";
-  if (veutEmail && !key)
-    return { ok: false, sent: 0, to, hour, error: "RESEND_API_KEY manquante" };
-  if (veutEmail && to.length === 0)
-    return { ok: false, sent: 0, to, hour, error: "MORNING_EMAIL_TO manquante" };
 
   const rows = await db
     .select({ id: users.id })
@@ -216,87 +216,45 @@ export async function sendHourlyBrief(opts?: {
   if (!userId)
     return { ok: false, sent: 0, to, hour, error: "utilisateur introuvable" };
 
-  const ctx = await liturgyContext(userId, hour);
+  const brief = await buildRappel(userId, hour);
+  const resend = new Resend(key);
 
-  // Aux heures ordinaires : UN rappel, en français. Aux trois messes : l'office
-  // complet, dans les trois langues.
-  //
-  // C'était trois langues à chaque heure — cinquante et un mails par jour. Il a
-  // coupé lui-même, et le miroir dit pourquoi : « j'ai mis un système de mails
-  // automatiques, je ne les ouvre pas ». Neuf mails ouverts battent cinquante
-  // et un ignorés.
-  const messe = isMesse(hour);
-  const langues = opts?.langues ?? (messe ? LANGUES : (["fr"] as Langue[]));
-  const briefs = messe
-    ? await Promise.all(langues.map((l) => buildHourlyBrief(userId, hour, l)))
-    : [
-        {
-          ...(await buildRappel(userId, hour)),
-          liturgy: buildLiturgy(ctx, "fr"),
-        },
-      ];
-
-  // Le français part sur WhatsApp — deux messages, jamais plus. Trois langues
-  // en messages téléphone feraient six notifications par créneau.
-  let wa: SendResult["whatsapp"];
-  if (canal !== "email") {
-    const fr = briefs.find((b) => /Français/.test(b.liturgy.name)) ?? briefs[0];
-    const r = await sendWhatsAppTwo(fr.liturgy, ctx);
-    wa = { sent: r.sent, to: r.to, skipped: r.skipped, error: r.error };
+  const detail: NonNullable<SendResult["detail"]> = [];
+  for (const adresse of to) {
+    try {
+      const { data, error } = await resend.emails.send({
+        from,
+        to: [adresse],
+        subject: brief.subject,
+        html: brief.html,
+        text: brief.text,
+      });
+      detail.push(
+        error
+          ? { to: adresse, ok: false, error: String(error.message ?? error) }
+          : { to: adresse, ok: true, id: data?.id },
+      );
+    } catch (e) {
+      detail.push({ to: adresse, ok: false, error: String(e) });
+    }
+    // Resend limite le débit à deux requêtes par seconde.
+    if (adresse !== to[to.length - 1])
+      await new Promise((r) => setTimeout(r, 600));
   }
 
-  const premier = briefs[0];
-  if (!veutEmail) {
-    return {
-      ok: true,
-      sent: 0,
-      to: [],
-      hour,
-      kind: premier.liturgy.kind,
-      name: premier.liturgy.name,
-      minutes: premier.liturgy.minutes,
-      skipped: "email non demandé",
-      whatsapp: wa,
-    };
-  }
+  const envoyes = detail.filter((d) => d.ok).length;
+  const erreurs = detail.filter((d) => !d.ok);
 
-  const resend = new Resend(key!);
-  const erreurs: string[] = [];
-  let envoyes = 0;
-
-  for (const brief of briefs) {
-    const { error } = await resend.emails.send({
-      from,
-      to,
-      subject: brief.subject,
-      html: brief.html,
-      text: brief.text,
-    });
-    if (error) erreurs.push(String(error.message ?? error));
-    else envoyes++;
-    // Resend limite le débit : on espace un peu les trois envois.
-    if (brief !== briefs[briefs.length - 1])
-      await new Promise((r) => setTimeout(r, 700));
-  }
-
-  if (erreurs.length && envoyes === 0)
-    return {
-      ok: false,
-      sent: 0,
-      to,
-      hour,
-      error: erreurs.join(" ; "),
-      whatsapp: wa,
-    };
   return {
-    ok: true,
+    // Un seul destinataire servi suffit à considérer le créneau tenu : le but
+    // est qu'il voie le rappel, pas que les deux boîtes l'aient.
+    ok: envoyes > 0,
     sent: envoyes,
     to,
     hour,
-    kind: premier.liturgy.kind,
-    name: `${envoyes} langues`,
-    minutes: premier.liturgy.minutes,
-    error: erreurs.length ? erreurs.join(" ; ") : undefined,
-    whatsapp: wa,
+    error: erreurs.length
+      ? erreurs.map((e) => `${e.to} : ${e.error}`).join(" ; ")
+      : undefined,
+    detail,
   };
 }
