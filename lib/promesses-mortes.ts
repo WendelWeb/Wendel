@@ -18,6 +18,14 @@
 // 2026, il n'a pas commencé. La date est donc déjà manquée, indépendamment de
 // tout ce qu'il fera d'ici là. C'est arithmétique, pas moral.
 //
+// Correction du 20 août : il a répondu qu'il n'a pas le budget des leçons, et
+// que faire l'argent avant la fin de l'année fait partie du défi. C'est exact,
+// et deux lignes de ce module devenaient donc fausses — celles qui lui
+// reprochaient un appel non passé. Elles sont réécrites : l'obstacle n'est pas
+// extérieur, c'est une ligne de sa propre liste qui en bloque une autre. Une
+// seule ligne fausse dans cette app ferait perdre leur force à toutes les
+// autres, et c'est la raison de la correction.
+//
 // Le module ne cite aucun chiffre de compte à rebours en dur : ceux-là sont
 // calculés par l'app et changent chaque jour.
 //
@@ -52,8 +60,9 @@ export const HELICOPTERE: string[] = [
   "Ces heures ne se compriment pas. Ni avec de l'argent, ni avec de la volonté, ni avec une bonne semaine en décembre.",
   "Pour piloter en janvier 2027, il fallait avoir commencé bien avant janvier 2027. Je n'ai pas commencé.",
   "Cette ligne-là n'est pas en retard : elle est déjà manquée, et c'est de l'arithmétique, pas de la morale.",
-  "Je n'ai pas appelé une école. Pas une. Un appel téléphonique — c'est le premier pas, et il est gratuit.",
-  "Je veux un hélicoptère et je n'ai pas passé un coup de fil. Voilà l'écart exact entre ce que je dis et ce que je suis.",
+  "Je n'ai pas l'argent des leçons, et c'est vrai. Mais l'argent était déjà une ligne de la même liste, avec la même date. Ce n'est pas un obstacle extérieur : c'est la première ligne qui bloque la deuxième.",
+  "Je ne peux pas payer une leçon aujourd'hui. Je peux gagner aujourd'hui le premier dollar qui la paiera. Les deux choses sont dans ma liste, et une seule dépend de moi ce matin.",
+  "Dire « je n'ai pas le budget » est exact. Ça ne répond pas à la question : qu'est-ce que j'ai fait aujourd'hui pour l'avoir ?",
   "Si je ne peux pas commencer la chose qui prend le plus de temps, je ne finirai aucune des autres.",
 ];
 
@@ -97,10 +106,11 @@ export const PREMIER_JANVIER: string[] = [
  */
 export const PREMIER_GESTE: string[] = [
   "La sortie n'est pas de mieux jurer. Elle est de dater un premier geste, cette semaine, sur la ligne qui prend le plus de temps.",
-  "Le premier geste de l'hélicoptère n'est pas d'acheter un hélicoptère. C'est de trouver une école et d'appeler.",
+  "Le premier geste de l'hélicoptère n'est pas d'acheter un hélicoptère, ni même de payer une leçon : c'est de gagner l'argent qui les paie. Ça commence aujourd'hui, pas en décembre.",
+  "Un premier geste qui débouche sur une facture que je ne peux pas payer n'est pas un premier geste. C'est un obstacle déguisé en action.",
   "Une ligne qui n'a pas de premier geste daté n'est pas un objectif : c'est une décoration.",
   "Ce que je peux faire dans l'heure vaut mieux que ce que je jure de faire cette année. J'ai la preuve des deux.",
-  "Je n'ai pas besoin d'une nouvelle liste. J'ai besoin d'un rendez-vous pris.",
+  "Je n'ai pas besoin d'une nouvelle liste. J'ai besoin d'une ligne qui bouge aujourd'hui.",
   "Reprends la liste et écris une date de DÉBUT à côté de chaque ligne. Les lignes qui n'en supportent pas sont mortes — retire-les.",
 ];
 

@@ -9,6 +9,22 @@ import { DELAYED } from "@/lib/delayed";
 import { MANTRA_LINES } from "@/lib/mantra-lines";
 import { RAPPEL_COURT } from "@/lib/pas-le-bonheur";
 import {
+  LE_ROI_TITRE,
+  LA_PAROLE,
+  LA_LOI_DE_LA_NATURE,
+  LES_QUESTIONS,
+  CE_QU_UN_ROI_NE_FAIT_PAS,
+  LE_TITRE_ET_LA_CONDUITE,
+} from "@/lib/le-roi";
+import {
+  SABOTAGE_TITRE,
+  LE_SABOTAGE,
+  DEJA_DONNE,
+  LA_GARDE,
+  CE_QUE_CA_DONNERAIT,
+  DONC,
+} from "@/lib/le-sabotage";
+import {
   LA_THEORIE_TITRE,
   QU_ILS_Y_RESTENT,
   L_ASYMETRIE,
@@ -737,6 +753,104 @@ export default function Mantra({
     branch(s, "theoriecorps"),
     2,
   );
+  // IL T'A APPELÉ ROI.
+  //
+  // La forme de l'argument est ce qui le rend fort, et elle est preservee
+  // exactement : un orgueil dirait « je suis roi donc je merite ». Lui dit
+  // « je suis roi donc cette conduite est IMPOSSIBLE ». Ce n'est pas une
+  // revendication de droits, c'est une erreur d'espece qu'on lui met sous les
+  // yeux.
+  //
+  // La question ferme le bloc parce qu'une question ne se lit pas comme une
+  // affirmation : on ne peut pas la survoler sans y repondre. Et le titre
+  // n'est jamais affiche sans son obligation — sinon la designation devient un
+  // oreiller, et il continuerait exactement pareil en se sentant roi.
+  const roiParole = picked(LA_PAROLE, branch(s, "roiparole"));
+  const roiNature = picked(LA_LOI_DE_LA_NATURE, branch(s, "roinature"));
+  const roiConduite = picked(
+    [...CE_QU_UN_ROI_NE_FAIT_PAS, ...LE_TITRE_ET_LA_CONDUITE],
+    branch(s, "roiconduite"),
+  );
+  const roiQuestions = sampled(LES_QUESTIONS, branch(s, "roiquestions"), 3);
+
+  const roi = (
+    <div
+      className="overflow-hidden rounded-2xl px-5 py-4"
+      style={{ background: "#1e1b4b" }}
+    >
+      <p className="mb-2.5 text-[10px] font-semibold uppercase tracking-[0.26em] text-white/45">
+        {LE_ROI_TITRE}
+      </p>
+      <p className="font-display text-[15px] font-bold leading-snug text-white">
+        {roiParole}
+      </p>
+      <p className="mt-2.5 text-[12.5px] leading-snug text-white/70">
+        {roiNature}
+      </p>
+      <p className="mt-2.5 text-[12.5px] font-semibold leading-snug text-white/85">
+        {roiConduite}
+      </p>
+      {/* Les questions ferment : on ne survole pas une question sans y
+          repondre, alors qu'on survole une affirmation. */}
+      <ul className="mt-3 flex flex-col gap-1.5 border-t border-white/15 pt-3">
+        {roiQuestions.map((q) => (
+          <li
+            key={q}
+            className="font-display text-[13.5px] font-bold leading-snug"
+            style={{ color: "var(--gold-border)" }}
+          >
+            {q}
+          </li>
+        ))}
+      </ul>
+    </div>
+  );
+
+  // TU LE SABOTERAIS.
+  //
+  // Ne double pas l'instrument : celui-ci dit que Dieu ne trouve pas sa main
+  // libre — question d'utilité. Ce bloc-ci dit pire : meme en lui donnant
+  // tout, ca ne tiendrait pas. Question de capacite de garde.
+  //
+  // La charnière est « Il te les a deja donnes » : elle deplace l'attente. Il
+  // ne manque pas la provision, il manque la garde — donc ce n'est pas Dieu
+  // qu'il attend, c'est lui-meme. Le registre DONC ferme toujours, sinon le
+  // bloc n'expliquerait que pourquoi rien n'arrive.
+  const sabotageHaut = picked(LE_SABOTAGE, branch(s, "sabotagehaut"));
+  const sabotageDonne = picked(DEJA_DONNE, branch(s, "sabotagedonne"));
+  const sabotageCorps = picked(
+    [...LA_GARDE, ...CE_QUE_CA_DONNERAIT],
+    branch(s, "sabotagecorps"),
+  );
+  const sabotageDonc = picked(DONC, branch(s, "sabotagedonc"));
+
+  const sabotage = (
+    <div
+      className="overflow-hidden rounded-2xl px-5 py-4"
+      style={{ background: "#450A0A" }}
+    >
+      <p className="mb-2.5 text-[10px] font-semibold uppercase tracking-[0.26em] text-white/45">
+        {SABOTAGE_TITRE}
+      </p>
+      <p className="font-display text-[15px] font-bold leading-snug text-white">
+        {sabotageHaut}
+      </p>
+      <p className="mt-2.5 text-[12.5px] leading-snug text-white/70">
+        {sabotageCorps}
+      </p>
+      {/* La charnière : la provision est faite, la garde ne l'est pas. */}
+      <p
+        className="mt-3 border-t border-white/15 pt-3 text-[13px] font-bold leading-snug"
+        style={{ color: "var(--gold-border)" }}
+      >
+        {sabotageDonne}
+      </p>
+      <p className="mt-2.5 text-[12.5px] font-semibold leading-snug text-white/85">
+        {sabotageDonc}
+      </p>
+    </div>
+  );
+
   const serment20 = picked(SERMENT_20_AOUT, branch(s, "serment20"));
   const theorieMiroir = picked(
     LE_MIROIR_DE_LA_THEORIE,
@@ -795,6 +909,8 @@ export default function Mantra({
     { id: "binaire", node: binaireBloc },
     { id: "fire", node: fire },
     { id: "theorie", node: theorie },
+    { id: "sabotage", node: sabotage },
+    { id: "roi", node: roi },
   ];
 
   return (

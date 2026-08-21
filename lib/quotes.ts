@@ -50,6 +50,8 @@ import { PROMESSES_MORTES } from "./promesses-mortes";
 import { SEPT_ANS } from "./sept-ans";
 import { PAS_LE_BONHEUR } from "./pas-le-bonheur";
 import { LA_THEORIE } from "./la-theorie";
+import { SABOTAGE } from "./le-sabotage";
+import { LE_ROI } from "./le-roi";
 import { RETENTION_AFFIRMATIONS } from "./affirmations";
 
 export type CategoryId =
@@ -85,7 +87,9 @@ export type CategoryId =
   | "precedent"
   | "septans"
   | "pasbonheur"
-  | "theorie";
+  | "theorie"
+  | "sabotage"
+  | "roi";
 
 export interface Quote {
   t: string; // le texte de la citation
@@ -134,6 +138,8 @@ export const CATEGORIES: CategoryMeta[] = [
   { id: "septans", label: "Les sept ans", color: "#57430F" },
   { id: "pasbonheur", label: "Pas le bonheur", color: "#1F2937" },
   { id: "theorie", label: "La théorie", color: "#111827" },
+  { id: "sabotage", label: "Tu le saboterais", color: "#450A0A" },
+  { id: "roi", label: "Il t'a appelé roi", color: "#1E1B4B" },
 ];
 
 const CAT_MAP = new Map(CATEGORIES.map((c) => [c.id, c]));
@@ -185,6 +191,13 @@ const BONHEUR: Quote[] = PAS_LE_BONHEUR.map((t) => ({
 // rester lui-même.
 const THEO: Quote[] = LA_THEORIE.map((t) => ({ t, c: "theorie" as const }));
 
+// Le sabotage : ce qui arriverait si tout lui etait donne aujourd'hui — et la
+// charnière, Il te les a deja donnes.
+const SABO: Quote[] = SABOTAGE.map((t) => ({ t, c: "sabotage" as const }));
+
+// Le roi : ce qui a ete dit sur lui, et ce que ca rend impossible.
+const ROI: Quote[] = LE_ROI.map((t) => ({ t, c: "roi" as const }));
+
 // Les affirmations de rétention existantes (page Vaisseau / Urgence).
 const AFFIRMATIONS: Quote[] = RETENTION_AFFIRMATIONS.map((t) => ({
   t,
@@ -207,6 +220,8 @@ export const QUOTES: Quote[] = (() => {
     ...SEPT,
     ...BONHEUR,
     ...THEO,
+    ...SABO,
+    ...ROI,
     ...AFFIRMATIONS,
     ...WAVES.flat(),
   ];
