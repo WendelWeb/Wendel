@@ -53,7 +53,8 @@
       "Read(//c/Users/stanl/AppData/Local/Temp/**)",
       "Bash(npx tsc *)",
       "Bash(git add *)",
-      "Bash(git commit *)"
+      "Bash(git commit *)",
+      "Bash(npx --yes vercel@latest ls)"
     ]
   }
 }

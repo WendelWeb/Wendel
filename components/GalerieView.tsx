@@ -1,7 +1,7 @@
 "use client";
 
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
-import { ChevronLeft, ChevronRight, Shuffle, EyeOff, Undo2 } from "lucide-react";
+import { ChevronLeft, ChevronRight, Shuffle, Trash2, Undo2 } from "lucide-react";
 
 /**
  * LA GALERIE — une image, plein écran, tirée au sort.
@@ -21,11 +21,16 @@ import { ChevronLeft, ChevronRight, Shuffle, EyeOff, Undo2 } from "lucide-react"
  * différents entre le serveur et le client feraient hurler React à
  * l'hydratation — c'est le même piège que pour les bandeaux, et la même parade.
  *
- * MASQUER remplace le SUPPRIMER de sa visionneuse Python. Sur Vercel le disque
- * est en lecture seule : rien ne peut être effacé. Mais masquer est meilleur
- * ici — c'est réversible, et son historique de décisions irréversibles prises
- * d'un doigt qui glisse est déjà assez long. La liste vit dans le navigateur,
- * donc elle lui est propre et ne voyage pas.
+ * SUPPRIMER, comme dans sa visionneuse Python — avec une différence qu'il faut
+ * dire : sur Vercel le disque est en lecture seule, donc le fichier reste. Ce
+ * qui est supprimé, c'est le fait de la revoir. La liste vit dans le
+ * navigateur : elle est propre à cet appareil, et elle survit à la fermeture.
+ * Le bouton « tout remontrer » existe parce qu'une suppression irréversible
+ * faite d'un doigt qui glisse lui a déjà coûté un compteur.
+ *
+ * LA CITATION accompagne chaque image et change avec elle. Une image seule se
+ * regarde trois secondes ; une image avec une ligne à lire retient le temps de
+ * la lecture. C'est le même dispositif que la phrase du jour, appliqué ici.
  */
 export default function GalerieView({
   titre,
@@ -33,6 +38,7 @@ export default function GalerieView({
   dossier,
   images,
   accent,
+  citations,
 }: {
   titre: string;
   sousTitre: string;
@@ -40,6 +46,15 @@ export default function GalerieView({
   dossier: string;
   images: string[];
   accent: string;
+  /**
+   * Une reserve de citations tiree cote serveur.
+   *
+   * Le corpus complet fait deux mille entrees : l embarquer dans le paquet
+   * client alourdirait la page de centaines de kilo-octets pour une seule
+   * ligne affichee a la fois. Le serveur en tire quelques centaines, le client
+   * s en sert. Il ne verra jamais la difference.
+   */
+  citations: string[];
 }) {
   const cle = `forged-galerie-masquees-${dossier}`;
 
@@ -48,6 +63,13 @@ export default function GalerieView({
   const [i, setI] = useState(0);
   const [charge, setCharge] = useState(false);
   const [message, setMessage] = useState<string | null>(null);
+  // La confirmation ne concerne QUE le bouton de l ecran.
+  //
+  // Il a deja perdu un compteur parce que sa main avait touche un bouton par
+  // erreur ; ici le bouton se trouve sous le pouce, juste a cote de « suivant »,
+  // donc le meme accident se reproduirait. La touche Suppr du clavier, elle,
+  // ne se presse pas par megarde : elle part sans rien demander.
+  const [aConfirmer, setAConfirmer] = useState(false);
   const minuteur = useRef<ReturnType<typeof setTimeout> | null>(null);
 
   // Le mélange de Fisher-Yates, sur une copie.
@@ -82,12 +104,14 @@ export default function GalerieView({
 
   const suivant = useCallback(() => {
     if (ordre.length === 0) return;
+    setAConfirmer(false);
     setCharge(false);
     setI((n) => (n + 1) % ordre.length);
   }, [ordre.length]);
 
   const precedent = useCallback(() => {
     if (ordre.length === 0) return;
+    setAConfirmer(false);
     setCharge(false);
     setI((n) => (n - 1 + ordre.length) % ordre.length);
   }, [ordre.length]);
@@ -99,9 +123,10 @@ export default function GalerieView({
     toast("Nouvel ordre");
   }, [melanger, toast]);
 
-  const masquer = useCallback(() => {
+  const supprimer = useCallback(() => {
     const nom = ordre[i];
     if (!nom) return;
+    setAConfirmer(false);
     const suite = [...masquees, nom];
     setMasquees(suite);
     try {
@@ -115,7 +140,7 @@ export default function GalerieView({
       return reste;
     });
     setCharge(false);
-    toast("Masquée");
+    toast("Supprimée");
   }, [cle, i, masquees, ordre, toast]);
 
   const toutRemontrer = useCallback(() => {
@@ -142,13 +167,16 @@ export default function GalerieView({
         precedent();
       } else if (e.key.toLowerCase() === "s") {
         rebattre();
-      } else if (e.key.toLowerCase() === "h" || e.key === "Delete") {
-        masquer();
+      } else if (e.key === "Delete" || e.key.toLowerCase() === "h") {
+        // Directement, sans confirmation : le clavier est un geste voulu.
+        supprimer();
+      } else if (e.key === "Escape") {
+        setAConfirmer(false);
       }
     }
     window.addEventListener("keydown", touche);
     return () => window.removeEventListener("keydown", touche);
-  }, [suivant, precedent, rebattre, masquer]);
+  }, [suivant, precedent, rebattre, supprimer]);
 
   // Le glissé du pouce : c'est ainsi qu'il les regardera sur son téléphone.
   const depart = useRef<number | null>(null);
@@ -166,6 +194,17 @@ export default function GalerieView({
 
   const courante = ordre[i];
   const restantes = useMemo(() => ordre.length, [ordre]);
+
+  // Une citation par image, et elle suit l'image plutôt que le compteur : deux
+  // passages sur la même image donnent la même phrase, ce qui finit par les
+  // associer l'une à l'autre.
+  const citation = useMemo(() => {
+    if (!courante || citations.length === 0) return null;
+    let h = 0;
+    for (let k = 0; k < courante.length; k++)
+      h = (h * 31 + courante.charCodeAt(k)) >>> 0;
+    return citations[h % citations.length];
+  }, [courante, citations]);
 
   return (
     <main
@@ -205,7 +244,7 @@ export default function GalerieView({
         ) : (
           <div className="px-8 text-center">
             <p className="text-[14px] leading-relaxed text-white/50">
-              Tout est masqué.
+              Tout est supprimé.
             </p>
             <button
               type="button"
@@ -224,6 +263,13 @@ export default function GalerieView({
         )}
       </div>
 
+      {/* La citation de cette image-là. */}
+      {citation && (
+        <p className="mx-auto mt-3 max-w-2xl px-6 text-center text-[13px] font-medium leading-relaxed text-white/60">
+          « {citation} »
+        </p>
+      )}
+
       {/* Les commandes, en bas : c'est là que se trouve le pouce. */}
       <div
         className="mx-auto flex w-full max-w-lg items-center justify-between gap-2 px-4 pb-5 pt-4"
@@ -238,13 +284,33 @@ export default function GalerieView({
           <ChevronLeft size={22} />
         </button>
 
-        <button
-          type="button"
-          onClick={masquer}
-          className="flex h-12 flex-1 items-center justify-center gap-2 rounded-xl border border-white/15 text-[13px] font-semibold text-white/60 transition active:scale-[0.98]"
-        >
-          <EyeOff size={16} /> Masquer
-        </button>
+        {aConfirmer ? (
+          <div className="flex flex-1 items-center gap-2">
+            <button
+              type="button"
+              onClick={() => setAConfirmer(false)}
+              className="flex h-12 flex-1 items-center justify-center rounded-xl border border-white/25 text-[13px] font-semibold text-white/80 transition active:scale-[0.98]"
+            >
+              Annuler
+            </button>
+            <button
+              type="button"
+              onClick={supprimer}
+              className="flex h-12 flex-shrink-0 items-center justify-center gap-1.5 rounded-xl px-4 text-[12px] font-bold uppercase tracking-wide text-white transition active:scale-[0.98]"
+              style={{ background: "var(--red)" }}
+            >
+              <Trash2 size={15} /> Supprimer
+            </button>
+          </div>
+        ) : (
+          <button
+            type="button"
+            onClick={() => setAConfirmer(true)}
+            className="flex h-12 flex-1 items-center justify-center gap-2 rounded-xl border border-white/15 text-[13px] font-semibold text-white/60 transition active:scale-[0.98]"
+          >
+            <Trash2 size={16} /> Supprimer
+          </button>
+        )}
 
         <button
           type="button"
@@ -266,7 +332,8 @@ export default function GalerieView({
       </div>
 
       <p className="pb-4 text-center text-[10px] text-white/25">
-        Flèches ou glisse pour avancer · S pour rebattre · H pour masquer
+        Flèches ou glisse pour avancer · S pour rebattre · Suppr pour supprimer
+        sans confirmation
         {masquees.length > 0 && (
           <>
             {" · "}
@@ -275,7 +342,8 @@ export default function GalerieView({
               onClick={toutRemontrer}
               className="underline underline-offset-2"
             >
-              {masquees.length} masquée{masquees.length > 1 ? "s" : ""}
+              {masquees.length} supprimée{masquees.length > 1 ? "s" : ""} —
+              tout remontrer
             </button>
           </>
         )}
