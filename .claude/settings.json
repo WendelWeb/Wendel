@@ -54,7 +54,18 @@
       "Bash(npx tsc *)",
       "Bash(git add *)",
       "Bash(git commit *)",
-      "Bash(npx --yes vercel@latest ls)"
+      "Bash(npx --yes vercel@latest ls)",
+      "Read(//c/Program Files/GitHub CLI/**)",
+      "Bash(node -e 'const k=Object.keys\\(process.env\\).filter\\(x=>/GITHUB|GH_TOKEN/i.test\\(x\\)\\);console.log\\(k.length?k.join\\(\", \"\\):\"\\(aucun\\)\"\\)')",
+      "Bash(node -e 'let d=\"\";process.stdin.on\\(\"data\",c=>d+=c\\).on\\(\"end\",\\(\\)=>{ *)",
+      "Read(//c/tmp/**)",
+      "Bash(curl -s -I -H 'Authorization: Bearer __TRACKED_VAR__' https://api.github.com/user)",
+      "Bash(node -e 'require\\(\"libsodium-wrappers\"\\);console.log\\(\"libsodium pret\"\\)')",
+      "Bash(cp /c/tmp/secrets.mjs ./secrets-tmp.mjs)",
+      "Bash(node ./secrets-tmp.mjs)",
+      "Bash(rm -f ./secrets-tmp.mjs)",
+      "Bash(npm uninstall *)",
+      "Bash(npx vitest *)"
     ]
   }
 }
