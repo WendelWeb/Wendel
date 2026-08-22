@@ -19,6 +19,8 @@ import {
   ScrollText,
   Hourglass,
   LogOut,
+  Images,
+  Map,
 } from "lucide-react";
 import { signOutAction } from "@/app/actions";
 
@@ -32,6 +34,8 @@ const TABS = [
   { href: "/carnet", label: "Le Carnet", Icon: ScrollText },
   { href: "/quotes", label: "Citations", Icon: Quote },
   { href: "/empire", label: "NOVA-AXE", Icon: Crown },
+  { href: "/inevitable", label: "The Inevitable", Icon: Images },
+  { href: "/afrique", label: "Plan Afrique", Icon: Map },
   { href: "/vision", label: "Ma Vision", Icon: Landmark },
   { href: "/retards", label: "Ce que tu retardes", Icon: Hourglass },
   { href: "/urgence", label: "Urgence", Icon: Siren },

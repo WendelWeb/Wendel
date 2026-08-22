@@ -18,6 +18,8 @@ import {
   ScrollText,
   Hourglass,
   SlidersHorizontal,
+  Images,
+  Map,
   MoreHorizontal,
   X,
   type LucideIcon,
@@ -72,6 +74,20 @@ const MORE_GROUPS: { group: string; items: MoreItem[] }[] = [
   {
     group: "Le feu",
     items: [
+      {
+        href: "/inevitable",
+        label: "The Inevitable",
+        desc: "L'homme que tu deviens, en images",
+        Icon: Images,
+        color: "#B45309",
+      },
+      {
+        href: "/afrique",
+        label: "Plan Afrique",
+        desc: "Le corridor avant la première pierre",
+        Icon: Map,
+        color: "#15803D",
+      },
       {
         href: "/empire",
         label: "NOVA-AXE",
